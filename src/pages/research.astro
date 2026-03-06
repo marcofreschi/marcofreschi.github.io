@@ -1,0 +1,184 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Research — Marco Freschi">
+  <style>
+    .page-hero {
+      padding: 14rem 4rem 5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-eyebrow {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .page-title {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      max-width: 14ch;
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--warm-mid);
+    }
+
+    .projects {
+      padding: 6rem 4rem;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 6rem 1fr 18rem;
+      gap: 3rem;
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+      transition: background 0.25s;
+    }
+
+    .project-item:hover { background: rgba(255,255,255,0.5); margin: 0 -2rem; padding: 3.5rem 2rem; }
+
+    .project-num {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding-top: 0.35rem;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--warm-mid);
+      max-width: 60ch;
+    }
+
+    .project-meta {
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    .meta-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+      margin-top: 1.25rem;
+    }
+
+    .meta-label:first-child { margin-top: 0; }
+
+    .meta-value {
+      font-size: 0.75rem;
+      color: var(--ink);
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 0.4rem;
+      animation: pulse 2s infinite;
+    }
+
+    .status-dot.past { background: var(--muted); animation: none; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero, .projects { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .project-item { grid-template-columns: 1fr; gap: 1rem; }
+      .project-item:hover { margin: 0; padding: 3.5rem 0; }
+    }
+  </style>
+
+  <div class="page-hero">
+    <p class="page-eyebrow">Research</p>
+    <h1 class="page-title">Materials that<br /><em>think</em> &amp; move</h1>
+  </div>
+
+  <section class="projects">
+    <div class="project-item">
+      <span class="project-num">01</span>
+      <div>
+        <h2 class="project-title">Bioinspired Seeding Systems</h2>
+        <p class="project-desc">
+          Nature has spent millions of years perfecting seed dispersal. This project develops morphing structures — inspired by dandelion, maple samara, and Erodium seeds — that self-deploy, orient, and anchor upon contact with soil. The goal: scalable, biodegradable systems for ecological restoration and precision agriculture.
+        </p>
+      </div>
+      <div class="project-meta">
+        <p class="meta-label">Status</p>
+        <p class="meta-value"><span class="status-dot"></span>Active</p>
+        <p class="meta-label">Funding</p>
+        <p class="meta-value">NSF TTP-T</p>
+        <p class="meta-label">Lab</p>
+        <p class="meta-value">Morphing Materials Lab</p>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <span class="project-num">02</span>
+      <div>
+        <h2 class="project-title">Stimuli-Responsive 4D Structures</h2>
+        <p class="project-desc">
+          4D printing encodes shape-change behaviors directly into material architecture. By combining hygroscopic, thermally active, and photo-responsive composites with precision fabrication, this work creates structures that transform predictably — and reversibly — in response to environmental cues.
+        </p>
+      </div>
+      <div class="project-meta">
+        <p class="meta-label">Status</p>
+        <p class="meta-value"><span class="status-dot"></span>Active</p>
+        <p class="meta-label">Funding</p>
+        <p class="meta-value">PPFP Fellowship</p>
+        <p class="meta-label">Techniques</p>
+        <p class="meta-value">FDM · SLA · Hydrogels</p>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <span class="project-num">03</span>
+      <div>
+        <h2 class="project-title">Metal Matrix Composites &amp; Tribology</h2>
+        <p class="project-desc">
+          PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of advanced MMCs. Work spanned powder metallurgy, solid-state processing, and multiscale characterization of wear mechanisms — establishing a rigorous materials science foundation for the subsequent pivot to morphing systems.
+        </p>
+      </div>
+      <div class="project-meta">
+        <p class="meta-label">Status</p>
+        <p class="meta-value"><span class="status-dot past"></span>Completed</p>
+        <p class="meta-label">Institution</p>
+        <p class="meta-value">Politecnico di Milano</p>
+        <p class="meta-label">Degree</p>
+        <p class="meta-value">PhD · Materials Eng.</p>
+      </div>
+    </div>
+  </section>
+</Base>

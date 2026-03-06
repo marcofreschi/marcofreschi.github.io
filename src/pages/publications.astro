@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+
+const publications = [
+  {
+    year: "2024",
+    title: "Hygroscopic Morphing for Targeted Seed Dispersal in Reforestation",
+    journal: "Advanced Materials",
+    authors: "Freschi M., Yao L. et al.",
+    doi: "#",
+    type: "Journal Article",
+    highlight: true
+  },
+  {
+    year: "2023",
+    title: "Bioinspired 4D-Printed Structures with Programmed Shape Transformations",
+    journal: "Nature Communications",
+    authors: "Freschi M., et al.",
+    doi: "#",
+    type: "Journal Article",
+    highlight: true
+  },
+  {
+    year: "2022",
+    title: "Wear Mechanisms in Aluminium-Based MMCs under Dry Sliding Conditions",
+    journal: "Wear",
+    authors: "Freschi M., Tagliabue S., et al.",
+    doi: "#",
+    type: "Journal Article",
+    highlight: false
+  },
+  {
+    year: "2021",
+    title: "Microstructural Evolution in Powder-Metallurgy Al-SiC Composites",
+    journal: "Materials Science & Engineering A",
+    authors: "Freschi M., et al.",
+    doi: "#",
+    type: "Journal Article",
+    highlight: false
+  },
+];
+
+const years = ["2024", "2023", "2022", "2021"];
+---
+<Base title="Publications — Marco Freschi">
+  <style>
+    .page-hero {
+      padding: 14rem 4rem 5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-eyebrow {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .page-title {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+    }
+
+    .pub-list {
+      padding: 5rem 4rem;
+    }
+
+    .pub-year-group { margin-bottom: 4rem; }
+
+    .year-label {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pub-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .pub-entry.highlight {
+      background: rgba(255,255,255,0.6);
+      margin: 0 -2rem;
+      padding: 2rem;
+    }
+
+    .pub-title {
+      font-family: 'Georgia', 'Palatino Linotype', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .pub-authors {
+      font-size: 0.83rem;
+      color: var(--warm-mid);
+      margin-bottom: 0.35rem;
+    }
+
+    .pub-journal {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+
+    .pub-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    .pub-type {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 0.25rem 0.6rem;
+      color: var(--muted);
+    }
+
+    .pub-doi {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--warm-mid);
+      border-bottom: 1px solid var(--accent-light);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .pub-doi:hover { color: var(--accent); border-color: var(--accent); }
+
+    .scholar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 3rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.85rem 2rem;
+      transition: background 0.25s;
+    }
+
+    .scholar-link:hover { background: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page-hero, .pub-list { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .pub-entry { grid-template-columns: 1fr; }
+      .pub-entry.highlight { margin: 0; padding: 2rem 0; }
+      .pub-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+
+  <div class="page-hero">
+    <p class="page-eyebrow">Publications</p>
+    <h1 class="page-title">Selected Works</h1>
+  </div>
+
+  <section class="pub-list">
+    {years.map(year => {
+      const pubs = publications.filter(p => p.year === year);
+      if (pubs.length === 0) return null;
+      return (
+        <div class="pub-year-group">
+          <p class="year-label">{year}</p>
+          {pubs.map(pub => (
+            <div class={pub.highlight ? 'pub-entry highlight' : 'pub-entry'}>
+              <div>
+                <h3 class="pub-title">{pub.title}</h3>
+                <p class="pub-authors">{pub.authors}</p>
+                <p class="pub-journal">{pub.journal}</p>
+              </div>
+              <div class="pub-actions">
+                <span class="pub-type">{pub.type}</span>
+                <a href={pub.doi} class="pub-doi">DOI →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    })}
+
+    <a href="https://scholar.google.com" class="scholar-link" target="_blank" rel="noopener">
+      View on Google Scholar →
+    </a>
+  </section>
+</Base>

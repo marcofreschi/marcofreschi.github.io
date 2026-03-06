@@ -1,7 +1,23 @@
-# IDEs
-.idea/
+# build output
+dist/
+.output/
 
-# Hugo
-resources/
-public/
-assets/jsconfig.json
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# macOS-specific files
+.DS_Store
