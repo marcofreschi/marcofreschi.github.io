@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Marco Freschi</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1a1814;--paper:#f5f0e8;--warm-mid:#8b7355;--accent:#c17f3a;--accent-light:#e8c99a;--muted:#9e9585;--line:rgba(26,24,20,0.12);--serif:'Georgia','Palatino Linotype',serif;--mono:'Consolas','Courier New',monospace;--sans:'Segoe UI',system-ui,sans-serif}
+    html{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px}
+    body{min-height:100vh}
+    h1,h2{font-family:var(--serif);font-weight:400;line-height:1.15}
+    a{color:inherit;text-decoration:none}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(245,240,232,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    nav .logo{font-family:var(--serif);font-size:1.1rem;font-weight:500}
+    nav ul{display:flex;gap:2.5rem;list-style:none}
+    nav ul a{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-mid);transition:color 0.2s}
+    nav ul a:hover{color:var(--ink)}
+    .contact-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:5rem}
+    .contact-left{padding:8rem 4rem 5rem;border-right:1px solid var(--line)}
+    .page-eyebrow{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+    .page-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--accent)}
+    .page-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05;margin-bottom:2rem}
+    .page-title em{font-style:italic;color:var(--warm-mid)}
+    .contact-intro{font-size:1rem;line-height:1.7;color:var(--warm-mid);max-width:42ch;margin-bottom:3.5rem}
+    .contact-links{display:flex;flex-direction:column;gap:1.25rem}
+    .contact-link-item{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;background:white;transition:transform 0.25s,box-shadow 0.25s}
+    .contact-link-item:hover{transform:translateX(4px);box-shadow:-3px 0 0 var(--accent)}
+    .link-icon{width:2.5rem;height:2.5rem;background:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.7rem;color:var(--accent);flex-shrink:0}
+    .link-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem}
+    .link-value{font-size:0.9rem;color:var(--ink)}
+    .contact-right{padding:8rem 4rem 5rem;background:var(--ink)}
+    .contact-right h2{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--paper);margin-bottom:2.5rem}
+    .info-block{margin-bottom:2.5rem}
+    .info-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-light);opacity:0.7;margin-bottom:0.5rem}
+    .info-value{font-family:var(--serif);font-size:1.15rem;color:var(--paper);line-height:1.4}
+    .divider{width:100%;height:1px;background:rgba(255,255,255,0.1);margin:2.5rem 0}
+    .collab-note{font-size:0.88rem;line-height:1.7;color:rgba(245,240,232,0.55);max-width:36ch}
+    footer{border-top:1px solid var(--line);padding:2rem 4rem;display:flex;justify-content:space-between}
+    footer p{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
+    @media(max-width:900px){nav{padding:1.25rem 1.5rem}nav ul{gap:1.5rem}.contact-wrap{grid-template-columns:1fr}.contact-left,.contact-right{padding:5rem 1.5rem 3rem}footer{padding:1.5rem;flex-direction:column;gap:0.5rem}}
+  </style>
+</head>
+<body>
+<nav>
+  <span class="logo">Marco Freschi</span>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="contact-wrap">
+  <div class="contact-left">
+    <p class="page-eyebrow">Contact</p>
+    <h1 class="page-title">Let's <em>connect</em></h1>
+    <p class="contact-intro">I'm always open to conversations about materials science, bioinspired design, academic collaborations, or the MEridian initiative.</p>
+    <div class="contact-links">
+      <a href="mailto:marco.freschi@berkeley.edu" class="contact-link-item">
+        <div class="link-icon">@</div>
+        <div><p class="link-label">Email</p><p class="link-value">marco.freschi@berkeley.edu</p></div>
+      </a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener" class="contact-link-item">
+        <div class="link-icon">GS</div>
+        <div><p class="link-label">Google Scholar</p><p class="link-value">Marco Freschi</p></div>
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link-item">
+        <div class="link-icon">in</div>
+        <div><p class="link-label">LinkedIn</p><p class="link-value">/in/marcofreschi</p></div>
+      </a>
+      <a href="https://orcid.org" target="_blank" rel="noopener" class="contact-link-item">
+        <div class="link-icon">OC</div>
+        <div><p class="link-label">ORCID</p><p class="link-value">0000-0000-0000-0000</p></div>
+      </a>
+    </div>
+  </div>
+  <div class="contact-right">
+    <h2>Office &amp; Affiliation</h2>
+    <div class="info-block">
+      <p class="info-label">Lab</p>
+      <p class="info-value">Morphing Materials Lab<br>Prof. Lining Yao</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Department</p>
+      <p class="info-value">Mechanical Engineering<br>University of California, Berkeley</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Address</p>
+      <p class="info-value">Etcheverry Hall<br>Berkeley, CA 94720</p>
+    </div>
+    <div class="divider"></div>
+    <p class="info-label">About MEridian</p>
+    <p class="collab-note">MEridian is a proposed interdisciplinary postdoc initiative at UC Berkeley ME — fostering collaboration across labs, engaging industry, and building community. Interested? Let's talk.</p>
+  </div>
+</div>
+
+<footer>
+  <p>Marco Freschi · UC Berkeley · Morphing Materials Lab</p>
+  <p>© 2025</p>
+</footer>
+</body>
+</html>
