@@ -7,337 +7,396 @@
   <title>Marco Freschi</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --moss:      #3a4a2e;
-      --moss-mid:  #5a6e45;
-      --moss-soft: #8a9e72;
-      --gold:      #b8932a;
-      --gold-light:#d4ae5a;
-      --gold-pale: #ede3c0;
-      --ivory:     #f4f0e4;
-      --bark:      #2e2a1e;
-      --muted:     #8a8272;
-      --line:      rgba(58,74,46,0.14);
-      --serif:     'Georgia', 'Palatino Linotype', serif;
-      --mono:      'Consolas', 'Courier New', monospace;
-      --sans:      'Segoe UI', system-ui, -apple-system, sans-serif;
+      --moss:#3a4a2e; --moss-mid:#5a6e45; --moss-soft:#8a9e72;
+      --gold:#b8932a; --gold-light:#d4ae5a; --gold-pale:#ede3c0;
+      --ivory:#f4f0e4; --bark:#2e2a1e; --muted:#8a8272;
+      --line:rgba(58,74,46,0.14);
+      --serif:'Georgia','Palatino Linotype',serif;
+      --mono:'Consolas','Courier New',monospace;
+      --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
     }
+    html { background:var(--ivory); color:var(--bark); font-family:var(--sans); font-size:16px; scroll-behavior:smooth; }
+    body { min-height:100vh; }
+    h1,h2,h3,h4 { font-family:var(--serif); font-weight:400; line-height:1.2; }
+    a { color:inherit; text-decoration:none; }
 
-    html { background: var(--ivory); color: var(--bark); font-family: var(--sans); font-size: 16px; scroll-behavior: smooth; }
-    body { min-height: 100vh; }
-    h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.1rem 3rem;
-      background: rgba(244,240,228,0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1.1rem 3rem;
+      background:rgba(244,240,228,0.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
     }
+    .nav-left { display:flex; align-items:center; gap:0.85rem; }
     nav .logo {
-      font-family: var(--serif); font-size: 1rem; font-weight: 500;
-      color: var(--moss); letter-spacing: 0.03em;
-      transition: color 0.2s;
+      font-family:var(--serif); font-size:1rem; font-weight:500;
+      color:var(--moss); letter-spacing:0.03em; transition:color 0.2s;
     }
-    nav .logo:hover { color: var(--gold); }
-    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav .logo:hover { color:var(--gold); }
+    .nav-linkedin {
+      display:flex; align-items:center; justify-content:center;
+      width:26px; height:26px; background:var(--moss); border-radius:4px;
+      transition:background 0.2s, transform 0.2s; flex-shrink:0;
+    }
+    .nav-linkedin:hover { background:var(--gold); transform:translateY(-1px); }
+    .nav-linkedin svg { width:13px; height:13px; fill:var(--ivory); }
+    nav ul { display:flex; gap:2rem; list-style:none; }
     nav ul a {
-      font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--muted); transition: color 0.2s;
-      position: relative;
+      font-family:var(--mono); font-size:0.67rem; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--muted); transition:color 0.2s; position:relative;
     }
     nav ul a::after {
-      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-      height: 1px; background: var(--gold); transform: scaleX(0);
-      transition: transform 0.2s; transform-origin: left;
+      content:''; position:absolute; bottom:-2px; left:0; right:0;
+      height:1px; background:var(--gold); transform:scaleX(0);
+      transition:transform 0.2s; transform-origin:left;
     }
-    nav ul a:hover { color: var(--moss); }
-    nav ul a:hover::after { transform: scaleX(1); }
+    nav ul a:hover { color:var(--moss); }
+    nav ul a:hover::after { transform:scaleX(1); }
 
-    /* ── HERO — compact, 1/3 viewport ── */
+    /* HERO */
     .hero {
-      min-height: 38vh;
-      padding: 7rem 3rem 3rem;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2.5rem;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, var(--ivory) 60%, rgba(90,110,69,0.06) 100%);
+      padding-top:5rem;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:40vh;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
     }
-
+    .hero-left {
+      padding:2.5rem 3rem 2.5rem;
+      display:flex; flex-direction:column; justify-content:center;
+      background:linear-gradient(135deg,var(--ivory) 55%,rgba(90,110,69,0.04) 100%);
+    }
+    .hero-top { display:flex; align-items:center; gap:1.4rem; margin-bottom:1.1rem; }
     .hero-avatar {
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      border: 2px solid var(--gold-light);
-      background: var(--moss-soft);
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 4px 24px rgba(58,74,46,0.15);
-      display: flex; align-items: center; justify-content: center;
+      width:88px; height:88px; border-radius:50%;
+      border:2px solid var(--gold-light); overflow:hidden; flex-shrink:0;
+      box-shadow:0 4px 20px rgba(58,74,46,0.15); background:var(--moss-soft);
     }
-
-    .hero-avatar svg { width: 60px; height: 60px; opacity: 0.4; }
-
-    .hero-text {}
+    .hero-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+    .hero-avatar-placeholder {
+      width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    }
+    .hero-avatar-placeholder svg { width:44px; height:44px; opacity:0.32; }
     .hero-eyebrow {
-      font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
-      display: flex; align-items: center; gap: 0.6rem;
-      animation: fadeUp 0.6s ease both;
+      font-family:var(--mono); font-size:0.59rem; letter-spacing:0.14em;
+      text-transform:uppercase; color:var(--gold); margin-bottom:0.35rem;
+      display:flex; align-items:center; gap:0.5rem;
+      animation:fadeUp 0.6s ease both;
     }
-    .hero-eyebrow::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--gold); }
-
+    .hero-eyebrow::before { content:''; display:block; width:1.1rem; height:1px; background:var(--gold); }
     .hero-name {
-      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
-      letter-spacing: -0.01em; line-height: 1.05;
-      color: var(--moss);
-      animation: fadeUp 0.6s 0.08s ease both;
+      font-size:clamp(1.55rem,2.8vw,2.3rem); font-weight:300;
+      letter-spacing:-0.01em; line-height:1.05; color:var(--moss);
+      animation:fadeUp 0.6s 0.08s ease both;
     }
-    .hero-name em { font-style: italic; color: var(--gold); }
-
+    .hero-name em { font-style:italic; color:var(--gold); }
     .hero-tagline {
-      margin-top: 0.75rem; font-size: 0.92rem; color: var(--muted);
-      max-width: 52ch; line-height: 1.6;
-      animation: fadeUp 0.6s 0.16s ease both;
+      font-size:0.87rem; color:var(--muted); max-width:50ch;
+      line-height:1.65; animation:fadeUp 0.6s 0.16s ease both; margin-bottom:0.9rem;
     }
-
     .hero-chips {
-      margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;
-      animation: fadeUp 0.6s 0.24s ease both;
+      display:flex; flex-wrap:wrap; gap:0.4rem;
+      animation:fadeUp 0.6s 0.24s ease both;
     }
     .chip {
-      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 0.3rem 0.7rem;
-      border: 1px solid var(--line); color: var(--moss-mid);
-      background: rgba(90,110,69,0.06);
+      font-family:var(--mono); font-size:0.56rem; letter-spacing:0.08em;
+      text-transform:uppercase; padding:0.26rem 0.62rem;
+      border:1px solid var(--line); color:var(--moss-mid);
+      background:rgba(90,110,69,0.06);
     }
 
-    /* ── NEWS TICKER ── */
-    .news-bar {
-      background: var(--moss);
-      padding: 0;
-      overflow: hidden;
-      position: relative;
+    /* HERO RIGHT — botanical watercolor SVG */
+    .hero-right {
+      position:relative; overflow:hidden;
+      background:#dcebd0;
     }
-    .news-inner {
-      display: flex;
-      gap: 0;
+    .hero-right svg {
+      width:100%; height:100%; position:absolute; inset:0; display:block;
     }
-    .news-list {
-      display: flex;
-      list-style: none;
-      padding: 0.7rem 0;
-      gap: 0;
-      flex-shrink: 0;
+
+    /* NEWS */
+    .news-section { border-bottom:1px solid var(--line); }
+    .news-header {
+      display:flex; align-items:center; gap:1rem;
+      padding:0.6rem 3rem;
+      background:var(--moss);
     }
+    .news-label {
+      font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em;
+      text-transform:uppercase; color:var(--gold-light);
+      white-space:nowrap; flex-shrink:0;
+      display:flex; align-items:center; gap:0.5rem;
+    }
+    .news-pulse { width:5px; height:5px; border-radius:50%; background:var(--gold-light); animation:pulse 2s infinite; }
+    .news-divider { width:1px; height:0.9rem; background:rgba(255,255,255,0.2); flex-shrink:0; }
+    .news-scroll-outer { background:var(--moss); overflow:hidden; }
+    .news-track { display:flex; animation:scrollNews 32s linear infinite; width:max-content; }
+    .news-track:hover { animation-play-state:paused; }
+    .news-list { display:flex; list-style:none; padding:0.6rem 0; flex-shrink:0; }
     .news-list li {
-      display: flex; align-items: center;
-      padding: 0 2rem;
-      border-right: 1px solid rgba(255,255,255,0.15);
-      white-space: nowrap;
+      display:flex; align-items:center;
+      padding:0 2.5rem;
+      border-right:1px solid rgba(255,255,255,0.1);
+      white-space:nowrap;
     }
-    .news-list li:last-child { border-right: none; }
-    .news-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--gold-light); margin-right: 0.75rem; flex-shrink: 0;
-    }
-    .news-list a {
-      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.07em;
-      color: rgba(244,240,228,0.85); transition: color 0.2s;
-    }
-    .news-list a:hover { color: var(--gold-light); }
-    .news-date {
-      font-family: var(--mono); font-size: 0.58rem;
-      color: rgba(244,240,228,0.4); margin-right: 0.75rem;
-    }
+    .news-dot { width:4px; height:4px; border-radius:50%; background:var(--gold-light); margin-right:0.6rem; flex-shrink:0; }
+    .news-date { font-family:var(--mono); font-size:0.57rem; color:rgba(244,240,228,0.38); margin-right:0.55rem; }
+    .news-list a { font-family:var(--mono); font-size:0.61rem; letter-spacing:0.04em; color:rgba(244,240,228,0.78); transition:color 0.2s; }
+    .news-list a:hover { color:var(--gold-light); }
 
-    /* ── MAIN CONTENT ── */
-    .content { max-width: 1100px; margin: 0 auto; padding: 4rem 3rem; }
+    @keyframes scrollNews { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* ── SECTION HEADER ── */
+    /* CONTENT */
+    .content { max-width:1100px; margin:0 auto; padding:4rem 3rem; }
     .section-head {
-      display: flex; align-items: baseline; justify-content: space-between;
-      margin-bottom: 2rem; padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--line);
+      display:flex; align-items:baseline; justify-content:space-between;
+      margin-bottom:2rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);
     }
-    .section-title {
-      font-size: 1.6rem; font-weight: 300; color: var(--moss);
-    }
-    .section-label {
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--gold);
-    }
+    .section-title { font-size:1.5rem; font-weight:300; color:var(--moss); }
+    .section-label { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
 
-    /* ── RESEARCH GRID ── */
-    .research-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px; margin-bottom: 4rem;
-    }
+    /* RESEARCH */
+    .research-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; margin-bottom:4rem; }
     .research-card {
-      background: white; padding: 2rem; position: relative;
-      transition: transform 0.25s, box-shadow 0.25s;
-      border-bottom: 2px solid transparent;
+      background:white; padding:2rem; transition:transform 0.25s, box-shadow 0.25s;
+      border-bottom:2px solid transparent;
     }
-    .research-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(58,74,46,0.1);
-      border-bottom-color: var(--gold);
-    }
-    .card-num {
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em;
-      color: var(--gold); margin-bottom: 1rem;
-    }
-    .card-title { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--moss); }
-    .card-desc { font-size: 0.83rem; line-height: 1.6; color: var(--muted); }
-    .card-tag {
-      display: inline-block; margin-top: 1rem;
-      font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.08em;
-      text-transform: uppercase; background: var(--ivory);
-      color: var(--moss-mid); padding: 0.25rem 0.6rem;
-      border: 1px solid var(--line);
-    }
+    .research-card:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(58,74,46,0.1); border-bottom-color:var(--gold); }
+    .card-num { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; color:var(--gold); margin-bottom:1rem; }
+    .card-title { font-size:1.05rem; margin-bottom:0.6rem; color:var(--moss); }
+    .card-desc { font-size:0.82rem; line-height:1.6; color:var(--muted); }
+    .card-tag { display:inline-block; margin-top:1rem; font-family:var(--mono); font-size:0.56rem; letter-spacing:0.08em; text-transform:uppercase; background:var(--ivory); color:var(--moss-mid); padding:0.22rem 0.55rem; border:1px solid var(--line); }
 
-    /* ── PUBLICATIONS ── */
-    .pub-list { margin-bottom: 4rem; }
-    .pub-entry {
-      display: grid; grid-template-columns: 4.5rem 1fr auto;
-      gap: 1.5rem; padding: 1.5rem 0;
-      border-bottom: 1px solid var(--line); align-items: start;
-    }
-    .pub-year {
-      font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.08em;
-      color: var(--gold); padding-top: 0.2rem;
-    }
-    .pub-title {
-      font-family: var(--serif); font-size: 1rem; font-weight: 400;
-      color: var(--moss); margin-bottom: 0.3rem; line-height: 1.3;
-    }
-    .pub-authors { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; }
-    .pub-journal {
-      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.05em;
-      color: var(--gold);
-    }
-    .pub-doi {
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em;
-      color: var(--moss-soft); border-bottom: 1px solid var(--gold-pale);
-      align-self: center; transition: color 0.2s, border-color 0.2s;
-      white-space: nowrap;
-    }
-    .pub-doi:hover { color: var(--gold); border-color: var(--gold); }
+    /* PUBLICATIONS */
+    .pub-entry { display:grid; grid-template-columns:4.5rem 1fr auto; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:start; }
+    .pub-year { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; color:var(--gold); padding-top:0.2rem; }
+    .pub-title { font-family:var(--serif); font-size:0.97rem; font-weight:400; color:var(--moss); margin-bottom:0.28rem; line-height:1.3; }
+    .pub-authors { font-size:0.77rem; color:var(--muted); margin-bottom:0.22rem; }
+    .pub-journal { font-family:var(--mono); font-size:0.61rem; letter-spacing:0.05em; color:var(--gold); }
+    .pub-doi { font-family:var(--mono); font-size:0.6rem; color:var(--moss-soft); border-bottom:1px solid var(--gold-pale); align-self:center; transition:color 0.2s,border-color 0.2s; white-space:nowrap; }
+    .pub-doi:hover { color:var(--gold); border-color:var(--gold); }
+    .scholar-link { display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.5rem; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; background:var(--moss); color:var(--ivory); padding:0.75rem 1.75rem; transition:background 0.25s; }
+    .scholar-link:hover { background:var(--gold); }
 
-    .scholar-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-top: 1.5rem;
-      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em;
-      text-transform: uppercase; background: var(--moss);
-      color: var(--ivory); padding: 0.75rem 1.75rem;
-      transition: background 0.25s;
-    }
-    .scholar-link:hover { background: var(--gold); }
+    /* FOOTER */
+    footer { border-top:1px solid var(--line); padding:1.5rem 3rem; display:flex; justify-content:space-between; align-items:center; background:rgba(58,74,46,0.03); }
+    footer p { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; }
+    .footer-dot { color:var(--gold-light); margin:0 0.4rem; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--line); padding: 1.5rem 3rem;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(58,74,46,0.03);
-    }
-    footer p {
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
-      color: var(--muted); text-transform: uppercase;
-    }
-    .footer-dot { color: var(--gold-light); margin: 0 0.4rem; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 820px) {
-      nav { padding: 1rem 1.5rem; }
-      nav ul { gap: 1.25rem; }
-      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 2.5rem; min-height: auto; }
-      .hero-avatar { width: 80px; height: 80px; }
-      .research-grid { grid-template-columns: 1fr; }
-      .pub-entry { grid-template-columns: 1fr; gap: 0.5rem; }
-      .pub-year { padding-top: 0; }
-      .content { padding: 2.5rem 1.5rem; }
-      footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+    @media(max-width:820px){
+      nav{padding:1rem 1.5rem} nav ul{gap:1.25rem}
+      .hero{grid-template-columns:1fr; min-height:auto}
+      .hero-right{min-height:200px}
+      .hero-left{padding:2rem 1.5rem}
+      .research-grid{grid-template-columns:1fr}
+      .pub-entry{grid-template-columns:1fr; gap:0.4rem}
+      .content{padding:2.5rem 1.5rem}
+      .news-header{padding:0.6rem 1.5rem}
+      footer{padding:1.25rem 1.5rem; flex-direction:column; gap:0.4rem; text-align:center}
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">Marco Freschi</a>
+  <div class="nav-left">
+    <a href="index.html" class="logo">Marco Freschi</a>
+    <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-linkedin" title="LinkedIn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    </a>
+  </div>
   <ul>
     <li><a href="research.html">Research & Publications</a></li>
     <li><a href="bio.html">Bio</a></li>
   </ul>
 </nav>
 
-<!-- HERO — compact -->
 <section class="hero">
-  <div class="hero-avatar">
-    <!-- Replace with: <img src="photo.jpg" alt="Marco Freschi" style="width:100%;height:100%;object-fit:cover;"> -->
-    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="30" cy="22" r="10" stroke="white" stroke-width="1"/>
-      <path d="M10 52 Q10 38 30 38 Q50 38 50 52" stroke="white" stroke-width="1" fill="none"/>
-    </svg>
-  </div>
-  <div class="hero-text">
-    <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
-    <h1 class="hero-name">Marco <em>Freschi</em></h1>
+  <div class="hero-left">
+    <div class="hero-top">
+      <div class="hero-avatar">
+        <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+             FOTO: salva la tua foto LinkedIn come
+             "photo.jpg" nella stessa cartella e
+             sostituisci il div sotto con:
+             <img src="photo.jpg" alt="Marco Freschi">
+             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+        <div class="hero-avatar-placeholder">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="22" r="10" stroke="white" stroke-width="1.2"/>
+            <path d="M10 52 Q10 38 30 38 Q50 38 50 52" stroke="white" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
+        <h1 class="hero-name">Marco <em>Freschi</em></h1>
+      </div>
+    </div>
     <p class="hero-tagline">Bioinspired morphing materials, stimuli-responsive 4D structures, and metal matrix composites. Morphing Materials Lab, Dept. of Mechanical Engineering.</p>
     <div class="hero-chips">
-      <span class="chip">Morphing Materials</span>
-      <span class="chip">4D Printing</span>
+      <span class="chip">Materials Engineering</span>
       <span class="chip">Bioinspired Design</span>
+      <span class="chip">Life-cycle Approach</span>
       <span class="chip">NSF TTP-T</span>
       <span class="chip">PPFP Fellow</span>
     </div>
   </div>
+
+  <!-- Botanical watercolor illustration -->
+  <div class="hero-right">
+    <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="b1"><feGaussianBlur stdDeviation="10"/></filter>
+        <filter id="b2"><feGaussianBlur stdDeviation="5"/></filter>
+        <filter id="b3"><feGaussianBlur stdDeviation="2"/></filter>
+        <filter id="wc">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="wcs">
+          <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="7" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+
+      <!-- Background washes -->
+      <rect width="600" height="420" fill="#d8ebca"/>
+      <ellipse cx="320" cy="200" rx="290" ry="220" fill="#c4dca8" filter="url(#b1)" opacity="0.55"/>
+      <ellipse cx="460" cy="130" rx="180" ry="140" fill="#b4ce96" filter="url(#b1)" opacity="0.45"/>
+      <ellipse cx="120" cy="330" rx="200" ry="150" fill="#cce0b0" filter="url(#b1)" opacity="0.4"/>
+      <ellipse cx="500" cy="360" rx="130" ry="110" fill="#c8b86a" filter="url(#b1)" opacity="0.14"/>
+      <ellipse cx="80" cy="60" rx="110" ry="90" fill="#c0a850" filter="url(#b1)" opacity="0.10"/>
+
+      <!-- Large monstera leaf -->
+      <g filter="url(#wc)" opacity="0.6">
+        <path d="M 370 400 Q 335 320 368 255 Q 400 190 448 165 Q 508 142 530 182 Q 552 222 522 268 Q 490 310 448 335 Q 408 355 385 400 Z" fill="#527840"/>
+        <line x1="385" y1="400" x2="368" y2="255" stroke="#3a5a2a" stroke-width="1.8" fill="none"/>
+        <path d="M 390 320 Q 410 308 422 290" stroke="#3a5a2a" stroke-width="1" fill="none"/>
+        <path d="M 380 348 Q 402 337 416 320" stroke="#3a5a2a" stroke-width="1" fill="none"/>
+        <path d="M 405 280 Q 428 268 442 248" stroke="#3a5a2a" stroke-width="1" fill="none"/>
+        <path d="M 415 255 Q 438 244 452 226" stroke="#3a5a2a" stroke-width="1" fill="none"/>
+      </g>
+
+      <!-- Fern frond left -->
+      <g filter="url(#wcs)" opacity="0.5">
+        <path d="M 60 420 Q 130 320 160 220 Q 185 130 170 50" stroke="#4a6830" stroke-width="2" fill="none"/>
+        <path d="M 160 220 Q 128 200 108 180" stroke="#4a6830" stroke-width="1.2" fill="none"/>
+        <path d="M 163 242 Q 128 226 106 210" stroke="#4a6830" stroke-width="1.2" fill="none"/>
+        <path d="M 165 264 Q 130 250 108 238" stroke="#4a6830" stroke-width="1.2" fill="none"/>
+        <path d="M 160 220 Q 192 198 212 178" stroke="#4a6830" stroke-width="1.2" fill="none"/>
+        <path d="M 163 242 Q 196 222 218 204" stroke="#4a6830" stroke-width="1.2" fill="none"/>
+        <path d="M 165 264 Q 198 248 220 234" stroke="#4a6830" stroke-width="1.2" fill="none"/>
+        <path d="M 170 150 Q 145 132 125 118" stroke="#4a6830" stroke-width="1" fill="none"/>
+        <path d="M 172 168 Q 148 152 130 140" stroke="#4a6830" stroke-width="1" fill="none"/>
+        <path d="M 170 150 Q 196 130 214 114" stroke="#4a6830" stroke-width="1" fill="none"/>
+      </g>
+
+      <!-- Dandelion-inspired seed dispersal (research reference) -->
+      <g filter="url(#b3)" opacity="0.7">
+        <circle cx="255" cy="80" r="18" fill="#c8be70" opacity="0.25" filter="url(#b2)"/>
+        <line x1="255" y1="80" x2="240" y2="52" stroke="#9a8830" stroke-width="0.9"/>
+        <line x1="255" y1="80" x2="248" y2="50" stroke="#9a8830" stroke-width="0.9"/>
+        <line x1="255" y1="80" x2="256" y2="48" stroke="#9a8830" stroke-width="0.9"/>
+        <line x1="255" y1="80" x2="265" y2="50" stroke="#9a8830" stroke-width="0.9"/>
+        <line x1="255" y1="80" x2="272" y2="55" stroke="#9a8830" stroke-width="0.9"/>
+        <line x1="255" y1="80" x2="278" y2="62" stroke="#9a8830" stroke-width="0.9"/>
+        <circle cx="240" cy="50" r="2.8" fill="#b8a835"/>
+        <circle cx="248" cy="48" r="2.8" fill="#b8a835"/>
+        <circle cx="256" cy="46" r="2.8" fill="#b8a835"/>
+        <circle cx="265" cy="48" r="2.8" fill="#b8a835"/>
+        <circle cx="272" cy="53" r="2.8" fill="#b8a835"/>
+        <circle cx="278" cy="60" r="2.8" fill="#b8a835"/>
+        <!-- Floating seeds -->
+        <circle cx="195" cy="35" r="2" fill="#b8a835" opacity="0.5"/>
+        <line x1="195" y1="35" x2="193" y2="28" stroke="#9a8830" stroke-width="0.7" opacity="0.5"/>
+        <circle cx="193" cy="26" r="1.5" fill="#b8a835" opacity="0.5"/>
+        <circle cx="310" cy="20" r="1.8" fill="#b8a835" opacity="0.4"/>
+        <line x1="310" y1="20" x2="308" y2="13" stroke="#9a8830" stroke-width="0.6" opacity="0.4"/>
+        <circle cx="308" cy="11" r="1.4" fill="#b8a835" opacity="0.4"/>
+      </g>
+
+      <!-- Maple samara (winged seed) -->
+      <g filter="url(#wcs)" opacity="0.6">
+        <path d="M 128 148 Q 152 125 174 138 Q 162 158 136 162 Z" fill="#7aac5a" opacity="0.65"/>
+        <path d="M 108 155 Q 132 130 156 143 Q 142 165 116 168 Z" fill="#6a9c4e" opacity="0.55"/>
+        <line x1="136" y1="162" x2="143" y2="188" stroke="#527838" stroke-width="1.2"/>
+        <line x1="116" y1="168" x2="124" y2="195" stroke="#527838" stroke-width="1.1"/>
+      </g>
+
+      <!-- Small top-right leaves -->
+      <g filter="url(#wcs)" opacity="0.6">
+        <path d="M 498 38 Q 522 65 516 96 Q 500 68 498 38 Z" fill="#6a9250" opacity="0.7"/>
+        <path d="M 520 28 Q 550 56 544 90 Q 525 62 520 28 Z" fill="#5e8444" opacity="0.6"/>
+        <path d="M 548 44 Q 574 74 564 108 stroke=" fill="#527838" opacity="0.55"/>
+        <path d="M 548 44 Q 574 74 564 108 Q 546 80 548 44 Z" fill="#527838" opacity="0.55"/>
+      </g>
+
+      <!-- Erodium spiral seed bottom-right -->
+      <g opacity="0.55">
+        <path d="M 488 398 Q 500 375 512 352 Q 522 328 516 305" stroke="#7a8e50" stroke-width="1.3" fill="none"/>
+        <path d="M 512 352 Q 528 342 536 326" stroke="#7a8e50" stroke-width="1" fill="none"/>
+        <path d="M 516 305 Q 525 295 520 282" stroke="#7a8e50" stroke-width="1" fill="none"/>
+        <ellipse cx="520" cy="280" rx="4.5" ry="7.5" fill="#98ae5a" opacity="0.65" transform="rotate(-18 520 280)"/>
+      </g>
+
+      <!-- Subtle engineering grid (microstructure reference) -->
+      <g opacity="0.05" stroke="#2a3e1a" stroke-width="0.6">
+        <line x1="0" y1="105" x2="600" y2="105"/>
+        <line x1="0" y1="210" x2="600" y2="210"/>
+        <line x1="0" y1="315" x2="600" y2="315"/>
+        <line x1="150" y1="0" x2="150" y2="420"/>
+        <line x1="300" y1="0" x2="300" y2="420"/>
+        <line x1="450" y1="0" x2="450" y2="420"/>
+      </g>
+
+      <!-- Edge vignette -->
+      <ellipse cx="0" cy="420" rx="130" ry="110" fill="#a8c88a" filter="url(#b1)" opacity="0.25"/>
+      <ellipse cx="600" cy="0" rx="110" ry="90" fill="#bcD49a" filter="url(#b1)" opacity="0.2"/>
+    </svg>
+  </div>
 </section>
 
-<!-- NEWS BAR -->
-<div class="news-bar">
-  <div class="news-inner">
-    <ul class="news-list">
-      <li>
-        <span class="news-date">Mar 2026</span>
-        <span class="news-dot"></span>
-        <a href="#">New paper submitted to Advanced Materials on hygroscopic morphing for seed dispersal</a>
-      </li>
-      <li>
-        <span class="news-date">Jan 2026</span>
-        <span class="news-dot"></span>
-        <a href="#">MEridian initiative presented to UC Berkeley ME department chair</a>
-      </li>
-      <li>
-        <span class="news-date">Nov 2025</span>
-        <span class="news-dot"></span>
-        <a href="#">NSF TTP-T grant renewed — bioinspired seeding systems project continues</a>
-      </li>
-      <li>
-        <span class="news-date">Sep 2025</span>
-        <span class="news-dot"></span>
-        <a href="#">Featured in CNN — morphing materials research at Berkeley</a>
-      </li>
-    </ul>
+<!-- NEWS -->
+<div class="news-section">
+  <div class="news-header">
+    <span class="news-label">
+      <span class="news-pulse"></span>
+      News
+    </span>
+    <span class="news-divider"></span>
+  </div>
+  <div class="news-scroll-outer">
+    <div class="news-track">
+      <ul class="news-list">
+        <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">New paper submitted to Advanced Materials on hygroscopic morphing for seed dispersal</a></li>
+        <li><span class="news-date">Jan 2026</span><span class="news-dot"></span><a href="#">MEridian initiative presented to UC Berkeley ME department chair</a></li>
+        <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">NSF TTP-T grant renewed — bioinspired seeding systems project continues</a></li>
+        <li><span class="news-date">Sep 2025</span><span class="news-dot"></span><a href="#">Featured in CNN — morphing materials research at Berkeley</a></li>
+        <li><span class="news-date">Jun 2025</span><span class="news-dot"></span><a href="#">Invited talk at Society for Integrative and Comparative Biology annual meeting</a></li>
+      </ul>
+      <ul class="news-list" aria-hidden="true">
+        <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">New paper submitted to Advanced Materials on hygroscopic morphing for seed dispersal</a></li>
+        <li><span class="news-date">Jan 2026</span><span class="news-dot"></span><a href="#">MEridian initiative presented to UC Berkeley ME department chair</a></li>
+        <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">NSF TTP-T grant renewed — bioinspired seeding systems project continues</a></li>
+        <li><span class="news-date">Sep 2025</span><span class="news-dot"></span><a href="#">Featured in CNN — morphing materials research at Berkeley</a></li>
+        <li><span class="news-date">Jun 2025</span><span class="news-dot"></span><a href="#">Invited talk at Society for Integrative and Comparative Biology annual meeting</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- CONTENT -->
 <div class="content">
-
-  <!-- RESEARCH -->
   <div class="section-head">
     <h2 class="section-title">Research Areas</h2>
     <span class="section-label">Active & Past</span>
@@ -363,7 +422,6 @@
     </div>
   </div>
 
-  <!-- PUBLICATIONS -->
   <div class="section-head">
     <h2 class="section-title">Selected Publications</h2>
     <span class="section-label">2021 – present</span>
@@ -406,14 +464,12 @@
       <a href="#" class="pub-doi">DOI →</a>
     </div>
   </div>
-  <a href="https://scholar.google.com" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>
-
+  <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>
 </div>
 
 <footer>
   <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> Morphing Materials Lab</p>
   <p>© 2026</p>
 </footer>
-
 </body>
 </html>
