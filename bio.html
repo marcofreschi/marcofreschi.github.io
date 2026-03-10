@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bio — Marco Freschi</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --moss:#3a4a2e;--moss-mid:#5a6e45;--moss-soft:#8a9e72;
+      --gold:#b8932a;--gold-light:#d4ae5a;--gold-pale:#ede3c0;
+      --ivory:#f4f0e4;--bark:#2e2a1e;--muted:#8a8272;--line:rgba(58,74,46,0.14);
+      --serif:'Georgia','Palatino Linotype',serif;
+      --mono:'Consolas','Courier New',monospace;
+      --sans:'Segoe UI',system-ui,sans-serif;
+    }
+    html{background:var(--ivory);color:var(--bark);font-family:var(--sans);font-size:16px}
+    body{min-height:100vh}
+    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2}
+    a{color:inherit;text-decoration:none}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(244,240,228,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav .logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--moss);letter-spacing:0.03em;transition:color 0.2s}
+    nav .logo:hover{color:var(--gold)}
+    nav ul{display:flex;gap:2rem;list-style:none}
+    nav ul a{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
+    nav ul a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
+    nav ul a:hover{color:var(--moss)}
+    nav ul a:hover::after{transform:scaleX(1)}
+
+    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--ivory) 60%,rgba(90,110,69,0.06) 100%)}
+    .page-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+    .page-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
+    .page-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--moss)}
+
+    .bio-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 280px)}
+
+    .bio-left{padding:4rem 3rem;border-right:1px solid var(--line)}
+    .bio-text{font-size:0.95rem;line-height:1.8;color:var(--bark);max-width:54ch}
+    .bio-text p+p{margin-top:1.2rem}
+
+    .bio-right{padding:4rem 3rem;background:rgba(58,74,46,0.03)}
+
+    .info-block{margin-bottom:2rem}
+    .info-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+    .info-value{font-family:var(--serif);font-size:1rem;color:var(--moss);line-height:1.5}
+    .divider{width:100%;height:1px;background:var(--line);margin:2rem 0}
+
+    .contact-links{display:flex;flex-direction:column;gap:0.85rem;margin-top:2rem}
+    .contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;background:white;transition:transform 0.2s,box-shadow 0.2s}
+    .contact-item:hover{transform:translateX(3px);box-shadow:-2px 0 0 var(--gold)}
+    .contact-icon{width:2rem;height:2rem;background:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.62rem;color:var(--gold);flex-shrink:0}
+    .contact-label{font-family:var(--mono);font-size:0.57rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.15rem}
+    .contact-value{font-size:0.85rem;color:var(--bark)}
+
+    .meridian-note{margin-top:2rem;padding:1.25rem 1.5rem;border-left:2px solid var(--gold);background:rgba(184,147,42,0.05)}
+    .meridian-note p{font-size:0.83rem;line-height:1.65;color:var(--muted)}
+    .meridian-note strong{color:var(--moss);font-weight:500}
+
+    footer{border-top:1px solid var(--line);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(58,74,46,0.03)}
+    footer p{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
+    .footer-dot{color:var(--gold-light);margin:0 0.4rem}
+
+    @media(max-width:820px){
+      nav{padding:1rem 1.5rem}nav ul{gap:1.25rem}
+      .page-hero{padding-left:1.5rem;padding-right:1.5rem}
+      .bio-wrap{grid-template-columns:1fr}
+      .bio-left,.bio-right{padding:2.5rem 1.5rem}
+      .bio-left{border-right:none;border-bottom:1px solid var(--line)}
+      footer{padding:1.25rem 1.5rem;flex-direction:column;gap:0.4rem;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Marco Freschi</a>
+  <ul>
+    <li><a href="research.html">Research & Publications</a></li>
+    <li><a href="bio.html">Bio</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="page-eyebrow">Bio</p>
+  <h1 class="page-title">About Marco Freschi</h1>
+</div>
+
+<div class="bio-wrap">
+  <div class="bio-left">
+    <div class="bio-text">
+      <p>I am a postdoctoral researcher at the Morphing Materials Lab, Department of Mechanical Engineering, UC Berkeley, working under Prof. Lining Yao. My research focuses on bioinspired morphing materials and stimuli-responsive 4D structures — systems that adapt, transform, and respond to their environment without electronics.</p>
+      <p>Before Berkeley, I completed my PhD at Politecnico di Milano, where I studied the tribological and mechanical behavior of metal matrix composites, with emphasis on powder metallurgy and solid-state processing. This work established the materials science foundation I now apply to soft and active matter.</p>
+      <p>My current projects include bioinspired seeding systems for ecological restoration — soft structures that mimic plant seed dispersal mechanisms — and hygroscopic 4D composites that change shape in response to moisture and temperature. This work has been covered by CNN and funded through a PPFP Fellowship and the NSF TTP-T grant.</p>
+      <p>I am also developing <strong>MEridian</strong>, a proposed interdisciplinary postdoc collaborative initiative within UC Berkeley ME, aimed at fostering cross-lab research, industry connections, and postdoc community.</p>
+    </div>
+  </div>
+
+  <div class="bio-right">
+    <div class="info-block">
+      <p class="info-label">Position</p>
+      <p class="info-value">Postdoctoral Researcher<br>Morphing Materials Lab · Prof. Lining Yao</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Institution</p>
+      <p class="info-value">Dept. of Mechanical Engineering<br>University of California, Berkeley</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">PhD</p>
+      <p class="info-value">Politecnico di Milano<br>Materials Engineering</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Funding</p>
+      <p class="info-value">PPFP Fellowship · NSF TTP-T Grant</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="info-label">Contact</p>
+    <div class="contact-links">
+      <a href="mailto:marco.freschi@berkeley.edu" class="contact-item">
+        <div class="contact-icon">@</div>
+        <div><p class="contact-label">Email</p><p class="contact-value">marco.freschi@berkeley.edu</p></div>
+      </a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">GS</div>
+        <div><p class="contact-label">Google Scholar</p><p class="contact-value">Marco Freschi</p></div>
+      </a>
+      <a href="https://linkedin.com/in/marcofreschi" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">in</div>
+        <div><p class="contact-label">LinkedIn</p><p class="contact-value">/in/marcofreschi</p></div>
+      </a>
+      <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">OC</div>
+        <div><p class="contact-label">ORCID</p><p class="contact-value">0000-0000-0000-0000</p></div>
+      </a>
+    </div>
+
+    <div class="meridian-note">
+      <p><strong>MEridian Initiative</strong> — A structured interdisciplinary postdoc program at UC Berkeley ME. Interested in collaborating or joining? Get in touch.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> Morphing Materials Lab</p>
+  <p>© 2026</p>
+</footer>
+</body>
+</html>

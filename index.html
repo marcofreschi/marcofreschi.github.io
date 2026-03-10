@@ -1,286 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Marco Freschi — Postdoctoral Researcher in Morphing Materials at UC Berkeley" />
-  <title>Marco Freschi — Postdoctoral Researcher</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Marco Freschi — Postdoctoral Researcher in Morphing Materials at UC Berkeley"/>
+  <title>Marco Freschi</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #1a1814;
-      --paper: #f5f0e8;
-      --warm-mid: #8b7355;
-      --accent: #c17f3a;
-      --accent-light: #e8c99a;
-      --muted: #9e9585;
-      --line: rgba(26,24,20,0.12);
-      --serif: 'Georgia', 'Palatino Linotype', serif;
-      --mono: 'Consolas', 'Courier New', monospace;
-      --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --moss:      #3a4a2e;
+      --moss-mid:  #5a6e45;
+      --moss-soft: #8a9e72;
+      --gold:      #b8932a;
+      --gold-light:#d4ae5a;
+      --gold-pale: #ede3c0;
+      --ivory:     #f4f0e4;
+      --bark:      #2e2a1e;
+      --muted:     #8a8272;
+      --line:      rgba(58,74,46,0.14);
+      --serif:     'Georgia', 'Palatino Linotype', serif;
+      --mono:      'Consolas', 'Courier New', monospace;
+      --sans:      'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
-    html {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-
-    body { min-height: 100vh; overflow-x: hidden; }
-
-    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
+    html { background: var(--ivory); color: var(--bark); font-family: var(--sans); font-size: 16px; scroll-behavior: smooth; }
+    body { min-height: 100vh; }
+    h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
     a { color: inherit; text-decoration: none; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1.5rem 4rem;
-      background: rgba(245,240,232,0.92);
-      backdrop-filter: blur(8px);
+      padding: 1.1rem 3rem;
+      background: rgba(244,240,228,0.94);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-    nav .logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.04em; }
-    nav ul { display: flex; gap: 2.5rem; list-style: none; }
-    nav ul a {
-      font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--warm-mid); transition: color 0.2s;
+    nav .logo {
+      font-family: var(--serif); font-size: 1rem; font-weight: 500;
+      color: var(--moss); letter-spacing: 0.03em;
+      transition: color 0.2s;
     }
-    nav ul a:hover { color: var(--ink); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    nav .logo:hover { color: var(--gold); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav ul a {
+      font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); transition: color 0.2s;
       position: relative;
     }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 4rem 5rem;
+    nav ul a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 1px; background: var(--gold); transform: scaleX(0);
+      transition: transform 0.2s; transform-origin: left;
     }
+    nav ul a:hover { color: var(--moss); }
+    nav ul a:hover::after { transform: scaleX(1); }
+
+    /* ── HERO — compact, 1/3 viewport ── */
+    .hero {
+      min-height: 38vh;
+      padding: 7rem 3rem 3rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, var(--ivory) 60%, rgba(90,110,69,0.06) 100%);
+    }
+
+    .hero-avatar {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-light);
+      background: var(--moss-soft);
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 24px rgba(58,74,46,0.15);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-avatar svg { width: 60px; height: 60px; opacity: 0.4; }
+
+    .hero-text {}
     .hero-eyebrow {
-      font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.75rem;
-      animation: fadeUp 0.8s ease both;
+      font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      animation: fadeUp 0.6s ease both;
     }
-    .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+    .hero-eyebrow::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--gold); }
+
     .hero-name {
-      font-size: clamp(3.5rem, 7vw, 6.5rem); font-weight: 300;
-      line-height: 1.0; letter-spacing: -0.02em;
-      animation: fadeUp 0.8s 0.1s ease both;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      letter-spacing: -0.01em; line-height: 1.05;
+      color: var(--moss);
+      animation: fadeUp 0.6s 0.08s ease both;
     }
-    .hero-name em { font-style: italic; color: var(--warm-mid); }
+    .hero-name em { font-style: italic; color: var(--gold); }
+
     .hero-tagline {
-      margin-top: 2rem; font-size: 1.05rem; color: var(--warm-mid);
-      max-width: 38ch; line-height: 1.6;
-      animation: fadeUp 0.8s 0.2s ease both;
+      margin-top: 0.75rem; font-size: 0.92rem; color: var(--muted);
+      max-width: 52ch; line-height: 1.6;
+      animation: fadeUp 0.6s 0.16s ease both;
     }
-    .hero-cta {
-      margin-top: 3rem; display: flex; gap: 1.5rem; align-items: center;
-      animation: fadeUp 0.8s 0.3s ease both;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: var(--ink); color: var(--paper);
-      padding: 0.85rem 2rem; font-family: var(--mono);
-      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: background 0.25s, transform 0.2s;
-    }
-    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
-    .btn-secondary {
-      font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--warm-mid);
-      border-bottom: 1px solid var(--accent-light); padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--ink); border-color: var(--accent); }
 
-    /* ── HERO RIGHT ── */
-    .hero-right {
-      position: relative; overflow: hidden;
-      background: var(--ink);
+    .hero-chips {
+      margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;
+      animation: fadeUp 0.6s 0.24s ease both;
     }
-    .hero-visual {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center; opacity: 0.1;
+    .chip {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem;
+      border: 1px solid var(--line); color: var(--moss-mid);
+      background: rgba(90,110,69,0.06);
     }
-    .hero-visual svg { width: 70%; height: auto; }
-    .hero-label {
-      position: absolute; bottom: 3rem; right: 3rem; text-align: right; z-index: 2;
-      animation: fadeUp 0.8s 0.4s ease both;
-    }
-    .hero-label .institution { font-family: var(--serif); font-size: 1.4rem; color: var(--paper); opacity: 0.9; }
-    .hero-label .dept { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin-top: 0.35rem; }
 
-    /* ── ABOUT STRIP ── */
-    .about-strip {
-      display: grid; grid-template-columns: 1fr 2fr 1fr;
-      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      margin: 0 4rem;
+    /* ── NEWS TICKER ── */
+    .news-bar {
+      background: var(--moss);
+      padding: 0;
+      overflow: hidden;
+      position: relative;
     }
-    .about-cell { padding: 3rem 2.5rem; border-right: 1px solid var(--line); }
-    .about-cell:last-child { border-right: none; }
-    .about-cell .label {
-      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    .news-inner {
+      display: flex;
+      gap: 0;
     }
-    .about-cell .value { font-family: var(--serif); font-size: 1.25rem; line-height: 1.4; }
-    .about-cell p { font-size: 0.9rem; line-height: 1.7; color: var(--warm-mid); }
+    .news-list {
+      display: flex;
+      list-style: none;
+      padding: 0.7rem 0;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .news-list li {
+      display: flex; align-items: center;
+      padding: 0 2rem;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      white-space: nowrap;
+    }
+    .news-list li:last-child { border-right: none; }
+    .news-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold-light); margin-right: 0.75rem; flex-shrink: 0;
+    }
+    .news-list a {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.07em;
+      color: rgba(244,240,228,0.85); transition: color 0.2s;
+    }
+    .news-list a:hover { color: var(--gold-light); }
+    .news-date {
+      font-family: var(--mono); font-size: 0.58rem;
+      color: rgba(244,240,228,0.4); margin-right: 0.75rem;
+    }
 
-    /* ── RESEARCH ── */
-    .research-section { padding: 7rem 4rem; }
-    .section-header {
-      display: flex; justify-content: space-between; align-items: baseline;
-      margin-bottom: 4rem; border-bottom: 1px solid var(--line); padding-bottom: 1.5rem;
+    /* ── MAIN CONTENT ── */
+    .content { max-width: 1100px; margin: 0 auto; padding: 4rem 3rem; }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 2rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--line);
     }
-    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; }
-    .section-link {
-      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--warm-mid); transition: color 0.2s;
+    .section-title {
+      font-size: 1.6rem; font-weight: 300; color: var(--moss);
     }
-    .section-link:hover { color: var(--accent); }
-    .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .section-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    /* ── RESEARCH GRID ── */
+    .research-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px; margin-bottom: 4rem;
+    }
     .research-card {
-      background: white; padding: 2.5rem; position: relative; overflow: hidden;
-      transition: transform 0.3s;
+      background: white; padding: 2rem; position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border-bottom: 2px solid transparent;
     }
-    .research-card::before {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: var(--accent); transform: scaleX(0); transition: transform 0.35s;
-      transform-origin: left;
+    .research-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(58,74,46,0.1);
+      border-bottom-color: var(--gold);
     }
-    .research-card:hover { transform: translateY(-3px); }
-    .research-card:hover::before { transform: scaleX(1); }
-    .card-number { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.75rem; }
-    .card-title { font-size: 1.35rem; font-weight: 400; margin-bottom: 1rem; line-height: 1.3; }
-    .card-desc { font-size: 0.88rem; line-height: 1.65; color: var(--warm-mid); }
+    .card-num {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .card-title { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--moss); }
+    .card-desc { font-size: 0.83rem; line-height: 1.6; color: var(--muted); }
     .card-tag {
-      display: inline-block; margin-top: 1.5rem;
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
-      background: var(--paper); color: var(--muted); padding: 0.3rem 0.75rem;
+      display: inline-block; margin-top: 1rem;
+      font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.08em;
+      text-transform: uppercase; background: var(--ivory);
+      color: var(--moss-mid); padding: 0.25rem 0.6rem;
+      border: 1px solid var(--line);
     }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { margin-bottom: 4rem; }
+    .pub-entry {
+      display: grid; grid-template-columns: 4.5rem 1fr auto;
+      gap: 1.5rem; padding: 1.5rem 0;
+      border-bottom: 1px solid var(--line); align-items: start;
+    }
+    .pub-year {
+      font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.08em;
+      color: var(--gold); padding-top: 0.2rem;
+    }
+    .pub-title {
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      color: var(--moss); margin-bottom: 0.3rem; line-height: 1.3;
+    }
+    .pub-authors { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .pub-journal {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.05em;
+      color: var(--gold);
+    }
+    .pub-doi {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em;
+      color: var(--moss-soft); border-bottom: 1px solid var(--gold-pale);
+      align-self: center; transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .pub-doi:hover { color: var(--gold); border-color: var(--gold); }
+
+    .scholar-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em;
+      text-transform: uppercase; background: var(--moss);
+      color: var(--ivory); padding: 0.75rem 1.75rem;
+      transition: background 0.25s;
+    }
+    .scholar-link:hover { background: var(--gold); }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--line); padding: 2rem 4rem;
+      border-top: 1px solid var(--line); padding: 1.5rem 3rem;
       display: flex; justify-content: space-between; align-items: center;
-      margin-top: 6rem;
+      background: rgba(58,74,46,0.03);
     }
-    footer p { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; }
+    footer p {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
+      color: var(--muted); text-transform: uppercase;
+    }
+    .footer-dot { color: var(--gold-light); margin: 0 0.4rem; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 1.25rem 1.5rem; }
-      nav ul { gap: 1.5rem; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { min-height: 40vh; }
-      .hero-left { padding: 7rem 1.5rem 3rem; }
-      .about-strip { grid-template-columns: 1fr; margin: 0 1.5rem; }
-      .about-cell { border-right: none; border-bottom: 1px solid var(--line); }
+    @media (max-width: 820px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.25rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 2.5rem; min-height: auto; }
+      .hero-avatar { width: 80px; height: 80px; }
       .research-grid { grid-template-columns: 1fr; }
-      .research-section { padding: 4rem 1.5rem; }
-      .section-header { flex-direction: column; gap: 1rem; }
-      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .pub-entry { grid-template-columns: 1fr; gap: 0.5rem; }
+      .pub-year { padding-top: 0; }
+      .content { padding: 2.5rem 1.5rem; }
+      footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <span class="logo">Marco Freschi</span>
+  <a href="index.html" class="logo">Marco Freschi</a>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="research.html">Research</a></li>
-    <li><a href="publications.html">Publications</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="research.html">Research & Publications</a></li>
+    <li><a href="bio.html">Bio</a></li>
   </ul>
 </nav>
 
+<!-- HERO — compact -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Postdoctoral Researcher</p>
-    <h1 class="hero-name">Marco<br><em>Freschi</em></h1>
-    <p class="hero-tagline">Designing materials that move, adapt, and respond — exploring bioinspired morphing systems at the frontier of sustainability and engineering.</p>
-    <div class="hero-cta">
-      <a href="research.html" class="btn-primary">Explore Research →</a>
-      <a href="publications.html" class="btn-secondary">Publications</a>
-    </div>
+  <div class="hero-avatar">
+    <!-- Replace with: <img src="photo.jpg" alt="Marco Freschi" style="width:100%;height:100%;object-fit:cover;"> -->
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="22" r="10" stroke="white" stroke-width="1"/>
+      <path d="M10 52 Q10 38 30 38 Q50 38 50 52" stroke="white" stroke-width="1" fill="none"/>
+    </svg>
   </div>
-  <div class="hero-right">
-    <div class="hero-visual">
-      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="200" cy="200" r="180" stroke="white" stroke-width="0.5"/>
-        <circle cx="200" cy="200" r="120" stroke="white" stroke-width="0.5"/>
-        <circle cx="200" cy="200" r="60" stroke="white" stroke-width="0.5"/>
-        <path d="M 200 20 Q 380 200 200 380 Q 20 200 200 20" stroke="white" stroke-width="0.5"/>
-        <path d="M 20 200 Q 200 380 380 200 Q 200 20 20 200" stroke="white" stroke-width="0.5"/>
-        <line x1="20" y1="200" x2="380" y2="200" stroke="white" stroke-width="0.3"/>
-        <line x1="200" y1="20" x2="200" y2="380" stroke="white" stroke-width="0.3"/>
-        <line x1="60" y1="60" x2="340" y2="340" stroke="white" stroke-width="0.3"/>
-        <line x1="340" y1="60" x2="60" y2="340" stroke="white" stroke-width="0.3"/>
-      </svg>
-    </div>
-    <div class="hero-label">
-      <p class="institution">UC Berkeley</p>
-      <p class="dept">Morphing Materials Lab · Dept. ME</p>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
+    <h1 class="hero-name">Marco <em>Freschi</em></h1>
+    <p class="hero-tagline">Bioinspired morphing materials, stimuli-responsive 4D structures, and metal matrix composites. Morphing Materials Lab, Dept. of Mechanical Engineering.</p>
+    <div class="hero-chips">
+      <span class="chip">Morphing Materials</span>
+      <span class="chip">4D Printing</span>
+      <span class="chip">Bioinspired Design</span>
+      <span class="chip">NSF TTP-T</span>
+      <span class="chip">PPFP Fellow</span>
     </div>
   </div>
 </section>
 
-<div class="about-strip">
-  <div class="about-cell">
-    <p class="label">Affiliation</p>
-    <p class="value">Morphing Materials Lab<br>UC Berkeley</p>
-  </div>
-  <div class="about-cell">
-    <p class="label">Focus</p>
-    <p>My research bridges materials science and bioinspired design — from metal matrix composites and tribological systems to soft, stimuli-responsive structures that transform the way we think about seeding, growth, and sustainability.</p>
-  </div>
-  <div class="about-cell">
-    <p class="label">Funding</p>
-    <p class="value">PPFP Fellowship<br>NSF TTP-T Grant</p>
+<!-- NEWS BAR -->
+<div class="news-bar">
+  <div class="news-inner">
+    <ul class="news-list">
+      <li>
+        <span class="news-date">Mar 2026</span>
+        <span class="news-dot"></span>
+        <a href="#">New paper submitted to Advanced Materials on hygroscopic morphing for seed dispersal</a>
+      </li>
+      <li>
+        <span class="news-date">Jan 2026</span>
+        <span class="news-dot"></span>
+        <a href="#">MEridian initiative presented to UC Berkeley ME department chair</a>
+      </li>
+      <li>
+        <span class="news-date">Nov 2025</span>
+        <span class="news-dot"></span>
+        <a href="#">NSF TTP-T grant renewed — bioinspired seeding systems project continues</a>
+      </li>
+      <li>
+        <span class="news-date">Sep 2025</span>
+        <span class="news-dot"></span>
+        <a href="#">Featured in CNN — morphing materials research at Berkeley</a>
+      </li>
+    </ul>
   </div>
 </div>
 
-<section class="research-section">
-  <div class="section-header">
+<!-- MAIN CONTENT -->
+<div class="content">
+
+  <!-- RESEARCH -->
+  <div class="section-head">
     <h2 class="section-title">Research Areas</h2>
-    <a href="research.html" class="section-link">All Projects →</a>
+    <span class="section-label">Active & Past</span>
   </div>
   <div class="research-grid">
     <div class="research-card">
-      <p class="card-number">01</p>
+      <p class="card-num">01</p>
       <h3 class="card-title">Bioinspired Seeding Systems</h3>
-      <p class="card-desc">Morphing structures that mimic plant seed dispersal mechanisms for sustainable and targeted reforestation applications.</p>
+      <p class="card-desc">Morphing structures that mimic plant seed dispersal mechanisms for sustainable reforestation and precision agriculture.</p>
       <span class="card-tag">Active · NSF TTP-T</span>
     </div>
     <div class="research-card">
-      <p class="card-number">02</p>
-      <h3 class="card-title">Stimuli-Responsive Materials</h3>
-      <p class="card-desc">4D-printed composites that respond to moisture, heat, and light — enabling programmable shape change without electronics.</p>
-      <span class="card-tag">Active</span>
+      <p class="card-num">02</p>
+      <h3 class="card-title">Stimuli-Responsive 4D Structures</h3>
+      <p class="card-desc">4D-printed composites responding to moisture, heat, and light — enabling programmable shape change without electronics.</p>
+      <span class="card-tag">Active · PPFP</span>
     </div>
     <div class="research-card">
-      <p class="card-number">03</p>
+      <p class="card-num">03</p>
       <h3 class="card-title">Metal Matrix Composites</h3>
-      <p class="card-desc">Tribological behavior and mechanical performance of advanced MMCs — foundational work from Politecnico di Milano.</p>
+      <p class="card-desc">Tribological behavior and mechanical performance of advanced MMCs — PhD work at Politecnico di Milano.</p>
       <span class="card-tag">PhD Research</span>
     </div>
   </div>
-</section>
+
+  <!-- PUBLICATIONS -->
+  <div class="section-head">
+    <h2 class="section-title">Selected Publications</h2>
+    <span class="section-label">2021 – present</span>
+  </div>
+  <div class="pub-list">
+    <div class="pub-entry">
+      <span class="pub-year">2024</span>
+      <div>
+        <p class="pub-title">Hygroscopic Morphing for Targeted Seed Dispersal in Reforestation</p>
+        <p class="pub-authors">Freschi M., Yao L. et al.</p>
+        <p class="pub-journal">Advanced Materials</p>
+      </div>
+      <a href="#" class="pub-doi">DOI →</a>
+    </div>
+    <div class="pub-entry">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title">Bioinspired 4D-Printed Structures with Programmed Shape Transformations</p>
+        <p class="pub-authors">Freschi M., et al.</p>
+        <p class="pub-journal">Nature Communications</p>
+      </div>
+      <a href="#" class="pub-doi">DOI →</a>
+    </div>
+    <div class="pub-entry">
+      <span class="pub-year">2022</span>
+      <div>
+        <p class="pub-title">Wear Mechanisms in Aluminium-Based MMCs under Dry Sliding Conditions</p>
+        <p class="pub-authors">Freschi M., Tagliabue S., et al.</p>
+        <p class="pub-journal">Wear</p>
+      </div>
+      <a href="#" class="pub-doi">DOI →</a>
+    </div>
+    <div class="pub-entry">
+      <span class="pub-year">2021</span>
+      <div>
+        <p class="pub-title">Microstructural Evolution in Powder-Metallurgy Al-SiC Composites</p>
+        <p class="pub-authors">Freschi M., et al.</p>
+        <p class="pub-journal">Materials Science &amp; Engineering A</p>
+      </div>
+      <a href="#" class="pub-doi">DOI →</a>
+    </div>
+  </div>
+  <a href="https://scholar.google.com" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>
+
+</div>
 
 <footer>
-  <p>Marco Freschi · UC Berkeley · Morphing Materials Lab</p>
-  <p>© 2025</p>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> Morphing Materials Lab</p>
+  <p>© 2026</p>
 </footer>
 
 </body>
