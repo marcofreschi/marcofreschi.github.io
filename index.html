@@ -30,6 +30,7 @@
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
+    nav ul { position:absolute; left:50%; transform:translateX(-50%); }
     nav .logo {
       font-family:var(--serif); font-size:1rem; font-weight:500;
       color:var(--moss); letter-spacing:0.03em; transition:color 0.2s;
@@ -43,7 +44,7 @@
     .nav-linkedin:hover { opacity:0.65; transform:translateY(-1px); }
     .nav-linkedin svg { width:15px; height:15px; fill:var(--muted); transition:fill 0.2s; }
     .nav-linkedin:hover svg { fill:var(--moss); }
-    nav ul { display:flex; gap:2rem; list-style:none; }
+    nav ul { display:flex; gap:2rem; list-style:none; align-items:center; }
     nav ul a {
       font-family:var(--mono); font-size:0.67rem; letter-spacing:0.1em;
       text-transform:uppercase; color:var(--muted); transition:color 0.2s; position:relative;
