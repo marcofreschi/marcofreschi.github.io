@@ -22,11 +22,15 @@
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(244,240,228,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     nav .logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--moss);letter-spacing:0.03em;transition:color 0.2s}
     nav .logo:hover{color:var(--gold)}
-    nav ul{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:2rem;list-style:none;align-items:center}
+    nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
     nav ul a{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
     nav ul a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
     nav ul a:hover{color:var(--moss)}
     nav ul a:hover::after{transform:scaleX(1)}
+    .nav-icon{display:flex;align-items:center;justify-content:center;width:18px;height:18px;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
+    .nav-icon:hover{opacity:0.65;transform:translateY(-1px)}
+    .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
+    .nav-icon:hover svg{fill:var(--moss)}
 
     .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--ivory) 60%,rgba(90,110,69,0.06) 100%)}
     .page-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
@@ -77,25 +81,17 @@
       .pub-year{padding-top:0}
       footer{padding:1.25rem 1.5rem;flex-direction:column;gap:0.4rem;text-align:center}
     }
-    .nav-linkedin{display:flex;align-items:center;justify-content:center;width:20px;height:20px;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
-    .nav-linkedin:hover{opacity:0.65;transform:translateY(-1px)}
-    .nav-linkedin svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
-    .nav-linkedin:hover svg{fill:var(--moss)}
+
   </style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="logo">Marco Freschi</a>
   <ul>
-    <li><a href="research.html">Research & Publications</a></li>
+    <li><a href="research.html">Research &amp; Publications</a></li>
     <li><a href="bio.html">Bio</a></li>
-    <li>
-      <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-linkedin" title="LinkedIn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      </a>
-    </li>
+    <li><a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a></li>
+    <li><a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
   </ul>
 </nav>
 
@@ -119,9 +115,9 @@
     </div>
     <div class="project-meta">
       <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot"></span>Active</p>
-      <p class="meta-label">Funding</p><p class="meta-value">NSF TTP-T</p>
-      <p class="meta-label">Lab</p><p class="meta-value">Morphing Materials Lab</p>
-      <p class="meta-label">Techniques</p><p class="meta-value">4D Printing · Biomechanics · Field Testing</p>
+      <p class="meta-label">Funding</p><p class="meta-value">Enel Foundation · NSF GCR</p>
+      <p class="meta-label">Lab</p><p class="meta-value"><a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
+      <p class="meta-label">Techniques</p><p class="meta-value">Laser cutting · 3D printing · Field testing · Materials mechanics</p>
       <p class="meta-label">Collaborations</p><p class="meta-value">—</p>
     </div>
   </div>
@@ -129,14 +125,14 @@
   <div class="project-item">
     <span class="project-num">02</span>
     <div>
-      <h2 class="project-title">Stimuli-Responsive 4D Structures</h2>
-      <p class="project-desc">4D printing encodes shape-change behaviors directly into material architecture. By combining hygroscopic, thermally active, and photo-responsive composites with precision fabrication, this work creates structures that transform predictably — and reversibly — in response to environmental cues.</p>
+      <h2 class="project-title">Life-cycle Evaluation of Seedpod Biodegradable Materials</h2>
+      <p class="project-desc">From raw material extraction to end-of-life soil integration — this project applies life-cycle assessment frameworks to biodegradable seedpod-inspired structures. The goal is to quantify environmental trade-offs and guide material selection for ecological restoration systems.</p>
     </div>
     <div class="project-meta">
       <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot"></span>Active</p>
-      <p class="meta-label">Funding</p><p class="meta-value">PPFP Fellowship</p>
-      <p class="meta-label">Lab</p><p class="meta-value">Morphing Materials Lab</p>
-      <p class="meta-label">Techniques</p><p class="meta-value">FDM · SLA · Hydrogels</p>
+      <p class="meta-label">Funding</p><p class="meta-value">NSF GCR · Bulat Utemuratov Foundation</p>
+      <p class="meta-label">Lab</p><p class="meta-value"><a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
+      <p class="meta-label">Techniques</p><p class="meta-value">3D printing · Field testing · Soil mechanics · Materials degradation</p>
       <p class="meta-label">Collaborations</p><p class="meta-value">—</p>
     </div>
   </div>
@@ -149,8 +145,8 @@
     </div>
     <div class="project-meta">
       <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot past"></span>Completed</p>
-      <p class="meta-label">Funding</p><p class="meta-value">Politecnico di Milano</p>
-      <p class="meta-label">Lab</p><p class="meta-value">Dept. of Chemistry, Materials &amp; Chemical Engineering</p>
+      <p class="meta-label">Funding</p><p class="meta-value">Logic SpA PhD Fellowship</p>
+      <p class="meta-label">Lab</p><p class="meta-value"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Materials for Energy and Environment</a></p>
       <p class="meta-label">Techniques</p><p class="meta-value">Powder Metallurgy · Tribometry · SEM/EDS</p>
       <p class="meta-label">Collaborations</p><p class="meta-value">Univ. of Oulu · Univ. of Milan</p>
     </div>
@@ -247,7 +243,7 @@
 </div>
 
 <footer>
-  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> Morphing Materials Lab</p>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
   <p>© 2026</p>
 </footer>
 </body>

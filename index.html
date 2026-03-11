@@ -22,40 +22,18 @@
     a { color:inherit; text-decoration:none; }
 
     /* NAV */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1.1rem 3rem;
-      background:rgba(244,240,228,0.94);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    nav ul { position:absolute; left:50%; transform:translateX(-50%); }
-    nav .logo {
-      font-family:var(--serif); font-size:1rem; font-weight:500;
-      color:var(--moss); letter-spacing:0.03em; transition:color 0.2s;
-    }
-    nav .logo:hover { color:var(--gold); }
-    .nav-linkedin {
-      display:flex; align-items:center; justify-content:center;
-      width:20px; height:20px;
-      transition:opacity 0.2s, transform 0.2s; flex-shrink:0;
-    }
-    .nav-linkedin:hover { opacity:0.65; transform:translateY(-1px); }
-    .nav-linkedin svg { width:15px; height:15px; fill:var(--muted); transition:fill 0.2s; }
-    .nav-linkedin:hover svg { fill:var(--moss); }
-    nav ul { display:flex; gap:2rem; list-style:none; align-items:center; }
-    nav ul a {
-      font-family:var(--mono); font-size:0.67rem; letter-spacing:0.1em;
-      text-transform:uppercase; color:var(--muted); transition:color 0.2s; position:relative;
-    }
-    nav ul a::after {
-      content:''; position:absolute; bottom:-2px; left:0; right:0;
-      height:1px; background:var(--gold); transform:scaleX(0);
-      transition:transform 0.2s; transform-origin:left;
-    }
-    nav ul a:hover { color:var(--moss); }
-    nav ul a:hover::after { transform:scaleX(1); }
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(244,240,228,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav .logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--moss);letter-spacing:0.03em;transition:color 0.2s}
+    nav .logo:hover{color:var(--gold)}
+    nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
+    nav ul a{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
+    nav ul a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
+    nav ul a:hover{color:var(--moss)}
+    nav ul a:hover::after{transform:scaleX(1)}
+    .nav-icon{display:flex;align-items:center;justify-content:center;width:18px;height:18px;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
+    .nav-icon:hover{opacity:0.65;transform:translateY(-1px)}
+    .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
+    .nav-icon:hover svg{fill:var(--moss)}
 
     /* HERO */
     .hero {
@@ -211,15 +189,10 @@
 <nav>
   <a href="index.html" class="logo">Marco Freschi</a>
   <ul>
-    <li><a href="research.html">Research & Publications</a></li>
+    <li><a href="research.html">Research &amp; Publications</a></li>
     <li><a href="bio.html">Bio</a></li>
-    <li>
-      <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-linkedin" title="LinkedIn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      </a>
-    </li>
+    <li><a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a></li>
+    <li><a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
   </ul>
 </nav>
 
@@ -245,126 +218,149 @@
         <h1 class="hero-name">Marco <em>Freschi</em></h1>
       </div>
     </div>
-    <p class="hero-tagline">Bioinspired morphing materials, stimuli-responsive 4D structures, and metal matrix composites. Morphing Materials Lab, Dept. of Mechanical Engineering.</p>
+    <p class="hero-tagline">Bioinspired morphing materials, life-cycle evaluation of biodegradable systems, and metal matrix composites. Morphing Matter Lab, Dept. of Mechanical Engineering.</p>
     <div class="hero-chips">
       <span class="chip">Materials Engineering</span>
       <span class="chip">Bioinspired Design</span>
       <span class="chip">Life-cycle Approach</span>
-      <span class="chip">NSF TTP-T</span>
-      <span class="chip">PPFP Fellow</span>
     </div>
   </div>
 
-  <!-- Botanical watercolor illustration -->
+  <!-- Engineering-nature illustration: cross-sections, fiber composites, seed morphology -->
   <div class="hero-right">
     <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <filter id="b1"><feGaussianBlur stdDeviation="10"/></filter>
-        <filter id="b2"><feGaussianBlur stdDeviation="5"/></filter>
-        <filter id="b3"><feGaussianBlur stdDeviation="2"/></filter>
-        <filter id="wc">
-          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="3" result="noise"/>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+        <filter id="blur1"><feGaussianBlur stdDeviation="8"/></filter>
+        <filter id="blur2"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="rough">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="5" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
-        <filter id="wcs">
-          <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="7" result="noise"/>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
+        <clipPath id="svgClip"><rect width="600" height="420"/></clipPath>
       </defs>
+      <g clip-path="url(#svgClip)">
+      <!-- Background -->
+      <rect width="600" height="420" fill="#c8dbb8"/>
+      <ellipse cx="420" cy="180" rx="260" ry="200" fill="#b8cc9e" filter="url(#blur1)" opacity="0.6"/>
+      <ellipse cx="100" cy="350" rx="180" ry="140" fill="#ccdaaa" filter="url(#blur1)" opacity="0.45"/>
 
-      <!-- Background washes -->
-      <rect width="600" height="420" fill="#d8ebca"/>
-      <ellipse cx="320" cy="200" rx="290" ry="220" fill="#c4dca8" filter="url(#b1)" opacity="0.55"/>
-      <ellipse cx="460" cy="130" rx="180" ry="140" fill="#b4ce96" filter="url(#b1)" opacity="0.45"/>
-      <ellipse cx="120" cy="330" rx="200" ry="150" fill="#cce0b0" filter="url(#b1)" opacity="0.4"/>
-      <ellipse cx="500" cy="360" rx="130" ry="110" fill="#c8b86a" filter="url(#b1)" opacity="0.14"/>
-      <ellipse cx="80" cy="60" rx="110" ry="90" fill="#c0a850" filter="url(#b1)" opacity="0.10"/>
-
-      <!-- Large monstera leaf -->
-      <g filter="url(#wc)" opacity="0.6">
-        <path d="M 370 400 Q 335 320 368 255 Q 400 190 448 165 Q 508 142 530 182 Q 552 222 522 268 Q 490 310 448 335 Q 408 355 385 400 Z" fill="#527840"/>
-        <line x1="385" y1="400" x2="368" y2="255" stroke="#3a5a2a" stroke-width="1.8" fill="none"/>
-        <path d="M 390 320 Q 410 308 422 290" stroke="#3a5a2a" stroke-width="1" fill="none"/>
-        <path d="M 380 348 Q 402 337 416 320" stroke="#3a5a2a" stroke-width="1" fill="none"/>
-        <path d="M 405 280 Q 428 268 442 248" stroke="#3a5a2a" stroke-width="1" fill="none"/>
-        <path d="M 415 255 Q 438 244 452 226" stroke="#3a5a2a" stroke-width="1" fill="none"/>
-      </g>
-
-      <!-- Fern frond left -->
-      <g filter="url(#wcs)" opacity="0.5">
-        <path d="M 60 420 Q 130 320 160 220 Q 185 130 170 50" stroke="#4a6830" stroke-width="2" fill="none"/>
-        <path d="M 160 220 Q 128 200 108 180" stroke="#4a6830" stroke-width="1.2" fill="none"/>
-        <path d="M 163 242 Q 128 226 106 210" stroke="#4a6830" stroke-width="1.2" fill="none"/>
-        <path d="M 165 264 Q 130 250 108 238" stroke="#4a6830" stroke-width="1.2" fill="none"/>
-        <path d="M 160 220 Q 192 198 212 178" stroke="#4a6830" stroke-width="1.2" fill="none"/>
-        <path d="M 163 242 Q 196 222 218 204" stroke="#4a6830" stroke-width="1.2" fill="none"/>
-        <path d="M 165 264 Q 198 248 220 234" stroke="#4a6830" stroke-width="1.2" fill="none"/>
-        <path d="M 170 150 Q 145 132 125 118" stroke="#4a6830" stroke-width="1" fill="none"/>
-        <path d="M 172 168 Q 148 152 130 140" stroke="#4a6830" stroke-width="1" fill="none"/>
-        <path d="M 170 150 Q 196 130 214 114" stroke="#4a6830" stroke-width="1" fill="none"/>
-      </g>
-
-      <!-- Dandelion-inspired seed dispersal (research reference) -->
-      <g filter="url(#b3)" opacity="0.7">
-        <circle cx="255" cy="80" r="18" fill="#c8be70" opacity="0.25" filter="url(#b2)"/>
-        <line x1="255" y1="80" x2="240" y2="52" stroke="#9a8830" stroke-width="0.9"/>
-        <line x1="255" y1="80" x2="248" y2="50" stroke="#9a8830" stroke-width="0.9"/>
-        <line x1="255" y1="80" x2="256" y2="48" stroke="#9a8830" stroke-width="0.9"/>
-        <line x1="255" y1="80" x2="265" y2="50" stroke="#9a8830" stroke-width="0.9"/>
-        <line x1="255" y1="80" x2="272" y2="55" stroke="#9a8830" stroke-width="0.9"/>
-        <line x1="255" y1="80" x2="278" y2="62" stroke="#9a8830" stroke-width="0.9"/>
-        <circle cx="240" cy="50" r="2.8" fill="#b8a835"/>
-        <circle cx="248" cy="48" r="2.8" fill="#b8a835"/>
-        <circle cx="256" cy="46" r="2.8" fill="#b8a835"/>
-        <circle cx="265" cy="48" r="2.8" fill="#b8a835"/>
-        <circle cx="272" cy="53" r="2.8" fill="#b8a835"/>
-        <circle cx="278" cy="60" r="2.8" fill="#b8a835"/>
-        <!-- Floating seeds -->
-        <circle cx="195" cy="35" r="2" fill="#b8a835" opacity="0.5"/>
-        <line x1="195" y1="35" x2="193" y2="28" stroke="#9a8830" stroke-width="0.7" opacity="0.5"/>
-        <circle cx="193" cy="26" r="1.5" fill="#b8a835" opacity="0.5"/>
-        <circle cx="310" cy="20" r="1.8" fill="#b8a835" opacity="0.4"/>
-        <line x1="310" y1="20" x2="308" y2="13" stroke="#9a8830" stroke-width="0.6" opacity="0.4"/>
-        <circle cx="308" cy="11" r="1.4" fill="#b8a835" opacity="0.4"/>
-      </g>
-
-      <!-- Maple samara (winged seed) -->
-      <g filter="url(#wcs)" opacity="0.6">
-        <path d="M 128 148 Q 152 125 174 138 Q 162 158 136 162 Z" fill="#7aac5a" opacity="0.65"/>
-        <path d="M 108 155 Q 132 130 156 143 Q 142 165 116 168 Z" fill="#6a9c4e" opacity="0.55"/>
-        <line x1="136" y1="162" x2="143" y2="188" stroke="#527838" stroke-width="1.2"/>
-        <line x1="116" y1="168" x2="124" y2="195" stroke="#527838" stroke-width="1.1"/>
-      </g>
-
-      <!-- Small top-right leaves -->
-      <g filter="url(#wcs)" opacity="0.6">
-        <path d="M 498 38 Q 522 65 516 96 Q 500 68 498 38 Z" fill="#6a9250" opacity="0.7"/>
-        <path d="M 520 28 Q 550 56 544 90 Q 525 62 520 28 Z" fill="#5e8444" opacity="0.6"/>
-        <path d="M 548 44 Q 574 74 564 108 stroke=" fill="#527838" opacity="0.55"/>
-        <path d="M 548 44 Q 574 74 564 108 Q 546 80 548 44 Z" fill="#527838" opacity="0.55"/>
-      </g>
-
-      <!-- Erodium spiral seed bottom-right -->
-      <g opacity="0.55">
-        <path d="M 488 398 Q 500 375 512 352 Q 522 328 516 305" stroke="#7a8e50" stroke-width="1.3" fill="none"/>
-        <path d="M 512 352 Q 528 342 536 326" stroke="#7a8e50" stroke-width="1" fill="none"/>
-        <path d="M 516 305 Q 525 295 520 282" stroke="#7a8e50" stroke-width="1" fill="none"/>
-        <ellipse cx="520" cy="280" rx="4.5" ry="7.5" fill="#98ae5a" opacity="0.65" transform="rotate(-18 520 280)"/>
-      </g>
-
-      <!-- Subtle engineering grid (microstructure reference) -->
-      <g opacity="0.05" stroke="#2a3e1a" stroke-width="0.6">
-        <line x1="0" y1="105" x2="600" y2="105"/>
+      <!-- Engineering grid (material microstructure reference) -->
+      <g opacity="0.12" stroke="#2a3e1a" stroke-width="0.7">
+        <line x1="0" y1="70" x2="600" y2="70"/>
+        <line x1="0" y1="140" x2="600" y2="140"/>
         <line x1="0" y1="210" x2="600" y2="210"/>
-        <line x1="0" y1="315" x2="600" y2="315"/>
+        <line x1="0" y1="280" x2="600" y2="280"/>
+        <line x1="0" y1="350" x2="600" y2="350"/>
+        <line x1="75" y1="0" x2="75" y2="420"/>
         <line x1="150" y1="0" x2="150" y2="420"/>
+        <line x1="225" y1="0" x2="225" y2="420"/>
         <line x1="300" y1="0" x2="300" y2="420"/>
+        <line x1="375" y1="0" x2="375" y2="420"/>
         <line x1="450" y1="0" x2="450" y2="420"/>
+        <line x1="525" y1="0" x2="525" y2="420"/>
       </g>
 
-      <!-- Edge vignette -->
-      <ellipse cx="0" cy="420" rx="130" ry="110" fill="#a8c88a" filter="url(#b1)" opacity="0.25"/>
-      <ellipse cx="600" cy="0" rx="110" ry="90" fill="#bcD49a" filter="url(#b1)" opacity="0.2"/>
+      <!-- Cross-section of composite material (circular, center-right) -->
+      <g transform="translate(420,200)" filter="url(#blur2)" opacity="0.82">
+        <!-- matrix -->
+        <circle r="118" fill="#8aaa66" opacity="0.55"/>
+        <!-- fiber cross-sections — hexagonal packing -->
+        <g fill="#3a5a2e" opacity="0.75">
+          <circle cx="0" cy="0" r="13"/>
+          <circle cx="30" cy="0" r="13"/><circle cx="-30" cy="0" r="13"/>
+          <circle cx="15" cy="26" r="13"/><circle cx="-15" cy="26" r="13"/>
+          <circle cx="15" cy="-26" r="13"/><circle cx="-15" cy="-26" r="13"/>
+          <circle cx="60" cy="0" r="13"/><circle cx="-60" cy="0" r="13"/>
+          <circle cx="45" cy="26" r="13"/><circle cx="-45" cy="26" r="13"/>
+          <circle cx="45" cy="-26" r="13"/><circle cx="-45" cy="-26" r="13"/>
+          <circle cx="30" cy="52" r="13"/><circle cx="-30" cy="52" r="13"/>
+          <circle cx="30" cy="-52" r="13"/><circle cx="-30" cy="-52" r="13"/>
+          <circle cx="0" cy="52" r="13"/><circle cx="0" cy="-52" r="13"/>
+          <circle cx="75" cy="26" r="13"/><circle cx="-75" cy="26" r="13"/>
+          <circle cx="75" cy="-26" r="13"/><circle cx="-75" cy="-26" r="13"/>
+        </g>
+        <!-- fiber cores -->
+        <g fill="#b8cc88" opacity="0.5">
+          <circle cx="0" cy="0" r="5"/><circle cx="30" cy="0" r="5"/><circle cx="-30" cy="0" r="5"/>
+          <circle cx="15" cy="26" r="5"/><circle cx="-15" cy="26" r="5"/>
+          <circle cx="15" cy="-26" r="5"/><circle cx="-15" cy="-26" r="5"/>
+          <circle cx="60" cy="0" r="5"/><circle cx="-60" cy="0" r="5"/>
+          <circle cx="45" cy="26" r="5"/><circle cx="-45" cy="26" r="5"/>
+        </g>
+        <!-- section circle border -->
+        <circle r="118" fill="none" stroke="#4a6a30" stroke-width="1.5" opacity="0.4"/>
+        <!-- cutting plane lines -->
+        <line x1="-118" y1="0" x2="118" y2="0" stroke="#2a3e1a" stroke-width="0.8" opacity="0.3"/>
+        <line x1="0" y1="-118" x2="0" y2="118" stroke="#2a3e1a" stroke-width="0.8" opacity="0.3"/>
+      </g>
+
+      <!-- Seed morphology — maple samara outline (upper left area) -->
+      <g filter="url(#rough)" opacity="0.7" transform="translate(80,90)">
+        <path d="M 0 90 Q 20 55 45 28 Q 70 0 100 5 Q 125 10 118 40 Q 110 68 80 80 Q 50 90 0 90 Z" fill="#5a7a3a" opacity="0.6"/>
+        <path d="M 0 90 Q 50 70 80 80" stroke="#3a5a1e" stroke-width="1.2" fill="none"/>
+        <line x1="0" y1="90" x2="8" y2="140" stroke="#4a6a2a" stroke-width="1.5"/>
+        <!-- venation -->
+        <path d="M 40 55 Q 55 42 70 35" stroke="#3a5a1e" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M 55 45 Q 72 34 88 30" stroke="#3a5a1e" stroke-width="0.8" fill="none" opacity="0.7"/>
+        <path d="M 25 68 Q 42 57 58 52" stroke="#3a5a1e" stroke-width="0.8" fill="none" opacity="0.7"/>
+      </g>
+
+      <!-- Dandelion seed dispersal (top center) -->
+      <g opacity="0.65" transform="translate(265,55)">
+        <circle cx="0" cy="0" r="5" fill="#b8a030"/>
+        <!-- radiating filaments -->
+        <g stroke="#9a8828" stroke-width="0.9" fill="none">
+          <line x1="0" y1="0" x2="-22" y2="-30"/>
+          <line x1="0" y1="0" x2="-10" y2="-34"/>
+          <line x1="0" y1="0" x2="2" y2="-35"/>
+          <line x1="0" y1="0" x2="14" y2="-32"/>
+          <line x1="0" y1="0" x2="24" y2="-26"/>
+          <line x1="0" y1="0" x2="30" y2="-16"/>
+          <line x1="0" y1="0" x2="32" y2="-4"/>
+        </g>
+        <!-- seed tips -->
+        <g fill="#c8aa30">
+          <ellipse cx="-22" cy="-33" rx="3.5" ry="2" transform="rotate(-50,-22,-33)"/>
+          <ellipse cx="-10" cy="-37" rx="3.5" ry="2" transform="rotate(-75,-10,-37)"/>
+          <ellipse cx="2" cy="-38" rx="3.5" ry="2" transform="rotate(-88,2,-38)"/>
+          <ellipse cx="14" cy="-35" rx="3.5" ry="2" transform="rotate(-115,14,-35)"/>
+          <ellipse cx="24" cy="-29" rx="3.5" ry="2" transform="rotate(-132,24,-29)"/>
+          <ellipse cx="30" cy="-19" rx="3.5" ry="2" transform="rotate(-150,30,-19)"/>
+          <ellipse cx="32" cy="-6" rx="3.5" ry="2" transform="rotate(-170,32,-6)"/>
+        </g>
+        <!-- floating seeds -->
+        <g opacity="0.5">
+          <line x1="-45" y1="-18" x2="-50" y2="-32" stroke="#9a8828" stroke-width="0.7"/>
+          <ellipse cx="-50" cy="-35" rx="2.5" ry="1.5" fill="#c8aa30" transform="rotate(-60,-50,-35)"/>
+          <line x1="50" y1="-8" x2="56" y2="-22" stroke="#9a8828" stroke-width="0.7"/>
+          <ellipse cx="56" cy="-25" rx="2.5" ry="1.5" fill="#c8aa30" transform="rotate(-110,56,-25)"/>
+          <line x1="10" y1="-55" x2="14" y2="-68" stroke="#9a8828" stroke-width="0.7"/>
+          <ellipse cx="14" cy="-71" rx="2.5" ry="1.5" fill="#c8aa30" transform="rotate(-95,14,-71)"/>
+        </g>
+      </g>
+
+      <!-- Life-cycle arrow loop (bottom left, abstract) -->
+      <g transform="translate(95,295)" opacity="0.55" fill="none">
+        <path d="M 0 40 A 45 45 0 1 1 40 0" stroke="#4a6a30" stroke-width="1.8" stroke-dasharray="5 3"/>
+        <polygon points="40,0 50,8 30,8" fill="#4a6a30" opacity="0.7"/>
+        <text x="12" y="50" font-size="7" fill="#4a6a30" font-family="Consolas,monospace" letter-spacing="1" opacity="0.8">LIFE CYCLE</text>
+      </g>
+
+      <!-- SEM-style scale bar bottom right -->
+      <g transform="translate(490,390)" opacity="0.45">
+        <line x1="0" y1="0" x2="60" y2="0" stroke="#2a3e1a" stroke-width="1.2"/>
+        <line x1="0" y1="-4" x2="0" y2="4" stroke="#2a3e1a" stroke-width="1.2"/>
+        <line x1="60" y1="-4" x2="60" y2="4" stroke="#2a3e1a" stroke-width="1.2"/>
+        <text x="30" y="-7" text-anchor="middle" font-size="7" fill="#2a3e1a" font-family="Consolas,monospace">100 μm</text>
+      </g>
+
+      <!-- Erodium spiral seed (right edge) -->
+      <g transform="translate(555,320)" opacity="0.6">
+        <path d="M 0 0 Q 8 -18 4 -38 Q 0 -55 -6 -65" stroke="#6a8a48" stroke-width="1.4" fill="none"/>
+        <path d="M 4 -38 Q 16 -44 20 -55" stroke="#6a8a48" stroke-width="1" fill="none"/>
+        <ellipse cx="-6" cy="-68" rx="5" ry="8" fill="#8aaa58" opacity="0.6" transform="rotate(-15,-6,-68)"/>
+      </g>
+      </g>
     </svg>
   </div>
 </section>
@@ -409,13 +405,13 @@
       <p class="card-num">01</p>
       <h3 class="card-title">Bioinspired Seeding Systems</h3>
       <p class="card-desc">Morphing structures that mimic plant seed dispersal mechanisms for sustainable reforestation and precision agriculture.</p>
-      <span class="card-tag">Active · NSF TTP-T</span>
+      <span class="card-tag">Active · Enel Foundation · NSF GCR</span>
     </div>
     <div class="research-card">
       <p class="card-num">02</p>
-      <h3 class="card-title">Stimuli-Responsive 4D Structures</h3>
-      <p class="card-desc">4D-printed composites responding to moisture, heat, and light — enabling programmable shape change without electronics.</p>
-      <span class="card-tag">Active · PPFP</span>
+      <h3 class="card-title">Life-cycle Evaluation of Seedpod Biodegradable Materials</h3>
+      <p class="card-desc">Environmental assessment of biodegradable seedpod-inspired materials — from raw resource extraction to end-of-life soil integration.</p>
+      <span class="card-tag">Active · NSF GCR</span>
     </div>
     <div class="research-card">
       <p class="card-num">03</p>
@@ -525,7 +521,7 @@
 </div>
 
 <footer>
-  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> Morphing Materials Lab</p>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
   <p>© 2026</p>
 </footer>
 </body>
