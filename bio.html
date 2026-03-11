@@ -165,6 +165,17 @@
 
 <script>
 (function(){
+// explicit display pin positions to separate overlapping clusters
+const PIN_OVERRIDES = {
+  milan:     {px:510, py:103, lx:518, ly:94,  anchor:'start'},
+  chambery:  {px:490, py:108, lx:482, ly:99,  anchor:'end'},
+  oulu:      {px:548, py:18,  lx:548, ly:13,  anchor:'middle'},
+  berkeley:  {px:154, py:131, lx:144, ly:122, anchor:'end'},
+  philly:    {px:286, py:126, lx:294, ly:117, anchor:'start'},
+  harrison:  {px:262, py:136, lx:254, ly:147, anchor:'end'},
+  ithaca:    {px:268, py:109, lx:260, ly:100, anchor:'end'},
+  syracuse:  {px:279, py:114, lx:287, ly:105, anchor:'start'},
+};
 const LOCATIONS = [
   { id:'milan',      label:'Milano, IT',       inst:'Politecnico di Milano',       lat:45.478,  lng:9.228,
     people:[
@@ -248,7 +259,7 @@ function el(tag,attrs,parent){
 }
 
 const wrap=document.getElementById('mapWrap');
-const svg=el('svg',{viewBox:`0 0 ${VW} ${VH}`,xmlns:NS,style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
+const svg=el('svg',{viewBox:'0 8 960 412',xmlns:NS,style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
 
 // ocean background
 el('rect',{x:0,y:0,width:VW,height:VH,fill:'#dce8cc'},svg);
@@ -290,9 +301,13 @@ function drawPins(){
   let activeRayG=null;
 
   LOCATIONS.forEach(loc=>{
-    const {x,y}=mercXY(loc.lat,loc.lng);
-    const cx=Math.max(8,Math.min(VW-8,x));
-    const cy=Math.max(8,Math.min(VH-8,y));
+    const raw=mercXY(loc.lat,loc.lng);
+    const ov=PIN_OVERRIDES[loc.id]||{};
+    const cx=ov.px||Math.max(8,Math.min(VW-8,raw.x));
+    const cy=ov.py||Math.max(8,Math.min(VH-8,raw.y));
+    const lx=ov.lx||cx;
+    const ly=ov.ly||(cy-10);
+    const anchor=ov.anchor||'middle';
 
     // Ray container
     const rayG=el('g',{},rayLayer);
@@ -310,8 +325,8 @@ function drawPins(){
     const dot=el('circle',{cx,cy,r:5,fill:'#3a4a2e',stroke:'#f4f0e4','stroke-width':'1.5'},pinG);
 
     // City label
-    const lbl=el('text',{x:cx,y:cy-10,'text-anchor':'middle',
-      style:'font-family:Consolas,monospace;font-size:8px;font-weight:700;fill:#2e2a1e;pointer-events:none'},pinG);
+    const lbl=el('text',{x:lx,y:ly,'text-anchor':anchor,
+      style:'font-family:Consolas,monospace;font-size:9px;font-weight:700;fill:#2e2a1e;pointer-events:none'},pinG);
     lbl.textContent=loc.label;
 
     // Compute ray positions — full circle, evenly spaced
