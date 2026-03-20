@@ -95,7 +95,7 @@
       letter-spacing:-0.01em; line-height:1.05; color:var(--moss);
       animation:fadeUp 0.6s 0.08s ease both;
     }
-    .hero-name em { font-style:italic; color:var(--gold); }
+    .hero-name em { font-style:italic; color:var(--design-dark); }
     .hero-tagline {
       font-size:0.87rem; color:var(--muted); max-width:50ch;
       line-height:1.65; animation:fadeUp 0.6s 0.16s ease both; margin-bottom:0.9rem;
@@ -220,26 +220,23 @@
     .rs-section{padding:3.5rem 3rem;background:var(--bg2);border-bottom:1px solid var(--line)}
     .rs-section .section-head{margin-bottom:2.5rem}
     .rs-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-    .rs-venn{position:relative;width:260px;height:240px;margin:0 auto}
-    .rs-circle{position:absolute;width:140px;height:140px;border-radius:50%;opacity:0.82;mix-blend-mode:multiply}
-    .rs-circle.mat   {background:var(--mat);    top:0;   left:50%;transform:translateX(-50%)}
-    .rs-circle.sust  {background:var(--sust);   bottom:0;left:8px}
-    .rs-circle.design{background:var(--design); bottom:0;right:8px}
-    .rs-label{position:absolute;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;
-      text-transform:uppercase;font-weight:700;line-height:1.3;text-align:center}
-    .rs-label.mat   {top:8px; left:50%;transform:translateX(-50%);color:var(--mat-dark)}
-    .rs-label.sust  {bottom:4px;left:0;color:var(--sust-dark)}
-    .rs-label.design{bottom:4px;right:0;color:var(--design-dark)}
-    .rs-label.int-ms{top:45%;left:38%;transform:translate(-50%,-50%);font-size:0.5rem;color:#444;font-weight:400}
-    .rs-label.int-sd{bottom:22%;right:16%;font-size:0.5rem;color:#444;font-weight:400}
-    .rs-label.int-md{bottom:22%;left:16%;font-size:0.5rem;color:#444;font-weight:400}
+    .rs-venn{position:relative;width:260px;height:260px;margin:0 auto}
+    .rs-circle{position:absolute;width:110px;height:110px;border-radius:50%;opacity:0.75;mix-blend-mode:multiply}
+    .rs-circle.mat   {background:var(--mat);    top:10px; left:50%;transform:translateX(-50%)}
+    .rs-circle.sust  {background:var(--sust);   bottom:10px;left:18px}
+    .rs-circle.design{background:var(--design); bottom:10px;right:18px}
+    .rs-label{position:absolute;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;
+      text-transform:uppercase;font-weight:800;line-height:1.3;text-align:center;white-space:nowrap}
+    .rs-label.mat   {top:0; left:50%;transform:translateX(-50%);color:var(--mat-dark)}
+    .rs-label.sust  {bottom:0;left:0;color:var(--sust-dark)}
+    .rs-label.design{bottom:0;right:0;color:var(--design-dark)}
     .rs-pillars{display:flex;flex-direction:column;gap:1.2rem}
     .rs-pillar{display:flex;gap:1rem;align-items:flex-start}
     .rs-pillar-bar{width:4px;min-height:100%;border-radius:2px;flex-shrink:0;margin-top:3px}
     .rs-pillar-bar.mat   {background:var(--mat)}
     .rs-pillar-bar.sust  {background:var(--sust)}
     .rs-pillar-bar.design{background:var(--design)}
-    .rs-pillar h4{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;color:var(--bark)}
+    .rs-pillar h4{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;font-weight:800}
     .rs-pillar p{font-size:0.8rem;color:var(--muted);line-height:1.6}
   </style>
 </head>
@@ -266,16 +263,11 @@
              sostituisci il div sotto con:
              <img src="photo.jpg" alt="Marco Freschi">
              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-        <div class="hero-avatar-placeholder">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="22" r="10" stroke="white" stroke-width="1.2"/>
-            <path d="M10 52 Q10 38 30 38 Q50 38 50 52" stroke="white" stroke-width="1.2" fill="none"/>
-          </svg>
-        </div>
+        <img src="Profile.jpg" alt="Marco Freschi" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div>
         <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
-        <h1 class="hero-name">Marco <em>Freschi</em></h1>
+        <h1 class="hero-name"><span style="color:var(--sust-dark)">Marco</span> <em>Freschi</em></h1>
       </div>
     </div>
     <p class="hero-tagline">Bioinspired morphing materials, life-cycle evaluation of biodegradable systems, and metal matrix composites. Morphing Matter Lab, Dept. of Mechanical Engineering.</p>
@@ -467,32 +459,29 @@
         <div class="rs-circle mat"></div>
         <div class="rs-circle sust"></div>
         <div class="rs-circle design"></div>
-        <span class="rs-label mat">Materials<br>Science</span>
-        <span class="rs-label sust">Sustain-<br>ability</span>
-        <span class="rs-label design">Design<br>Eng.</span>
-        <span class="rs-label int-ms">Materials<br>Design</span>
-        <span class="rs-label int-sd">Life Cycle<br>Design</span>
-        <span class="rs-label int-md">Life Cycle<br>Assessment</span>
+        <span class="rs-label mat">Materials Science</span>
+        <span class="rs-label sust">Sustainability</span>
+        <span class="rs-label design">Design Eng.</span>
       </div>
       <div class="rs-pillars">
         <div class="rs-pillar">
           <div class="rs-pillar-bar mat"></div>
           <div>
-            <h4>Materials Science</h4>
+            <h4 style="color:var(--mat-dark)">Materials Science</h4>
             <p>Rigorous, data-driven investigation of functional materials across a broad spectrum of applications — from tribological composites to biodegradable morphing systems.</p>
           </div>
         </div>
         <div class="rs-pillar">
           <div class="rs-pillar-bar design"></div>
           <div>
-            <h4>Design Engineering</h4>
+            <h4 style="color:var(--design-dark)">Design Engineering</h4>
             <p>Application-driven research guided by real-world requirements and inspired by natural mechanisms — translating biological strategies into engineered solutions.</p>
           </div>
         </div>
         <div class="rs-pillar">
           <div class="rs-pillar-bar sust"></div>
           <div>
-            <h4>Sustainability</h4>
+            <h4 style="color:var(--sust-dark)">Sustainability</h4>
             <p>Environmental, economic, and social dimensions integrated from the earliest design stage — not as an afterthought, but as a core design constraint.</p>
           </div>
         </div>
