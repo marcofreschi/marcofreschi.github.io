@@ -6,15 +6,39 @@
   <title>Bio — Marco Freschi</title>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --moss:#3a4a2e;--moss-mid:#5a6e45;--moss-soft:#8a9e72;
-      --gold:#b8932a;--gold-light:#d4ae5a;--gold-pale:#ede3c0;
-      --ivory:#f4f0e4;--bark:#2e2a1e;--muted:#8a8272;--line:rgba(58,74,46,0.14);
+    :root {
+      /* --- Three research pillars --- */
+      --sust:#8AC926;   --sust-dark:#5c8a18;  --sust-light:#c2e880;
+      --design:#FFCA3A; --design-dark:#c49200; --design-light:#ffe89a;
+      --mat:#FF595E;    --mat-dark:#c42028;    --mat-light:#ffaaad;
+
+      /* --- Neutral base --- */
+      --bg:#f8f7f4;        /* near-white warm */
+      --bg2:#eeecea;       /* slightly darker for sections */
+      --surface:#ffffff;
+      --bark:#1a1a1a;      /* near-black text */
+      --muted:#6b6b6b;
+      --line:rgba(26,26,26,0.10);
+
+      /* --- Accent (replaces gold) --- */
+      --accent:var(--design);
+      --accent-dark:var(--design-dark);
+      --accent-light:var(--design-light);
+
+      /* --- Legacy aliases so old CSS still works --- */
+      --moss:var(--sust-dark);
+      --moss-mid:var(--sust);
+      --moss-soft:var(--sust-light);
+      --gold:var(--design-dark);
+      --gold-light:var(--design);
+      --gold-pale:var(--design-light);
+      --ivory:var(--bg);
+
       --serif:'Georgia','Palatino Linotype',serif;
       --mono:'Consolas','Courier New',monospace;
-      --sans:'Segoe UI',system-ui,sans-serif;
+      --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
     }
-    html{background:var(--ivory);color:var(--bark);font-family:var(--sans);font-size:16px}
+    html{background:var(--bg);color:var(--bark);font-family:var(--sans);font-size:16px}
     body{min-height:100vh}
     h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2}
     a{color:inherit;text-decoration:none}
@@ -32,7 +56,7 @@
     .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
     .nav-icon:hover svg{fill:var(--moss)}
 
-    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--ivory) 60%,rgba(90,110,69,0.06) 100%)}
+    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--bg) 60%,rgba(138,201,38,0.06) 100%)}
     .page-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
     .page-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
     .page-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--moss)}
@@ -43,7 +67,7 @@
     .bio-text{font-size:0.95rem;line-height:1.8;color:var(--bark);max-width:54ch}
     .bio-text p+p{margin-top:1.2rem}
 
-    .bio-right{padding:4rem 3rem;background:rgba(58,74,46,0.03)}
+    .bio-right{padding:4rem 3rem;background:rgba(138,201,38,0.04)}
 
     .info-block{margin-bottom:2rem}
     .info-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
@@ -51,7 +75,7 @@
     .divider{width:100%;height:1px;background:var(--line);margin:2rem 0}
 
     .contact-links{display:flex;flex-direction:column;gap:0.85rem;margin-top:2rem}
-    .contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;background:white;transition:transform 0.2s,box-shadow 0.2s}
+    .contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;background:var(--surface);transition:transform 0.2s,box-shadow 0.2s}
     .contact-item:hover{transform:translateX(3px);box-shadow:-2px 0 0 var(--gold)}
     .contact-icon{width:2rem;height:2rem;background:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.62rem;color:var(--gold);flex-shrink:0}
     .contact-label{font-family:var(--mono);font-size:0.57rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.15rem}
@@ -75,15 +99,26 @@
     }
 
     /* COLLABORATION MAP */
-    .collab-section{padding:4rem 3rem;border-top:1px solid var(--line)}
+    .collab-section{padding:4rem 3rem;border-top:1px solid var(--line);background:var(--bg2)}
     .section-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem}
     .section-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
     .collab-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--moss);margin-bottom:2rem}
-    .map-wrap{width:100%;border:1px solid var(--line);overflow:hidden;background:#dce8cc}
+    .map-wrap{width:100%;border:1px solid var(--line);overflow:hidden;background:#e8f4d0}
     .map-hint{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;text-align:center;margin-top:1rem}
+
+    /* UNDER CONSTRUCTION BADGE */
+    .under-badge{
+      position:fixed;top:14px;right:14px;z-index:200;
+      background:var(--mat);color:#fff;
+      font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
+      text-transform:uppercase;padding:0.35rem 0.8rem;
+      border-radius:2px;box-shadow:0 2px 8px rgba(255,89,94,0.35);
+      pointer-events:none;
+    }
   </style>
 </head>
 <body>
+<div class="under-badge">Under Construction</div>
 <nav>
   <a href="index.html" class="logo">Marco Freschi</a>
   <ul>
@@ -262,7 +297,7 @@ const wrap=document.getElementById('mapWrap');
 const svg=el('svg',{viewBox:'0 8 960 412',xmlns:NS,style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
 
 // ocean background
-el('rect',{x:0,y:0,width:VW,height:VH,fill:'#dce8cc'},svg);
+el('rect',{x:0,y:0,width:VW,height:VH,fill:'#e0edd4'},svg);
 
 const mapG=el('g',{id:'mapPaths'},svg);
 const pinLayer=el('g',{id:'pins'},svg);
@@ -278,7 +313,7 @@ topoScript.onload=()=>{
       const features=topojson.feature(topo,topo.objects.countries).features;
       features.forEach(f=>{
         const d=geoPath(f);
-        if(d) el('path',{d,fill:'#b8cfa0',stroke:'#fff','stroke-width':'0.4'},mapG);
+        if(d) el('path',{d,fill:'#a8c88a',stroke:'#fff','stroke-width':'0.4'},mapG);
       });
       drawPins();
     }).catch(()=>drawPins());

@@ -6,15 +6,39 @@
   <title>Research & Publications — Marco Freschi</title>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --moss:#3a4a2e;--moss-mid:#5a6e45;--moss-soft:#8a9e72;
-      --gold:#b8932a;--gold-light:#d4ae5a;--gold-pale:#ede3c0;
-      --ivory:#f4f0e4;--bark:#2e2a1e;--muted:#8a8272;--line:rgba(58,74,46,0.14);
+    :root {
+      /* --- Three research pillars --- */
+      --sust:#8AC926;   --sust-dark:#5c8a18;  --sust-light:#c2e880;
+      --design:#FFCA3A; --design-dark:#c49200; --design-light:#ffe89a;
+      --mat:#FF595E;    --mat-dark:#c42028;    --mat-light:#ffaaad;
+
+      /* --- Neutral base --- */
+      --bg:#f8f7f4;        /* near-white warm */
+      --bg2:#eeecea;       /* slightly darker for sections */
+      --surface:#ffffff;
+      --bark:#1a1a1a;      /* near-black text */
+      --muted:#6b6b6b;
+      --line:rgba(26,26,26,0.10);
+
+      /* --- Accent (replaces gold) --- */
+      --accent:var(--design);
+      --accent-dark:var(--design-dark);
+      --accent-light:var(--design-light);
+
+      /* --- Legacy aliases so old CSS still works --- */
+      --moss:var(--sust-dark);
+      --moss-mid:var(--sust);
+      --moss-soft:var(--sust-light);
+      --gold:var(--design-dark);
+      --gold-light:var(--design);
+      --gold-pale:var(--design-light);
+      --ivory:var(--bg);
+
       --serif:'Georgia','Palatino Linotype',serif;
       --mono:'Consolas','Courier New',monospace;
-      --sans:'Segoe UI',system-ui,sans-serif;
+      --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
     }
-    html{background:var(--ivory);color:var(--bark);font-family:var(--sans);font-size:16px;scroll-behavior:smooth}
+    html{background:var(--bg);color:var(--bark);font-family:var(--sans);font-size:16px;scroll-behavior:smooth}
     body{min-height:100vh}
     h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2}
     a{color:inherit;text-decoration:none}
@@ -32,11 +56,11 @@
     .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
     .nav-icon:hover svg{fill:var(--moss)}
 
-    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--ivory) 60%,rgba(90,110,69,0.06) 100%)}
+    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--bg) 60%,rgba(138,201,38,0.06) 100%)}
     .page-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
     .page-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
     .page-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--moss);line-height:1.0}
-    .page-title em{font-style:italic;color:var(--gold)}
+    .page-title em{font-style:italic;color:var(--sust-dark)}
 
     .content{max-width:1100px;margin:0 auto;padding:4rem 3rem}
 
@@ -53,7 +77,7 @@
     .meta-label{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--moss-soft);margin-bottom:0.3rem;margin-top:1.1rem}
     .meta-label:first-child{margin-top:0}
     .meta-value{font-size:0.72rem;color:var(--bark)}
-    .status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-right:0.4rem;animation:pulse 2s infinite}
+    .status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--sust);margin-right:0.4rem;animation:pulse 2s infinite}
     .status-dot.past{background:var(--muted);animation:none}
 
     /* Publications */
@@ -64,8 +88,8 @@
     .pub-journal{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.05em;color:var(--gold)}
     .pub-doi{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.06em;color:var(--moss-soft);border-bottom:1px solid var(--gold-pale);align-self:center;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
     .pub-doi:hover{color:var(--gold);border-color:var(--gold)}
-    .scholar-link{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--moss);color:var(--ivory);padding:0.75rem 1.75rem;transition:background 0.25s}
-    .scholar-link:hover{background:var(--gold)}
+    .scholar-link{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--bark);color:var(--bg);padding:0.75rem 1.75rem;transition:background 0.25s}
+    .scholar-link:hover{background:var(--sust-dark)}
 
     footer{border-top:1px solid var(--line);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(58,74,46,0.03)}
     footer p{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
@@ -82,9 +106,42 @@
       footer{padding:1.25rem 1.5rem;flex-direction:column;gap:0.4rem;text-align:center}
     }
 
+
+    /* UNDER CONSTRUCTION BADGE */
+    .under-badge{
+      position:fixed;top:14px;right:14px;z-index:200;
+      background:var(--mat);color:#fff;
+      font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
+      text-transform:uppercase;padding:0.35rem 0.8rem;
+      border-radius:2px;box-shadow:0 2px 8px rgba(255,89,94,0.35);
+      pointer-events:none;
+    }
+
+    /* RESEARCH STATEMENT FULL */
+    .rs-full{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:4rem}
+    .rs-full-card{background:var(--surface);padding:2rem;border-top:3px solid transparent;transition:transform 0.2s,box-shadow 0.2s}
+    .rs-full-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+    .rs-full-card.mat   {border-top-color:var(--mat)}
+    .rs-full-card.design{border-top-color:var(--design)}
+    .rs-full-card.sust  {border-top-color:var(--sust)}
+    .rs-full-card .rs-tag{display:inline-block;font-family:var(--mono);font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;margin-bottom:0.8rem;font-weight:700}
+    .rs-full-card.mat    .rs-tag{background:var(--mat-light);color:var(--mat-dark)}
+    .rs-full-card.design .rs-tag{background:var(--design-light);color:var(--design-dark)}
+    .rs-full-card.sust   .rs-tag{background:var(--sust-light);color:var(--sust-dark)}
+    .rs-full-card h3{font-size:1.1rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem}
+    .rs-full-card p{font-size:0.82rem;line-height:1.7;color:var(--muted)}
+    .rs-intersections{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:4rem}
+    .rs-int-card{padding:1.5rem;background:var(--bg2);border-left:3px solid var(--line)}
+    .rs-int-card.ms {border-left-color:color-mix(in srgb,var(--mat) 50%,var(--design) 50%)}
+    .rs-int-card.sd {border-left-color:color-mix(in srgb,var(--design) 50%,var(--sust) 50%)}
+    .rs-int-card.lca{border-left-color:color-mix(in srgb,var(--mat) 50%,var(--sust) 50%)}
+    .rs-int-card .rs-int-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem}
+    .rs-int-card h4{font-size:0.95rem;font-weight:400;color:var(--bark);margin-bottom:0.4rem}
+    .rs-int-card p{font-size:0.8rem;line-height:1.6;color:var(--muted)}
   </style>
 </head>
 <body>
+<div class="under-badge">Under Construction</div>
 <nav>
   <a href="index.html" class="logo">Marco Freschi</a>
   <ul>
@@ -102,13 +159,52 @@
 
 <div class="content">
 
+  <div class="section-head" style="margin-bottom:1.5rem">
+    <h2 class="section-title">Research Statement</h2>
+    <span class="section-label">Three Pillars · Three Intersections</span>
+  </div>
+  <div class="rs-full">
+    <div class="rs-full-card mat">
+      <span class="rs-tag">Materials Science</span>
+      <h3>Rigorous &amp; Functional</h3>
+      <p>Data-driven investigation of materials across a broad application spectrum. From metal matrix composites to biodegradable seedpod structures, the approach remains the same: characterize, model, and engineer material behavior with precision.</p>
+    </div>
+    <div class="rs-full-card design">
+      <span class="rs-tag">Design Engineering</span>
+      <h3>Applied &amp; Bioinspired</h3>
+      <p>Application-driven research anchored to real requirements. Nature provides the blueprint — millions of years of optimization distilled into mechanisms that engineering can translate, refine, and deploy at scale.</p>
+    </div>
+    <div class="rs-full-card sust">
+      <span class="rs-tag">Sustainability</span>
+      <h3>Economic · Environmental · Social</h3>
+      <p>Sustainability integrated as a design constraint, not an afterthought. Every system is evaluated across its full life cycle — from raw material sourcing to end-of-life soil integration — with economic and social impact in scope.</p>
+    </div>
+  </div>
+  <div class="rs-intersections">
+    <div class="rs-int-card ms">
+      <p class="rs-int-label">Materials × Design</p>
+      <h4>Materials Design</h4>
+      <p>Translating functional requirements into material architectures — selecting, processing, and structuring matter to achieve targeted mechanical, biological, or environmental responses.</p>
+    </div>
+    <div class="rs-int-card sd">
+      <p class="rs-int-label">Design × Sustainability</p>
+      <h4>Life Cycle Design</h4>
+      <p>Embedding life cycle thinking into the design process from day one — ensuring that form, function, and environmental performance are co-optimized rather than traded off.</p>
+    </div>
+    <div class="rs-int-card lca">
+      <p class="rs-int-label">Materials × Sustainability</p>
+      <h4>Life Cycle Assessment</h4>
+      <p>Quantitative evaluation of environmental impact from cradle to grave. Applied to biodegradable seeding systems to guide material selection and validate sustainability claims with data.</p>
+    </div>
+  </div>
+
   <div class="section-head">
     <h2 class="section-title">Research Projects</h2>
     <span class="section-label">Active & Completed</span>
   </div>
 
   <div class="project-item">
-    <span class="project-num">01</span>
+    <span class="project-num" style="color:var(--sust-dark)">01</span>
     <div>
       <h2 class="project-title">Bioinspired Seeding Systems</h2>
       <p class="project-desc">Nature has spent millions of years perfecting seed dispersal. This project develops morphing structures — inspired by dandelion, maple samara, and Erodium seeds — that self-deploy, orient, and anchor upon contact with soil. The goal: scalable, biodegradable systems for ecological restoration and precision agriculture.</p>
@@ -123,7 +219,7 @@
   </div>
 
   <div class="project-item">
-    <span class="project-num">02</span>
+    <span class="project-num" style="color:var(--design-dark)">02</span>
     <div>
       <h2 class="project-title">Life-cycle Evaluation of Seedpod Biodegradable Materials</h2>
       <p class="project-desc">From raw material extraction to end-of-life soil integration — this project applies life-cycle assessment frameworks to biodegradable seedpod-inspired structures. The goal is to quantify environmental trade-offs and guide material selection for ecological restoration systems.</p>
@@ -138,7 +234,7 @@
   </div>
 
   <div class="project-item">
-    <span class="project-num">03</span>
+    <span class="project-num" style="color:var(--mat-dark)">03</span>
     <div>
       <h2 class="project-title">Metal Matrix Composites &amp; Tribology</h2>
       <p class="project-desc">PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of advanced MMCs. Work spanned powder metallurgy, solid-state processing, and multiscale characterization of wear mechanisms — establishing a rigorous materials science foundation for the subsequent pivot to morphing systems.</p>
@@ -154,7 +250,7 @@
 
   <div class="section-head" style="margin-top:4rem">
     <h2 class="section-title">Publications</h2>
-    <span class="section-label">2021 – present</span>
+    <span class="section-label">2016 – present</span>
   </div>
 
   <div class="pub-entry">
