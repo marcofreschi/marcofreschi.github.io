@@ -195,7 +195,714 @@
   <p class="section-eyebrow">Global Network</p>
   <h2 class="collab-title">Collaborations</h2>
   <div class="map-wrap" id="mapWrap"></div>
-  <p class="map-hint">Hover a pin &middot; Click a name to visit profile</p>
+  <p class="map-hint">Click a pin to see collaborators &middot; Click a name to visit profile &middot; Click outside to reset</p>
+</section>
+
+<script>
+(function(){
+// explicit display pin positions to separate overlapping clusters
+const PIN_OVERRIDES = {
+  milan:     {px:510, py:103, lx:518, ly:94,  anchor:'start'},
+  chambery:  {px:490, py:108, lx:482, ly:99,  anchor:'end'},
+  oulu:      {px:548, py:18,  lx:548, ly:13,  anchor:'middle'},
+  berkeley:  {px:154, py:131, lx:144, ly:122, anchor:'end'},
+  philly:    {px:286, py:126, lx:294, ly:117, anchor:'start'},
+  harrison:  {px:262, py:136, lx:254, ly:147, anchor:'end'},
+  ithaca:    {px:268, py:109, lx:260, ly:100, anchor:'end'},
+  syracuse:  {px:279, py:114, lx:287, ly:105, anchor:'start'},
+};
+const LOCATIONS = [
+  { id:'milan',      label:'Milano, IT',       inst:'Politecnico di Milano',       lat:45.478,  lng:9.228,
+    people:[
+      {name:'Giovanni Dotelli',     url:'https://www.cmic.polimi.it/persone/docenti-e-ricercatori/dotelli-giovanni/'},
+      {name:'Chiara Castiglioni',   url:'https://www.cmic.polimi.it/persone/docenti-e-ricercatori/castiglioni-chiara/'},
+      {name:'Cinzia Cristiani',     url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/cristiani-cinzia/'},
+      {name:'P. Gallo Stampino',    url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/gallo-stampino-paola/'},
+      {name:'Saverio Latorrata',    url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/latorrata-saverio/'},
+      {name:'Matteo Di Virgilio',   url:'https://www.linkedin.com/in/matteo-di-virgilio-a30200195/'},
+      {name:'Chiara Moletti',       url:'https://www.linkedin.com/in/chiara-moletti-53299818b/'},
+      {name:'Alessia Arrigoni',     url:'https://www.linkedin.com/in/alessia-arrigoni/'},
+      {name:'M.V. Diamanti',        url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/diamanti-maria-vittoria/'},
+      {name:'M.P. Pedeferri',       url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/pedeferri-mariapia/'},
+      {name:'Nora Lecis',           url:'https://www.mecc.polimi.it/en/staff/nora.lecis'},
+      {name:'Marco Mariani',        url:'https://www.mecc.polimi.it/en/staff/marco.mariani'}
+    ]
+  },
+  { id:'oulu',       label:'Oulu, FI',          inst:'University of Oulu',           lat:65.012,  lng:25.472,
+    people:[
+      {name:'Oskari Haiko', url:'https://www.oulu.fi/en/researchers/oskari-haiko'},
+      {name:'Jukka Komi',   url:'https://www.oulu.fi/en/researchers/jukka-komi'}
+    ]
+  },
+  { id:'chambery',   label:'Chambéry, FR',      inst:'Univ. Savoie Mont Blanc',      lat:45.566,  lng:5.800,
+    people:[
+      {name:'Monika Woloszyn', url:'https://www.univ-smb.fr/locie/en/monika-woloszyn-enseignante-chercheuse-membre-du-locie/'},
+      {name:'Michael Pailha',  url:'https://www.univ-smb.fr/locie/en/mickael-pailha-enseignant-chercheur-membre-du-locie/'},
+      {name:'Nolwen Hurel',    url:'https://www.researchgate.net/profile/Nolwenn-Hurel'}
+    ]
+  },
+  { id:'berkeley',   label:'Berkeley, CA',      inst:'UC Berkeley',                  lat:37.872,  lng:-122.259,
+    people:[
+      {name:'Lining Yao',    url:'https://morphingmatter.org/member/lining-yao'},
+      {name:'Semina Yi',     url:'https://morphingmatter.org/member/semina-yi'},
+      {name:'Hajun Lee',     url:'https://morphingmatter.org/member/hajun-lee'},
+      {name:'Yaobin Yang',   url:'https://geomechanics.berkeley.edu/people/yaobin-yang/'},
+      {name:'Kenichi Soga',  url:'https://geomechanics.berkeley.edu/people/soga/'}
+    ]
+  },
+  { id:'philly',     label:'Philadelphia, PA',  inst:'University of Pennsylvania',   lat:39.952,  lng:-75.193,
+    people:[
+      {name:'Shu Yang',      url:'https://shuyang.seas.upenn.edu/people/shu-yang/'},
+      {name:'Ziyun Zhang',   url:'https://scholar.google.com/citations?user=7v7xOi0AAAAJ&hl=en'},
+      {name:'Yaoye Hong',    url:'https://scholar.google.com/citations?user=okAPcVAAAAAJ&hl=en'}
+    ]
+  },
+  { id:'harrison',   label:'Harrisonburg, VA',  inst:'James Madison University',     lat:38.434,  lng:-78.873,
+    people:[
+      {name:'Ehren Moler',   url:'https://www.jmu.edu/cise/people/faculty/moler-ehren.shtml'}
+    ]
+  },
+  { id:'ithaca',     label:'Ithaca, NY',         inst:'Cornell University',            lat:42.453,  lng:-76.473,
+    people:[
+      {name:'Taryn Bauerle',     url:'https://cals.cornell.edu/people/taryn-l-bauerle'},
+      {name:'Florentin Jaeger',  url:'https://scholar.google.com/citations?user=I2dYuBUAAAAJ&hl=en'},
+      {name:'Ramona Werner',     url:'https://scholar.google.com/citations?user=6U9hp0UAAAAJ&hl=de'}
+    ]
+  },
+  { id:'syracuse',   label:'Syracuse, NY',       inst:'Syracuse University',           lat:43.048,  lng:-76.147,
+    people:[
+      {name:'Teng Zhang',    url:'https://ecs.syracuse.edu/faculty-staff/teng-zhang'}
+    ]
+  }
+];
+
+const VW=960, VH=480;
+const NS='http://www.w3.org/2000/svg';
+
+function mercXY(lat,lng){
+  const x=(lng+180)/360*VW;
+  const lr=lat*Math.PI/180;
+  const y=VH/2-(VW*Math.log(Math.tan(Math.PI/4+lr/2)))/(2*Math.PI);
+  return {x,y};
+}
+
+function el(tag,attrs,parent){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs)) e.setAttribute(k,v);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+
+const wrap=document.getElementById('mapWrap');
+const svg=el('svg',{viewBox:'0 8 960 412',xmlns:NS,style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
+
+// ocean background
+el('rect',{x:0,y:0,width:VW,height:VH,fill:'#e0edd4'},svg);
+
+const mapG=el('g',{id:'mapPaths'},svg);
+const pinLayer=el('g',{id:'pins'},svg);
+const rayLayer=el('g',{id:'rays'},svg);
+
+// Load world topo
+const topoScript=document.createElement('script');
+topoScript.src='https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js';
+topoScript.onload=()=>{
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(r=>r.json())
+    .then(topo=>{
+      const features=topojson.feature(topo,topo.objects.countries).features;
+      features.forEach(f=>{
+        const d=geoPath(f);
+        if(d) el('path',{d,fill:'#a8c88a',stroke:'#fff','stroke-width':'0.4'},mapG);
+      });
+      drawPins();
+    }).catch(()=>drawPins());
+};
+document.head.appendChild(topoScript);
+
+function geoPath(feature){
+  function proj([lng,lat]){const p=mercXY(lat,lng);return[p.x.toFixed(1),p.y.toFixed(1)].join(',')}
+  function ring(coords){return'M'+coords.map(proj).join('L')+'Z'}
+  function poly(rings){return rings.map(ring).join(' ')}
+  try{
+    const g=feature.geometry;
+    if(!g) return null;
+    if(g.type==='Polygon') return poly(g.coordinates);
+    if(g.type==='MultiPolygon') return g.coordinates.map(poly).join(' ');
+  }catch(e){return null;}
+}
+
+function drawPins(){
+  let activeRayG=null;
+
+  LOCATIONS.forEach(loc=>{
+    const raw=mercXY(loc.lat,loc.lng);
+    const ov=PIN_OVERRIDES[loc.id]||{};
+    const cx=ov.px||Math.max(8,Math.min(VW-8,raw.x));
+    const cy=ov.py||Math.max(8,Math.min(VH-8,raw.y));
+    const lx=ov.lx||cx;
+    const ly=ov.ly||(cy-10);
+    const anchor=ov.anchor||'middle';
+
+    // Ray container
+    const rayG=el('g',{},rayLayer);
+
+    // Pin group
+    const pinG=el('g',{style:'cursor:pointer'},pinLayer);
+
+    // Pulse rings
+    [0,1].forEach(i=>{
+      const rc=el('circle',{cx,cy,r:6,fill:'none',stroke:'#3a4a2e','stroke-width':'1',opacity:'0.35'},pinG);
+      rc.style.animation=`mapPulse 2.4s ${i*0.9}s ease-out infinite`;
+    });
+
+    // Main dot
+    const dot=el('circle',{cx,cy,r:5,fill:'#3a4a2e',stroke:'#f4f0e4','stroke-width':'1.5'},pinG);
+
+    // City label
+    const lbl=el('text',{x:lx,y:ly,'text-anchor':anchor,
+      style:'font-family:Consolas,monospace;font-size:9px;font-weight:700;fill:#2e2a1e;pointer-events:none'},pinG);
+    lbl.textContent=loc.label;
+
+    // Compute ray positions — full circle, evenly spaced
+    const n=loc.people.length;
+    const radius=n<=2?80:n<=4?100:n<=6?120:150;
+    const step=(2*Math.PI)/n;
+
+    // bias start angle per location to avoid map edge clipping
+    const startAngles={milan:-Math.PI*0.8,oulu:Math.PI*0.3,chambery:-Math.PI*0.5,
+                       berkeley:-Math.PI*0.7,philly:-Math.PI*0.4,harrison:-Math.PI*0.6,
+                       ithaca:-Math.PI*0.5,syracuse:-Math.PI*0.5};
+    const sa=startAngles[loc.id]||(-Math.PI/2);
+
+    loc.people.forEach((p,i)=>{
+      const angle=sa+i*step;
+      let nx=cx+radius*Math.cos(angle);
+      let ny=cy+radius*Math.sin(angle);
+      nx=Math.max(55,Math.min(VW-55,nx));
+      ny=Math.max(12,Math.min(VH-12,ny));
+
+      const nodeG=el('g',{style:'cursor:pointer;opacity:0;transition:opacity 0.18s'},rayG);
+      nodeG.dataset.visible='0';
+
+      // Line from pin to node
+      el('line',{x1:cx,y1:cy,x2:nx,y2:ny,
+        stroke:'#8a9e72','stroke-width':'0.8','stroke-dasharray':'3 2'},nodeG);
+
+      // Text background
+      const tw=p.name.length*5.5+14;
+      el('rect',{x:nx-tw/2,y:ny-9,width:tw,height:14,rx:'2',ry:'2',
+        fill:'rgba(244,240,228,0.96)',stroke:'rgba(58,74,46,0.18)','stroke-width':'0.5'},nodeG);
+
+      // Node dot
+      el('circle',{cx:nx,cy:ny,r:4,fill:'#b8932a'},nodeG);
+
+      // Name text
+      const t=el('text',{x:nx,y:ny+4,'text-anchor':'middle',
+        style:'font-family:Consolas,monospace;font-size:8px;font-weight:600;fill:#2e2a1e;pointer-events:none'},nodeG);
+      t.textContent=p.name;
+
+      nodeG.addEventListener('click',e=>{e.stopPropagation();window.open(p.url,'_blank','noopener');});
+    });
+
+    function showRays(){
+      if(activeRayG&&activeRayG!==rayG){
+        activeRayG.querySelectorAll('g').forEach(n=>n.style.opacity='0');
+      }
+      activeRayG=rayG;
+      dot.setAttribute('fill','#b8932a');
+      rayG.querySelectorAll('g').forEach(n=>n.style.opacity='1');
+    }
+    function hideRays(){
+      setTimeout(()=>{
+        if(!pinG.matches(':hover')&&!rayG.matches(':hover')){
+          dot.setAttribute('fill','#3a4a2e');
+          rayG.querySelectorAll('g').forEach(n=>n.style.opacity='0');
+          if(activeRayG===rayG) activeRayG=null;
+        }
+      },220);
+    }
+    pinG.addEventListener('mouseenter',showRays);
+    pinG.addEventListener('mouseleave',hideRays);
+    rayG.addEventListener('mouseenter',showRays);
+    rayG.addEventListener('mouseleave',hideRays);
+  });
+}
+
+// Inject keyframes
+const style=document.createElement('style');
+style.textContent='@keyframes mapPulse{0%{r:6;opacity:0.45}100%{r:22;opacity:0}}';
+document.head.appendChild(style);
+})();
+</script>
+<footer>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
+  <p>© 2026</p>
+</footer>
+</body>
+</html><script>
+(function(){
+const LOCATIONS = [
+  { id:'milan',     label:'Milano, IT',       inst:'Politecnico di Milano',      lat:45.478, lng:9.228,
+    people:[
+      {name:'Giovanni Dotelli',     url:'https://www.cmic.polimi.it/persone/docenti-e-ricercatori/dotelli-giovanni/'},
+      {name:'Chiara Castiglioni',   url:'https://www.cmic.polimi.it/persone/docenti-e-ricercatori/castiglioni-chiara/'},
+      {name:'Cinzia Cristiani',     url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/cristiani-cinzia/'},
+      {name:'P. Gallo Stampino',    url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/gallo-stampino-paola/'},
+      {name:'Saverio Latorrata',    url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/latorrata-saverio/'},
+      {name:'Matteo Di Virgilio',   url:'https://www.linkedin.com/in/matteo-di-virgilio-a30200195/'},
+      {name:'Chiara Moletti',       url:'https://www.linkedin.com/in/chiara-moletti-53299818b/'},
+      {name:'Alessia Arrigoni',     url:'https://www.linkedin.com/in/alessia-arrigoni/'},
+      {name:'M.V. Diamanti',        url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/diamanti-maria-vittoria/'},
+      {name:'M.P. Pedeferri',       url:'https://www.cmic.polimi.it/en/persone/docenti-e-ricercatori/pedeferri-mariapia/'},
+      {name:'Nora Lecis',           url:'https://www.mecc.polimi.it/en/staff/nora.lecis'},
+      {name:'Marco Mariani',        url:'https://www.mecc.polimi.it/en/staff/marco.mariani'}
+    ]
+  },
+  { id:'oulu',      label:'Oulu, FI',         inst:'University of Oulu',         lat:65.012, lng:25.472,
+    people:[
+      {name:'Oskari Haiko', url:'https://www.oulu.fi/en/researchers/oskari-haiko'},
+      {name:'Jukka Komi',   url:'https://www.oulu.fi/en/researchers/jukka-komi'}
+    ]
+  },
+  { id:'chambery',  label:'Chambéry, FR',     inst:'Univ. Savoie Mont Blanc',    lat:45.566, lng:5.800,
+    people:[
+      {name:'Monika Woloszyn', url:'https://www.univ-smb.fr/locie/en/monika-woloszyn-enseignante-chercheuse-membre-du-locie/'},
+      {name:'Michael Pailha',  url:'https://www.univ-smb.fr/locie/en/mickael-pailha-enseignant-chercheur-membre-du-locie/'},
+      {name:'Nolwen Hurel',    url:'https://www.researchgate.net/profile/Nolwenn-Hurel'}
+    ]
+  },
+  { id:'berkeley',  label:'Berkeley, CA',     inst:'UC Berkeley',                lat:37.872, lng:-122.259,
+    people:[
+      {name:'Lining Yao',   url:'https://morphingmatter.org/member/lining-yao'},
+      {name:'Semina Yi',    url:'https://morphingmatter.org/member/semina-yi'},
+      {name:'Hajun Lee',    url:'https://morphingmatter.org/member/hajun-lee'},
+      {name:'Yaobin Yang',  url:'https://geomechanics.berkeley.edu/people/yaobin-yang/'},
+      {name:'Kenichi Soga', url:'https://geomechanics.berkeley.edu/people/soga/'}
+    ]
+  },
+  { id:'philly',    label:'Philadelphia, PA', inst:'University of Pennsylvania', lat:39.952, lng:-75.193,
+    people:[
+      {name:'Shu Yang',    url:'https://shuyang.seas.upenn.edu/people/shu-yang/'},
+      {name:'Ziyun Zhang', url:'https://scholar.google.com/citations?user=7v7xOi0AAAAJ&hl=en'},
+      {name:'Yaoye Hong',  url:'https://scholar.google.com/citations?user=okAPcVAAAAAJ&hl=en'}
+    ]
+  },
+  { id:'harrison',  label:'Harrisonburg, VA', inst:'James Madison University',   lat:38.434, lng:-78.873,
+    people:[
+      {name:'Ehren Moler', url:'https://www.jmu.edu/cise/people/faculty/moler-ehren.shtml'}
+    ]
+  },
+  { id:'ithaca',    label:'Ithaca, NY',        inst:'Cornell University',          lat:42.453, lng:-76.473,
+    people:[
+      {name:'Taryn Bauerle',    url:'https://cals.cornell.edu/people/taryn-l-bauerle'},
+      {name:'Florentin Jaeger', url:'https://scholar.google.com/citations?user=I2dYuBUAAAAJ&hl=en'},
+      {name:'Ramona Werner',    url:'https://scholar.google.com/citations?user=6U9hp0UAAAAJ&hl=de'}
+    ]
+  },
+  { id:'syracuse',  label:'Syracuse, NY',      inst:'Syracuse University',         lat:43.048, lng:-76.147,
+    people:[
+      {name:'Teng Zhang', url:'https://ecs.syracuse.edu/faculty-staff/teng-zhang'}
+    ]
+  },
+  { id:'almaty',    label:'Almaty, KZ',        inst:'Bulat Utemuratov Foundation', lat:43.238, lng:76.889,
+    people:[
+      {name:'Utemuratov Foundation', url:'https://utemuratovfund.org/en/'}
+    ]
+  }
+];
+
+// PIN display overrides (to separate overlapping clusters)
+const PIN_OVERRIDES = {
+  milan:    {px:510, py:105, lx:522, ly:96,  anchor:'start'},
+  chambery: {px:490, py:110, lx:478, ly:101, anchor:'end'},
+  oulu:     {px:548, py:22,  lx:548, ly:15,  anchor:'middle'},
+  berkeley: {px:154, py:131, lx:142, ly:122, anchor:'end'},
+  philly:   {px:287, py:126, lx:296, ly:117, anchor:'start'},
+  harrison: {px:262, py:137, lx:252, ly:148, anchor:'end'},
+  ithaca:   {px:268, py:110, lx:258, ly:101, anchor:'end'},
+  syracuse: {px:280, py:115, lx:290, ly:106, anchor:'start'},
+  almaty:   {px:685, py:112, lx:685, ly:103, anchor:'middle'},
+};
+
+// Variable ray radii per person index — creates movement
+const RAY_RADII = [95,120,80,110,140,85,125,100,115,90,130,105];
+
+const VW=960, VH=480;
+const NS='http://www.w3.org/2000/svg';
+
+function mercXY(lat,lng){
+  const x=(lng+180)/360*VW;
+  const lr=lat*Math.PI/180;
+  const y=VH/2-(VW*Math.log(Math.tan(Math.PI/4+lr/2)))/(2*Math.PI);
+  return {x,y};
+}
+function el(tag,attrs,parent){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs)) e.setAttribute(k,v);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+
+const wrap=document.getElementById('mapWrap');
+const svg=el('svg',{viewBox:'0 8 960 412',xmlns:NS,style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
+
+el('rect',{x:0,y:0,width:VW,height:VH,fill:'#e0edd4'},svg);
+const mapG=el('g',{id:'mapPaths'},svg);
+const rayLayer=el('g',{id:'rays'},svg);
+const pinLayer=el('g',{id:'pins'},svg);
+
+// Load world topo
+const topoScript=document.createElement('script');
+topoScript.src='https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js';
+topoScript.onload=()=>{
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(r=>r.json())
+    .then(topo=>{
+      const features=topojson.feature(topo,topo.objects.countries).features;
+      features.forEach(f=>{
+        const d=geoPath(f);
+        if(d) el('path',{d,fill:'#a8c88a',stroke:'#fff','stroke-width':'0.4'},mapG);
+      });
+      drawPins();
+    }).catch(()=>drawPins());
+};
+document.head.appendChild(topoScript);
+
+function geoPath(feature){
+  function proj([lng,lat]){const p=mercXY(lat,lng);return[p.x.toFixed(1),p.y.toFixed(1)].join(',')}
+  function ring(coords){return'M'+coords.map(proj).join('L')+'Z'}
+  function poly(rings){return rings.map(ring).join(' ')}
+  try{
+    const g=feature.geometry;
+    if(!g) return null;
+    if(g.type==='Polygon') return poly(g.coordinates);
+    if(g.type==='MultiPolygon') return g.coordinates.map(poly).join(' ');
+  }catch(e){return null;}
+}
+
+let activeId = null;
+const allPinGroups = {};
+const allRayGroups = {};
+
+function closeAll(){
+  Object.keys(allRayGroups).forEach(id=>{
+    allRayGroups[id].style.display='none';
+    allPinGroups[id].querySelector('circle.main-dot').setAttribute('fill','#3a4a2e');
+  });
+  // Show all city labels again
+  Object.keys(allPinGroups).forEach(id=>{
+    const lbl = allPinGroups[id].querySelector('.city-lbl');
+    if(lbl) lbl.style.opacity='1';
+  });
+  activeId=null;
+}
+
+// Click outside closes
+svg.addEventListener('click', function(e){
+  // If click not on a pin or ray node, close
+  if(!e.target.closest('.pin-g') && !e.target.closest('.ray-node')){
+    closeAll();
+  }
+});
+
+function drawPins(){
+  LOCATIONS.forEach(loc=>{
+    const raw=mercXY(loc.lat,loc.lng);
+    const ov=PIN_OVERRIDES[loc.id]||{};
+    const cx=ov.px||Math.max(10,Math.min(VW-10,raw.x));
+    const cy=ov.py||Math.max(14,Math.min(VH-14,raw.y));
+    const lx=ov.lx||cx;
+    const ly=ov.ly||(cy-11);
+    const anchor=ov.anchor||'middle';
+
+    // Ray container (hidden by default)
+    const rayG=el('g',{class:'ray-g'},rayLayer);
+    rayG.style.display='none';
+    allRayGroups[loc.id]=rayG;
+
+    // Variable radii for this city
+    const n=loc.people.length;
+    const baseAngles = Array.from({length:n},(_,i)=>(2*Math.PI/n)*i - Math.PI/2);
+
+    loc.people.forEach((p,i)=>{
+      const angle=baseAngles[i];
+      const radius=RAY_RADII[i % RAY_RADII.length];
+      let nx=cx+radius*Math.cos(angle);
+      let ny=cy+radius*Math.sin(angle);
+      nx=Math.max(60,Math.min(VW-60,nx));
+      ny=Math.max(14,Math.min(VH-14,ny));
+
+      const nodeG=el('g',{class:'ray-node'},rayG);
+
+      // Dashed line
+      el('line',{x1:cx,y1:cy,x2:nx,y2:ny,
+        stroke:'#5a6e45','stroke-width':'0.9','stroke-dasharray':'4 3'},nodeG);
+
+      // Name pill background
+      const tw=p.name.length*5.4+16;
+      el('rect',{x:nx-tw/2,y:ny-10,width:tw,height:16,rx:'3',ry:'3',
+        fill:'rgba(248,247,244,0.97)',stroke:'rgba(74,111,165,0.3)','stroke-width':'0.8'},nodeG);
+
+      // Dot
+      el('circle',{cx:nx,cy:ny,r:4,fill:'#4A6FA5'},nodeG);
+
+      // Name
+      const t=el('text',{x:nx,y:ny+4.5,'text-anchor':'middle',
+        style:'font-family:Consolas,monospace;font-size:8.5px;font-weight:600;fill:#1a1a1a;cursor:pointer'},nodeG);
+      t.textContent=p.name;
+
+      // Click on name or pill → open link
+      nodeG.style.cursor='pointer';
+      nodeG.addEventListener('click',e=>{
+        e.stopPropagation();
+        window.open(p.url,'_blank','noopener');
+      });
+    });
+
+    // Pin group
+    const pinG=el('g',{class:'pin-g'},pinLayer);
+    pinG.style.cursor='pointer';
+    allPinGroups[loc.id]=pinG;
+
+    // Pulse rings
+    [0,1].forEach(i=>{
+      const rc=el('circle',{cx,cy,r:6,fill:'none',stroke:'#3a4a2e','stroke-width':'1',opacity:'0.35'},pinG);
+      rc.style.animation=`mapPulse 2.4s ${i*0.9}s ease-out infinite`;
+    });
+
+    // Main dot
+    const dot=el('circle',{cx,cy,r:5.5,fill:'#3a4a2e',stroke:'#f8f7f4','stroke-width':'1.5',class:'main-dot'},pinG);
+
+    // City label
+    const lbl=el('text',{x:lx,y:ly,'text-anchor':anchor,class:'city-lbl',
+      style:'font-family:Consolas,monospace;font-size:9px;font-weight:700;fill:#1a1a1a;pointer-events:none'},pinG);
+    lbl.textContent=loc.label;
+
+    // Click on pin → toggle city
+    pinG.addEventListener('click',e=>{
+      e.stopPropagation();
+      const isOpen = activeId===loc.id;
+      closeAll();
+      if(!isOpen){
+        activeId=loc.id;
+        rayG.style.display='';
+        dot.setAttribute('fill','#FFCA3A');
+        // Hide other city labels to reduce clutter
+        Object.keys(allPinGroups).forEach(oid=>{
+          if(oid!==loc.id){
+            const olbl=allPinGroups[oid].querySelector('.city-lbl');
+            if(olbl) olbl.style.opacity='0.25';
+          }
+        });
+      }
+    });
+  });
+}
+
+// Inject keyframes
+const style=document.createElement('style');
+style.textContent='@keyframes mapPulse{0%{r:6;opacity:0.45}100%{r:22;opacity:0}}';
+document.head.appendChild(style);
+})();
+</script>>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bio — Marco Freschi</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root {
+      /* --- Three research pillars --- */
+      --sust:#8AC926;   --sust-dark:#5c8a18;  --sust-light:#c2e880;
+      --design:#FFCA3A; --design-dark:#c49200; --design-light:#ffe89a;
+      --mat:#4A6FA5;    --mat-dark:#2d4d7a;    --mat-light:#a8c2e0;
+
+      /* --- Neutral base --- */
+      --bg:#f8f7f4;        /* near-white warm */
+      --bg2:#eeecea;       /* slightly darker for sections */
+      --surface:#ffffff;
+      --bark:#1a1a1a;      /* near-black text */
+      --muted:#6b6b6b;
+      --line:rgba(26,26,26,0.10);
+
+      /* --- Accent (replaces gold) --- */
+      --accent:var(--design);
+      --accent-dark:var(--design-dark);
+      --accent-light:var(--design-light);
+
+      /* --- Legacy aliases so old CSS still works --- */
+      --moss:var(--sust-dark);
+      --moss-mid:var(--sust);
+      --moss-soft:var(--sust-light);
+      --gold:var(--design-dark);
+      --gold-light:var(--design);
+      --gold-pale:var(--design-light);
+      --ivory:var(--bg);
+
+      --serif:'Georgia','Palatino Linotype',serif;
+      --mono:'Consolas','Courier New',monospace;
+      --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+    }
+    html{background:var(--bg);color:var(--bark);font-family:var(--sans);font-size:16px}
+    body{min-height:100vh}
+    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2}
+    a{color:inherit;text-decoration:none}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(244,240,228,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav .logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--moss);letter-spacing:0.03em;transition:color 0.2s}
+    nav .logo:hover{color:var(--gold)}
+    nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
+    nav ul a{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
+    nav ul a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
+    nav ul a:hover{color:var(--moss)}
+    nav ul a:hover::after{transform:scaleX(1)}
+    .nav-icon{display:flex;align-items:center;justify-content:center;width:18px;height:18px;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
+    .nav-icon:hover{opacity:0.65;transform:translateY(-1px)}
+    .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
+    .nav-icon:hover svg{fill:var(--moss)}
+
+    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--bg) 60%,rgba(138,201,38,0.06) 100%)}
+    .page-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+    .page-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
+    .page-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--moss)}
+
+    .bio-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 280px)}
+
+    .bio-left{padding:4rem 3rem;border-right:1px solid var(--line)}
+    .bio-text{font-size:0.95rem;line-height:1.8;color:var(--bark);max-width:54ch}
+    .bio-text p+p{margin-top:1.2rem}
+
+    .bio-right{padding:4rem 3rem;background:rgba(138,201,38,0.04)}
+
+    .info-block{margin-bottom:2rem}
+    .info-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+    .info-value{font-family:var(--serif);font-size:1rem;color:var(--moss);line-height:1.5}
+    .divider{width:100%;height:1px;background:var(--line);margin:2rem 0}
+
+    .contact-links{display:flex;flex-direction:column;gap:0.85rem;margin-top:2rem}
+    .contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;background:var(--surface);transition:transform 0.2s,box-shadow 0.2s}
+    .contact-item:hover{transform:translateX(3px);box-shadow:-2px 0 0 var(--gold)}
+    .contact-icon{width:2rem;height:2rem;background:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.62rem;color:var(--gold);flex-shrink:0}
+    .contact-label{font-family:var(--mono);font-size:0.57rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.15rem}
+    .contact-value{font-size:0.85rem;color:var(--bark)}
+
+    .meridian-note{margin-top:2rem;padding:1.25rem 1.5rem;border-left:2px solid var(--gold);background:rgba(184,147,42,0.05)}
+    .meridian-note p{font-size:0.83rem;line-height:1.65;color:var(--muted)}
+    .meridian-note strong{color:var(--moss);font-weight:500}
+
+    footer{border-top:1px solid var(--line);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(58,74,46,0.03)}
+    footer p{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
+    .footer-dot{color:var(--gold-light);margin:0 0.4rem}
+
+    @media(max-width:820px){
+      nav{padding:1rem 1.5rem}nav ul{gap:1.25rem}
+      .page-hero{padding-left:1.5rem;padding-right:1.5rem}
+      .bio-wrap{grid-template-columns:1fr}
+      .bio-left,.bio-right{padding:2.5rem 1.5rem}
+      .bio-left{border-right:none;border-bottom:1px solid var(--line)}
+      footer{padding:1.25rem 1.5rem;flex-direction:column;gap:0.4rem;text-align:center}
+    }
+
+    /* COLLABORATION MAP */
+    .collab-section{padding:4rem 3rem;border-top:1px solid var(--line);background:var(--bg2)}
+    .section-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem}
+    .section-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
+    .collab-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--moss);margin-bottom:2rem}
+    .map-wrap{width:100%;border:1px solid var(--line);overflow:hidden;background:#e8f4d0}
+    .map-hint{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;text-align:center;margin-top:1rem}
+
+    /* UNDER CONSTRUCTION BADGE */
+    .under-badge{
+      position:fixed;top:14px;right:14px;z-index:200;
+      background:var(--mat);color:#fff;
+      font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
+      text-transform:uppercase;padding:0.35rem 0.8rem;
+      border-radius:2px;box-shadow:0 2px 8px rgba(255,89,94,0.35);
+      pointer-events:none;
+    }
+  </style>
+</head>
+<body>
+<div class="under-badge">Under Construction</div>
+<nav>
+  <a href="index.html" class="logo">Marco Freschi</a>
+  <ul>
+    <li><a href="research.html">Research &amp; Publications</a></li>
+    <li><a href="bio.html">Bio</a></li>
+    <li><a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a></li>
+    <li><a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="page-eyebrow">Bio</p>
+  <h1 class="page-title">About Marco Freschi</h1>
+</div>
+
+<div class="bio-wrap">
+  <div class="bio-left">
+    <div class="bio-text">
+      <p>Marco Freschi is a postdoctoral fellow at the <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:var(--moss);border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a>, Department of Mechanical Engineering, UC Berkeley, working under the direction of Professor Lining Yao. His research focuses on engineered bioinspired self-burying seeds: passive actuators that respond to environmental stimuli without electronics.</p>
+      <p>Marco arrived at UC Berkeley thanks to a postdoctoral fellowship sponsored by Enel Foundation and managed by Professor <a href="https://physics.berkeley.edu/people/faculty/alessandra-lanzara" target="_blank" rel="noopener" style="color:var(--moss);border-bottom:1px solid var(--gold-pale)">Alessandra Lanzara</a>, after completing his PhD at Politecnico di Milano, where he studied the tribological and mechanical behavior of metal matrix composites, with emphasis on powder metallurgy processing and material design. This work established his rigorous materials engineering foundation that he now applies to his current research.</p>
+      <p>His projects include a seeding system for ecological restoration based on wooden structures with an architecture bioinspired by the Erodium seed mechanism — funded by NSF GCR and covered by <a href="https://edition.cnn.com/world/powered-by-rain-seed-carrier-reforest-remote-areas-scn-climate-spc-intl" target="_blank" rel="noopener" style="color:var(--moss);border-bottom:1px solid var(--gold-pale)">CNN</a> and <a href="https://edition.cnn.com/2025/12/16/world/video/self-burying-eseeds-future-reforestation-tech-for-good-spc-digvid" target="_blank" rel="noopener" style="color:var(--moss);border-bottom:1px solid var(--gold-pale)">CNN Tech for Good</a> — and a seedpod analysis project evaluating design effects on soil interaction and biodegradability.</p>
+      <p>Marco is also active in campus life as Social Co-chair of the Berkeley Postdoctoral Association, and is developing <strong>MEridian</strong>, a proposed interdisciplinary postdoc initiative within UC Berkeley ME.</p>
+    </div>
+  </div>
+
+  <div class="bio-right">
+    <div class="info-block">
+      <p class="info-label">Position</p>
+      <p class="info-value">Postdoctoral Researcher<br>Morphing Matter Lab · Prof. Lining Yao</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Institution</p>
+      <p class="info-value">Dept. of Mechanical Engineering<br>University of California, Berkeley</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">PhD</p>
+      <p class="info-value">Politecnico di Milano<br>Materials Engineering</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Funding</p>
+      <p class="info-value">PPFP Fellowship · NSF TTP-T Grant</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="info-label">Contact</p>
+    <div class="contact-links">
+      <a href="mailto:marco.freschi@berkeley.edu" class="contact-item">
+        <div class="contact-icon">@</div>
+        <div><p class="contact-label">Email</p><p class="contact-value">marco.freschi@berkeley.edu</p></div>
+      </a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">GS</div>
+        <div><p class="contact-label">Google Scholar</p><p class="contact-value">Marco Freschi</p></div>
+      </a>
+      <a href="https://linkedin.com/in/marcofreschi" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">in</div>
+        <div><p class="contact-label">LinkedIn</p><p class="contact-value">/in/marcofreschi</p></div>
+      </a>
+      <a href="https://orcid.org/0000-0002-8342-1219" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">OC</div>
+        <div><p class="contact-label">ORCID</p><p class="contact-value">0000-0002-8342-1219</p></div>
+      </a>
+    </div>
+
+    <div class="meridian-note">
+      <p><strong>MEridian Initiative</strong> — A structured interdisciplinary postdoc program at UC Berkeley ME. Interested in collaborating or joining? Get in touch.</p>
+    </div>
+  </div>
+</div>
+
+
+<section class="collab-section">
+  <p class="section-eyebrow">Global Network</p>
+  <h2 class="collab-title">Collaborations</h2>
+  <div class="map-wrap" id="mapWrap"></div>
+  <p class="map-hint">Click a pin to see collaborators &middot; Click a name to visit profile &middot; Click outside to reset</p>
 </section>
 
 <script>
