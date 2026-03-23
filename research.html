@@ -69,14 +69,14 @@
     .section-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
 
     /* Projects */
-    .project-item{display:grid;grid-template-columns:4.5rem 1fr 14rem;gap:2.5rem;padding:3rem 0;border-bottom:1px solid var(--line);align-items:start}
-    .project-num{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;color:var(--gold);padding-top:0.3rem}
-    .project-title{font-size:1.5rem;font-weight:300;color:var(--moss);margin-bottom:0.75rem}
-    .project-desc{font-size:0.88rem;line-height:1.7;color:var(--muted);max-width:58ch}
+    .project-item{display:grid;grid-template-columns:3rem 1fr 13rem;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start}
+    .project-num{font-family:var(--mono);font-size:1.4rem;letter-spacing:0.05em;color:var(--gold);padding-top:0.1rem;font-weight:300;line-height:1}
+    .project-title{font-size:1.2rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem}
+    .project-desc{font-size:0.85rem;line-height:1.65;color:var(--muted);max-width:56ch}
     .project-meta{font-family:var(--mono)}
-    .meta-label{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--moss-soft);margin-bottom:0.3rem;margin-top:1.1rem}
+    .meta-label{font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;margin-top:0.8rem}
     .meta-label:first-child{margin-top:0}
-    .meta-value{font-size:0.72rem;color:var(--bark)}
+    .meta-value{font-size:0.76rem;color:var(--bark);line-height:1.5}
     .status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--sust);margin-right:0.4rem;animation:pulse 2s infinite}
     .status-dot.past{background:var(--muted);animation:none}
 
@@ -119,8 +119,8 @@
     }
 
     /* RESEARCH STATEMENT FULL */
-    .rs-full{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:4rem}
-    .rs-full-card{background:var(--surface);padding:2rem;border-top:3px solid transparent;transition:transform 0.2s,box-shadow 0.2s}
+    .rs-full{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:2.5rem}
+    .rs-full-card{background:var(--surface);padding:1.5rem;border-top:3px solid transparent;transition:transform 0.2s,box-shadow 0.2s}
     .rs-full-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.08)}
     .rs-full-card.mat   {border-top-color:var(--mat)}
     .rs-full-card.design{border-top-color:var(--design)}
@@ -131,8 +131,8 @@
     .rs-full-card.sust   .rs-tag{background:var(--sust-light);color:var(--sust-dark)}
     .rs-full-card h3{font-size:1.1rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem}
     .rs-full-card p{font-size:0.82rem;line-height:1.7;color:var(--muted)}
-    .rs-intersections{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:4rem}
-    .rs-int-card{padding:1.5rem;background:var(--bg2);border-left:3px solid var(--line)}
+    .rs-intersections{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:2.5rem}
+    .rs-int-card{padding:1.2rem 1.5rem;background:var(--bg2);border-left:3px solid var(--line)}
     .rs-int-card.ms {border-left-color:var(--mat);background:rgba(74,111,165,0.06)}
     .rs-int-card.sd {border-left-color:var(--design);background:rgba(255,202,58,0.08)}
     .rs-int-card.lca{border-left-color:var(--sust);background:rgba(138,201,38,0.07)}
@@ -222,15 +222,15 @@
   <div class="project-item">
     <span class="project-num" style="color:var(--design-dark)">02</span>
     <div>
-      <h2 class="project-title">Life-cycle Evaluation of Seedpod Biodegradable Materials</h2>
-      <p class="project-desc">From raw material extraction to end-of-life soil integration — this project applies life-cycle assessment frameworks to biodegradable seedpod-inspired structures. The goal is to quantify environmental trade-offs and guide material selection for ecological restoration systems.</p>
+      <h2 class="project-title">Pod Penetration in Soil: Analysis of Drilling Efficiency</h2>
+      <p class="project-desc">Efficient penetration of biodegradable carriers into soil is critical for restoration and reforestation applications. This project evaluates how system parameters — approach speed, rotation, and pod geometry — affect drilling efficiency and successful soil anchoring.</p>
     </div>
     <div class="project-meta">
       <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot"></span>Active</p>
       <p class="meta-label">Funding</p><p class="meta-value">NSF GCR · Bulat Utemuratov Foundation</p>
       <p class="meta-label">Lab</p><p class="meta-value"><a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
       <p class="meta-label">Techniques</p><p class="meta-value">3D printing · Field testing · Soil mechanics · Materials degradation</p>
-      <p class="meta-label">Collaborations</p><p class="meta-value">—</p>
+      <p class="meta-label">Collaborations</p><p class="meta-value">Univ. of Pennsylvania · UC Berkeley · Syracuse University</p>
     </div>
   </div>
 
