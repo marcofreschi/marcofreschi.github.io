@@ -69,10 +69,11 @@
     .section-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
 
     /* Projects */
-    .project-item{display:grid;grid-template-columns:3rem 1fr 13rem;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start}
-    .project-num{font-family:var(--mono);font-size:1.4rem;letter-spacing:0.05em;color:var(--gold);padding-top:0.1rem;font-weight:300;line-height:1}
-    .project-title{font-size:1.2rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem}
-    .project-desc{font-size:0.85rem;line-height:1.65;color:var(--muted);max-width:56ch}
+    .project-item{display:grid;grid-template-columns:1fr 11rem;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start}
+    .project-content{position:relative;padding-top:0.2rem}
+    .project-num{font-family:var(--serif);font-size:7rem;font-weight:700;line-height:0.9;color:var(--sust);opacity:0.1;position:absolute;top:-0.3rem;left:-0.5rem;pointer-events:none;z-index:0;letter-spacing:-0.05em;user-select:none}
+    .project-title{font-size:1.2rem;font-weight:600;color:var(--bark);margin-bottom:0.6rem;position:relative;z-index:1}
+    .project-desc{font-size:0.85rem;line-height:1.65;color:var(--muted);max-width:56ch;position:relative;z-index:1}
     .project-meta{font-family:var(--mono)}
     .meta-label{font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;margin-top:0.8rem}
     .meta-label:first-child{margin-top:0}
@@ -205,8 +206,8 @@
   </div>
 
   <div class="project-item">
-    <span class="project-num" style="color:var(--sust-dark)">01</span>
-    <div>
+    <div class="project-content">
+      <span class="project-num">01</span>
       <h2 class="project-title">Bioinspired Seeding Systems</h2>
       <p class="project-desc">Nature has spent millions of years perfecting seed dispersal. This project develops morphing structures — inspired by dandelion, maple samara, and Erodium seeds — that self-deploy, orient, and anchor upon contact with soil. The goal: scalable, biodegradable systems for ecological restoration and precision agriculture.</p>
     </div>
@@ -220,8 +221,8 @@
   </div>
 
   <div class="project-item">
-    <span class="project-num" style="color:var(--design-dark)">02</span>
-    <div>
+    <div class="project-content">
+      <span class="project-num">02</span>
       <h2 class="project-title">Pod Penetration in Soil: Analysis of Drilling Efficiency</h2>
       <p class="project-desc">Efficient penetration of biodegradable carriers into soil is critical for restoration and reforestation applications. This project evaluates how system parameters — approach speed, rotation, and pod geometry — affect drilling efficiency and successful soil anchoring.</p>
     </div>
@@ -235,8 +236,8 @@
   </div>
 
   <div class="project-item">
-    <span class="project-num" style="color:var(--mat-dark)">03</span>
-    <div>
+    <div class="project-content">
+      <span class="project-num">03</span>
       <h2 class="project-title">Metal Matrix Composites &amp; Tribology</h2>
       <p class="project-desc">PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of advanced MMCs. Work spanned powder metallurgy, solid-state processing, and multiscale characterization of wear mechanisms — establishing a rigorous materials science foundation for the subsequent pivot to morphing systems.</p>
     </div>
