@@ -81,7 +81,7 @@
     .status-dot.past{background:var(--muted);animation:none}
 
     /* Publications */
-    .pub-entry{display:grid;grid-template-columns:4.5rem 1fr auto;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--line);align-items:start}
+    .pub-entry{display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--line);align-items:start}
     .pub-year{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.08em;color:var(--gold);padding-top:0.2rem}
     .pub-title{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--moss);margin-bottom:0.3rem;line-height:1.3}
     .pub-authors{font-size:0.78rem;color:var(--muted);margin-bottom:0.25rem}
@@ -109,11 +109,12 @@
 
     /* UNDER CONSTRUCTION BADGE */
     .under-badge{
-      position:fixed;top:14px;right:14px;z-index:200;
-      background:var(--mat);color:#fff;
-      font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
-      text-transform:uppercase;padding:0.35rem 0.8rem;
-      border-radius:2px;box-shadow:0 2px 8px rgba(255,89,94,0.35);
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      background:#e53935;color:#fff;
+      font-family:var(--mono);font-size:0.8rem;letter-spacing:0.15em;
+      text-transform:uppercase;padding:0.55rem 1rem;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(229,57,53,0.4);
       pointer-events:none;
     }
 
@@ -211,10 +212,10 @@
     </div>
     <div class="project-meta">
       <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot"></span>Active</p>
-      <p class="meta-label">Funding</p><p class="meta-value">Enel Foundation · NSF GCR</p>
+      <p class="meta-label">Funding</p><p class="meta-value">NSF GCR · Bulat Utemuratov Foundation</p>
       <p class="meta-label">Lab</p><p class="meta-value"><a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
       <p class="meta-label">Techniques</p><p class="meta-value">Laser cutting · 3D printing · Field testing · Materials mechanics</p>
-      <p class="meta-label">Collaborations</p><p class="meta-value">—</p>
+      <p class="meta-label">Collaborations</p><p class="meta-value">Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
     </div>
   </div>
 
@@ -256,83 +257,82 @@
   <div class="pub-entry">
     <span class="pub-year">2024</span>
     <div>
-      <p class="pub-title">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</p>
+      <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p>
       <p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p>
       <p class="pub-journal">Next Materials 2, 100083</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2023</span>
     <div>
-      <p class="pub-title">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</p>
+      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</a></p>
       <p class="pub-authors">M Freschi, L Dragoni, M Mariani, O Haiko, J Kömi, N Lecis, G Dotelli</p>
       <p class="pub-journal">Lubricants 11 (2), 66</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2022</span>
     <div>
-      <p class="pub-title">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</p>
+      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</a></p>
       <p class="pub-authors">M Freschi, A Paniz, E Cerqueni, G Colella, G Dotelli</p>
       <p class="pub-journal">Lubricants 10 (6), 129</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2022</span>
     <div>
-      <p class="pub-title">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS2 composites</p>
+      <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS₂ composites</a></p>
       <p class="pub-authors">M Freschi, M Di Virgilio, O Haiko, M Mariani, L Andena, N Lecis, J Kömi et al.</p>
       <p class="pub-journal">Tribology International 166, 107357</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2022</span>
     <div>
-      <p class="pub-title">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</p>
+      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</a></p>
       <p class="pub-authors">M Freschi, A Arrigoni, O Haiko, L Andena, J Kömi, C Castiglioni, G Dotelli</p>
       <p class="pub-journal">Lubricants 10 (3), 35</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
+  </div>
+  <div class="pub-entry">
+    <span class="pub-year">2022</span>
+    <div>
+      <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</a></p>
+      <p class="pub-authors">M Freschi</p>
+      <p class="pub-journal">PhD Thesis, Politecnico di Milano</p>
+    </div>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2021</span>
     <div>
-      <p class="pub-title">Employment of Micro- and Nano-WS2 Structures to Enhance the Tribological Properties of Copper Matrix Composites</p>
+      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Employment of Micro- and Nano-WS₂ Structures to Enhance the Tribological Properties of Copper Matrix Composites</a></p>
       <p class="pub-authors">M Freschi, M Di Virgilio, G Zanardi, M Mariani, N Lecis, G Dotelli</p>
       <p class="pub-journal">Lubricants 9 (5), 53</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2021</span>
     <div>
-      <p class="pub-title">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</p>
+      <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
       <p class="pub-authors">C Moletti, M Freschi, L Primavesi, G Dotelli</p>
       <p class="pub-journal">3rd PCNS, Milan, Italy</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2018</span>
     <div>
-      <p class="pub-title">Innovative use of fluorescein for the air path study within light-weight wall assemblies</p>
+      <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
       <p class="pub-authors">N Hurel, M Freschi, M Pailha, M Woloszyn</p>
       <p class="pub-journal">Experimental Thermal and Fluid Science 92, 69–88</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
   <div class="pub-entry">
     <span class="pub-year">2016</span>
     <div>
-      <p class="pub-title">Experimental investigation of the air path in timber frame wall assembly</p>
+      <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Experimental investigation of the air path in timber frame wall assembly</a></p>
       <p class="pub-authors">M Freschi</p>
       <p class="pub-journal">Master Thesis, Italy</p>
     </div>
-    <a href="#" class="pub-doi">DOI →</a>
   </div>
 
   <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>

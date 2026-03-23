@@ -74,9 +74,9 @@
     }
     .hero-top { display:flex; align-items:center; gap:1.4rem; margin-bottom:1.1rem; }
     .hero-avatar {
-      width:88px; height:88px; border-radius:50%;
-      border:2px solid var(--gold-light); overflow:hidden; flex-shrink:0;
-      box-shadow:0 4px 20px rgba(58,74,46,0.15); background:var(--moss-soft);
+      width:120px; height:120px; border-radius:50%;
+      border:3px solid var(--design); overflow:hidden; flex-shrink:0;
+      box-shadow:0 4px 24px rgba(0,0,0,0.12); background:var(--moss-soft);
     }
     .hero-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
     .hero-avatar-placeholder {
@@ -176,7 +176,7 @@
     .card-tag { display:inline-block; margin-top:1rem; font-family:var(--mono); font-size:0.56rem; letter-spacing:0.08em; text-transform:uppercase; background:var(--ivory); color:var(--moss-mid); padding:0.22rem 0.55rem; border:1px solid var(--line); }
 
     /* PUBLICATIONS */
-    .pub-entry { display:grid; grid-template-columns:4.5rem 1fr auto; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:start; }
+    .pub-entry { display:grid; grid-template-columns:4.5rem 1fr; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:start; }
     .pub-year { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; color:var(--gold); padding-top:0.2rem; }
     .pub-title { font-family:var(--serif); font-size:0.97rem; font-weight:400; color:var(--moss); margin-bottom:0.28rem; line-height:1.3; }
     .pub-authors { font-size:0.77rem; color:var(--muted); margin-bottom:0.22rem; }
@@ -208,11 +208,12 @@
 
     /* UNDER CONSTRUCTION BADGE */
     .under-badge{
-      position:fixed;top:14px;right:14px;z-index:200;
-      background:var(--mat);color:#fff;
-      font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;
-      text-transform:uppercase;padding:0.35rem 0.8rem;
-      border-radius:2px;box-shadow:0 2px 8px rgba(255,89,94,0.35);
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      background:#e53935;color:#fff;
+      font-family:var(--mono);font-size:0.8rem;letter-spacing:0.15em;
+      text-transform:uppercase;padding:0.55rem 1rem;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(229,57,53,0.4);
       pointer-events:none;
     }
 
@@ -229,6 +230,13 @@
     .rs-label.sust  {bottom:-4px;left:-10px;color:var(--sust-dark)}
     .rs-label.design{bottom:-4px;right:-10px;color:var(--design-dark)}
     .rs-pillars{display:flex;flex-direction:column;gap:1.2rem}
+    .rs-pillar-block{border-radius:4px;padding:0.5rem 0.7rem;transition:background 0.25s}
+    .rs-pillar-block.highlight-mat   {background:rgba(74,111,165,0.12)}
+    .rs-pillar-block.highlight-design{background:rgba(255,202,58,0.15)}
+    .rs-pillar-block.highlight-sust  {background:rgba(138,201,38,0.12)}
+    .rs-venn-svg circle.venn-c{transition:r 0.25s,opacity 0.25s}
+    .rs-label{transition:font-size 0.2s,font-weight 0.2s}
+    .rs-label.active{font-size:0.85rem}
     .rs-pillar{display:flex;gap:1rem;align-items:flex-start}
     .rs-pillar-bar{width:4px;min-height:100%;border-radius:2px;flex-shrink:0;margin-top:3px}
     .rs-pillar-bar.mat   {background:var(--mat)}
@@ -268,7 +276,7 @@
         <h1 class="hero-name"><span style="color:var(--sust-dark)">Marco</span> <em>Freschi</em></h1>
       </div>
     </div>
-    <p class="hero-tagline">Bioinspired morphing materials, life-cycle evaluation of biodegradable systems, and metal matrix composites. Morphing Matter Lab, Dept. of Mechanical Engineering.</p>
+    <p class="hero-tagline">Bioinspired morphing materials, life-cycle approach of functional systems, and material design. Morphing Matter Lab, Department of Mechanical Engineering.</p>
     <div class="hero-chips">
       <span class="chip">Materials Engineering</span>
       <span class="chip">Bioinspired Design</span>
@@ -276,141 +284,115 @@
     </div>
   </div>
 
-  <!-- Engineering-nature illustration: cross-sections, fiber composites, seed morphology -->
+  <!-- Botanical vine illustration: climbing vine, curling tendrils, bioinspired forms -->
   <div class="hero-right">
     <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <filter id="blur1"><feGaussianBlur stdDeviation="8"/></filter>
-        <filter id="blur2"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="vblur"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="sblur"><feGaussianBlur stdDeviation="2"/></filter>
         <filter id="rough">
-          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="5" result="n"/>
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
-        <clipPath id="svgClip"><rect width="600" height="420"/></clipPath>
       </defs>
-      <g clip-path="url(#svgClip)">
-      <!-- Background -->
-      <rect width="600" height="420" fill="#c8dbb8"/>
-      <ellipse cx="420" cy="180" rx="260" ry="200" fill="#b8cc9e" filter="url(#blur1)" opacity="0.6"/>
-      <ellipse cx="100" cy="350" rx="180" ry="140" fill="#ccdaaa" filter="url(#blur1)" opacity="0.45"/>
+      <!-- Background wash -->
+      <rect width="600" height="420" fill="#d4e8bc"/>
+      <ellipse cx="350" cy="200" rx="280" ry="220" fill="#c2daa8" filter="url(#vblur)" opacity="0.6"/>
+      <ellipse cx="500" cy="350" rx="180" ry="140" fill="#bcd4a0" filter="url(#vblur)" opacity="0.4"/>
 
-      <!-- Engineering grid (material microstructure reference) -->
-      <g opacity="0.12" stroke="#2a3e1a" stroke-width="0.7">
-        <line x1="0" y1="70" x2="600" y2="70"/>
-        <line x1="0" y1="140" x2="600" y2="140"/>
-        <line x1="0" y1="210" x2="600" y2="210"/>
-        <line x1="0" y1="280" x2="600" y2="280"/>
-        <line x1="0" y1="350" x2="600" y2="350"/>
-        <line x1="75" y1="0" x2="75" y2="420"/>
-        <line x1="150" y1="0" x2="150" y2="420"/>
-        <line x1="225" y1="0" x2="225" y2="420"/>
-        <line x1="300" y1="0" x2="300" y2="420"/>
-        <line x1="375" y1="0" x2="375" y2="420"/>
-        <line x1="450" y1="0" x2="450" y2="420"/>
-        <line x1="525" y1="0" x2="525" y2="420"/>
+      <!-- Main climbing vine stem — thick, winding S-curve -->
+      <path d="M 80 420 C 100 360 60 300 100 240 C 140 180 200 200 220 150 C 240 100 200 50 240 10"
+            stroke="#4a6a28" stroke-width="3.5" fill="none" filter="url(#rough)" opacity="0.9"/>
+
+      <!-- Secondary vine stem — right side -->
+      <path d="M 420 420 C 400 350 440 280 400 220 C 360 160 320 180 340 120 C 360 70 420 60 460 20"
+            stroke="#5a7a32" stroke-width="2.5" fill="none" filter="url(#rough)" opacity="0.75"/>
+
+      <!-- Tendrils — curling spirals branching off main stem -->
+      <!-- Tendril 1 -->
+      <path d="M 105 320 C 130 310 160 320 155 340 C 150 358 128 355 125 340 C 122 328 138 325 142 335"
+            stroke="#5a7a30" stroke-width="1.4" fill="none" opacity="0.8"/>
+      <!-- Tendril 2 -->
+      <path d="M 115 240 C 85 225 55 235 60 255 C 65 272 88 268 88 253 C 88 241 74 242 76 252"
+            stroke="#5a7a30" stroke-width="1.4" fill="none" opacity="0.8"/>
+      <!-- Tendril 3 -->
+      <path d="M 195 170 C 225 155 255 168 248 190 C 241 208 218 204 218 188 C 218 175 234 176 232 187"
+            stroke="#6a8a38" stroke-width="1.3" fill="none" opacity="0.75"/>
+      <!-- Tendril 4 — right vine -->
+      <path d="M 405 280 C 440 268 468 280 462 300 C 456 318 432 314 433 298 C 434 285 450 287 448 298"
+            stroke="#5a7a30" stroke-width="1.3" fill="none" opacity="0.7"/>
+      <!-- Tendril 5 -->
+      <path d="M 350 180 C 315 165 290 178 298 200 C 305 218 328 212 326 196 C 324 183 308 186 312 197"
+            stroke="#6a8a38" stroke-width="1.2" fill="none" opacity="0.7"/>
+
+      <!-- Large vine leaf 1 — left mid -->
+      <g filter="url(#rough)" opacity="0.82" transform="translate(105,270) rotate(-25)">
+        <path d="M 0 0 C -15 -30 -10 -65 8 -80 C 26 -95 45 -80 42 -55 C 39 -30 18 -15 0 0 Z" fill="#5a8038"/>
+        <line x1="0" y1="0" x2="6" y2="-75" stroke="#3a5a20" stroke-width="1.2"/>
+        <path d="M 4 -25 C -5 -30 -10 -38 -8 -45" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
+        <path d="M 5 -45 C -3 -50 -6 -58 -3 -65" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
+        <path d="M 4 -25 C 14 -28 20 -35 19 -44" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
+        <path d="M 5 -45 C 15 -48 20 -56 18 -64" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
       </g>
 
-      <!-- Cross-section of composite material (circular, center-right) -->
-      <g transform="translate(420,200)" filter="url(#blur2)" opacity="0.82">
-        <!-- matrix -->
-        <circle r="118" fill="#8aaa66" opacity="0.55"/>
-        <!-- fiber cross-sections — hexagonal packing -->
-        <g fill="#3a5a2e" opacity="0.75">
-          <circle cx="0" cy="0" r="13"/>
-          <circle cx="30" cy="0" r="13"/><circle cx="-30" cy="0" r="13"/>
-          <circle cx="15" cy="26" r="13"/><circle cx="-15" cy="26" r="13"/>
-          <circle cx="15" cy="-26" r="13"/><circle cx="-15" cy="-26" r="13"/>
-          <circle cx="60" cy="0" r="13"/><circle cx="-60" cy="0" r="13"/>
-          <circle cx="45" cy="26" r="13"/><circle cx="-45" cy="26" r="13"/>
-          <circle cx="45" cy="-26" r="13"/><circle cx="-45" cy="-26" r="13"/>
-          <circle cx="30" cy="52" r="13"/><circle cx="-30" cy="52" r="13"/>
-          <circle cx="30" cy="-52" r="13"/><circle cx="-30" cy="-52" r="13"/>
-          <circle cx="0" cy="52" r="13"/><circle cx="0" cy="-52" r="13"/>
-          <circle cx="75" cy="26" r="13"/><circle cx="-75" cy="26" r="13"/>
-          <circle cx="75" cy="-26" r="13"/><circle cx="-75" cy="-26" r="13"/>
-        </g>
-        <!-- fiber cores -->
-        <g fill="#b8cc88" opacity="0.5">
-          <circle cx="0" cy="0" r="5"/><circle cx="30" cy="0" r="5"/><circle cx="-30" cy="0" r="5"/>
-          <circle cx="15" cy="26" r="5"/><circle cx="-15" cy="26" r="5"/>
-          <circle cx="15" cy="-26" r="5"/><circle cx="-15" cy="-26" r="5"/>
-          <circle cx="60" cy="0" r="5"/><circle cx="-60" cy="0" r="5"/>
-          <circle cx="45" cy="26" r="5"/><circle cx="-45" cy="26" r="5"/>
-        </g>
-        <!-- section circle border -->
-        <circle r="118" fill="none" stroke="#4a6a30" stroke-width="1.5" opacity="0.4"/>
-        <!-- cutting plane lines -->
-        <line x1="-118" y1="0" x2="118" y2="0" stroke="#2a3e1a" stroke-width="0.8" opacity="0.3"/>
-        <line x1="0" y1="-118" x2="0" y2="118" stroke="#2a3e1a" stroke-width="0.8" opacity="0.3"/>
+      <!-- Large vine leaf 2 — upper center -->
+      <g filter="url(#rough)" opacity="0.78" transform="translate(215,130) rotate(15)">
+        <path d="M 0 0 C 20 -25 18 -62 0 -78 C -18 -94 -40 -78 -38 -52 C -36 -28 -16 -12 0 0 Z" fill="#4e7230"/>
+        <line x1="0" y1="0" x2="-3" y2="-72" stroke="#304e1a" stroke-width="1.2"/>
+        <path d="M -2 -22 C 8 -28 14 -38 11 -48" stroke="#304e1a" stroke-width="0.8" fill="none"/>
+        <path d="M -2 -45 C 8 -50 12 -60 8 -68" stroke="#304e1a" stroke-width="0.8" fill="none"/>
+        <path d="M -2 -22 C -12 -27 -18 -36 -16 -46" stroke="#304e1a" stroke-width="0.8" fill="none"/>
       </g>
 
-      <!-- Seed morphology — maple samara outline (upper left area) -->
-      <g filter="url(#rough)" opacity="0.7" transform="translate(80,90)">
-        <path d="M 0 90 Q 20 55 45 28 Q 70 0 100 5 Q 125 10 118 40 Q 110 68 80 80 Q 50 90 0 90 Z" fill="#5a7a3a" opacity="0.6"/>
-        <path d="M 0 90 Q 50 70 80 80" stroke="#3a5a1e" stroke-width="1.2" fill="none"/>
-        <line x1="0" y1="90" x2="8" y2="140" stroke="#4a6a2a" stroke-width="1.5"/>
-        <!-- venation -->
-        <path d="M 40 55 Q 55 42 70 35" stroke="#3a5a1e" stroke-width="0.8" fill="none" opacity="0.7"/>
-        <path d="M 55 45 Q 72 34 88 30" stroke="#3a5a1e" stroke-width="0.8" fill="none" opacity="0.7"/>
-        <path d="M 25 68 Q 42 57 58 52" stroke="#3a5a1e" stroke-width="0.8" fill="none" opacity="0.7"/>
+      <!-- Medium leaf 3 — right vine -->
+      <g filter="url(#rough)" opacity="0.72" transform="translate(395,200) rotate(-40)">
+        <path d="M 0 0 C -12 -22 -8 -52 6 -62 C 20 -72 36 -60 33 -40 C 30 -22 14 -10 0 0 Z" fill="#6a9040"/>
+        <line x1="0" y1="0" x2="4" y2="-58" stroke="#3a5a20" stroke-width="1"/>
+        <path d="M 3 -20 C -6 -24 -8 -32 -5 -40" stroke="#3a5a20" stroke-width="0.7" fill="none"/>
+        <path d="M 3 -20 C 12 -23 16 -30 14 -40" stroke="#3a5a20" stroke-width="0.7" fill="none"/>
       </g>
 
-      <!-- Dandelion seed dispersal (top center) -->
-      <g opacity="0.65" transform="translate(265,55)">
-        <circle cx="0" cy="0" r="5" fill="#b8a030"/>
-        <!-- radiating filaments -->
-        <g stroke="#9a8828" stroke-width="0.9" fill="none">
-          <line x1="0" y1="0" x2="-22" y2="-30"/>
-          <line x1="0" y1="0" x2="-10" y2="-34"/>
-          <line x1="0" y1="0" x2="2" y2="-35"/>
-          <line x1="0" y1="0" x2="14" y2="-32"/>
-          <line x1="0" y1="0" x2="24" y2="-26"/>
-          <line x1="0" y1="0" x2="30" y2="-16"/>
-          <line x1="0" y1="0" x2="32" y2="-4"/>
+      <!-- Small accent leaves scattered -->
+      <g filter="url(#rough)" opacity="0.65" transform="translate(160,360) rotate(35)">
+        <path d="M 0 0 C -8 -15 -5 -35 4 -42 C 13 -49 24 -40 22 -26 C 20 -14 10 -6 0 0 Z" fill="#7aaa50"/>
+      </g>
+      <g filter="url(#rough)" opacity="0.6" transform="translate(460,140) rotate(-20)">
+        <path d="M 0 0 C -6 -12 -4 -28 3 -34 C 10 -40 20 -32 18 -20 C 16 -10 8 -4 0 0 Z" fill="#6a9840"/>
+      </g>
+      <g filter="url(#rough)" opacity="0.6" transform="translate(300,80) rotate(50)">
+        <path d="M 0 0 C -7 -13 -5 -30 3 -36 C 11 -42 22 -34 20 -21 C 18 -10 9 -4 0 0 Z" fill="#5a8830"/>
+      </g>
+
+      <!-- Erodium-style spiral seed (bioinspired reference) -->
+      <g transform="translate(520,300)" opacity="0.65">
+        <path d="M 0 0 Q 10 -20 6 -42 Q 2 -60 -4 -72" stroke="#7a9a50" stroke-width="1.5" fill="none"/>
+        <path d="M 6 -42 Q 18 -50 22 -62" stroke="#7a9a50" stroke-width="1" fill="none"/>
+        <path d="M -4 -72 Q -5 -82 -2 -88" stroke="#7a9a50" stroke-width="1" fill="none"/>
+        <ellipse cx="-2" cy="-91" rx="5" ry="8" fill="#9aba60" opacity="0.7" transform="rotate(-10,-2,-91)"/>
+      </g>
+
+      <!-- Dandelion seed dispersal (upper right) -->
+      <g transform="translate(510,55)" opacity="0.6">
+        <circle cx="0" cy="0" r="4" fill="#b8a030"/>
+        <g stroke="#9a8828" stroke-width="0.8" fill="none">
+          <line x1="0" y1="0" x2="-18" y2="-26"/>
+          <line x1="0" y1="0" x2="-8" y2="-30"/>
+          <line x1="0" y1="0" x2="3" y2="-31"/>
+          <line x1="0" y1="0" x2="14" y2="-27"/>
+          <line x1="0" y1="0" x2="22" y2="-20"/>
         </g>
-        <!-- seed tips -->
         <g fill="#c8aa30">
-          <ellipse cx="-22" cy="-33" rx="3.5" ry="2" transform="rotate(-50,-22,-33)"/>
-          <ellipse cx="-10" cy="-37" rx="3.5" ry="2" transform="rotate(-75,-10,-37)"/>
-          <ellipse cx="2" cy="-38" rx="3.5" ry="2" transform="rotate(-88,2,-38)"/>
-          <ellipse cx="14" cy="-35" rx="3.5" ry="2" transform="rotate(-115,14,-35)"/>
-          <ellipse cx="24" cy="-29" rx="3.5" ry="2" transform="rotate(-132,24,-29)"/>
-          <ellipse cx="30" cy="-19" rx="3.5" ry="2" transform="rotate(-150,30,-19)"/>
-          <ellipse cx="32" cy="-6" rx="3.5" ry="2" transform="rotate(-170,32,-6)"/>
-        </g>
-        <!-- floating seeds -->
-        <g opacity="0.5">
-          <line x1="-45" y1="-18" x2="-50" y2="-32" stroke="#9a8828" stroke-width="0.7"/>
-          <ellipse cx="-50" cy="-35" rx="2.5" ry="1.5" fill="#c8aa30" transform="rotate(-60,-50,-35)"/>
-          <line x1="50" y1="-8" x2="56" y2="-22" stroke="#9a8828" stroke-width="0.7"/>
-          <ellipse cx="56" cy="-25" rx="2.5" ry="1.5" fill="#c8aa30" transform="rotate(-110,56,-25)"/>
-          <line x1="10" y1="-55" x2="14" y2="-68" stroke="#9a8828" stroke-width="0.7"/>
-          <ellipse cx="14" cy="-71" rx="2.5" ry="1.5" fill="#c8aa30" transform="rotate(-95,14,-71)"/>
+          <ellipse cx="-18" cy="-29" rx="3" ry="1.8" transform="rotate(-55,-18,-29)"/>
+          <ellipse cx="-8" cy="-33" rx="3" ry="1.8" transform="rotate(-75,-8,-33)"/>
+          <ellipse cx="3" cy="-34" rx="3" ry="1.8" transform="rotate(-88,3,-34)"/>
+          <ellipse cx="14" cy="-30" rx="3" ry="1.8" transform="rotate(-110,14,-30)"/>
+          <ellipse cx="22" cy="-23" rx="3" ry="1.8" transform="rotate(-130,22,-23)"/>
         </g>
       </g>
 
-      <!-- Life-cycle arrow loop (bottom left, abstract) -->
-      <g transform="translate(95,295)" opacity="0.55" fill="none">
-        <path d="M 0 40 A 45 45 0 1 1 40 0" stroke="#4a6a30" stroke-width="1.8" stroke-dasharray="5 3"/>
-        <polygon points="40,0 50,8 30,8" fill="#4a6a30" opacity="0.7"/>
-        <text x="12" y="50" font-size="7" fill="#4a6a30" font-family="Consolas,monospace" letter-spacing="1" opacity="0.8">LIFE CYCLE</text>
-      </g>
-
-      <!-- SEM-style scale bar bottom right -->
-      <g transform="translate(490,390)" opacity="0.45">
-        <line x1="0" y1="0" x2="60" y2="0" stroke="#2a3e1a" stroke-width="1.2"/>
-        <line x1="0" y1="-4" x2="0" y2="4" stroke="#2a3e1a" stroke-width="1.2"/>
-        <line x1="60" y1="-4" x2="60" y2="4" stroke="#2a3e1a" stroke-width="1.2"/>
-        <text x="30" y="-7" text-anchor="middle" font-size="7" fill="#2a3e1a" font-family="Consolas,monospace">100 μm</text>
-      </g>
-
-      <!-- Erodium spiral seed (right edge) -->
-      <g transform="translate(555,320)" opacity="0.6">
-        <path d="M 0 0 Q 8 -18 4 -38 Q 0 -55 -6 -65" stroke="#6a8a48" stroke-width="1.4" fill="none"/>
-        <path d="M 4 -38 Q 16 -44 20 -55" stroke="#6a8a48" stroke-width="1" fill="none"/>
-        <ellipse cx="-6" cy="-68" rx="5" ry="8" fill="#8aaa58" opacity="0.6" transform="rotate(-15,-6,-68)"/>
-      </g>
-      </g>
+      <!-- Light vignette edges -->
+      <ellipse cx="0" cy="420" rx="120" ry="100" fill="#a8c878" filter="url(#vblur)" opacity="0.2"/>
+      <ellipse cx="600" cy="0" rx="100" ry="80" fill="#b8d890" filter="url(#vblur)" opacity="0.18"/>
     </svg>
   </div>
 </section>
@@ -426,18 +408,14 @@
     <div class="news-scroll-outer">
     <div class="news-track">
       <ul class="news-list">
-        <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">New paper submitted to Advanced Materials on hygroscopic morphing for seed dispersal</a></li>
-        <li><span class="news-date">Jan 2026</span><span class="news-dot"></span><a href="#">MEridian initiative presented to UC Berkeley ME department chair</a></li>
-        <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">NSF TTP-T grant renewed — bioinspired seeding systems project continues</a></li>
-        <li><span class="news-date">Sep 2025</span><span class="news-dot"></span><a href="#">Featured in CNN — morphing materials research at Berkeley</a></li>
-        <li><span class="news-date">Jun 2025</span><span class="news-dot"></span><a href="#">Invited talk at Society for Integrative and Comparative Biology annual meeting</a></li>
+        <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">Field test in the Aral Sea in collaboration with Bulat Utemuratov Foundation (Kazakhstan)</a></li>
+        <li><span class="news-date">Dec 2025</span><span class="news-dot"></span><a href="#">Accepted for the Engineering Cohort of the UC Berkeley Shining Lights Program (Jan–Apr 2026)</a></li>
+        <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">Postdoctoral contract extended till July 2026! The adventure with Professor Lining Yao continues</a></li>
       </ul>
       <ul class="news-list" aria-hidden="true">
-        <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">New paper submitted to Advanced Materials on hygroscopic morphing for seed dispersal</a></li>
-        <li><span class="news-date">Jan 2026</span><span class="news-dot"></span><a href="#">MEridian initiative presented to UC Berkeley ME department chair</a></li>
-        <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">NSF TTP-T grant renewed — bioinspired seeding systems project continues</a></li>
-        <li><span class="news-date">Sep 2025</span><span class="news-dot"></span><a href="#">Featured in CNN — morphing materials research at Berkeley</a></li>
-        <li><span class="news-date">Jun 2025</span><span class="news-dot"></span><a href="#">Invited talk at Society for Integrative and Comparative Biology annual meeting</a></li>
+        <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">Field test in the Aral Sea in collaboration with Bulat Utemuratov Foundation (Kazakhstan)</a></li>
+        <li><span class="news-date">Dec 2025</span><span class="news-dot"></span><a href="#">Accepted for the Engineering Cohort of the UC Berkeley Shining Lights Program (Jan–Apr 2026)</a></li>
+        <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">Postdoctoral contract extended till July 2026! The adventure with Professor Lining Yao continues</a></li>
       </ul>
     </div>
     </div>
@@ -486,27 +464,28 @@
         <span class="rs-label design">Design Eng.</span>
       </div>
       <div class="rs-pillars">
-        <div class="rs-pillar">
+        <div class="rs-pillar-block" id="block-mat"><div class="rs-pillar">
           <div class="rs-pillar-bar mat"></div>
           <div>
             <h4 style="color:var(--mat-dark)">Materials Science</h4>
             <p>Rigorous, data-driven investigation of functional materials across a broad spectrum of applications — from tribological composites to biodegradable morphing systems.</p>
           </div>
-        </div>
-        <div class="rs-pillar">
+        </div></div>
+        <div class="rs-pillar-block" id="block-design"><div class="rs-pillar">
           <div class="rs-pillar-bar design"></div>
           <div>
             <h4 style="color:var(--design-dark)">Design Engineering</h4>
             <p>Application-driven research guided by real-world requirements and inspired by natural mechanisms — translating biological strategies into engineered solutions.</p>
           </div>
-        </div>
-        <div class="rs-pillar">
+        </div></div>
+        <div class="rs-pillar-block" id="block-sust"><div class="rs-pillar">
           <div class="rs-pillar-bar sust"></div>
           <div>
             <h4 style="color:var(--sust-dark)">Sustainability</h4>
             <p>Environmental, economic, and social dimensions integrated from the earliest design stage — not as an afterthought, but as a core design constraint.</p>
           </div>
         </div>
+      </div></div>
       </div>
     </div>
   </div>
@@ -522,94 +501,83 @@
     <div class="pub-entry">
       <span class="pub-year">2024</span>
       <div>
-        <p class="pub-title">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p>
         <p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p>
         <p class="pub-journal">Next Materials 2, 100083</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2023</span>
       <div>
-        <p class="pub-title">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</a></p>
         <p class="pub-authors">M Freschi, L Dragoni, M Mariani, O Haiko, J Kömi, N Lecis, G Dotelli</p>
         <p class="pub-journal">Lubricants 11 (2), 66</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2022</span>
       <div>
-        <p class="pub-title">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</a></p>
         <p class="pub-authors">M Freschi, A Paniz, E Cerqueni, G Colella, G Dotelli</p>
         <p class="pub-journal">Lubricants 10 (6), 129</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2022</span>
       <div>
-        <p class="pub-title">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS2 composites</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS₂ composites</a></p>
         <p class="pub-authors">M Freschi, M Di Virgilio, O Haiko, M Mariani, L Andena, N Lecis, J Kömi et al.</p>
         <p class="pub-journal">Tribology International 166, 107357</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2022</span>
       <div>
-        <p class="pub-title">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</a></p>
         <p class="pub-authors">M Freschi, A Arrigoni, O Haiko, L Andena, J Kömi, C Castiglioni, G Dotelli</p>
         <p class="pub-journal">Lubricants 10 (3), 35</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2022</span>
       <div>
-        <p class="pub-title">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</p>
+        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</a></p>
         <p class="pub-authors">M Freschi</p>
         <p class="pub-journal">PhD Thesis, Politecnico di Milano</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2021</span>
       <div>
-        <p class="pub-title">Employment of Micro- and Nano-WS2 Structures to Enhance the Tribological Properties of Copper Matrix Composites</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Employment of Micro- and Nano-WS₂ Structures to Enhance the Tribological Properties of Copper Matrix Composites</a></p>
         <p class="pub-authors">M Freschi, M Di Virgilio, G Zanardi, M Mariani, N Lecis, G Dotelli</p>
         <p class="pub-journal">Lubricants 9 (5), 53</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2021</span>
       <div>
-        <p class="pub-title">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</p>
+        <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
         <p class="pub-authors">C Moletti, M Freschi, L Primavesi, G Dotelli</p>
         <p class="pub-journal">3rd PCNS, Milan, Italy</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2018</span>
       <div>
-        <p class="pub-title">Innovative use of fluorescein for the air path study within light-weight wall assemblies</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
         <p class="pub-authors">N Hurel, M Freschi, M Pailha, M Woloszyn</p>
         <p class="pub-journal">Experimental Thermal and Fluid Science 92, 69–88</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
     <div class="pub-entry">
       <span class="pub-year">2016</span>
       <div>
-        <p class="pub-title">Experimental investigation of the air path in timber frame wall assembly</p>
+        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Experimental investigation of the air path in timber frame wall assembly</a></p>
         <p class="pub-authors">M Freschi</p>
         <p class="pub-journal">Master Thesis, Italy</p>
       </div>
-      <a href="#" class="pub-doi">DOI →</a>
     </div>
-  </div>
   <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>
 </div>
 
@@ -617,5 +585,43 @@
   <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
   <p>© 2026</p>
 </footer>
+
+<script>
+(function(){
+  const vennSvg = document.querySelector('.rs-venn-svg');
+  if(!vennSvg) return;
+  const circles = vennSvg.querySelectorAll('circle');
+  const labels  = document.querySelectorAll('.rs-label');
+  const blocks  = {
+    mat:    document.getElementById('block-mat'),
+    design: document.getElementById('block-design'),
+    sust:   document.getElementById('block-sust')
+  };
+  // circles order: mat(0), sust(1), design(2)
+  const map = [
+    {key:'mat',    ci:0, labelClass:'mat'},
+    {key:'sust',   ci:1, labelClass:'sust'},
+    {key:'design', ci:2, labelClass:'design'},
+  ];
+  const BASE_R = 72;
+
+  map.forEach(({key, ci, labelClass})=>{
+    const c = circles[ci];
+    if(!c) return;
+    c.addEventListener('mouseenter',()=>{
+      c.setAttribute('r', BASE_R + 10);
+      labels.forEach(l=>{ if(l.classList.contains(labelClass)) l.classList.add('active'); });
+      Object.keys(blocks).forEach(k=>{ if(blocks[k]) blocks[k].classList.remove('highlight-mat','highlight-design','highlight-sust'); });
+      if(blocks[key]) blocks[key].classList.add('highlight-'+key);
+    });
+    c.addEventListener('mouseleave',()=>{
+      c.setAttribute('r', BASE_R);
+      labels.forEach(l=>l.classList.remove('active'));
+      Object.keys(blocks).forEach(k=>{ if(blocks[k]) blocks[k].classList.remove('highlight-mat','highlight-design','highlight-sust'); });
+    });
+    c.style.cursor='pointer';
+  });
+})();
+</script>
 </body>
 </html>
