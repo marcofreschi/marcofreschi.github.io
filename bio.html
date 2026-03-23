@@ -108,10 +108,10 @@
 
     /* UNDER CONSTRUCTION BADGE */
     .under-badge{
-      position:fixed;top:0;left:0;right:0;z-index:200;
+      position:fixed;top:58px;left:0;right:0;z-index:90;
       background:#e53935;color:#fff;
-      font-family:var(--mono);font-size:0.8rem;letter-spacing:0.15em;
-      text-transform:uppercase;padding:0.55rem 1rem;
+      font-family:var(--mono);font-size:0.78rem;letter-spacing:0.15em;
+      text-transform:uppercase;padding:0.45rem 1rem;
       text-align:center;
       box-shadow:0 2px 8px rgba(229,57,53,0.4);
       pointer-events:none;
@@ -276,7 +276,7 @@ const LOCATIONS = [
 const PIN_OV = {
   milan:    {px:510,py:105,lx:522,ly:96, anchor:'start'},
   chambery: {px:490,py:110,lx:478,ly:101,anchor:'end'},
-  oulu:     {px:548,py:22, lx:548,ly:14, anchor:'middle'},
+  oulu:     {px:548,py:30, lx:548,ly:14, anchor:'middle'},
   berkeley: {px:154,py:131,lx:142,ly:122,anchor:'end'},
   philly:   {px:287,py:126,lx:296,ly:117,anchor:'start'},
   harrison: {px:262,py:137,lx:252,ly:148,anchor:'end'},
@@ -367,7 +367,11 @@ function drawPins(){
 
     const n=loc.people.length;
     loc.people.forEach((p,i)=>{
-      const angle=(2*Math.PI/n)*i - Math.PI/2;
+      const startAngles={oulu:Math.PI*0.2,chambery:Math.PI*0.5,milan:-Math.PI*0.8,
+        berkeley:Math.PI,philly:-Math.PI*0.3,harrison:-Math.PI*0.6,
+        ithaca:-Math.PI*0.4,syracuse:-Math.PI*0.2,almaty:Math.PI*0.5};
+      const sa=startAngles[loc.id]||(-Math.PI/2);
+      const angle=(2*Math.PI/n)*i + sa;
       const radius=RAY_RADII[i%RAY_RADII.length];
       const nx=Math.max(65,Math.min(VW-65,cx+radius*Math.cos(angle)));
       const ny=Math.max(16,Math.min(VH-16,cy+radius*Math.sin(angle)));
@@ -376,7 +380,7 @@ function drawPins(){
       const nodeG=el('g',{'data-ray':'1'},rayG);
       el('line',{x1:cx,y1:cy,x2:nx,y2:ny,stroke:'#5a6e45','stroke-width':'0.9','stroke-dasharray':'4 3'},nodeG);
       el('rect',{x:nx-tw/2,y:ny-10,width:tw,height:16,rx:'3',fill:'rgba(248,247,244,0.97)',stroke:'rgba(74,111,165,0.3)','stroke-width':'0.8'},nodeG);
-      el('circle',{cx:nx,cy:ny,r:4,fill:'#4A6FA5'},nodeG);
+      el('circle',{cx:nx,cy:ny,r:4,fill:'#FFCA3A',stroke:'#c49200','stroke-width':'0.8'},nodeG);
       const t=el('text',{x:nx,y:ny+4.5,'text-anchor':'middle',
         style:'font-family:Consolas,monospace;font-size:8.5px;font-weight:600;fill:#1a1a1a'},nodeG);
       t.textContent=p.name;
