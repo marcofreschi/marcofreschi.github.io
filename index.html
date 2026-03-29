@@ -3,382 +3,261 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Marco Freschi — Postdoctoral Researcher in Morphing Materials at UC Berkeley"/>
+  <meta name="description" content="Marco Freschi — Postdoctoral Researcher, Morphing Matter Lab, UC Berkeley"/>
   <title>Marco Freschi</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      /* --- Three research pillars --- */
-      --sust:#8AC926;   --sust-dark:#5c8a18;  --sust-light:#c2e880;
-      --design:#FFCA3A; --design-dark:#c49200; --design-light:#ffe89a;
-      --mat:#4A6FA5;    --mat-dark:#2d4d7a;    --mat-light:#a8c2e0;
-
-      /* --- Neutral base --- */
-      --bg:#f8f7f4;        /* near-white warm */
-      --bg2:#eeecea;       /* slightly darker for sections */
-      --surface:#ffffff;
-      --bark:#1a1a1a;      /* near-black text */
-      --muted:#6b6b6b;
-      --line:rgba(26,26,26,0.10);
-
-      /* --- Accent (replaces gold) --- */
-      --accent:var(--design);
-      --accent-dark:var(--design-dark);
-      --accent-light:var(--design-light);
-
-      /* --- Legacy aliases so old CSS still works --- */
-      --moss:var(--sust-dark);
-      --moss-mid:var(--sust);
-      --moss-soft:var(--sust-light);
-      --gold:var(--design-dark);
-      --gold-light:var(--design);
-      --gold-pale:var(--design-light);
-      --ivory:var(--bg);
-
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --sust:#8AC926; --sust-d:#5c8a18; --sust-l:#d4f0a0;
+      --design:#FFCA3A; --design-d:#c49200; --design-l:#fff3b0;
+      --mat:#4A6FA5; --mat-d:#2d4d7a; --mat-l:#c0d4f0;
+      --bg:#f7f6f2; --bg2:#eeecea; --surface:#ffffff;
+      --bark:#111111; --muted:#666; --faint:#999;
+      --line:rgba(0,0,0,0.09);
       --serif:'Georgia','Palatino Linotype',serif;
       --mono:'Consolas','Courier New',monospace;
-      --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+      --sans:'Segoe UI',system-ui,sans-serif;
+      --nav-h:56px;
     }
-    html { background:var(--bg); color:var(--bark); font-family:var(--sans); font-size:16px; scroll-behavior:smooth; }
-    body { min-height:100vh; }
-    h1,h2,h3,h4 { font-family:var(--serif); font-weight:400; line-height:1.2; }
-    a { color:inherit; text-decoration:none; }
+    html{background:var(--bg);color:var(--bark);font-family:var(--sans);font-size:16px;scroll-behavior:smooth}
+    body{min-height:100vh}
+    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2}
+    a{color:inherit;text-decoration:none}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(244,240,228,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    nav .logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--moss);letter-spacing:0.03em;transition:color 0.2s}
-    nav .logo:hover{color:var(--gold)}
-    nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
-    nav ul a{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
-    nav ul a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
-    nav ul a:hover{color:var(--moss)}
-    nav ul a:hover::after{transform:scaleX(1)}
-    .nav-icon{display:flex;align-items:center;justify-content:center;width:18px;height:18px;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
-    .nav-icon:hover{opacity:0.65;transform:translateY(-1px)}
-    .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
-    .nav-icon:hover svg{fill:var(--moss)}
+    /* ── UNDER CONSTRUCTION ── */
+    .uc-bar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:90;background:#e53935;color:#fff;
+      font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+      padding:0.4rem 1rem;text-align:center;pointer-events:none}
 
-    /* HERO */
-    .hero {
-      padding-top:5rem;
-      display:grid;
-      grid-template-columns:1fr 2fr;
-      min-height:40vh;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-    .hero-left {
-      padding:2.5rem 3rem 2.5rem;
-      display:flex; flex-direction:column; justify-content:center;
-      background:linear-gradient(135deg,var(--bg) 55%,rgba(138,201,38,0.04) 100%);
-    }
-    .hero-top { display:flex; align-items:center; gap:1.4rem; margin-bottom:1.1rem; }
-    .hero-avatar {
-      width:120px; height:120px; border-radius:50%;
-      border:3px solid var(--design); overflow:hidden; flex-shrink:0;
-      box-shadow:0 4px 24px rgba(0,0,0,0.12); background:var(--moss-soft);
-    }
-    .hero-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
-    .hero-avatar-placeholder {
-      width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-    }
-    .hero-avatar-placeholder svg { width:44px; height:44px; opacity:0.32; }
-    .hero-eyebrow {
-      font-family:var(--mono); font-size:0.59rem; letter-spacing:0.14em;
-      text-transform:uppercase; color:var(--gold); margin-bottom:0.35rem;
-      display:flex; align-items:center; gap:0.5rem;
-      animation:fadeUp 0.6s ease both;
-    }
-    .hero-eyebrow::before { content:''; display:block; width:1.1rem; height:1px; background:var(--gold); }
-    .hero-name {
-      font-size:clamp(1.55rem,2.8vw,2.3rem); font-weight:300;
-      letter-spacing:-0.01em; line-height:1.05; color:var(--moss);
-      animation:fadeUp 0.6s 0.08s ease both;
-    }
-    .hero-name em { font-style:italic; color:var(--design-dark); }
-    .hero-tagline {
-      font-size:0.87rem; color:var(--muted); max-width:50ch;
-      line-height:1.65; animation:fadeUp 0.6s 0.16s ease both; margin-bottom:0.9rem;
-    }
-    .hero-chips {
-      display:flex; flex-wrap:wrap; gap:0.4rem;
-      animation:fadeUp 0.6s 0.24s ease both;
-    }
-    .chip {
-      font-family:var(--mono); font-size:0.56rem; letter-spacing:0.08em;
-      text-transform:uppercase; padding:0.26rem 0.62rem;
-      border:1px solid var(--line); color:var(--moss-mid);
-      background:rgba(90,110,69,0.06);
-    }
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 2.5rem;background:rgba(247,246,242,0.96);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line)}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--bark);letter-spacing:0.02em;transition:color .2s}
+    .nav-logo:hover{color:var(--sust-d)}
+    .nav-links{display:flex;align-items:center;gap:1.8rem}
+    .nav-links a{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--muted);transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;
+      background:var(--design-d);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+    .nav-links a:hover{color:var(--bark)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-icon{display:flex;align-items:center;width:18px;height:18px;opacity:0.55;transition:opacity .2s}
+    .nav-icon:hover{opacity:1}
+    .nav-icon svg{width:15px;height:15px;fill:var(--bark)}
 
-    /* HERO RIGHT — botanical watercolor SVG */
-    .hero-right {
-      position:relative; overflow:hidden;
-      background:#dcebd0;
-    }
-    .hero-right svg {
-      width:100%; height:100%; position:absolute; inset:0; display:block;
-    }
+    /* ── PAGE OFFSET ── */
+    .page-top{padding-top:calc(var(--nav-h) + 2.2rem)}
+    .page-top-with-uc{padding-top:calc(var(--nav-h) + 2.8rem + 26px)}
 
-    /* NEWS */
-    .news-section { border-bottom:1px solid var(--line); }
-    .news-header {
-      display:flex; align-items:center; gap:1rem;
-      padding:0 0 0 3rem;
-      background:#1a1a1a;
-      overflow:hidden;
-    }
-    .news-label {
-      font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em;
-      text-transform:uppercase; color:var(--gold-light);
-      white-space:nowrap; flex-shrink:0;
-      display:flex; align-items:center; gap:0.5rem;
-      padding:0.6rem 0;
-    }
-    .news-pulse { width:5px; height:5px; border-radius:50%; background:var(--gold-light); animation:pulse 2s infinite; }
-    .news-divider { width:1px; height:0.9rem; background:rgba(255,255,255,0.2); flex-shrink:0; }
-    .news-scroll-outer { background:#1a1a1a; overflow:hidden; flex:1; }
-    .news-track { display:flex; animation:scrollNews 32s linear infinite; width:max-content; }
-    .news-track:hover { animation-play-state:paused; }
-    .news-list { display:flex; list-style:none; padding:0.6rem 0; flex-shrink:0; }
-    .news-list li {
-      display:flex; align-items:center;
-      padding:0 2.5rem;
-      border-right:1px solid rgba(255,255,255,0.1);
-      white-space:nowrap;
-    }
-    .news-dot { width:4px; height:4px; border-radius:50%; background:var(--gold-light); margin-right:0.6rem; flex-shrink:0; }
-    .news-date { font-family:var(--mono); font-size:0.57rem; color:rgba(244,240,228,0.38); margin-right:0.55rem; }
-    .news-list a { font-family:var(--mono); font-size:0.61rem; letter-spacing:0.04em; color:rgba(244,240,228,0.78); transition:color 0.2s; }
-    .news-list a:hover { color:var(--gold-light); }
+    /* ── HERO ── */
+    .hero{display:grid;grid-template-columns:1fr 2fr;min-height:52vh;border-bottom:1px solid var(--line)}
+    .hero-left{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center;
+      background:var(--bg);border-right:1px solid var(--line)}
+    .hero-avatar{width:108px;height:108px;border-radius:50%;overflow:hidden;
+      border:3px solid var(--design);box-shadow:0 4px 20px rgba(0,0,0,0.1);margin-bottom:1.2rem;background:var(--bg2)}
+    .hero-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-eyebrow{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--design-d);margin-bottom:0.35rem;display:flex;align-items:center;gap:0.5rem}
+    .hero-eyebrow::before{content:'';display:block;width:1rem;height:1px;background:var(--design-d)}
+    .hero-name{font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;color:var(--bark);margin-bottom:0.8rem}
+    .hero-name span{color:var(--sust-d)}
+    .hero-name em{font-style:italic;color:var(--design-d)}
+    .hero-tagline{font-size:0.84rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;max-width:42ch}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem}
+    .chip{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.08em;text-transform:uppercase;
+      padding:0.22rem 0.55rem;border:1px solid var(--line);color:var(--muted);background:var(--bg2)}
+    .hero-links{display:flex;gap:1rem;flex-wrap:wrap}
+    .hero-btn{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;
+      padding:0.5rem 1.1rem;border:1px solid var(--bark);color:var(--bark);transition:background .2s,color .2s}
+    .hero-btn:hover{background:var(--bark);color:var(--bg)}
+    .hero-btn.primary{background:var(--bark);color:var(--bg)}
+    .hero-btn.primary:hover{background:var(--sust-d);border-color:var(--sust-d)}
+    .hero-right{position:relative;overflow:hidden;background:#e8f4d0}
+    .hero-right svg{width:100%;height:100%;position:absolute;inset:0;display:block}
 
-    @keyframes scrollNews { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* ── NEWS BAR ── */
+    .news-bar{background:#1a1a1a;border-bottom:1px solid #333;display:flex;align-items:center;overflow:hidden}
+    .news-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--design);padding:0.55rem 1.2rem;white-space:nowrap;flex-shrink:0;
+      display:flex;align-items:center;gap:0.5rem;border-right:1px solid #333}
+    .news-pulse{width:5px;height:5px;border-radius:50%;background:var(--design);animation:pulse 2s infinite}
+    .news-scroll{flex:1;overflow:hidden}
+    .news-track{display:flex;animation:scrollNews 40s linear infinite;width:max-content}
+    .news-track:hover{animation-play-state:paused}
+    .news-list{display:flex;list-style:none;padding:0.55rem 0;flex-shrink:0}
+    .news-list li{display:flex;align-items:center;padding:0 2rem;border-right:1px solid #333;white-space:nowrap}
+    .news-date{font-family:var(--mono);font-size:0.56rem;color:#666;margin-right:0.5rem}
+    .news-dot{width:3px;height:3px;border-radius:50%;background:var(--design);margin-right:0.5rem;flex-shrink:0}
+    .news-list a{font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.75);transition:color .2s}
+    .news-list a:hover{color:var(--design)}
+    @keyframes scrollNews{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-    /* CONTENT */
-    .content { max-width:1100px; margin:0 auto; padding:4rem 3rem; }
-    .section-head {
-      display:flex; align-items:baseline; justify-content:space-between;
-      margin-bottom:2rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);
-    }
-    .section-title { font-size:1.5rem; font-weight:300; color:var(--moss); }
-    .section-label { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+    /* ── RESEARCH STATEMENT ── */
+    .rs-section{padding:3rem 2.5rem;background:var(--bg2);border-bottom:1px solid var(--line)}
+    .rs-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:240px 1fr;gap:3.5rem;align-items:center}
+    .rs-venn{position:relative;width:220px;height:220px;flex-shrink:0}
+    .rs-venn svg{width:100%;height:100%}
+    .venn-c{transition:r .3s}
+    .rs-label-out{position:absolute;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;
+      text-transform:uppercase;font-weight:800;white-space:nowrap;transition:font-size .2s}
+    .rs-label-out.mat   {top:-2px;left:50%;transform:translateX(-50%);color:var(--mat-d)}
+    .rs-label-out.sust  {bottom:-2px;left:-8px;color:var(--sust-d)}
+    .rs-label-out.design{bottom:-2px;right:-8px;color:var(--design-d)}
+    .rs-pillars{display:flex;flex-direction:column;gap:0.9rem}
+    .rs-pill{padding:0.7rem 1rem;border-left:3px solid transparent;transition:background .25s,border-color .25s;cursor:default}
+    .rs-pill.mat   {border-left-color:var(--mat)}
+    .rs-pill.design{border-left-color:var(--design-d)}
+    .rs-pill.sust  {border-left-color:var(--sust-d)}
+    .rs-pill h4{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:800;margin-bottom:0.2rem}
+    .rs-pill.mat    h4{color:var(--mat-d)}
+    .rs-pill.design h4{color:var(--design-d)}
+    .rs-pill.sust   h4{color:var(--sust-d)}
+    .rs-pill p{font-size:0.8rem;color:var(--muted);line-height:1.55}
+    .rs-pill.active-mat   {background:rgba(74,111,165,.09)}
+    .rs-pill.active-design{background:rgba(255,202,58,.1)}
+    .rs-pill.active-sust  {background:rgba(138,201,38,.09)}
 
-    /* RESEARCH */
-    .research-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; margin-bottom:4rem; }
-    .research-card {
-      background:white; padding:2rem; transition:transform 0.25s, box-shadow 0.25s;
-      border-bottom:2px solid transparent;
-    }
-    .research-card:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,0,0,0.08); border-bottom-color:var(--accent); }
-    .card-num { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; color:var(--gold); margin-bottom:1rem; }
-    .card-title { font-size:1.05rem; margin-bottom:0.6rem; color:var(--moss); }
-    .card-desc { font-size:0.82rem; line-height:1.6; color:var(--muted); }
-    .card-tag { display:inline-block; margin-top:1rem; font-family:var(--mono); font-size:0.56rem; letter-spacing:0.08em; text-transform:uppercase; background:var(--ivory); color:var(--moss-mid); padding:0.22rem 0.55rem; border:1px solid var(--line); }
+    /* ── CONTENT WRAPPER ── */
+    .content{max-width:1100px;margin:0 auto;padding:3rem 2.5rem}
+    .section-head{display:flex;align-items:baseline;justify-content:space-between;
+      margin-bottom:1.8rem;padding-bottom:0.6rem;border-bottom:2px solid var(--bark)}
+    .section-title{font-size:1.4rem;font-weight:300;color:var(--bark)}
+    .section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint)}
 
-    /* PUBLICATIONS */
-    .pub-entry { display:grid; grid-template-columns:4.5rem 1fr; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:start; }
-    .pub-year { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; color:var(--gold); padding-top:0.2rem; }
-    .pub-title { font-family:var(--serif); font-size:0.97rem; font-weight:400; color:var(--moss); margin-bottom:0.28rem; line-height:1.3; }
-    .pub-authors { font-size:0.77rem; color:var(--muted); margin-bottom:0.22rem; }
-    .pub-journal { font-family:var(--mono); font-size:0.61rem; letter-spacing:0.05em; color:var(--gold); }
-    .pub-doi { font-family:var(--mono); font-size:0.6rem; color:var(--moss-soft); border-bottom:1px solid var(--gold-pale); align-self:center; transition:color 0.2s,border-color 0.2s; white-space:nowrap; }
-    .pub-doi:hover { color:var(--gold); border-color:var(--gold); }
-    .scholar-link { display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.5rem; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; background:#1a1a1a; color:var(--ivory); padding:0.75rem 1.75rem; transition:background 0.25s; }
-    .scholar-link:hover { background:var(--sust-dark); }
+    /* ── PUBLICATIONS ── */
+    .pub-list{display:flex;flex-direction:column;gap:0}
+    .pub-entry{display:grid;grid-template-columns:80px 1fr;gap:0;border-bottom:1px solid var(--line);transition:background .15s}
+    .pub-entry:hover{background:rgba(0,0,0,0.02)}
+    .pub-thumb{width:80px;height:80px;flex-shrink:0;overflow:hidden;background:var(--bg2);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;align-self:stretch}
+    .pub-thumb img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
+    .pub-thumb:hover img{opacity:0.8}
+    .pub-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;gap:4px;padding:8px;text-align:center}
+    .pub-placeholder span{font-family:var(--mono);font-size:0.48rem;letter-spacing:0.06em;
+      text-transform:uppercase;color:var(--faint);line-height:1.3}
+    .pub-body{padding:0.9rem 1rem}
+    .pub-year{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.08em;color:var(--design-d);
+      margin-bottom:0.2rem}
+    .pub-title{font-family:var(--serif);font-size:0.92rem;color:var(--bark);line-height:1.35;
+      margin-bottom:0.25rem;font-weight:400}
+    .pub-title a{border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+    .pub-title a:hover{color:var(--mat-d);border-bottom-color:var(--mat)}
+    .pub-authors{font-size:0.74rem;color:var(--muted);margin-bottom:0.2rem}
+    .pub-journal{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.04em;color:var(--design-d)}
+    .pub-abstract{display:none;font-size:0.78rem;line-height:1.6;color:var(--muted);
+      margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid var(--line);max-width:70ch}
+    .pub-abstract.open{display:block}
+    .pub-toggle{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mat);cursor:pointer;margin-top:0.4rem;display:inline-block;
+      border-bottom:1px solid transparent;transition:border-color .2s}
+    .pub-toggle:hover{border-bottom-color:var(--mat)}
+    .scholar-link{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;
+      font-family:var(--mono);font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;
+      background:var(--bark);color:var(--bg);padding:0.65rem 1.5rem;transition:background .2s}
+    .scholar-link:hover{background:var(--sust-d)}
 
-    /* FOOTER */
-    footer { border-top:1px solid var(--line); padding:1.5rem 3rem; display:flex; justify-content:space-between; align-items:center; background:rgba(58,74,46,0.03); }
-    footer p { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; }
-    .footer-dot { color:var(--gold-light); margin:0 0.4rem; }
+    /* ── FOOTER ── */
+    footer{border-top:1px solid var(--line);padding:1.2rem 2.5rem;display:flex;
+      justify-content:space-between;align-items:center;background:var(--bg2)}
+    footer p{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.08em;color:var(--faint);text-transform:uppercase}
+    .footer-dot{color:var(--design-d);margin:0 0.3rem}
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
     @media(max-width:820px){
-      nav{padding:1rem 1.5rem} nav ul{gap:1.25rem}
-      .hero{grid-template-columns:1fr; min-height:auto}
-      .hero-right{min-height:200px}
+      nav{padding:0 1.5rem}
+      .hero{grid-template-columns:1fr}
+      .hero-right{min-height:180px}
       .hero-left{padding:2rem 1.5rem}
-      .research-grid{grid-template-columns:1fr}
-      .pub-entry{grid-template-columns:1fr; gap:0.4rem}
-      .content{padding:2.5rem 1.5rem}
-      .news-header{padding:0.6rem 1.5rem}
-      footer{padding:1.25rem 1.5rem; flex-direction:column; gap:0.4rem; text-align:center}
+      .rs-inner{grid-template-columns:1fr;gap:2rem}
+      .rs-venn{margin:0 auto}
+      .content{padding:2rem 1.5rem}
+      .pub-entry{grid-template-columns:60px 1fr}
+      .pub-thumb{width:60px;height:60px}
+      footer{flex-direction:column;gap:0.3rem;text-align:center;padding:1rem 1.5rem}
     }
-
-    /* UNDER CONSTRUCTION BADGE */
-    .under-badge{
-      position:fixed;top:58px;left:0;right:0;z-index:90;
-      background:#e53935;color:#fff;
-      font-family:var(--mono);font-size:0.78rem;letter-spacing:0.15em;
-      text-transform:uppercase;padding:0.45rem 1rem;
-      text-align:center;
-      box-shadow:0 2px 8px rgba(229,57,53,0.4);
-      pointer-events:none;
-    }
-
-    /* RESEARCH STATEMENT */
-    .rs-section{padding:3.5rem 3rem;background:var(--bg2);border-bottom:1px solid var(--line)}
-    .rs-section .section-head{margin-bottom:2.5rem}
-    .rs-wrap{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center}
-    .rs-venn{position:relative;width:280px;height:280px;margin:0 auto}
-    .rs-circle{position:absolute;border-radius:50%;opacity:0;} /* hidden — replaced by SVG */
-    .rs-venn-svg{width:100%;height:100%}
-    .rs-label{position:absolute;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;
-      text-transform:uppercase;font-weight:800;line-height:1.3;text-align:center;white-space:nowrap}
-    .rs-label.mat   {top:-4px; left:50%;transform:translateX(-50%);color:var(--mat-dark)}
-    .rs-label.sust  {bottom:-4px;left:-10px;color:var(--sust-dark)}
-    .rs-label.design{bottom:-4px;right:-10px;color:var(--design-dark)}
-    .rs-pillars{display:flex;flex-direction:column;gap:1.2rem}
-    .rs-pillar-block{border-radius:4px;padding:0.5rem 0.7rem;transition:background 0.25s}
-    .rs-pillar-block.highlight-mat   {background:rgba(74,111,165,0.12)}
-    .rs-pillar-block.highlight-design{background:rgba(255,202,58,0.15)}
-    .rs-pillar-block.highlight-sust  {background:rgba(138,201,38,0.12)}
-    .rs-venn-svg circle.venn-c{transition:r 0.25s,opacity 0.25s}
-    .rs-label{transition:font-size 0.2s,font-weight 0.2s}
-    .rs-label.active{font-size:0.85rem}
-    .rs-pillar{display:flex;gap:1rem;align-items:flex-start}
-    .rs-pillar-bar{width:4px;min-height:100%;border-radius:2px;flex-shrink:0;margin-top:3px}
-    .rs-pillar-bar.mat   {background:var(--mat)}
-    .rs-pillar-bar.sust  {background:var(--sust)}
-    .rs-pillar-bar.design{background:var(--design)}
-    .rs-pillar h4{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;font-weight:800}
-    .rs-pillar p{font-size:0.8rem;color:var(--muted);line-height:1.6}
   </style>
 </head>
 <body>
 
-<div class="under-badge">Under Construction</div>
+<div class="uc-bar">Under Construction</div>
+
 <nav>
-  <a href="index.html" class="logo">Marco Freschi</a>
-  <ul>
-    <li><a href="research.html">Research &amp; Publications</a></li>
-    <li><a href="bio.html">Bio</a></li>
-    <li><a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a></li>
-    <li><a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
-  </ul>
+  <a href="index.html" class="nav-logo">Marco Freschi</a>
+  <div class="nav-links">
+    <a href="research.html">Research &amp; Publications</a>
+    <a href="bio.html">Bio</a>
+    <a href="CV_Freschi.pdf" target="_blank" rel="noopener">CV</a>
+    <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar">
+      <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
 </nav>
+
+<div style="height:calc(var(--nav-h) + 26px)"></div>
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-top">
-      <div class="hero-avatar">
-        <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-             FOTO: salva la tua foto LinkedIn come
-             "photo.jpg" nella stessa cartella e
-             sostituisci il div sotto con:
-             <img src="photo.jpg" alt="Marco Freschi">
-             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-        <img src="Profile.jpg" alt="Marco Freschi" style="width:100%;height:100%;object-fit:cover;display:block;">
-      </div>
-      <div>
-        <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
-        <h1 class="hero-name"><span style="color:var(--sust-dark)">Marco</span> <em>Freschi</em></h1>
-      </div>
+    <div class="hero-avatar">
+      <img src="Profile.jpg" alt="Marco Freschi" onerror="this.style.display='none'">
     </div>
+    <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
+    <h1 class="hero-name"><span>Marco</span> <em>Freschi</em></h1>
     <p class="hero-tagline">Bioinspired morphing materials, life-cycle approach of functional systems, and material design. Morphing Matter Lab, Department of Mechanical Engineering.</p>
     <div class="hero-chips">
       <span class="chip">Materials Engineering</span>
       <span class="chip">Bioinspired Design</span>
       <span class="chip">Life-cycle Approach</span>
     </div>
+    <div class="hero-links">
+      <a href="CV_Freschi.pdf" target="_blank" rel="noopener" class="hero-btn primary">Download CV</a>
+      <a href="research.html" class="hero-btn">Research</a>
+      <a href="bio.html" class="hero-btn">Bio</a>
+    </div>
   </div>
-
-  <!-- Botanical vine illustration: climbing vine, curling tendrils, bioinspired forms -->
   <div class="hero-right">
     <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <filter id="vblur"><feGaussianBlur stdDeviation="6"/></filter>
-        <filter id="sblur"><feGaussianBlur stdDeviation="2"/></filter>
-        <filter id="rough">
-          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9" result="n"/>
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
+        <filter id="vb"><feGaussianBlur stdDeviation="7"/></filter>
+        <filter id="sb"><feGaussianBlur stdDeviation="2"/></filter>
+        <filter id="rgh"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
       </defs>
-      <!-- Background wash -->
       <rect width="600" height="420" fill="#d4e8bc"/>
-      <ellipse cx="350" cy="200" rx="280" ry="220" fill="#c2daa8" filter="url(#vblur)" opacity="0.6"/>
-      <ellipse cx="500" cy="350" rx="180" ry="140" fill="#bcd4a0" filter="url(#vblur)" opacity="0.4"/>
-
-      <!-- Main climbing vine stem — thick, winding S-curve -->
-      <path d="M 80 420 C 100 360 60 300 100 240 C 140 180 200 200 220 150 C 240 100 200 50 240 10"
-            stroke="#4a6a28" stroke-width="3.5" fill="none" filter="url(#rough)" opacity="0.9"/>
-
-      <!-- Secondary vine stem — right side -->
-      <path d="M 420 420 C 400 350 440 280 400 220 C 360 160 320 180 340 120 C 360 70 420 60 460 20"
-            stroke="#5a7a32" stroke-width="2.5" fill="none" filter="url(#rough)" opacity="0.75"/>
-
-      <!-- Tendrils — curling spirals branching off main stem -->
-      <!-- Tendril 1 -->
-      <path d="M 105 320 C 130 310 160 320 155 340 C 150 358 128 355 125 340 C 122 328 138 325 142 335"
-            stroke="#5a7a30" stroke-width="1.4" fill="none" opacity="0.8"/>
-      <!-- Tendril 2 -->
-      <path d="M 115 240 C 85 225 55 235 60 255 C 65 272 88 268 88 253 C 88 241 74 242 76 252"
-            stroke="#5a7a30" stroke-width="1.4" fill="none" opacity="0.8"/>
-      <!-- Tendril 3 -->
-      <path d="M 195 170 C 225 155 255 168 248 190 C 241 208 218 204 218 188 C 218 175 234 176 232 187"
-            stroke="#6a8a38" stroke-width="1.3" fill="none" opacity="0.75"/>
-      <!-- Tendril 4 — right vine -->
-      <path d="M 405 280 C 440 268 468 280 462 300 C 456 318 432 314 433 298 C 434 285 450 287 448 298"
-            stroke="#5a7a30" stroke-width="1.3" fill="none" opacity="0.7"/>
-      <!-- Tendril 5 -->
-      <path d="M 350 180 C 315 165 290 178 298 200 C 305 218 328 212 326 196 C 324 183 308 186 312 197"
-            stroke="#6a8a38" stroke-width="1.2" fill="none" opacity="0.7"/>
-
-      <!-- Large vine leaf 1 — left mid -->
-      <g filter="url(#rough)" opacity="0.82" transform="translate(105,270) rotate(-25)">
+      <ellipse cx="350" cy="200" rx="280" ry="220" fill="#c2daa8" filter="url(#vb)" opacity="0.6"/>
+      <path d="M 80 420 C 100 360 60 300 100 240 C 140 180 200 200 220 150 C 240 100 200 50 240 10" stroke="#4a6a28" stroke-width="3.5" fill="none" filter="url(#rgh)" opacity="0.9"/>
+      <path d="M 420 420 C 400 350 440 280 400 220 C 360 160 320 180 340 120 C 360 70 420 60 460 20" stroke="#5a7a32" stroke-width="2.5" fill="none" filter="url(#rgh)" opacity="0.75"/>
+      <path d="M 105 320 C 130 310 160 320 155 340 C 150 358 128 355 125 340 C 122 328 138 325 142 335" stroke="#5a7a30" stroke-width="1.4" fill="none" opacity="0.8"/>
+      <path d="M 115 240 C 85 225 55 235 60 255 C 65 272 88 268 88 253 C 88 241 74 242 76 252" stroke="#5a7a30" stroke-width="1.4" fill="none" opacity="0.8"/>
+      <path d="M 195 170 C 225 155 255 168 248 190 C 241 208 218 204 218 188 C 218 175 234 176 232 187" stroke="#6a8a38" stroke-width="1.3" fill="none" opacity="0.75"/>
+      <path d="M 405 280 C 440 268 468 280 462 300 C 456 318 432 314 433 298 C 434 285 450 287 448 298" stroke="#5a7a30" stroke-width="1.3" fill="none" opacity="0.7"/>
+      <g filter="url(#rgh)" opacity="0.82" transform="translate(105,270) rotate(-25)">
         <path d="M 0 0 C -15 -30 -10 -65 8 -80 C 26 -95 45 -80 42 -55 C 39 -30 18 -15 0 0 Z" fill="#5a8038"/>
         <line x1="0" y1="0" x2="6" y2="-75" stroke="#3a5a20" stroke-width="1.2"/>
         <path d="M 4 -25 C -5 -30 -10 -38 -8 -45" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
-        <path d="M 5 -45 C -3 -50 -6 -58 -3 -65" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
         <path d="M 4 -25 C 14 -28 20 -35 19 -44" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
-        <path d="M 5 -45 C 15 -48 20 -56 18 -64" stroke="#3a5a20" stroke-width="0.8" fill="none"/>
       </g>
-
-      <!-- Large vine leaf 2 — upper center -->
-      <g filter="url(#rough)" opacity="0.78" transform="translate(215,130) rotate(15)">
+      <g filter="url(#rgh)" opacity="0.78" transform="translate(215,130) rotate(15)">
         <path d="M 0 0 C 20 -25 18 -62 0 -78 C -18 -94 -40 -78 -38 -52 C -36 -28 -16 -12 0 0 Z" fill="#4e7230"/>
         <line x1="0" y1="0" x2="-3" y2="-72" stroke="#304e1a" stroke-width="1.2"/>
         <path d="M -2 -22 C 8 -28 14 -38 11 -48" stroke="#304e1a" stroke-width="0.8" fill="none"/>
-        <path d="M -2 -45 C 8 -50 12 -60 8 -68" stroke="#304e1a" stroke-width="0.8" fill="none"/>
         <path d="M -2 -22 C -12 -27 -18 -36 -16 -46" stroke="#304e1a" stroke-width="0.8" fill="none"/>
       </g>
-
-      <!-- Medium leaf 3 — right vine -->
-      <g filter="url(#rough)" opacity="0.72" transform="translate(395,200) rotate(-40)">
+      <g filter="url(#rgh)" opacity="0.72" transform="translate(395,200) rotate(-40)">
         <path d="M 0 0 C -12 -22 -8 -52 6 -62 C 20 -72 36 -60 33 -40 C 30 -22 14 -10 0 0 Z" fill="#6a9040"/>
         <line x1="0" y1="0" x2="4" y2="-58" stroke="#3a5a20" stroke-width="1"/>
-        <path d="M 3 -20 C -6 -24 -8 -32 -5 -40" stroke="#3a5a20" stroke-width="0.7" fill="none"/>
-        <path d="M 3 -20 C 12 -23 16 -30 14 -40" stroke="#3a5a20" stroke-width="0.7" fill="none"/>
       </g>
-
-      <!-- Small accent leaves scattered -->
-      <g filter="url(#rough)" opacity="0.65" transform="translate(160,360) rotate(35)">
-        <path d="M 0 0 C -8 -15 -5 -35 4 -42 C 13 -49 24 -40 22 -26 C 20 -14 10 -6 0 0 Z" fill="#7aaa50"/>
-      </g>
-      <g filter="url(#rough)" opacity="0.6" transform="translate(460,140) rotate(-20)">
-        <path d="M 0 0 C -6 -12 -4 -28 3 -34 C 10 -40 20 -32 18 -20 C 16 -10 8 -4 0 0 Z" fill="#6a9840"/>
-      </g>
-      <g filter="url(#rough)" opacity="0.6" transform="translate(300,80) rotate(50)">
-        <path d="M 0 0 C -7 -13 -5 -30 3 -36 C 11 -42 22 -34 20 -21 C 18 -10 9 -4 0 0 Z" fill="#5a8830"/>
-      </g>
-
-      <!-- Erodium-style spiral seed (bioinspired reference) -->
-      <g transform="translate(520,300)" opacity="0.65">
-        <path d="M 0 0 Q 10 -20 6 -42 Q 2 -60 -4 -72" stroke="#7a9a50" stroke-width="1.5" fill="none"/>
-        <path d="M 6 -42 Q 18 -50 22 -62" stroke="#7a9a50" stroke-width="1" fill="none"/>
-        <path d="M -4 -72 Q -5 -82 -2 -88" stroke="#7a9a50" stroke-width="1" fill="none"/>
-        <ellipse cx="-2" cy="-91" rx="5" ry="8" fill="#9aba60" opacity="0.7" transform="rotate(-10,-2,-91)"/>
-      </g>
-
-      <!-- Dandelion seed dispersal (upper right) -->
       <g transform="translate(510,55)" opacity="0.6">
         <circle cx="0" cy="0" r="4" fill="#b8a030"/>
         <g stroke="#9a8828" stroke-width="0.8" fill="none">
-          <line x1="0" y1="0" x2="-18" y2="-26"/>
-          <line x1="0" y1="0" x2="-8" y2="-30"/>
-          <line x1="0" y1="0" x2="3" y2="-31"/>
-          <line x1="0" y1="0" x2="14" y2="-27"/>
+          <line x1="0" y1="0" x2="-18" y2="-26"/><line x1="0" y1="0" x2="-8" y2="-30"/>
+          <line x1="0" y1="0" x2="3" y2="-31"/><line x1="0" y1="0" x2="14" y2="-27"/>
           <line x1="0" y1="0" x2="22" y2="-20"/>
         </g>
         <g fill="#c8aa30">
@@ -389,23 +268,14 @@
           <ellipse cx="22" cy="-23" rx="3" ry="1.8" transform="rotate(-130,22,-23)"/>
         </g>
       </g>
-
-      <!-- Light vignette edges -->
-      <ellipse cx="0" cy="420" rx="120" ry="100" fill="#a8c878" filter="url(#vblur)" opacity="0.2"/>
-      <ellipse cx="600" cy="0" rx="100" ry="80" fill="#b8d890" filter="url(#vblur)" opacity="0.18"/>
     </svg>
   </div>
 </section>
 
-<!-- NEWS -->
-<div class="news-section">
-  <div class="news-header">
-    <span class="news-label">
-      <span class="news-pulse"></span>
-      News
-    </span>
-    <span class="news-divider"></span>
-    <div class="news-scroll-outer">
+<!-- NEWS BAR -->
+<div class="news-bar">
+  <div class="news-tag"><span class="news-pulse"></span>News</div>
+  <div class="news-scroll">
     <div class="news-track">
       <ul class="news-list">
         <li><span class="news-date">Mar 2026</span><span class="news-dot"></span><a href="#">Field test in the Aral Sea in collaboration with Bulat Utemuratov Foundation (Kazakhstan)</a></li>
@@ -418,208 +288,260 @@
         <li><span class="news-date">Nov 2025</span><span class="news-dot"></span><a href="#">Postdoctoral contract extended till July 2026! The adventure with Professor Lining Yao continues</a></li>
       </ul>
     </div>
-    </div>
   </div>
 </div>
 
-
-<!-- RESEARCH STATEMENT (compact) -->
+<!-- RESEARCH STATEMENT -->
 <div class="rs-section">
-  <div class="content" style="padding-top:0;padding-bottom:0">
-    <div class="section-head">
-      <h2 class="section-title">Research Statement</h2>
-      <span class="section-label">Three Pillars</span>
+  <div class="rs-inner">
+    <div class="rs-venn">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <g style="mix-blend-mode:multiply">
+          <circle class="venn-c" id="vc-mat"    cx="110" cy="82"  r="62" fill="#4A6FA5" opacity="0.78" style="cursor:pointer"/>
+          <circle class="venn-c" id="vc-sust"   cx="80"  cy="152" r="62" fill="#8AC926" opacity="0.78" style="cursor:pointer"/>
+          <circle class="venn-c" id="vc-design" cx="140" cy="152" r="62" fill="#FFCA3A" opacity="0.78" style="cursor:pointer"/>
+        </g>
+        <g font-family="Consolas,monospace" font-size="7.5" font-weight="700" fill="rgba(255,255,255,0.7)" text-anchor="middle">
+          <text x="110" y="62">MATERIALS</text>
+          <text x="110" y="71">DESIGN</text>
+          <text x="72"  y="168">LCA</text>
+          <text x="149" y="168">LCD</text>
+        </g>
+      </svg>
+      <span class="rs-label-out mat">Materials Science</span>
+      <span class="rs-label-out sust">Sustainability</span>
+      <span class="rs-label-out design">Design Eng.</span>
     </div>
-    <div class="rs-wrap">
-      <div class="rs-venn">
-        <svg class="rs-venn-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="vblur"><feGaussianBlur stdDeviation="2.5"/></filter>
-          </defs>
-          <!-- Blend overlay circles -->
-          <g style="mix-blend-mode:multiply">
-            <!-- Materials (blue) — top -->
-            <circle cx="140" cy="95" r="72" fill="var(--mat)" opacity="0.78"/>
-            <!-- Sustainability (green) — bottom left -->
-            <circle cx="95" cy="190" r="72" fill="var(--sust)" opacity="0.78"/>
-            <!-- Design (yellow) — bottom right -->
-            <circle cx="185" cy="190" r="72" fill="var(--design)" opacity="0.78"/>
-          </g>
-          <!-- Newgrange spiral overlays — one per circle -->
-          <!-- Materials spiral (blue, top) -->
-          <g transform="translate(140,95)" opacity="0.25" fill="none" stroke="white" stroke-width="1.2">
-            <path d="M0,0 m0,-28 a28,28 0 1,0 0.1,0 m0,-18 a46,46 0 1,0 0.1,0 m0,-14 a60,60 0 1,0 0.1,0"/>
-          </g>
-          <!-- Sustainability spiral (green, bottom-left) -->
-          <g transform="translate(95,190)" opacity="0.25" fill="none" stroke="white" stroke-width="1.2">
-            <path d="M0,0 m0,-28 a28,28 0 1,0 0.1,0 m0,-18 a46,46 0 1,0 0.1,0 m0,-14 a60,60 0 1,0 0.1,0"/>
-          </g>
-          <!-- Design spiral (yellow, bottom-right) -->
-          <g transform="translate(185,190)" opacity="0.3" fill="none" stroke="white" stroke-width="1.2">
-            <path d="M0,0 m0,-28 a28,28 0 1,0 0.1,0 m0,-18 a46,46 0 1,0 0.1,0 m0,-14 a60,60 0 1,0 0.1,0"/>
-          </g>
-        </svg>
-        <span class="rs-label mat">Materials Science</span>
-        <span class="rs-label sust">Sustainability</span>
-        <span class="rs-label design">Design Eng.</span>
+    <div class="rs-pillars">
+      <div class="rs-pill mat" id="pill-mat">
+        <h4>Materials Science</h4>
+        <p>Rigorous, data-driven investigation of functional materials — from tribological metal matrix composites to biodegradable morphing systems.</p>
       </div>
-      <div class="rs-pillars">
-        <div class="rs-pillar-block" id="block-mat"><div class="rs-pillar">
-          <div class="rs-pillar-bar mat"></div>
-          <div>
-            <h4 style="color:var(--mat-dark)">Materials Science</h4>
-            <p>Rigorous, data-driven investigation of functional materials across a broad spectrum of applications — from tribological composites to biodegradable morphing systems.</p>
-          </div>
-        </div></div>
-        <div class="rs-pillar-block" id="block-design"><div class="rs-pillar">
-          <div class="rs-pillar-bar design"></div>
-          <div>
-            <h4 style="color:var(--design-dark)">Design Engineering</h4>
-            <p>Application-driven research guided by real-world requirements and inspired by natural mechanisms — translating biological strategies into engineered solutions.</p>
-          </div>
-        </div></div>
-        <div class="rs-pillar-block" id="block-sust"><div class="rs-pillar">
-          <div class="rs-pillar-bar sust"></div>
-          <div>
-            <h4 style="color:var(--sust-dark)">Sustainability</h4>
-            <p>Environmental, economic, and social dimensions integrated from the earliest design stage — not as an afterthought, but as a core design constraint.</p>
-          </div>
-        </div>
-      </div></div>
+      <div class="rs-pill design" id="pill-design">
+        <h4>Design Engineering</h4>
+        <p>Application-driven research inspired by nature — translating biological strategies into engineered solutions with real-world impact.</p>
+      </div>
+      <div class="rs-pill sust" id="pill-sust">
+        <h4>Sustainability</h4>
+        <p>Environmental, economic, and social dimensions integrated from day one — life-cycle thinking as a core design constraint.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- PUBLICATIONS -->
 <div class="content">
   <div class="section-head">
     <h2 class="section-title">Publications</h2>
     <span class="section-label">2016 – present</span>
   </div>
   <div class="pub-list">
+
     <div class="pub-entry">
-      <span class="pub-year">2024</span>
-      <div>
-        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p>
+      <a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Next Materials · 2024</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2024</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p>
         <p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p>
         <p class="pub-journal">Next Materials 2, 100083</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Copper–tungsten disulfide (Cu–WS₂) self-lubricating composites were produced via ball milling and powder metallurgy. This study systematically investigates the effect of milling time on microstructure, hardness, electrical conductivity, and tribological performance, identifying the optimal processing window for aerospace sliding contact applications.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2023</span>
-      <div>
-        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</a></p>
+      <a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Lubricants · 2023</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2023</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</a></p>
         <p class="pub-authors">M Freschi, L Dragoni, M Mariani, O Haiko, J Kömi, N Lecis, G Dotelli</p>
         <p class="pub-journal">Lubricants 11 (2), 66</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">This work investigates the effects of powder metallurgy processing parameters — compaction pressure, sintering temperature, and WS₂ content — on the tribological and mechanical properties of Cu–WS₂ composites, providing a systematic roadmap for material optimization.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2022</span>
-      <div>
-        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</a></p>
+      <a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--sust-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Lubricants · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</a></p>
         <p class="pub-authors">M Freschi, A Paniz, E Cerqueni, G Colella, G Dotelli</p>
         <p class="pub-journal">Lubricants 10 (6), 129</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">A comprehensive review applying the twelve principles of green tribology to current research and industrial case studies. The paper provides a framework for evaluating the environmental, social, and economic dimensions of tribological systems across their life cycle.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2022</span>
-      <div>
-        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS₂ composites</a></p>
+      <a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Tribology Int. · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS₂ composites</a></p>
         <p class="pub-authors">M Freschi, M Di Virgilio, O Haiko, M Mariani, L Andena, N Lecis, J Kömi et al.</p>
         <p class="pub-journal">Tribology International 166, 107357</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">The effect of WS₂ concentration on the tribological and electrical performance of copper matrix composites is systematically studied. Results reveal a trade-off between lubrication efficiency and electrical conductivity, with an optimal concentration window identified for sliding contact applications.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2022</span>
-      <div>
-        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</a></p>
+      <a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Lubricants · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</a></p>
         <p class="pub-authors">M Freschi, A Arrigoni, O Haiko, L Andena, J Kömi, C Castiglioni, G Dotelli</p>
         <p class="pub-journal">Lubricants 10 (3), 35</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Comparison of metal matrix composites reinforced with traditional and nanometric WS₂ particles. The study evaluates hardness, friction coefficient, and wear rate, showing that nanometric reinforcements improve tribological performance but require careful process control to prevent agglomeration.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2022</span>
-      <div>
-        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</a></p>
+      <a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener" class="pub-thumb" title="Open thesis">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">🎓</span>
+          <span>PhD Thesis · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</a></p>
         <p class="pub-authors">M Freschi</p>
         <p class="pub-journal">PhD Thesis, Politecnico di Milano</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Doctoral thesis investigating Cu–WS₂ metal matrix composites for sliding electrical contacts in aerospace. The work covers powder metallurgy processing, microstructural characterization, tribological testing, and life cycle considerations, establishing a comprehensive materials design framework.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2021</span>
-      <div>
-        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Employment of Micro- and Nano-WS₂ Structures to Enhance the Tribological Properties of Copper Matrix Composites</a></p>
+      <a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Lubricants · 2021</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2021</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener">Employment of Micro- and Nano-WS₂ Structures to Enhance the Tribological Properties of Copper Matrix Composites</a></p>
         <p class="pub-authors">M Freschi, M Di Virgilio, G Zanardi, M Mariani, N Lecis, G Dotelli</p>
         <p class="pub-journal">Lubricants 9 (5), 53</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Micro- and nano-structured WS₂ particles are incorporated into copper matrices to improve tribological performance. The study compares the effect of particle size and morphology on friction, wear, and mechanical properties, demonstrating that nano-WS₂ provides superior lubrication at lower concentrations.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2021</span>
-      <div>
-        <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
+      <a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--sust-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>PCNS · 2021</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2021</p>
+        <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
         <p class="pub-authors">C Moletti, M Freschi, L Primavesi, G Dotelli</p>
         <p class="pub-journal">3rd PCNS, Milan, Italy</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Life cycle assessment of aluminium electrolytic capacitors comparing different manufacturing routes. Environmental impact categories including global warming potential, energy consumption, and material depletion are quantified and compared across the product life cycle.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2018</span>
-      <div>
-        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
+      <a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener" class="pub-thumb" title="Open paper">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--design-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">📄</span>
+          <span>Exp. Thermal · 2018</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2018</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
         <p class="pub-authors">N Hurel, M Freschi, M Pailha, M Woloszyn</p>
         <p class="pub-journal">Experimental Thermal and Fluid Science 92, 69–88</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">A novel fluorescein tracer method is developed to visualize and quantify air infiltration paths in lightweight timber frame wall assemblies. The technique enables non-destructive identification of thermal bridges and leakage points with higher spatial resolution than conventional methods.</div>
       </div>
     </div>
+
     <div class="pub-entry">
-      <span class="pub-year">2016</span>
-      <div>
-        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Experimental investigation of the air path in timber frame wall assembly</a></p>
+      <a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener" class="pub-thumb" title="Open thesis">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--design-l),var(--bg2))">
+          <span style="font-size:1.2rem;opacity:0.4">🎓</span>
+          <span>MSc Thesis · 2016</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2016</p>
+        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener">Experimental investigation of the air path in timber frame wall assembly</a></p>
         <p class="pub-authors">M Freschi</p>
         <p class="pub-journal">Master Thesis, Italy</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Master's thesis investigating air infiltration pathways in timber frame wall assemblies through experimental methods. Pressure differential testing and tracer gas techniques are used to characterize air leakage and evaluate the effectiveness of airtightness measures in building envelopes.</div>
       </div>
     </div>
+
+  </div>
   <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>
 </div>
 
 <footer>
-  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--design-d)">Morphing Matter Lab</a></p>
   <p>© 2026</p>
 </footer>
 
 <script>
+function toggleAbstract(el){
+  const abs = el.nextElementSibling;
+  const open = abs.classList.toggle('open');
+  el.textContent = open ? '− Abstract' : '+ Abstract';
+}
+// Venn hover interaction
 (function(){
-  const vennSvg = document.querySelector('.rs-venn-svg');
-  if(!vennSvg) return;
-  const circles = vennSvg.querySelectorAll('circle');
-  const labels  = document.querySelectorAll('.rs-label');
-  const blocks  = {
-    mat:    document.getElementById('block-mat'),
-    design: document.getElementById('block-design'),
-    sust:   document.getElementById('block-sust')
-  };
-  // circles order: mat(0), sust(1), design(2)
   const map = [
-    {key:'mat',    ci:0, labelClass:'mat'},
-    {key:'sust',   ci:1, labelClass:'sust'},
-    {key:'design', ci:2, labelClass:'design'},
+    {ci:'vc-mat',    pi:'pill-mat',    cls:'active-mat'},
+    {ci:'vc-sust',   pi:'pill-sust',   cls:'active-sust'},
+    {ci:'vc-design', pi:'pill-design', cls:'active-design'},
   ];
-  const BASE_R = 72;
-
-  map.forEach(({key, ci, labelClass})=>{
-    const c = circles[ci];
-    if(!c) return;
+  const BASE = 62;
+  map.forEach(({ci,pi,cls})=>{
+    const c = document.getElementById(ci);
+    const p = document.getElementById(pi);
+    if(!c||!p) return;
     c.addEventListener('mouseenter',()=>{
-      c.setAttribute('r', BASE_R + 10);
-      labels.forEach(l=>{ if(l.classList.contains(labelClass)) l.classList.add('active'); });
-      Object.keys(blocks).forEach(k=>{ if(blocks[k]) blocks[k].classList.remove('highlight-mat','highlight-design','highlight-sust'); });
-      if(blocks[key]) blocks[key].classList.add('highlight-'+key);
+      c.setAttribute('r', BASE+10);
+      p.classList.add(cls);
     });
     c.addEventListener('mouseleave',()=>{
-      c.setAttribute('r', BASE_R);
-      labels.forEach(l=>l.classList.remove('active'));
-      Object.keys(blocks).forEach(k=>{ if(blocks[k]) blocks[k].classList.remove('highlight-mat','highlight-design','highlight-sust'); });
+      c.setAttribute('r', BASE);
+      p.classList.remove(cls);
     });
-    c.style.cursor='pointer';
   });
 })();
 </script>

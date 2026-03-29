@@ -6,342 +6,495 @@
   <title>Research & Publications — Marco Freschi</title>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root {
-      /* --- Three research pillars --- */
-      --sust:#8AC926;   --sust-dark:#5c8a18;  --sust-light:#c2e880;
-      --design:#FFCA3A; --design-dark:#c49200; --design-light:#ffe89a;
-      --mat:#4A6FA5;    --mat-dark:#2d4d7a;    --mat-light:#a8c2e0;
-
-      /* --- Neutral base --- */
-      --bg:#f8f7f4;        /* near-white warm */
-      --bg2:#eeecea;       /* slightly darker for sections */
-      --surface:#ffffff;
-      --bark:#1a1a1a;      /* near-black text */
-      --muted:#6b6b6b;
-      --line:rgba(26,26,26,0.10);
-
-      /* --- Accent (replaces gold) --- */
-      --accent:var(--design);
-      --accent-dark:var(--design-dark);
-      --accent-light:var(--design-light);
-
-      /* --- Legacy aliases so old CSS still works --- */
-      --moss:var(--sust-dark);
-      --moss-mid:var(--sust);
-      --moss-soft:var(--sust-light);
-      --gold:var(--design-dark);
-      --gold-light:var(--design);
-      --gold-pale:var(--design-light);
-      --ivory:var(--bg);
-
+    :root{
+      --sust:#8AC926; --sust-d:#5c8a18; --sust-l:#d4f0a0;
+      --design:#FFCA3A; --design-d:#c49200; --design-l:#fff3b0;
+      --mat:#4A6FA5; --mat-d:#2d4d7a; --mat-l:#c0d4f0;
+      --bg:#f7f6f2; --bg2:#eeecea; --surface:#ffffff;
+      --bark:#111111; --muted:#666; --faint:#999;
+      --line:rgba(0,0,0,0.09);
       --serif:'Georgia','Palatino Linotype',serif;
       --mono:'Consolas','Courier New',monospace;
-      --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+      --sans:'Segoe UI',system-ui,sans-serif;
+      --nav-h:56px;
     }
     html{background:var(--bg);color:var(--bark);font-family:var(--sans);font-size:16px;scroll-behavior:smooth}
     body{min-height:100vh}
     h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2}
     a{color:inherit;text-decoration:none}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(244,240,228,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    nav .logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--moss);letter-spacing:0.03em;transition:color 0.2s}
-    nav .logo:hover{color:var(--gold)}
-    nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
-    nav ul a{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
-    nav ul a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
-    nav ul a:hover{color:var(--moss)}
-    nav ul a:hover::after{transform:scaleX(1)}
-    .nav-icon{display:flex;align-items:center;justify-content:center;width:18px;height:18px;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
-    .nav-icon:hover{opacity:0.65;transform:translateY(-1px)}
-    .nav-icon svg{width:15px;height:15px;fill:var(--muted);transition:fill 0.2s}
-    .nav-icon:hover svg{fill:var(--moss)}
+    .uc-bar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:90;background:#e53935;color:#fff;
+      font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+      padding:0.4rem 1rem;text-align:center;pointer-events:none}
 
-    .page-hero{padding:8rem 3rem 3.5rem;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--bg) 60%,rgba(138,201,38,0.06) 100%)}
-    .page-eyebrow{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
-    .page-eyebrow::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold)}
-    .page-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;color:var(--moss);line-height:1.0}
-    .page-title em{font-style:italic;color:var(--sust-dark)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 2.5rem;background:rgba(247,246,242,0.96);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line)}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--bark);transition:color .2s}
+    .nav-logo:hover{color:var(--sust-d)}
+    .nav-links{display:flex;align-items:center;gap:1.8rem}
+    .nav-links a{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--muted);transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;
+      background:var(--design-d);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+    .nav-links a:hover{color:var(--bark)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-icon{display:flex;align-items:center;width:18px;height:18px;opacity:0.55;transition:opacity .2s}
+    .nav-icon:hover{opacity:1}
+    .nav-icon svg{width:15px;height:15px;fill:var(--bark)}
 
-    .content{max-width:1100px;margin:0 auto;padding:4rem 3rem}
+    /* PAGE HERO */
+    .page-hero{padding:calc(var(--nav-h) + 2.8rem + 26px) 2.5rem 2.5rem;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(135deg,var(--bg) 60%,rgba(138,201,38,0.05) 100%)}
+    .page-eyebrow{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--design-d);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem}
+    .page-eyebrow::before{content:'';display:block;width:1.2rem;height:1px;background:var(--design-d)}
+    .page-title{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;color:var(--bark)}
+    .page-title em{font-style:italic;color:var(--sust-d)}
 
-    .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--line)}
-    .section-title{font-size:1.5rem;font-weight:300;color:var(--moss)}
-    .section-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
-
-    /* Projects */
-    .project-item{display:grid;grid-template-columns:3fr 2fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start}
-    .project-content{position:relative;padding-top:0.2rem}
-    .project-num{font-family:var(--serif);font-size:7rem;font-weight:700;line-height:0.9;color:var(--sust);opacity:0.1;position:absolute;top:-0.3rem;left:-0.5rem;pointer-events:none;z-index:0;letter-spacing:-0.05em;user-select:none}
-    .project-title{font-size:1.2rem;font-weight:600;color:var(--bark);margin-bottom:0.6rem;position:relative;z-index:1}
-    .project-desc{font-size:0.85rem;line-height:1.65;color:var(--muted);max-width:56ch;position:relative;z-index:1}
-    .project-meta{font-family:var(--mono)}
-    .meta-label{font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;margin-top:0.8rem}
-    .meta-label:first-child{margin-top:0}
-    .meta-value{font-size:0.76rem;color:var(--bark);line-height:1.5}
-    .status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--sust);margin-right:0.4rem;animation:pulse 2s infinite}
-    .status-dot.past{background:var(--muted);animation:none}
-
-    /* Publications */
-    .pub-entry{display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--line);align-items:start}
-    .pub-year{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.08em;color:var(--gold);padding-top:0.2rem}
-    .pub-title{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--moss);margin-bottom:0.3rem;line-height:1.3}
-    .pub-authors{font-size:0.78rem;color:var(--muted);margin-bottom:0.25rem}
-    .pub-journal{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.05em;color:var(--gold)}
-    .pub-doi{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.06em;color:var(--moss-soft);border-bottom:1px solid var(--gold-pale);align-self:center;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
-    .pub-doi:hover{color:var(--gold);border-color:var(--gold)}
-    .scholar-link{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;background:var(--bark);color:var(--bg);padding:0.75rem 1.75rem;transition:background 0.25s}
-    .scholar-link:hover{background:var(--sust-dark)}
-
-    footer{border-top:1px solid var(--line);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(58,74,46,0.03)}
-    footer p{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
-    .footer-dot{color:var(--gold-light);margin:0 0.4rem}
-
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
-    @media(max-width:820px){
-      nav{padding:1rem 1.5rem}nav ul{gap:1.25rem}
-      .page-hero,.content{padding-left:1.5rem;padding-right:1.5rem}
-      .project-item{grid-template-columns:1fr;gap:1rem}
-      .pub-entry{grid-template-columns:1fr;gap:0.4rem}
-      .pub-year{padding-top:0}
-      footer{padding:1.25rem 1.5rem;flex-direction:column;gap:0.4rem;text-align:center}
-    }
-
-
-    /* UNDER CONSTRUCTION BADGE */
-    .under-badge{
-      position:fixed;top:58px;left:0;right:0;z-index:90;
-      background:#e53935;color:#fff;
-      font-family:var(--mono);font-size:0.78rem;letter-spacing:0.15em;
-      text-transform:uppercase;padding:0.45rem 1rem;
-      text-align:center;
-      box-shadow:0 2px 8px rgba(229,57,53,0.4);
-      pointer-events:none;
-    }
+    /* CONTENT */
+    .content{max-width:1100px;margin:0 auto;padding:3rem 2.5rem}
+    .section-head{display:flex;align-items:baseline;justify-content:space-between;
+      margin-bottom:1.8rem;padding-bottom:0.6rem;border-bottom:2px solid var(--bark)}
+    .section-title{font-size:1.4rem;font-weight:300;color:var(--bark)}
+    .section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint)}
 
     /* RESEARCH STATEMENT FULL */
-    .rs-full{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:2.5rem}
-    .rs-full-card{background:var(--surface);padding:1.5rem;border-top:3px solid transparent;transition:transform 0.2s,box-shadow 0.2s}
-    .rs-full-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.08)}
-    .rs-full-card.mat   {border-top-color:var(--mat)}
-    .rs-full-card.design{border-top-color:var(--design)}
-    .rs-full-card.sust  {border-top-color:var(--sust)}
-    .rs-full-card .rs-tag{display:inline-block;font-family:var(--mono);font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;margin-bottom:0.8rem;font-weight:700}
-    .rs-full-card.mat    .rs-tag{background:var(--mat-light);color:var(--mat-dark)}
-    .rs-full-card.design .rs-tag{background:var(--design-light);color:var(--design-dark)}
-    .rs-full-card.sust   .rs-tag{background:var(--sust-light);color:var(--sust-dark)}
-    .rs-full-card h3{font-size:1.1rem;font-weight:400;color:var(--bark);margin-bottom:0.6rem}
-    .rs-full-card p{font-size:0.82rem;line-height:1.7;color:var(--muted)}
-    .rs-intersections{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5px;margin-bottom:2.5rem}
-    .rs-int-card{padding:1.2rem 1.5rem;background:var(--bg2);border-left:3px solid var(--line)}
-    .rs-int-card.ms {border-left-color:var(--mat);background:rgba(74,111,165,0.06)}
-    .rs-int-card.sd {border-left-color:var(--design);background:rgba(255,202,58,0.08)}
-    .rs-int-card.lca{border-left-color:var(--sust);background:rgba(138,201,38,0.07)}
-    .rs-int-card .rs-int-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem}
-    .rs-int-card h4{font-size:0.95rem;font-weight:400;color:var(--bark);margin-bottom:0.4rem}
-    .rs-int-card p{font-size:0.8rem;line-height:1.6;color:var(--muted)}
+    .rs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px}
+    .rs-card{padding:1.4rem;background:var(--surface);border-top:3px solid transparent;transition:transform .2s,box-shadow .2s}
+    .rs-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.07)}
+    .rs-card.mat{border-top-color:var(--mat)}
+    .rs-card.design{border-top-color:var(--design-d)}
+    .rs-card.sust{border-top-color:var(--sust-d)}
+    .rs-tag{display:inline-block;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;
+      text-transform:uppercase;padding:0.18rem 0.45rem;border-radius:2px;margin-bottom:0.7rem;font-weight:700}
+    .rs-card.mat   .rs-tag{background:var(--mat-l);color:var(--mat-d)}
+    .rs-card.design .rs-tag{background:var(--design-l);color:var(--design-d)}
+    .rs-card.sust  .rs-tag{background:var(--sust-l);color:var(--sust-d)}
+    .rs-card h3{font-size:1rem;font-weight:400;color:var(--bark);margin-bottom:0.5rem}
+    .rs-card p{font-size:0.8rem;line-height:1.65;color:var(--muted)}
+    .rs-int-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:3rem}
+    .rs-int{padding:1.1rem 1.3rem;background:var(--bg2);border-left:3px solid}
+    .rs-int.ms {border-left-color:var(--mat)}
+    .rs-int.lcd{border-left-color:var(--design-d)}
+    .rs-int.lca{border-left-color:var(--sust-d)}
+    .rs-int .rs-int-lbl{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--faint);margin-bottom:0.3rem}
+    .rs-int h4{font-size:0.9rem;font-weight:500;color:var(--bark);margin-bottom:0.3rem}
+    .rs-int p{font-size:0.78rem;line-height:1.6;color:var(--muted)}
+
+    /* PROJECTS */
+    .project{display:grid;grid-template-columns:1fr 2fr;gap:0;border-bottom:1px solid var(--line);
+      background:var(--surface);margin-bottom:2px;transition:box-shadow .2s}
+    .project:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+    .project-meta{padding:1.5rem;border-right:1px solid var(--line);background:var(--bg2)}
+    .project-num{font-family:var(--serif);font-size:3.5rem;font-weight:700;opacity:0.08;
+      line-height:1;color:var(--sust-d);margin-bottom:0.5rem;letter-spacing:-0.02em}
+    .meta-row{margin-bottom:0.8rem}
+    .meta-lbl{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--faint);margin-bottom:0.15rem}
+    .meta-val{font-size:0.78rem;color:var(--bark);line-height:1.45}
+    .status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;
+      background:var(--sust);margin-right:0.35rem;animation:pulse 2s infinite}
+    .status-dot.done{background:var(--faint);animation:none}
+    .meta-val a{border-bottom:1px solid var(--design-l);transition:border-color .2s}
+    .meta-val a:hover{border-bottom-color:var(--design-d)}
+    .project-body{padding:1.5rem}
+    .project-title{font-size:1.15rem;font-weight:500;color:var(--bark);margin-bottom:0.6rem}
+    .project-desc{font-size:0.84rem;line-height:1.7;color:var(--muted)}
+
+    /* PUBLICATIONS */
+    .pub-list{display:flex;flex-direction:column;gap:0}
+    .pub-entry{display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid var(--line);transition:background .15s}
+    .pub-entry:hover{background:rgba(0,0,0,0.02)}
+    .pub-thumb{width:80px;overflow:hidden;background:var(--bg2);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;align-self:stretch}
+    .pub-thumb .pub-placeholder{width:100%;height:100%;min-height:80px;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:4px;padding:8px;text-align:center}
+    .pub-placeholder span{font-family:var(--mono);font-size:0.46rem;letter-spacing:0.06em;
+      text-transform:uppercase;color:var(--faint);line-height:1.3}
+    .pub-body{padding:0.85rem 1rem}
+    .pub-year{font-family:var(--mono);font-size:0.56rem;color:var(--design-d);margin-bottom:0.18rem}
+    .pub-title{font-family:var(--serif);font-size:0.9rem;color:var(--bark);line-height:1.35;margin-bottom:0.22rem}
+    .pub-title a{border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+    .pub-title a:hover{color:var(--mat-d);border-bottom-color:var(--mat)}
+    .pub-authors{font-size:0.72rem;color:var(--muted);margin-bottom:0.18rem}
+    .pub-journal{font-family:var(--mono);font-size:0.56rem;color:var(--design-d)}
+    .pub-abstract{display:none;font-size:0.77rem;line-height:1.6;color:var(--muted);
+      margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--line);max-width:68ch}
+    .pub-abstract.open{display:block}
+    .pub-toggle{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--mat);cursor:pointer;margin-top:0.35rem;display:inline-block;
+      border-bottom:1px solid transparent;transition:border-color .2s}
+    .pub-toggle:hover{border-bottom-color:var(--mat)}
+    .scholar-link{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;
+      font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;
+      background:var(--bark);color:var(--bg);padding:0.65rem 1.5rem;transition:background .2s}
+    .scholar-link:hover{background:var(--sust-d)}
+
+    footer{border-top:1px solid var(--line);padding:1.2rem 2.5rem;display:flex;
+      justify-content:space-between;align-items:center;background:var(--bg2)}
+    footer p{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.08em;color:var(--faint);text-transform:uppercase}
+    .footer-dot{color:var(--design-d);margin:0 0.3rem}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    @media(max-width:820px){
+      nav{padding:0 1.5rem}
+      .page-hero,.content{padding-left:1.5rem;padding-right:1.5rem}
+      .project{grid-template-columns:1fr}
+      .project-meta{border-right:none;border-bottom:1px solid var(--line)}
+      .rs-grid,.rs-int-grid{grid-template-columns:1fr}
+      .pub-entry{grid-template-columns:60px 1fr}
+      .pub-thumb{width:60px}
+      footer{flex-direction:column;gap:0.3rem;text-align:center;padding:1rem 1.5rem}
+    }
   </style>
 </head>
 <body>
-<div class="under-badge">Under Construction</div>
+
+<div class="uc-bar">Under Construction</div>
+
 <nav>
-  <a href="index.html" class="logo">Marco Freschi</a>
-  <ul>
-    <li><a href="research.html">Research &amp; Publications</a></li>
-    <li><a href="bio.html">Bio</a></li>
-    <li><a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a></li>
-    <li><a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
-  </ul>
+  <a href="index.html" class="nav-logo">Marco Freschi</a>
+  <div class="nav-links">
+    <a href="research.html">Research &amp; Publications</a>
+    <a href="bio.html">Bio</a>
+    <a href="CV_Freschi.pdf" target="_blank" rel="noopener">CV</a>
+    <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar">
+      <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
 </nav>
 
 <div class="page-hero">
-  <p class="page-eyebrow">Research & Publications</p>
+  <p class="page-eyebrow">Research &amp; Publications</p>
   <h1 class="page-title">Materials that <em>think</em> &amp; move</h1>
 </div>
 
 <div class="content">
 
-  <div class="section-head" style="margin-bottom:1.5rem">
+  <!-- RESEARCH STATEMENT -->
+  <div class="section-head" style="margin-top:0">
     <h2 class="section-title">Research Statement</h2>
     <span class="section-label">Three Pillars · Three Intersections</span>
   </div>
-  <div class="rs-full">
-    <div class="rs-full-card mat">
+  <div class="rs-grid">
+    <div class="rs-card mat">
       <span class="rs-tag">Materials Science</span>
       <h3>Rigorous &amp; Functional</h3>
-      <p>Data-driven investigation of materials across a broad application spectrum. From metal matrix composites to biodegradable seedpod structures, the approach remains the same: characterize, model, and engineer material behavior with precision.</p>
+      <p>Data-driven investigation of materials across a broad application spectrum — from tribological metal matrix composites to biodegradable morphing systems.</p>
     </div>
-    <div class="rs-full-card design">
+    <div class="rs-card design">
       <span class="rs-tag">Design Engineering</span>
       <h3>Applied &amp; Bioinspired</h3>
-      <p>Application-driven research anchored to real requirements. Nature provides the blueprint — millions of years of optimization distilled into mechanisms that engineering can translate, refine, and deploy at scale.</p>
+      <p>Application-driven research anchored to real requirements. Nature provides the blueprint — millions of years of optimization translated into engineered solutions.</p>
     </div>
-    <div class="rs-full-card sust">
+    <div class="rs-card sust">
       <span class="rs-tag">Sustainability</span>
       <h3>Economic · Environmental · Social</h3>
-      <p>Sustainability integrated as a design constraint, not an afterthought. Every system is evaluated across its full life cycle — from raw material sourcing to end-of-life soil integration — with economic and social impact in scope.</p>
+      <p>Sustainability as a design constraint from day one — life-cycle thinking integrated across every project from raw material to end-of-life.</p>
     </div>
   </div>
-  <div class="rs-intersections">
-    <div class="rs-int-card ms">
-      <p class="rs-int-label">Materials × Design</p>
+  <div class="rs-int-grid">
+    <div class="rs-int ms">
+      <p class="rs-int-lbl">Materials × Design</p>
       <h4>Materials Design</h4>
-      <p>Translating functional requirements into material architectures — selecting, processing, and structuring matter to achieve targeted mechanical, biological, or environmental responses.</p>
+      <p>Translating functional requirements into material architectures that achieve targeted mechanical, biological, or environmental responses.</p>
     </div>
-    <div class="rs-int-card sd">
-      <p class="rs-int-label">Design × Sustainability</p>
+    <div class="rs-int lcd">
+      <p class="rs-int-lbl">Design × Sustainability</p>
       <h4>Life Cycle Design</h4>
-      <p>Embedding life cycle thinking into the design process from day one — ensuring that form, function, and environmental performance are co-optimized rather than traded off.</p>
+      <p>Embedding life cycle thinking into the design process — co-optimizing form, function, and environmental performance.</p>
     </div>
-    <div class="rs-int-card lca">
-      <p class="rs-int-label">Materials × Sustainability</p>
+    <div class="rs-int lca">
+      <p class="rs-int-lbl">Materials × Sustainability</p>
       <h4>Life Cycle Assessment</h4>
-      <p>Quantitative evaluation of environmental impact from cradle to grave. Applied to biodegradable seeding systems to guide material selection and validate sustainability claims with data.</p>
+      <p>Quantitative evaluation of environmental impact from cradle to grave — applied to biodegradable seeding systems to validate sustainability claims.</p>
     </div>
   </div>
 
+  <!-- RESEARCH PROJECTS -->
   <div class="section-head">
     <h2 class="section-title">Research Projects</h2>
-    <span class="section-label">Active & Completed</span>
+    <span class="section-label">Active &amp; Completed</span>
   </div>
 
-  <div class="project-item">
-    <div class="project-content">
-      <span class="project-num">01</span>
+  <div class="project">
+    <div class="project-meta">
+      <div class="project-num">01</div>
+      <div class="meta-row">
+        <p class="meta-lbl">Status</p>
+        <p class="meta-val"><span class="status-dot"></span>Active</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Funding</p>
+        <p class="meta-val">NSF GCR · Bulat Utemuratov Foundation</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Lab</p>
+        <p class="meta-val"><a href="https://morphingmatter.org/" target="_blank" rel="noopener">Morphing Matter Lab</a></p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Techniques</p>
+        <p class="meta-val">Laser cutting · 3D printing · Field testing · Materials mechanics</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Collaborations</p>
+        <p class="meta-val">Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
+      </div>
+    </div>
+    <div class="project-body">
       <h2 class="project-title">Bioinspired Seeding Systems</h2>
       <p class="project-desc">Nature has spent millions of years perfecting seed dispersal. This project develops morphing structures — inspired by dandelion, maple samara, and Erodium seeds — that self-deploy, orient, and anchor upon contact with soil. The goal: scalable, biodegradable systems for ecological restoration and precision agriculture.</p>
     </div>
-    <div class="project-meta">
-      <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot"></span>Active</p>
-      <p class="meta-label">Funding</p><p class="meta-value">NSF GCR · Bulat Utemuratov Foundation</p>
-      <p class="meta-label">Lab</p><p class="meta-value"><a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
-      <p class="meta-label">Techniques</p><p class="meta-value">Laser cutting · 3D printing · Field testing · Materials mechanics</p>
-      <p class="meta-label">Collaborations</p><p class="meta-value">Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
-    </div>
   </div>
 
-  <div class="project-item">
-    <div class="project-content">
-      <span class="project-num">02</span>
+  <div class="project">
+    <div class="project-meta">
+      <div class="project-num">02</div>
+      <div class="meta-row">
+        <p class="meta-lbl">Status</p>
+        <p class="meta-val"><span class="status-dot"></span>Active</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Funding</p>
+        <p class="meta-val">NSF GCR · Bulat Utemuratov Foundation</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Lab</p>
+        <p class="meta-val"><a href="https://morphingmatter.org/" target="_blank" rel="noopener">Morphing Matter Lab</a></p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Techniques</p>
+        <p class="meta-val">3D printing · Field testing · Soil mechanics · Materials degradation</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Collaborations</p>
+        <p class="meta-val">Univ. of Pennsylvania · UC Berkeley · Syracuse University</p>
+      </div>
+    </div>
+    <div class="project-body">
       <h2 class="project-title">Pod Penetration in Soil: Analysis of Drilling Efficiency</h2>
       <p class="project-desc">Efficient penetration of biodegradable carriers into soil is critical for restoration and reforestation applications. This project evaluates how system parameters — approach speed, rotation, and pod geometry — affect drilling efficiency and successful soil anchoring.</p>
     </div>
-    <div class="project-meta">
-      <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot"></span>Active</p>
-      <p class="meta-label">Funding</p><p class="meta-value">NSF GCR · Bulat Utemuratov Foundation</p>
-      <p class="meta-label">Lab</p><p class="meta-value"><a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
-      <p class="meta-label">Techniques</p><p class="meta-value">3D printing · Field testing · Soil mechanics · Materials degradation</p>
-      <p class="meta-label">Collaborations</p><p class="meta-value">Univ. of Pennsylvania · UC Berkeley · Syracuse University</p>
-    </div>
   </div>
 
-  <div class="project-item">
-    <div class="project-content">
-      <span class="project-num">03</span>
+  <div class="project">
+    <div class="project-meta">
+      <div class="project-num">03</div>
+      <div class="meta-row">
+        <p class="meta-lbl">Status</p>
+        <p class="meta-val"><span class="status-dot done"></span>Completed</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Funding</p>
+        <p class="meta-val">Logic SpA PhD Fellowship</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Lab</p>
+        <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Techniques</p>
+        <p class="meta-val">Powder Metallurgy · Tribometry · SEM/EDS</p>
+      </div>
+      <div class="meta-row">
+        <p class="meta-lbl">Collaborations</p>
+        <p class="meta-val">Univ. of Oulu · Univ. of Milan</p>
+      </div>
+    </div>
+    <div class="project-body">
       <h2 class="project-title">Metal Matrix Composites &amp; Tribology</h2>
       <p class="project-desc">PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of advanced MMCs. Work spanned powder metallurgy, solid-state processing, and multiscale characterization of wear mechanisms — establishing a rigorous materials science foundation for the subsequent pivot to morphing systems.</p>
     </div>
-    <div class="project-meta">
-      <p class="meta-label">Status</p><p class="meta-value"><span class="status-dot past"></span>Completed</p>
-      <p class="meta-label">Funding</p><p class="meta-value">Logic SpA PhD Fellowship</p>
-      <p class="meta-label">Lab</p><p class="meta-value"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Materials for Energy and Environment</a></p>
-      <p class="meta-label">Techniques</p><p class="meta-value">Powder Metallurgy · Tribometry · SEM/EDS</p>
-      <p class="meta-label">Collaborations</p><p class="meta-value">Univ. of Oulu · Univ. of Milan</p>
-    </div>
   </div>
 
-  <div class="section-head" style="margin-top:4rem">
+  <!-- PUBLICATIONS -->
+  <div class="section-head" style="margin-top:3rem">
     <h2 class="section-title">Publications</h2>
     <span class="section-label">2016 – present</span>
   </div>
+  <div class="pub-list">
 
-  <div class="pub-entry">
-    <span class="pub-year">2024</span>
-    <div>
-      <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p>
-      <p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p>
-      <p class="pub-journal">Next Materials 2, 100083</p>
+    <div class="pub-entry">
+      <a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Next Materials · 2024</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2024</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p>
+        <p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p>
+        <p class="pub-journal">Next Materials 2, 100083</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Cu–WS₂ self-lubricating composites produced via ball milling and powder metallurgy. This study systematically investigates the effect of milling time on microstructure, hardness, electrical conductivity, and tribological performance, identifying the optimal processing window for aerospace sliding contact applications.</div>
+      </div>
     </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2023</span>
-    <div>
-      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</a></p>
-      <p class="pub-authors">M Freschi, L Dragoni, M Mariani, O Haiko, J Kömi, N Lecis, G Dotelli</p>
-      <p class="pub-journal">Lubricants 11 (2), 66</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2022</span>
-    <div>
-      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</a></p>
-      <p class="pub-authors">M Freschi, A Paniz, E Cerqueni, G Colella, G Dotelli</p>
-      <p class="pub-journal">Lubricants 10 (6), 129</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2022</span>
-    <div>
-      <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS₂ composites</a></p>
-      <p class="pub-authors">M Freschi, M Di Virgilio, O Haiko, M Mariani, L Andena, N Lecis, J Kömi et al.</p>
-      <p class="pub-journal">Tribology International 166, 107357</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2022</span>
-    <div>
-      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</a></p>
-      <p class="pub-authors">M Freschi, A Arrigoni, O Haiko, L Andena, J Kömi, C Castiglioni, G Dotelli</p>
-      <p class="pub-journal">Lubricants 10 (3), 35</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2022</span>
-    <div>
-      <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</a></p>
-      <p class="pub-authors">M Freschi</p>
-      <p class="pub-journal">PhD Thesis, Politecnico di Milano</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2021</span>
-    <div>
-      <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Employment of Micro- and Nano-WS₂ Structures to Enhance the Tribological Properties of Copper Matrix Composites</a></p>
-      <p class="pub-authors">M Freschi, M Di Virgilio, G Zanardi, M Mariani, N Lecis, G Dotelli</p>
-      <p class="pub-journal">Lubricants 9 (5), 53</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2021</span>
-    <div>
-      <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
-      <p class="pub-authors">C Moletti, M Freschi, L Primavesi, G Dotelli</p>
-      <p class="pub-journal">3rd PCNS, Milan, Italy</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2018</span>
-    <div>
-      <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
-      <p class="pub-authors">N Hurel, M Freschi, M Pailha, M Woloszyn</p>
-      <p class="pub-journal">Experimental Thermal and Fluid Science 92, 69–88</p>
-    </div>
-  </div>
-  <div class="pub-entry">
-    <span class="pub-year">2016</span>
-    <div>
-      <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--design);transition:border-color 0.2s">Experimental investigation of the air path in timber frame wall assembly</a></p>
-      <p class="pub-authors">M Freschi</p>
-      <p class="pub-journal">Master Thesis, Italy</p>
-    </div>
-  </div>
 
+    <div class="pub-entry">
+      <a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Lubricants · 2023</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2023</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy: Evaluation of the Effects on Tribological Properties</a></p>
+        <p class="pub-authors">M Freschi, L Dragoni, M Mariani, O Haiko, J Kömi, N Lecis, G Dotelli</p>
+        <p class="pub-journal">Lubricants 11 (2), 66</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Systematic investigation of powder metallurgy processing parameters — compaction pressure, sintering temperature, and WS₂ content — on the tribological and mechanical properties of Cu–WS₂ composites, providing a roadmap for material optimization.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--sust-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Lubricants · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener">The Twelve Principles of Green Tribology: Studies, Research, and Case Studies — A Brief Anthology</a></p>
+        <p class="pub-authors">M Freschi, A Paniz, E Cerqueni, G Colella, G Dotelli</p>
+        <p class="pub-journal">Lubricants 10 (6), 129</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Comprehensive review applying the twelve principles of green tribology to current research and industrial case studies, providing a framework for evaluating the environmental, social, and economic dimensions of tribological systems across their life cycle.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Tribology Int. · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0301679X21005053" target="_blank" rel="noopener">Investigation of second phase concentration effects on tribological and electrical properties of Cu–WS₂ composites</a></p>
+        <p class="pub-authors">M Freschi, M Di Virgilio, O Haiko, M Mariani, L Andena, N Lecis, J Kömi et al.</p>
+        <p class="pub-journal">Tribology International 166, 107357</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Effect of WS₂ concentration on tribological and electrical performance of copper matrix composites. Results reveal a trade-off between lubrication efficiency and electrical conductivity, with an optimal concentration window identified for sliding contact applications.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Lubricants · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/3/35" target="_blank" rel="noopener">Physico-Mechanical Properties of Metal Matrix Self-Lubricating Composites Reinforced with Traditional and Nanometric Particles</a></p>
+        <p class="pub-authors">M Freschi, A Arrigoni, O Haiko, L Andena, J Kömi, C Castiglioni, G Dotelli</p>
+        <p class="pub-journal">Lubricants 10 (3), 35</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Comparison of metal matrix composites reinforced with traditional and nanometric WS₂ particles. Nano-WS₂ provides superior lubrication at lower concentrations but requires careful process control to prevent agglomeration.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">🎓</span><span>PhD Thesis · 2022</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2022</p>
+        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener">Production and characterization of self-lubricating metal matrix composites for sliding electrical contact in aerospace applications</a></p>
+        <p class="pub-authors">M Freschi</p>
+        <p class="pub-journal">PhD Thesis, Politecnico di Milano</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Doctoral thesis on Cu–WS₂ metal matrix composites for sliding electrical contacts in aerospace. Covers powder metallurgy processing, microstructural characterization, tribological testing, and life cycle considerations, establishing a comprehensive materials design framework.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--mat-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Lubricants · 2021</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2021</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener">Employment of Micro- and Nano-WS₂ Structures to Enhance the Tribological Properties of Copper Matrix Composites</a></p>
+        <p class="pub-authors">M Freschi, M Di Virgilio, G Zanardi, M Mariani, N Lecis, G Dotelli</p>
+        <p class="pub-journal">Lubricants 9 (5), 53</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Micro- and nano-structured WS₂ particles incorporated into copper matrices to improve tribological performance. Nano-WS₂ provides superior lubrication at lower concentrations compared to micro-sized particles.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--sust-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>PCNS · 2021</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2021</p>
+        <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
+        <p class="pub-authors">C Moletti, M Freschi, L Primavesi, G Dotelli</p>
+        <p class="pub-journal">3rd PCNS, Milan, Italy</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Life cycle assessment comparing manufacturing routes for aluminium electrolytic capacitors, quantifying global warming potential, energy consumption, and material depletion across the product life cycle.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--design-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">📄</span><span>Exp. Thermal · 2018</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2018</p>
+        <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
+        <p class="pub-authors">N Hurel, M Freschi, M Pailha, M Woloszyn</p>
+        <p class="pub-journal">Experimental Thermal and Fluid Science 92, 69–88</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Novel fluorescein tracer method for visualizing and quantifying air infiltration paths in lightweight timber frame wall assemblies, enabling non-destructive identification of thermal bridges with higher spatial resolution than conventional methods.</div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener" class="pub-thumb">
+        <div class="pub-placeholder" style="background:linear-gradient(135deg,var(--design-l),var(--bg2))">
+          <span style="font-size:1rem;opacity:0.35">🎓</span><span>MSc Thesis · 2016</span>
+        </div>
+      </a>
+      <div class="pub-body">
+        <p class="pub-year">2016</p>
+        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener">Experimental investigation of the air path in timber frame wall assembly</a></p>
+        <p class="pub-authors">M Freschi</p>
+        <p class="pub-journal">Master Thesis, Italy</p>
+        <span class="pub-toggle" onclick="toggleAbstract(this)">+ Abstract</span>
+        <div class="pub-abstract">Investigation of air infiltration pathways in timber frame wall assemblies using pressure differential testing and tracer gas techniques, characterizing air leakage and evaluating the effectiveness of airtightness measures in building envelopes.</div>
+      </div>
+    </div>
+
+  </div>
   <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" class="scholar-link" target="_blank" rel="noopener">View all on Google Scholar →</a>
 </div>
 
 <footer>
-  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--gold-pale)">Morphing Matter Lab</a></p>
+  <p>Marco Freschi <span class="footer-dot">·</span> UC Berkeley <span class="footer-dot">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--design-d)">Morphing Matter Lab</a></p>
   <p>© 2026</p>
 </footer>
+
+<script>
+function toggleAbstract(el){
+  const abs=el.nextElementSibling;
+  const open=abs.classList.toggle('open');
+  el.textContent=open?'− Abstract':'+ Abstract';
+}
+</script>
 </body>
 </html>
