@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marcofreschi.github.io/sitemap.xml
