@@ -57,7 +57,7 @@
     /* ── HERO ────────────────────────────────────────────────────────── */
     .hero{background:var(--g);padding-top:var(--nh);
       min-height:calc(var(--nh) + 180px);position:relative;overflow:visible}
-    .hero-inner{max-width:1100px;margin:0 auto;padding:2rem 2.5rem 2rem;
+    .hero-inner{max-width:1100px;margin:0 auto;padding:1.6rem 2.5rem 1.8rem;
       display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem}
     .hero-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;
       text-transform:uppercase;color:var(--gl);margin-bottom:.7rem;
@@ -66,8 +66,8 @@
     .hero-name{font-size:clamp(3rem,5.5vw,5rem);font-weight:300;color:#fff;
       line-height:.95;letter-spacing:-.02em;margin-bottom:.8rem}
     .hero-name em{font-style:italic;color:var(--gl)}
-    .hero-motto{font-family:var(--ser);font-size:1.05rem;font-style:italic;
-      color:rgba(255,255,255,.85);line-height:1.6;margin-bottom:1.4rem;max-width:42ch}
+    .hero-motto{font-family:var(--ser);font-size:1rem;font-style:italic;
+      color:rgba(255,255,255,.85);line-height:1.4;margin-bottom:1.2rem;white-space:nowrap}
     .hero-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.5rem}
     .chip{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
       text-transform:uppercase;padding:.25rem .7rem;
@@ -81,13 +81,13 @@
     .btn-cv:hover{background:var(--gl);color:var(--g)}
 
     /* Photo — absolute, straddles hero bottom */
-    .hero-photo{position:absolute;top:calc(var(--nh) + 1rem);right:calc(50% - 530px + 2.5rem);
-      width:260px;height:260px;z-index:20}
+    .hero-photo{position:absolute;top:auto;bottom:-50px;right:calc(50% - 530px + 2.5rem);
+      width:240px;height:240px;z-index:20}
     .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;
       border:5px solid var(--gl);box-shadow:0 12px 40px rgba(0,0,0,.35)}
 
     /* ── NEWS ────────────────────────────────────────────────────────── */
-    .news-bar{background:var(--bg2);border-bottom:1px solid var(--ln);
+    .news-bar{background:var(--bg2);border-bottom:1px solid var(--ln);padding-top:50px;
       display:flex;align-items:center;overflow:hidden;
       position:relative;z-index:1}
     .news-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
@@ -213,6 +213,7 @@
 
       .hero-inner{grid-template-columns:1fr;gap:0;padding:2rem 1.5rem 8rem}
       .hero-name{font-size:clamp(2.4rem,8vw,3.5rem)}
+      .hero-motto{white-space:normal}
       .hero-motto{font-size:.95rem;max-width:100%}
       .hero-photo{position:absolute;bottom:-80px;right:1.5rem;
         top:auto;width:140px;height:140px}
@@ -301,7 +302,7 @@
 </div>
 
 <!-- PUBLICATIONS + BIO -->
-<main class="page-body">
+<main class="page-body" style="padding-top:.5rem">
   <div class="two-col">
 
     <!-- PUBLICATIONS -->
