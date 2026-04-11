@@ -7,7 +7,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --g:#1C6B3A; --gm:#154f2b; --gl:#8ecfaa; --gp:rgba(46,139,87,0.12);
+      --g:#155230; --gm:#0f3d20; --gl:#8ecfaa; --gp:rgba(46,139,87,0.12);
       --n:#1A1A2E; --nm:#252540;
       --bg:#F8F8F6; --bg2:#EFEFED; --sur:#FFFFFF;
       --ink:#111; --mid:#555; --dim:#888;
@@ -45,16 +45,16 @@
       color:rgba(255,255,255,.55);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
     .hte::before{content:'';display:block;width:1rem;height:1px;background:rgba(255,255,255,.4)}
     .hn{font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;color:#fff;line-height:1;letter-spacing:-.01em;margin-bottom:.6rem}
-    .hn em{font-style:italic;color:rgba(255,255,255,.65)}
-    .hm{font-family:var(--ser);font-size:.95rem;font-style:italic;color:#fff;line-height:1.6;margin-bottom:1.2rem;max-width:44ch}
-    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem;align-items:center}
-    .chip{font-family:var(--mon);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.75)}
-    .btn{font-family:var(--mon);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.8rem;background:#fff;color:var(--g);border:1px solid #fff;display:inline-block;transition:background .2s,color .2s}
-    .btn:hover{background:var(--bg);color:var(--gm)}
+    .hn em{font-style:italic;color:#84ba96}
+    .hm{font-family:var(--ser);font-size:.95rem;font-style:italic;color:#e8e6e2;line-height:1.6;margin-bottom:1.2rem;max-width:44ch}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem;align-items:center;justify-content:flex-start}
+    .chip{font-family:var(--mon);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);background:rgba(255,255,255,.1)}
+    .btn{font-family:var(--mon);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.8rem;background:transparent;color:#84ba96;border:1px solid #84ba96;display:inline-block;transition:background .2s,color .2s}
+    .btn:hover{background:rgba(132,186,150,.15);color:#a8d4b8}
     .hp-wrap{position:absolute;top:calc(var(--nh) + 1rem);right:5%;
       z-index:20;width:340px}
     .hp{width:340px;height:340px;border-radius:50%;overflow:hidden;
-      border:6px solid var(--bg);box-shadow:0 16px 56px rgba(0,0,0,.35);background:var(--gm)}
+      border:6px solid #84ba96;box-shadow:0 16px 56px rgba(0,0,0,.35);background:var(--gm)}
     .hp img{width:100%;height:100%;object-fit:cover;display:block}
 
     .hb{display:none}
@@ -96,7 +96,7 @@
     .pc{padding:2.5rem 2rem 2.5rem 0;border-right:1px solid var(--ln)}
     .bc{padding:2.5rem 0 2.5rem 2.5rem}
     .ch{font-family:var(--ser);font-size:1.3rem;font-weight:300;color:var(--ink);
-      margin-bottom:1.2rem;padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
+      margin-bottom:1.2rem;padding-bottom:.5rem;border-bottom:2px solid var(--g)}
     .pi{padding:.85rem 0;border-bottom:1px solid var(--ln)}
     .pi:last-of-type{border-bottom:none}
     .py{font-family:var(--mon);font-size:.55rem;color:var(--g);margin-bottom:.15rem}
@@ -114,7 +114,7 @@
     .sb{display:inline-block;margin-top:1.2rem;font-family:var(--mon);font-size:.58rem;
       letter-spacing:.08em;text-transform:uppercase;background:var(--ink);
       color:#fff;padding:.55rem 1.2rem;transition:background .2s}
-    .sb:hover{background:var(--g)}
+    .sb:hover{background:var(--gm)}
 
     /* BIO */
     .bt p{font-size:.88rem;line-height:1.8;color:var(--ink)}
@@ -122,7 +122,7 @@
     .bt a{color:var(--g);border-bottom:1px solid var(--gp);transition:border-color .2s}
     .bt a:hover{border-bottom-color:var(--g)}
     .bsh{font-family:var(--ser);font-size:1rem;font-weight:400;color:var(--ink);
-      margin:1.8rem 0 .7rem;padding-bottom:.3rem;border-bottom:1px solid var(--ln)}
+      margin:1.8rem 0 .7rem;padding-bottom:.3rem;border-bottom:1px solid var(--g)}
     .mi{font-size:.83rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
     .mli{font-size:.8rem;color:var(--mid);line-height:1.6;
       padding-left:.8rem;border-left:2px solid var(--ln);margin-bottom:.25rem}
@@ -135,16 +135,16 @@
     .ri{background:var(--bg2);border-top:1px solid var(--ln)}
     .rii{max-width:1100px;margin:0 auto;padding:3rem 2.5rem}
     .rih{font-family:var(--ser);font-size:1.3rem;font-weight:300;color:var(--ink);font-style:normal;
-      margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
-    .rio{font-size:.86rem;color:var(--mid);line-height:1.75;max-width:72ch;margin:1rem 0 1.8rem}
+      margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:2px solid var(--g)}
+    .rio{font-size:.86rem;color:var(--mid);line-height:1.75;max-width:100%;margin:1rem 0 1.8rem}
     .rig{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
     .rip{padding:1.2rem 1.4rem;background:var(--sur)}
     .ritag{font-family:var(--mon);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;
       font-weight:700;margin-bottom:.5rem;padding:.2rem .5rem;
       display:inline-block;border-radius:2px}
-    .rip.mat .ritag{background:rgba(46,139,87,.12);color:var(--gm)}
-    .rip.des .ritag{background:rgba(26,26,46,.08);color:var(--nm)}
-    .rip.sus .ritag{background:rgba(46,139,87,.08);color:var(--gm)}
+    .rip.mat .ritag{background:rgba(21,82,48,.12);color:var(--g)}
+    .rip.des .ritag{background:rgba(21,82,48,.12);color:var(--g)}
+    .rip.sus .ritag{background:rgba(21,82,48,.12);color:var(--g)}
     .rip h4{font-family:var(--ser);font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
     .rip p{font-size:.8rem;color:var(--mid);line-height:1.6}
 
@@ -193,13 +193,13 @@
     <a href="CV_Freschi.pdf" target="_blank" rel="noopener" class="btn">Download CV</a>
   </div>
   <div class="hp-wrap">
-    <div class="hp"><img src="Profile.jpg" alt="Marco Freschi" onerror="this.parentElement.style.background='#154f2b'"></div>
+    <div class="hp"><img src="Profile.jpg" alt="Marco Freschi" onerror="this.parentElement.style.background='#0f3d20'"></div>
   </div>
 </div>
 
-<div class="nb" style="position:relative;z-index:1">
+<div class="nb" style="position:relative;z-index:1;display:flex;align-items:center">
   <div class="nt"><span class="np"></span>News</div>
-  <div class="ns">
+  <div class="ns" style="flex:1;min-width:0;overflow:hidden">
     <div class="ntr">
       <ul class="nl2">
         <li><span class="nd">Apr 2026</span><span class="ndo"></span><a href="https://vspa.berkeley.edu/news/vspas-cecilia-fura-honored-2026-chancellor%E2%80%99s-outstanding-staff-award" target="_blank" rel="noopener">Cecilia Fura honored with the 2026 Chancellor's Outstanding Staff Award</a></li>
@@ -215,6 +215,7 @@
       </ul>
     </div>
   </div>
+  <div style="width:360px;flex-shrink:0;background:#e8e6e2;height:36px"></div>
 </div>
 
 <div class="mc" style="padding-top:1rem">
