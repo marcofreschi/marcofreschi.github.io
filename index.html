@@ -56,19 +56,19 @@
 
     /* ── HERO ────────────────────────────────────────────────────────── */
     .hero{background:var(--g);padding-top:var(--nh);
-      min-height:calc(var(--nh) + 180px);position:relative;overflow:visible}
-    .hero-inner{max-width:1100px;margin:0 auto;padding:1.6rem 2.5rem 1.8rem;
+      min-height:calc(var(--nh) + 120px);position:relative;overflow:visible}
+    .hero-inner{max-width:1100px;margin:0 auto;padding:1.2rem 2.5rem 1.4rem;
       display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem}
     .hero-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;
-      text-transform:uppercase;color:var(--gl);margin-bottom:.7rem;
+      text-transform:uppercase;color:var(--gl);margin-bottom:.4rem;
       display:flex;align-items:center;gap:.6rem}
     .hero-eyebrow::before{content:'';width:1.2rem;height:1px;background:var(--gl);flex-shrink:0}
     .hero-name{font-size:clamp(3rem,5.5vw,5rem);font-weight:300;color:#fff;
-      line-height:.95;letter-spacing:-.02em;margin-bottom:.8rem}
+      line-height:.95;letter-spacing:-.02em;margin-bottom:.5rem}
     .hero-name em{font-style:italic;color:var(--gl)}
     .hero-motto{font-family:var(--ser);font-size:1rem;font-style:italic;
-      color:rgba(255,255,255,.85);line-height:1.4;margin-bottom:1.2rem;white-space:nowrap}
-    .hero-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.5rem}
+      color:rgba(255,255,255,.85);line-height:1.4;margin-bottom:.8rem;white-space:nowrap}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.9rem}
     .chip{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
       text-transform:uppercase;padding:.25rem .7rem;
       border:1px solid rgba(255,255,255,.25);
@@ -109,7 +109,7 @@
     .news-list a{font-family:var(--mono);font-size:.62rem;color:var(--mid);
       transition:color .2s}
     .news-list a:hover{color:var(--g)}
-    .news-gray{flex-shrink:0;background:var(--bg2);height:34px;width:330px}
+    .news-gray{flex-shrink:0;background:var(--bg2);height:34px;width:280px}
 
     @keyframes scroll-news{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -299,7 +299,7 @@
       </ul>
     </div>
   </div>
-  <div class="news-gray" aria-hidden="true"></div>
+  <div class="news-gray" aria-hidden="true" style="width:280px"></div>
 </div>
 
 <!-- PUBLICATIONS + BIO -->
