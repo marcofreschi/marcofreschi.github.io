@@ -56,8 +56,8 @@
 
     /* ── HERO ────────────────────────────────────────────────────────── */
     .hero{background:var(--g);padding-top:var(--nh);
-      min-height:calc(var(--nh) + 260px);position:relative;overflow:visible}
-    .hero-inner{max-width:1100px;margin:0 auto;padding:3rem 2.5rem 3.5rem;
+      min-height:calc(var(--nh) + 180px);position:relative;overflow:visible}
+    .hero-inner{max-width:1100px;margin:0 auto;padding:2rem 2.5rem 2rem;
       display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem}
     .hero-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;
       text-transform:uppercase;color:var(--gl);margin-bottom:.7rem;
@@ -81,10 +81,10 @@
     .btn-cv:hover{background:var(--gl);color:var(--g)}
 
     /* Photo — absolute, straddles hero bottom */
-    .hero-photo{position:absolute;top:calc(var(--nh) + 1.5rem);right:calc(50% - 530px + 2.5rem);
-      width:300px;height:300px;z-index:20}
+    .hero-photo{position:absolute;top:calc(var(--nh) + 1rem);right:calc(50% - 530px + 2.5rem);
+      width:260px;height:260px;z-index:20}
     .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;
-      border:5px solid var(--gl);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+      border:5px solid var(--gl);box-shadow:0 12px 40px rgba(0,0,0,.35)}
 
     /* ── NEWS ────────────────────────────────────────────────────────── */
     .news-bar{background:var(--bg2);border-bottom:1px solid var(--ln);
@@ -247,6 +247,7 @@
 <body>
 
 <nav>
+  <a href="index.html" class="nav-home" title="Home"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></a>
   <div class="nav-links">
     <a href="research.html">Research Statement</a>
     <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="nav-icon" title="Google Scholar"><svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a>
@@ -354,15 +355,6 @@
 
       <div class="pub-item">
         <span class="pub-num">6</span>
-        <p class="pub-year">2022</p>
-        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/192195" target="_blank" rel="noopener">Self-lubricating MMCs for sliding electrical contact in aerospace — PhD Thesis</a></p>
-        <p class="pub-journal">Politecnico di Milano</p>
-        <span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span>
-        <div class="pub-abstract">Doctoral thesis on Cu–WS₂ composites for aerospace sliding contacts. Covers processing, characterization, tribological testing, and life cycle considerations.</div>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-num">7</span>
         <p class="pub-year">2021</p>
         <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/9/5/53" target="_blank" rel="noopener">Micro- and Nano-WS₂ Structures to Enhance Tribological Properties of Copper Matrix Composites</a></p>
         <p class="pub-journal">Lubricants 9 (5), 53</p>
@@ -371,30 +363,12 @@
       </div>
 
       <div class="pub-item">
-        <span class="pub-num">8</span>
-        <p class="pub-year">2021</p>
-        <p class="pub-title"><a href="https://epci.eu/wp-content/uploads/2021/10/1_8-PCNS21-Moletti-et-alv2.pdf" target="_blank" rel="noopener">Comparative Life Cycle Assessment of Aluminium Electrolytic Capacitors</a></p>
-        <p class="pub-journal">3rd PCNS, Milan</p>
-        <span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span>
-        <div class="pub-abstract">LCA comparing manufacturing routes for aluminium electrolytic capacitors across GWP, energy, and material depletion.</div>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-num">9</span>
+        <span class="pub-num">7</span>
         <p class="pub-year">2018</p>
         <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0894177717303035" target="_blank" rel="noopener">Innovative use of fluorescein for the air path study within light-weight wall assemblies</a></p>
         <p class="pub-journal">Experimental Thermal and Fluid Science 92</p>
         <span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span>
         <div class="pub-abstract">Novel fluorescein tracer method for visualizing air infiltration paths in timber frame wall assemblies with higher spatial resolution than conventional methods.</div>
-      </div>
-
-      <div class="pub-item">
-        <span class="pub-num">10</span>
-        <p class="pub-year">2016</p>
-        <p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener">Experimental investigation of the air path in timber frame wall assembly — MSc Thesis</a></p>
-        <p class="pub-journal">Master Thesis, Italy</p>
-        <span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span>
-        <div class="pub-abstract">Air infiltration pathways in timber frame walls using pressure differential testing and tracer gas techniques.</div>
       </div>
 
       <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="scholar-btn">View all on Google Scholar →</a>
