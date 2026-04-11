@@ -7,7 +7,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --g:#2E8B57; --gm:#236b42; --gl:#7BBFA0; --gp:rgba(46,139,87,0.12);
+      --g:#1C6B3A; --gm:#154f2b; --gl:#8ecfaa; --gp:rgba(46,139,87,0.12);
       --n:#1A1A2E; --nm:#252540;
       --bg:#F8F8F6; --bg2:#EFEFED; --sur:#FFFFFF;
       --ink:#111; --mid:#555; --dim:#888;
@@ -40,24 +40,27 @@
     /* HERO */
     .ht{background:var(--g);padding:calc(var(--nh) + 2rem) 2.5rem 2rem;
       display:grid;grid-template-columns:1fr 1fr;min-height:calc(var(--nh) + 220px);
-      align-items:center}
+      align-items:center;position:relative;overflow:visible}
     .hte{font-family:var(--mon);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
       color:rgba(255,255,255,.55);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
     .hte::before{content:'';display:block;width:1rem;height:1px;background:rgba(255,255,255,.4)}
     .hn{font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;color:#fff;line-height:1;letter-spacing:-.01em;margin-bottom:.6rem}
     .hn em{font-style:italic;color:rgba(255,255,255,.65)}
-    .hm{font-family:var(--ser);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:1.2rem;max-width:44ch}
+    .hm{font-family:var(--ser);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.88);line-height:1.6;margin-bottom:1.2rem;max-width:44ch}
     .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem}
     .chip{font-family:var(--mon);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.55)}
-    .btn{font-family:var(--mon);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.8rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);display:inline-block;transition:background .2s,border-color .2s}
-    .btn:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5)}
-    .hp-wrap{display:flex;align-items:center;justify-content:center;padding:1rem}
-    .hp{width:min(300px,80%);aspect-ratio:1;border-radius:50%;overflow:hidden;
-      border:4px solid rgba(255,255,255,0.2);box-shadow:0 8px 40px rgba(0,0,0,.25);background:var(--gm)}
+    .btn{font-family:var(--mon);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.8rem;background:#fff;color:var(--g);border:1px solid #fff;display:inline-block;transition:background .2s,color .2s}
+    .btn:hover{background:var(--bg);color:var(--gm)}
+    .hp-wrap{display:flex;align-items:center;justify-content:center;
+      padding-bottom:0;position:relative;z-index:20}
+    .hp{width:min(320px,85%);aspect-ratio:1;border-radius:50%;overflow:hidden;
+      border:5px solid var(--bg);box-shadow:0 12px 48px rgba(0,0,0,.3);background:var(--gm);
+      position:relative;bottom:-60px}
     .hp img{width:100%;height:100%;object-fit:cover;display:block}
 
     .hb{display:none}
     .hbi{display:none}
+    .nb-spacer{height:0}
     .hm{font-family:var(--ser);font-size:1.05rem;font-style:italic;
       color:var(--mid);line-height:1.6;margin-bottom:1.4rem}
     .chips{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-bottom:1.4rem}
@@ -69,7 +72,7 @@
     .btn:hover{background:var(--gm)}
 
     /* NEWS */
-    .nb{background:var(--n);border-bottom:1px solid rgba(255,255,255,.06);
+    .nb{background:#2a2a2a;border-bottom:1px solid rgba(255,255,255,.04);
       display:flex;align-items:center;overflow:hidden}
     .nt{font-family:var(--mon);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
       color:rgba(255,255,255,.65);padding:0 1.2rem;white-space:nowrap;flex-shrink:0;
@@ -79,11 +82,11 @@
     .ntr{display:flex;animation:sn 52s linear infinite;width:max-content}
     .ntr:hover{animation-play-state:paused}
     .nl2{display:flex;list-style:none;flex-shrink:0}
-    .nl2 li{display:flex;align-items:center;padding:0 2rem;height:38px;
+    .nl2 li{display:flex;align-items:center;padding:0 2rem;height:36px;
       border-right:1px solid rgba(255,255,255,.07);white-space:nowrap}
     .nd{font-family:var(--mon);font-size:.58rem;color:rgba(255,255,255,.35);margin-right:.5rem}
     .ndo{width:3px;height:3px;border-radius:50%;background:var(--g);margin-right:.5rem;flex-shrink:0}
-    .nl2 a{font-family:var(--mon);font-size:.63rem;color:rgba(255,255,255,.8);transition:color .2s}
+    .nl2 a{font-family:var(--mon);font-size:.63rem;color:rgba(255,255,255,.65);transition:color .2s}
     .nl2 a:hover{color:#fff}
     @keyframes sn{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -195,7 +198,7 @@
   </div>
 </div>
 
-<div class="nb">
+<div class="nb" style="position:relative;z-index:1">
   <div class="nt"><span class="np"></span>News</div>
   <div class="ns">
     <div class="ntr">
