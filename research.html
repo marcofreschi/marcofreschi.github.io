@@ -55,8 +55,8 @@
 
     /* RESEARCH STATEMENT — option A */
     .rs-block{background:var(--g);padding:2.5rem;margin-bottom:3rem}
-    .rs-intro{font-family:var(--ser);font-size:1rem;font-style:italic;
-      color:rgba(255,255,255,.82);line-height:1.85;margin-bottom:2rem;max-width:100%}
+    .rs-intro{font-family:var(--ser);font-size:1rem;font-style:normal;
+      color:rgba(255,255,255,.92);line-height:1.85;margin-bottom:2rem;max-width:100%}
     .rs-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
     .rs-col{background:rgba(255,255,255,.07);padding:1.4rem;
       border-top:2px solid var(--gl)}
@@ -98,7 +98,7 @@
     .extra-val{font-size:.8rem;color:var(--mid);line-height:1.5}
 
     /* PUBLICATIONS */
-    .pub-item{padding:1rem 0 1rem 2rem;border-bottom:1px solid var(--ln);
+    .pub-item{padding:1rem 0 1rem 1.5rem;border-bottom:1px solid var(--ln);
       border-left:2px solid transparent;transition:border-color .2s,background .15s;
       position:relative}
     .pub-item:hover{border-left-color:var(--g);background:rgba(21,82,48,.03)}
@@ -129,7 +129,7 @@
     .scholar-btn:hover{background:var(--gd)}
 
     /* COLLAB MAP */
-    .map-section{padding:3rem 0;border-top:1px solid var(--ln)}
+    .map-section{padding:2rem 0 1.5rem;border-top:1px solid var(--ln)}
     .map-wrap{width:100%;border:1px solid var(--ln);overflow:hidden;background:#e0edd4}
     .map-hint{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;
       color:var(--dim);text-transform:uppercase;text-align:center;margin-top:.8rem}
@@ -185,15 +185,15 @@
     <div class="rs-cols">
       <div class="rs-col">
         <span class="rs-col-tag">Materials Science</span>
-        <p>Rigorous, data-driven investigation of functional materials — from tribological metal matrix composites to biodegradable morphing systems. Powder metallurgy, multiscale characterization, wear mechanics.</p>
+        <p>Rigorous, data-driven investigation of functional materials. Material characterization techniques are used to understand the properties that govern the mechanisms and performance of a material, in order to exploit them most effectively across different applications.</p>
       </div>
       <div class="rs-col">
         <span class="rs-col-tag">Design Engineering</span>
-        <p>Application-driven research anchored to real requirements. Nature provides the blueprint — seed dispersal mechanisms, soil penetration, hygroscopic actuation — translated into scalable engineered solutions.</p>
+        <p>Application-driven research anchored to real requirements. Nature has already solved many of the world's most complex challenges — drawing inspiration from these solutions and translating them into scalable, engineered systems is the core of bioinspired design.</p>
       </div>
       <div class="rs-col">
         <span class="rs-col-tag">Sustainability</span>
-        <p>Environmental, economic, and social dimensions integrated from day one. Life-cycle assessment applied to biodegradable seeding systems — quantifying trade-offs, validating impact, guiding material selection.</p>
+        <p>Environmental, economic, and social dimensions integrated into the design stage. Life-cycle approach applied to systems, quantifying trade-offs, validating impact, and guiding material selection.</p>
       </div>
     </div>
   </div>
@@ -233,7 +233,7 @@
       </div>
       <div>
         <p class="extra-lbl">Collaborations</p>
-        <p class="extra-val">Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
+        <p class="extra-val">UC Berkeley · Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
       </div>
     </div>
   </div>
@@ -255,7 +255,7 @@
       <div class="project-meta">
         <div class="meta-row">
           <p class="meta-lbl">Funding</p>
-          <p class="meta-val">NSF GCR · Bulat Utemuratov Foundation</p>
+          <p class="meta-val">NSF GCR</p>
         </div>
         <div class="meta-row">
           <p class="meta-lbl">Lab</p>
@@ -270,7 +270,7 @@
       </div>
       <div>
         <p class="extra-lbl">Collaborations</p>
-        <p class="extra-val">Univ. of Pennsylvania · UC Berkeley · Syracuse University</p>
+        <p class="extra-val">UC Berkeley · Univ. of Pennsylvania · Syracuse University</p>
       </div>
     </div>
   </div>
@@ -307,7 +307,7 @@
       </div>
       <div>
         <p class="extra-lbl">Collaborations</p>
-        <p class="extra-val">University of Oulu · University of Milan</p>
+        <p class="extra-val">Politecnico di Milano · University of Oulu</p>
       </div>
     </div>
   </div>
@@ -322,7 +322,7 @@
 </div>
 
   <!-- PUBLICATIONS -->
-  <h2 class="sec-head" style="margin-top:3rem">Publications</h2>
+  <h2 class="sec-head" style="margin-top:0">Publications</h2>
   <div>
 
     <div class="pub-item"><span class="pub-num">1</span><p class="pub-year">2024 <span class="pub-latest">Latest</span></p><p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p><p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p><p class="pub-journal">Next Materials 2, 100083</p><span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span><div class="pub-abstract">Cu–WS₂ composites produced via ball milling and powder metallurgy. Systematically investigates the effect of milling time on microstructure, hardness, electrical conductivity, and tribological performance.</div></div>
@@ -346,7 +346,8 @@
     <div class="pub-item"><span class="pub-num">10</span><p class="pub-year">2016</p><p class="pub-title"><a href="https://www.politesi.polimi.it/handle/10589/123284" target="_blank" rel="noopener">Experimental investigation of the air path in timber frame wall assembly — MSc Thesis</a></p><p class="pub-authors">M Freschi</p><p class="pub-journal">Master Thesis, Italy</p><span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span><div class="pub-abstract">Air infiltration pathways in timber frame walls using pressure differential testing and tracer gas techniques.</div></div>
 
   </div>
-  <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="scholar-btn" style="margin-left:2rem">View all on Google Scholar →</a>
+  <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="scholar-btn">View all on Google Scholar →</a>
+  <div style="height:3rem"></div>
 
 
 
