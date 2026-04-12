@@ -243,6 +243,26 @@
       .news-bar{padding-top:55px}
       .news-gray{width:120px}
     }
+
+    .mentoring-block{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1rem}
+    .mentoring-total{flex-shrink:0;text-align:center}
+    .mentoring-num{font-family:var(--ser);font-size:3.8rem;font-weight:300;color:var(--g);line-height:1}
+    .mentoring-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:2px;line-height:1.4}
+    .mentoring-cards{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:.3rem}
+    .mentoring-card{background:rgba(21,82,48,.05);padding:.7rem .9rem;border-left:3px solid var(--g)}
+    .mentoring-card-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:3px}
+    .mentoring-card-n{font-family:var(--ser);font-size:1.4rem;font-weight:300;color:var(--g);line-height:1;margin-bottom:3px}
+    .mentoring-card-detail{font-family:var(--mono);font-size:.52rem;color:var(--dim);line-height:1.5}
+    .sl-list{display:flex;flex-direction:column}
+    .sl-row{display:grid;grid-template-columns:52px 1fr;gap:.8rem;padding:.5rem 0;border-bottom:.5px solid var(--ln);align-items:baseline}
+    .sl-year{font-family:var(--mono);font-size:.58rem;color:var(--dim);padding-top:1px}
+    .sl-year.green{color:var(--g);font-weight:700}
+    .sl-body{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px}
+    .sl-title{font-size:.83rem;color:var(--ink)}
+    .sl-badge{font-family:var(--mono);font-size:.48rem;background:var(--g);color:#fff;padding:1px 5px;letter-spacing:.06em}
+    .sl-org{font-family:var(--mono);font-size:.52rem;color:var(--dim)}
+    .sl-more{margin-top:.5rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g);background:none;border:none;border-bottom:1px solid var(--gx);cursor:pointer;padding:0}
+    .sl-more:hover{border-bottom-color:var(--g)}
   </style>
 </head>
 <body>
@@ -383,37 +403,99 @@
         <p>Marco Freschi is a postdoctoral fellow at the <a href="https://morphingmatter.org/" target="_blank" rel="noopener">Morphing Matter Lab</a>, Department of Mechanical Engineering, UC Berkeley, working under the direction of Professor Lining Yao. <strong>His research focuses on engineered bioinspired self-burying seeds: passive actuators that respond to environmental stimuli without electronics.</strong></p>
         <p>After graduating, Marco joined Accenture as a consultant before pursuing his PhD at Politecnico di Milano under the supervision of Professor <a href="https://www.cmic.polimi.it/persone/docenti-e-ricercatori/dotelli-giovanni/" target="_blank" rel="noopener">Giovanni Dotelli</a>, where he studied the tribological and mechanical behavior of metal matrix composites. He then moved to UC Berkeley thanks to a postdoctoral fellowship sponsored by Enel Foundation and managed by Professor <a href="https://physics.berkeley.edu/people/faculty/alessandra-lanzara" target="_blank" rel="noopener">Alessandra Lanzara</a>.</p>
         <p>His flagship project is a <a href="https://morphingmatter.org/projects/seed" target="_blank" rel="noopener">self-burying seed carrier</a> for ecological restoration — a biodegradable wooden structure inspired by the Erodium seed mechanism that drills autonomously into soil using only moisture as its power source. Funded by NSF GCR and featured by <a href="https://edition.cnn.com/world/powered-by-rain-seed-carrier-reforest-remote-areas-scn-climate-spc-intl" target="_blank" rel="noopener">CNN</a> and <a href="https://edition.cnn.com/2025/12/16/world/video/self-burying-eseeds-future-reforestation-tech-for-good-spc-digvid" target="_blank" rel="noopener">CNN Tech for Good</a>, it represents a new class of passive, electronics-free systems designed for large-scale reforestation in remote and challenging environments.</p>
-        <p>Marco has served as PhD Students Representative at Politecnico di Milano and currently as Social Co-chair of the <a href="https://bpa.berkeley.edu" target="_blank" rel="noopener">Berkeley Postdoctoral Association</a>.</p>
-        <p>Marco is actively pursuing faculty and research positions for the 2026–2027 academic year.</p>
       </div>
 
       <div class="bpa-box">
-        <p><strong>Berkeley Postdoctoral Association</strong> — As Social Co-chair, Marco organizes events for the postdoc community and leads the <em>Queer Coffee Hour</em>: a monthly meetup dedicated to promoting community and culture within the postdoc and visiting scholar community.</p>
+        <p><strong><a href="https://bpa.berkeley.edu" target="_blank" rel="noopener" style="color:var(--g);border-bottom:1px solid var(--gx)">Berkeley Postdoctoral Association</a></strong> — As Social Co-chair, Marco manages events for the postdoc community and leads the <em>Queer Coffee Hour</em>: a monthly meetup dedicated to promoting community and culture within the postdoc and visiting scholar community.</p>
       </div>
 
+      <!-- MENTORING -->
       <h3 class="bio-sub">Mentoring</h3>
-      <div class="mt-block">
-        <p class="mt-inst">University of California, Berkeley — co-supervisor</p>
-        <p class="mt-item">Mechanical Engineering — 4 undergraduate students (student assistant)</p>
-        <p class="mt-item">Mechanical Engineering — 5 graduate students (capstone project)</p>
-        <p class="mt-item">Electrical Engineering &amp; Computer Sciences — 4 undergraduate students (final project)</p>
-      </div>
-      <div class="mt-block">
-        <p class="mt-inst">Politecnico di Milano — co-supervisor for thesis projects</p>
-        <p class="mt-item">Materials Engineering — 6 master's and 23 bachelor's students</p>
-        <p class="mt-item">Chemical Engineering — 1 master's student</p>
-      </div>
-
-      <h3 class="bio-sub">Teaching</h3>
-      <div class="mt-block">
-        <p class="mt-inst">Politecnico di Milano — teaching assistant</p>
-        <p class="mt-item">Sustainable Materials for Architecture [2021–22]</p>
-        <p class="mt-item">Environmental Sustainability and LCA of Building Materials [2020–21]</p>
-        <p class="mt-item">Innovative Materials for Architecture [2019–21]</p>
-        <p class="mt-item">Science and Technology of Materials [2018–19]</p>
-        <p class="mt-item">Product Performance in Fashion Design [2018–22]</p>
+      <div class="mentoring-block">
+        <div class="mentoring-total">
+          <div class="mentoring-num">43</div>
+          <div class="mentoring-label">supervised<br>students</div>
+        </div>
+        <div class="mentoring-cards">
+          <div class="mentoring-card">
+            <div class="mentoring-card-tag">Undergraduate</div>
+            <div class="mentoring-card-n">31</div>
+            <div class="mentoring-card-detail">23 · Politecnico di Milano<br>8 · UC Berkeley</div>
+          </div>
+          <div class="mentoring-card">
+            <div class="mentoring-card-tag">Graduate</div>
+            <div class="mentoring-card-n">12</div>
+            <div class="mentoring-card-detail">7 · Politecnico di Milano<br>5 · UC Berkeley</div>
+          </div>
+        </div>
       </div>
 
+      <!-- SERVICE & LEADERSHIP -->
+      <h3 class="bio-sub">Service &amp; Leadership</h3>
+      <div class="sl-list">
+
+        <div class="sl-row">
+          <div class="sl-year green">2026</div>
+          <div class="sl-body">
+            <span class="sl-title">Chancellor's Outstanding Staff Award</span>
+            <span class="sl-badge">nominee → recipient</span>
+            <span class="sl-org">UC Berkeley</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <div class="sl-year">2026–</div>
+          <div class="sl-body">
+            <span class="sl-title">Community &amp; Culture Committee Chair · BPA</span>
+            <span class="sl-org">UC Berkeley</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <div class="sl-year">2024–</div>
+          <div class="sl-body">
+            <span class="sl-title">Social Committee Co-chair · BPA</span>
+            <span class="sl-org">UC Berkeley</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <div class="sl-year">2023–</div>
+          <div class="sl-body">
+            <span class="sl-title">Topical Advisor Panel · <em>Lubricants</em>, MDPI</span>
+          </div>
+        </div>
+        <div class="sl-row" style="border-bottom:none">
+          <div class="sl-year">2019–</div>
+          <div class="sl-body">
+            <span class="sl-title">Peer Reviewer</span>
+            <span class="sl-org">11 journals</span>
+          </div>
+        </div>
+
+        <!-- Hidden rows -->
+        <div id="sl-extra" style="display:none">
+          <div class="sl-row">
+            <div class="sl-year">2023</div>
+            <div class="sl-body"><span class="sl-title">ERC Consolidator Grant Reviewer</span></div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-year">2021–22</div>
+            <div class="sl-body">
+              <span class="sl-title">Research Fellows Representative</span>
+              <span class="sl-org">Politecnico di Milano</span>
+            </div>
+          </div>
+          <div class="sl-row" style="border-bottom:none">
+            <div class="sl-year">2018–21</div>
+            <div class="sl-body">
+              <span class="sl-title">PhD School Representative</span>
+              <span class="sl-org">Politecnico di Milano</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="sl-more" onclick="var e=document.getElementById('sl-extra');var b=this;if(e.style.display==='none'){e.style.display='block';b.textContent='Show less ↑';}else{e.style.display='none';b.textContent='Show more ↓';}">Show more ↓</button>
+      </div>
+
+      <!-- CONTACT -->
       <h3 class="bio-sub">Contact</h3>
       <p style="font-size:.85rem;color:var(--mid)">mfreschi [at] berkeley [dot] edu</p>
       <div class="contact-links">
