@@ -213,27 +213,40 @@
       .nav-links{gap:1.2rem}
       .nav-links a{font-size:.6rem}
 
-      .hero-inner{grid-template-columns:1fr;gap:0;padding:2rem 1.5rem 8rem}
-      .hero-name{font-size:clamp(2.4rem,8vw,3.5rem)}
-      .hero-motto{white-space:normal}
-      .hero-motto{font-size:.95rem;max-width:100%}
-      .hero-photo{position:absolute;bottom:-80px;right:1.5rem;
-        top:auto;width:140px;height:140px}
+      /* HERO — compact, photo small bottom-right, no huge gap */
+      .hero{min-height:0}
+      .hero-inner{grid-template-columns:1fr;gap:0;padding:1.4rem 1.2rem 1.4rem}
+      .hero-name{font-size:clamp(2.2rem,8vw,3.2rem);margin-bottom:.4rem}
+      .hero-motto{white-space:normal;font-size:.92rem;max-width:100%;margin-bottom:.8rem}
+      .hero-chips{margin-bottom:.8rem}
+      .hero-photo{width:120px;height:120px;bottom:-40px;right:1.2rem;top:auto}
       .hero-photo img{border-width:3px}
 
-      .news-bar{padding-top:80px}
-      .news-gray{width:160px}
+      /* NEWS — padding matches photo overflow */
+      .news-bar{padding-top:40px}
+      .news-gray{width:140px}
 
+      /* LAYOUT — bio first, then pubs */
       .page-body{padding:0 1.2rem}
-      .two-col{grid-template-columns:1fr;border-bottom:none}
-      .pub-col{padding:2rem 0;border-right:none;border-bottom:1px solid var(--ln)}
-      .bio-col{padding:2rem 0}
+      .two-col{grid-template-columns:1fr;border-bottom:none;display:flex;flex-direction:column}
+      .pub-col{order:2;padding:1.5rem 0;border-right:none;border-top:1px solid var(--ln)}
+      .bio-col{order:1;padding:1.5rem 0;border-bottom:none}
       .pub-num{display:none}
       .pub-item{padding-left:0;border-left:none}
       .pub-item:hover{border-left:none;background:rgba(21,82,48,.03)}
 
+      /* Hide pubs 4+ on mobile, show more button */
+      .pub-item:nth-of-type(n+4){display:none}
+      .pub-item.pub-visible{display:block}
+      .pub-show-more{display:block}
+
+      /* Research interests */
       .ri-grid{grid-template-columns:1fr}
       .ri-inner{padding:2rem 1.2rem}
+
+      /* Mentoring cards */
+      .mentoring-block{flex-direction:column;gap:1rem}
+      .mentoring-cards{grid-template-columns:1fr 1fr}
 
       footer{flex-direction:column;gap:.4rem;text-align:center;padding:1.2rem 1.5rem}
     }
@@ -241,9 +254,9 @@
       .hero-chips{gap:.3rem}
       .chip{font-size:.5rem;padding:.2rem .5rem}
       .nav-links a[href*="Research"]{display:none}
-      .hero-photo{width:110px;height:110px;bottom:-55px;right:1rem}
-      .news-bar{padding-top:55px}
-      .news-gray{width:120px}
+      .hero-photo{width:100px;height:100px;bottom:-35px;right:1rem}
+      .news-bar{padding-top:35px}
+      .news-gray{width:110px}
     }
 
     .mentoring-block{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1rem}
@@ -395,6 +408,12 @@
         <div class="pub-abstract">Novel fluorescein tracer method for visualizing air infiltration paths in timber frame wall assemblies with higher spatial resolution than conventional methods.</div>
       </div>
 
+      <button class="pub-show-more" style="display:none;margin:.8rem 0;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--g);color:var(--g);padding:.5rem 1.2rem;cursor:pointer;width:100%" onclick="
+        var items=document.querySelectorAll('.pub-col .pub-item');
+        items.forEach(function(el){el.style.display='block';});
+        this.style.display='none';
+        document.getElementById('scholar-btn-mob').style.display='inline-flex';
+      ">Show all publications ↓</button>
       <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="scholar-btn">View all on Google Scholar →</a>
     </section>
 
@@ -541,6 +560,25 @@
 </footer>
 
 <script>
+// Mobile: show only first 3 publications
+(function(){
+  function initMobilePubs(){
+    if(window.innerWidth > 900) return;
+    var items = document.querySelectorAll('.pub-col .pub-item');
+    var btn = document.querySelector('.pub-show-more');
+    if(!btn) return;
+    var hidden = 0;
+    items.forEach(function(el, i){
+      if(i >= 3){ el.style.display='none'; hidden++; }
+    });
+    if(hidden > 0) btn.style.display='block';
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', initMobilePubs);
+  } else {
+    initMobilePubs();
+  }
+})();
 function toggleAbs(el){
   const a=el.nextElementSibling;
   const o=a.classList.toggle('open');

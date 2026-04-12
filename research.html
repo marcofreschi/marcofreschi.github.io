@@ -100,12 +100,12 @@
     .extra-val{font-size:.8rem;color:var(--mid);line-height:1.5}
 
     /* PUBLICATIONS */
-    .pub-item{padding:1rem 0 1rem 1.5rem;border-bottom:1px solid var(--ln);
+    .pub-item{padding:1rem 0 1rem 0;border-bottom:1px solid var(--ln);
       border-left:2px solid transparent;transition:border-color .2s,background .15s;
       position:relative}
     .pub-item:hover{border-left-color:var(--g);background:rgba(21,82,48,.03)}
     .pub-item:last-of-type{border-bottom:none}
-    .pub-num{position:absolute;top:.8rem;left:-1.6rem;font-family:var(--ser);
+    .pub-num{position:absolute;top:.8rem;left:-1.8rem;font-family:var(--ser);
       font-size:2rem;color:var(--g);opacity:.08;line-height:1;pointer-events:none}
     .pub-year{font-family:var(--mono);font-size:.56rem;color:var(--g);margin-bottom:.2rem}
     .pub-latest{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;
@@ -149,14 +149,47 @@
 
     @media(max-width:900px){
       nav{padding:0 1.2rem}
-      .page-hero{padding:calc(var(--nh)+1.5rem) 1.5rem 2rem}
-      .content{padding:2rem 1.5rem}
-      .rs-cols{grid-template-columns:1fr}
-      .project-body{grid-template-columns:1fr}
-      .project-extra{grid-template-columns:1fr}
+
+      /* PAGE HERO */
+      .page-hero{padding:calc(var(--nh)+1.2rem) 1.2rem 1.5rem}
+      .page-title{font-size:1.4rem;white-space:normal;line-height:1.2}
+
+      /* CONTENT */
+      .content{padding:1.5rem 1.2rem}
+
+      /* RESEARCH STATEMENT BLOCK */
+      .rs-block{padding:1.5rem 1.2rem}
+      .rs-intro{font-size:.88rem;line-height:1.75}
+      .rs-cols{grid-template-columns:1fr;gap:1px}
+      .rs-col{padding:1rem}
+
+      /* PROJECTS */
+      .project-header{padding:.8rem 1rem;grid-template-columns:2.5rem 1fr}
+      .project-num{font-size:1.8rem}
+      .project-title{font-size:1rem}
+      .project-body{grid-template-columns:1fr;gap:1rem;padding:1rem}
+      .project-extra{grid-template-columns:1fr;gap:.8rem;padding:.8rem 1rem}
+      .project-desc{font-size:.83rem}
+
+      /* MAP */
+      .map-section{padding:1.2rem 0}
+
+      /* PUBLICATIONS */
       .pub-num{display:none}
-      .pub-item{padding-left:0;border-left:none}
+      .pub-item{padding-left:0;border-left:none;padding:.8rem 0}
+      .pub-title{font-size:.84rem}
+      .pub-authors{font-size:.7rem}
+
+      /* SCHOLAR BTN */
+      .scholar-btn{width:100%;justify-content:center;margin-top:1rem}
+
       footer{flex-direction:column;gap:.3rem;text-align:center;padding:1.2rem 1.5rem}
+    }
+    @media(max-width:480px){
+      .page-title{font-size:1.2rem}
+      .rs-intro{font-size:.84rem}
+      .content{padding:1.2rem 1rem}
+      .rs-block{padding:1.2rem 1rem}
     }
   </style>
 </head>
@@ -321,11 +354,12 @@
     <p class="map-hint">Click a pin · Click a name to visit profile · Click outside to reset</p>
   </div>
 
-</div>
+
+<div class="content" style="padding-top:0">
 
   <!-- PUBLICATIONS -->
   <h2 class="sec-head" style="margin-top:0">Publications</h2>
-  <div>
+  <div style="position:relative;padding-left:2rem">
 
     <div class="pub-item"><span class="pub-num">1</span><p class="pub-year">2024 <span class="pub-latest">Latest</span></p><p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener">Analysis of ball milling time to produce self-lubricating copper-tungsten disulfide composite: best trade-off between tribological performance and electrical properties</a></p><p class="pub-authors">M Freschi, M Di Virgilio, L Andena, M Mariani, O Haiko, J Kömi, N Lecis et al.</p><p class="pub-journal">Next Materials 2, 100083</p><span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span><div class="pub-abstract">Cu–WS₂ composites produced via ball milling and powder metallurgy. Systematically investigates the effect of milling time on microstructure, hardness, electrical conductivity, and tribological performance.</div></div>
 
@@ -350,6 +384,7 @@
   </div>
   <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="scholar-btn">View all on Google Scholar →</a>
   <div style="height:3rem"></div>
+</div>
 
 
 
