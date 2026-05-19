@@ -82,7 +82,7 @@
     .status-dot.done{background:rgba(255,255,255,.35);animation:none}
     .status-text{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;
       text-transform:uppercase;color:rgba(255,255,255,.55)}
-    .project-body{padding:1.5rem;display:grid;grid-template-columns:1fr 1fr 200px;gap:1.5rem;align-items:start}
+    .project-body{display:grid;grid-template-columns:1fr 1fr;min-height:180px}
     .project-desc{font-size:.87rem;line-height:1.75;color:var(--mid)}
     .project-meta{}
     .meta-row{margin-bottom:.65rem}
@@ -92,9 +92,7 @@
     .meta-val a{color:var(--g);border-bottom:1px solid var(--gx);transition:border-color .2s}
     .meta-val a:hover{border-bottom-color:var(--g)}
     /* Techniques + Collaborations: full-width band */
-    .project-extra{padding:1rem 1.5rem;background:var(--bg2);
-      border-top:1px solid var(--ln);
-      display:block}
+    .project-extra{padding:.6rem 1.5rem;background:var(--bg2);border-top:1px solid var(--ln)}
     .extra-lbl{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
       text-transform:uppercase;color:var(--g);margin-bottom:.2rem}
     .extra-val{font-size:.8rem;color:var(--mid);line-height:1.5}
@@ -158,6 +156,29 @@
     .project-img.active .project-img-hint{color:#fff}
     .project-img.done .project-img-hint{color:var(--g)}
     .project-img svg{opacity:.25}
+
+    .project-desc{padding:1.2rem 1.2rem 1.2rem 1.5rem;font-size:.84rem;line-height:1.8;color:var(--mid);border-right:1px solid var(--ln)}
+    .project-right{display:flex;flex-direction:column}
+    .project-img{aspect-ratio:1/1;width:100%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+    .project-img img,.project-img video{width:100%;height:100%;object-fit:cover;display:block}
+    .project-img.active{background:var(--g)}
+    .project-img.done{background:#f0f7f3;border-bottom:1px dashed var(--gx)}
+    .project-img-hint{font-family:var(--mono);font-size:.42rem;letter-spacing:.08em;text-transform:uppercase}
+    .project-img.active .project-img-hint{color:rgba(255,255,255,.3)}
+    .project-img.done .project-img-hint{color:var(--gx)}
+    .project-meta-block{padding:.7rem 1rem;flex:1;background:#fafaf8;border-top:1px solid var(--ln)}
+    .meta-row{margin-bottom:.4rem}
+    .meta-row:last-child{margin-bottom:0}
+    .meta-lbl{font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.1rem}
+    .meta-val{font-size:.75rem;color:var(--ink);line-height:1.4}
+    .meta-val a{color:var(--g);border-bottom:1px solid var(--gx);transition:border-color .2s}
+    .meta-val a:hover{border-bottom-color:var(--g)}
+    .extra-lbl{font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.1rem}
+    .extra-val{font-size:.75rem;color:var(--mid);line-height:1.5}
+    /* 2-column project grid */
+    .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3rem}
+    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s}
+    .project:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
     @media(max-width:900px){
@@ -180,8 +201,8 @@
       .project-header{padding:.8rem 1rem;grid-template-columns:2.5rem 1fr}
       .project-num{font-size:1.8rem}
       .project-title{font-size:1rem}
-      .project-body{grid-template-columns:1fr;gap:1rem;padding:1rem}
-      .project-extra{grid-template-columns:1fr;gap:.8rem;padding:.8rem 1rem}
+      .project-body{display:grid;grid-template-columns:1fr 1fr;min-height:180px}
+      .project-extra{padding:.6rem 1.5rem;background:var(--bg2);border-top:1px solid var(--ln)}
       .project-desc{font-size:.83rem}
 
       /* MAP */
@@ -250,6 +271,8 @@
   <h2 class="sec-head">Research Projects</h2>
 
   <!-- PROJECT 01 -->
+  <div class="projects-grid">
+
   <div class="project">
     <div class="project-header">
       <div class="project-num">01</div>
@@ -262,33 +285,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Nature has spent millions of years perfecting seed dispersal. This project develops morphing structures — inspired by dandelion, maple samara, and Erodium seeds — that self-deploy, orient, and anchor upon contact with soil. The goal: scalable, biodegradable systems for ecological restoration and precision agriculture.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Nature has spent millions of years perfecting seed dispersal. This project develops morphing structures — inspired by dandelion, maple samara, and Erodium seeds — that self-deploy, orient, and anchor upon contact with soil. The goal: scalable, biodegradable systems for ecological restoration and precision agriculture.</div>
+      <div class="project-right">
+        <div class="project-img active">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(255,255,255,.25)"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">img / .gif</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">NSF GCR · Bulat Utemuratov Foundation</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://morphingmatter.org/" target="_blank" rel="noopener">Morphing Matter Lab</a>, UC Berkeley</p>
         </div>
-      </div>
-    <div class="project-img active">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">img/ or .gif</span>
+
+<div class="meta-row">
+          <p class="meta-lbl">Collaborations</p>
+          <p class="meta-val">UC Berkeley · Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
+        </div>        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Laser cutting · 3D printing · Field testing · Materials mechanics</p>
-      </div>
-      <div>
-        <p class="extra-lbl">Collaborations</p>
-        <p class="extra-val">UC Berkeley · Cornell University · Univ. of Pennsylvania · Syracuse University · James Madison University</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Laser cutting · 3D printing · Field testing · Materials mechanics</p>
     </div>
   </div>
 
@@ -305,33 +327,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of advanced MMCs. Work spanned powder metallurgy, solid-state processing, and multiscale characterization of wear mechanisms — establishing a rigorous materials science foundation for the subsequent pivot to morphing systems.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of advanced MMCs. Work spanned powder metallurgy, solid-state processing, and multiscale characterization of wear mechanisms — establishing a rigorous materials science foundation for the subsequent pivot to morphing systems.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Logic SpA PhD Fellowship</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a>, Politecnico di Milano</p>
         </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+
+<div class="meta-row">
+          <p class="meta-lbl">Collaborations</p>
+          <p class="meta-val">Politecnico di Milano · University of Oulu</p>
+        </div>        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Powder Metallurgy · Tribometry · SEM/EDS</p>
-      </div>
-      <div>
-        <p class="extra-lbl">Collaborations</p>
-        <p class="extra-val">Politecnico di Milano · University of Oulu</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Powder Metallurgy · Tribometry · SEM/EDS</p>
     </div>
   </div>
   <div class="project">
@@ -346,33 +367,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Life cycle assessment of the production process of aluminum electrolytic capacitors, evaluating environmental impacts across different manufacturing routes and identifying key hotspots for impact reduction.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Life cycle assessment of the production process of aluminum electrolytic capacitors, evaluating environmental impacts across different manufacturing routes and identifying key hotspots for impact reduction.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val"><a href="https://www.itelcond.it/en/" target="_blank" rel="noopener">Itelcond</a></p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">SimaPro · Life Cycle Assessment</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">SimaPro · Life Cycle Assessment</p>
     </div>
   </div>
   <div class="project">
@@ -387,29 +407,28 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Systematic study of how different solid lubricant phases affect the tribological and electrical performance of copper matrix composites, targeting aerospace sliding contact applications.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Systematic study of how different solid lubricant phases affect the tribological and electrical performance of copper matrix composites, targeting aerospace sliding contact applications.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Ball milling · Powder metallurgy · Granulometry · Thermogravimetric analysis · XRD · Contact angle measurement · SEM · Electrical resistance measurement · Micro-scratch test</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Ball milling · Powder metallurgy · Granulometry · Thermogravimetric analysis · XRD · Contact angle measurement · SEM · Electrical resistance measurement · Micro-scratch test</p>
     </div>
   </div>
   <div class="project">
@@ -424,29 +443,28 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Production and characterization of Cu–MoS₂ self-lubricating composites for sliding electrical contact applications, investigating the influence of processing parameters on microstructure and functional properties.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Production and characterization of Cu–MoS₂ self-lubricating composites for sliding electrical contact applications, investigating the influence of processing parameters on microstructure and functional properties.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Powder metallurgy · Scratch test · Electrical resistance measurement · Optical contact angle · SEM</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Powder metallurgy · Scratch test · Electrical resistance measurement · Optical contact angle · SEM</p>
     </div>
   </div>
   <div class="project">
@@ -461,33 +479,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Comprehensive production and characterization study of self-lubricating MMC materials, covering a broad range of testing techniques to establish structure–property relationships for aerospace applications.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Comprehensive production and characterization study of self-lubricating MMC materials, covering a broad range of testing techniques to establish structure–property relationships for aerospace applications.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val">Department of Mechanical Engineering, Politecnico di Milano</p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">XRD · TGA · DTG · DTA · Powder metallurgy · Micro-scratch test · Granulometry · Optical contact angle · SEM · Electrical resistance measurement · Relative density evaluation · Indentation hardness · Wear test (ball-on-disc)</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">XRD · TGA · DTG · DTA · Powder metallurgy · Micro-scratch test · Granulometry · Optical contact angle · SEM · Electrical resistance measurement · Relative density evaluation · Indentation hardness · Wear test (ball-on-disc)</p>
     </div>
   </div>
   <div class="project">
@@ -502,33 +519,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Investigation of how powder metallurgy process parameters affect the microstructure, tribological performance, and electrical properties of Cu–WS₂ composites intended for aerospace sliding contact applications.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Investigation of how powder metallurgy process parameters affect the microstructure, tribological performance, and electrical properties of Cu–WS₂ composites intended for aerospace sliding contact applications.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val">Department of Mechanical Engineering, Politecnico di Milano</p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Powder metallurgy · Optical contact angle · Electrical resistance measurement · Indentation hardness · Wear test (ball-on-disc) · Stereo microscope · Optical microscope · SEM · Density measurement</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Powder metallurgy · Optical contact angle · Electrical resistance measurement · Indentation hardness · Wear test (ball-on-disc) · Stereo microscope · Optical microscope · SEM · Density measurement</p>
     </div>
   </div>
   <div class="project">
@@ -543,29 +559,28 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Analytical and theoretical study of how secondary phase properties influence the electrical conductivity of MMC systems, using rule-of-mixtures and effective medium theory to develop predictive models.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Analytical and theoretical study of how secondary phase properties influence the electrical conductivity of MMC systems, using rule-of-mixtures and effective medium theory to develop predictive models.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Rule of mixtures · Effective medium theory</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Rule of mixtures · Effective medium theory</p>
     </div>
   </div>
   <div class="project">
@@ -580,29 +595,28 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Comparative analysis of tribological and electrical performance across different MMC formulations, providing a systematic benchmark for material selection in aerospace sliding contact applications.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Comparative analysis of tribological and electrical performance across different MMC formulations, providing a systematic benchmark for material selection in aerospace sliding contact applications.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Wear test · Electrical resistivity measurement</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Wear test · Electrical resistivity measurement</p>
     </div>
   </div>
   <div class="project">
@@ -617,33 +631,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Life cycle assessment of a biomethane production facility, using Sorgenia's Smart Energy Farm as a real-world case study to quantify environmental impacts and identify improvement opportunities.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Life cycle assessment of a biomethane production facility, using Sorgenia's Smart Energy Farm as a real-world case study to quantify environmental impacts and identify improvement opportunities.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano · Sorgenia</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val">Sorgenia's Smart Energy Farm</p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Life Cycle Assessment</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Life Cycle Assessment</p>
     </div>
   </div>
   <div class="project">
@@ -658,33 +671,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Environmental sustainability assessment of a continuous hydrothermal flow synthesis process for nanoparticle production, using life cycle assessment to evaluate energy demand and environmental impact.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Environmental sustainability assessment of a continuous hydrothermal flow synthesis process for nanoparticle production, using life cycle assessment to evaluate energy demand and environmental impact.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val"><a href="https://www.particularmaterials.com/" target="_blank" rel="noopener">Particular Materials</a></p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Life Cycle Assessment · SimaPro · Cumulative Energy Demand</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Life Cycle Assessment · SimaPro · Cumulative Energy Demand</p>
     </div>
   </div>
   <div class="project">
@@ -699,33 +711,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Systematic characterization of self-lubricating MMC materials focusing on wear mechanisms, correlating microstructural features with tribological performance across different testing conditions.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Systematic characterization of self-lubricating MMC materials focusing on wear mechanisms, correlating microstructural features with tribological performance across different testing conditions.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://mat4en2.cmic.polimi.it" target="_blank" rel="noopener">Materials for Energy and Environment</a></p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val">Department of Mechanical Engineering, Politecnico di Milano</p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Density measurements · Static optical contact angle · Micro-hardness indentation · Scratch test · Wear test · Optical microscopy · SEM</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Density measurements · Static optical contact angle · Micro-hardness indentation · Scratch test · Wear test · Optical microscopy · SEM</p>
     </div>
   </div>
   <div class="project">
@@ -740,33 +751,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Experimental characterization of air infiltration pathways in timber frame wall assemblies using fluorescein tracer techniques and a custom experimental setup, with complementary simulation and imaging methods.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Experimental characterization of air infiltration pathways in timber frame wall assemblies using fluorescein tracer techniques and a custom experimental setup, with complementary simulation and imaging methods.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Internship — Université Savoie Mont Blanc</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val">LOCIE (Laboratoire Procédés Énergie Bâtiment)</p>
         </div>
-      <div class="meta-row">
+<div class="meta-row">
         <p class="meta-lbl">Collaborations</p>
         <p class="meta-val">Politecnico di Milano · Université Savoie Mont Blanc</p>
       </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Absorbance test · Porosity and density test · Optical microscopy · Pressurization test · Custom experimental setup design · Filtration efficiency test · SEM · COMSOL Multiphysics · Particle image velocimetry · Infrared thermography</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Absorbance test · Porosity and density test · Optical microscopy · Pressurization test · Custom experimental setup design · Filtration efficiency test · SEM · COMSOL Multiphysics · Particle image velocimetry · Infrared thermography</p>
     </div>
   </div>
   <div class="project">
@@ -781,31 +791,32 @@
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Investigation of how anodization process parameters affect the optical and corrosion properties of titanium alloy surfaces, exploring the relationship between process conditions and coating characteristics.</p>
-      <div class="project-meta">
-        <div class="meta-row">
+      <div class="project-desc">Investigation of how anodization process parameters affect the optical and corrosion properties of titanium alloy surfaces, exploring the relationship between process conditions and coating characteristics.</div>
+      <div class="project-right">
+        <div class="project-img done">
+          <!-- Replace with: <img src="img/filename.jpg" alt="description"> -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span class="project-img-hint">placeholder</span>
+        </div>
+        <div class="project-meta-block">
+<div class="meta-row">
           <p class="meta-lbl">Funding</p>
           <p class="meta-val">Politecnico di Milano</p>
         </div>
-        <div class="meta-row">
+<div class="meta-row">
           <p class="meta-lbl">Lab</p>
           <p class="meta-val"><a href="https://polilapp.chem.polimi.it/en/" target="_blank" rel="noopener">PoliLAPP</a></p>
         </div>
-      </div>
-    <div class="project-img done">
-        <!-- Replace with: <img src="img/filename.jpg" alt="Project name"> -->
-        <!-- Or GIF: <img src="img/filename.gif" alt="Project name"> -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c8e6d4"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        <span class="project-img-hint">placeholder</span>
+        </div>
       </div>
     </div>
     <div class="project-extra">
-      <div>
-        <p class="extra-lbl">Techniques</p>
-        <p class="extra-val">Anodization</p>
-      </div>
+      <p class="extra-lbl">Techniques</p>
+      <p class="extra-val">Anodization</p>
     </div>
   </div>
+
+</div>
 
   <!-- COLLABORATIONS MAP -->
   <div class="map-section">
