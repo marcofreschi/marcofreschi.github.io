@@ -67,9 +67,9 @@
     .rs-col p{font-size:.85rem;color:rgba(255,255,255,.78);line-height:1.7}
 
     /* PROJECTS */
-    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s;height:100%}
+    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;transition:box-shadow .2s}
     .project:hover{box-shadow:0 4px 24px rgba(0,0,0,.07)}
-    .project-header{display:grid;grid-template-columns:3rem 1fr;background:var(--g);padding:.8rem 1.2rem;gap:.8rem;align-items:center;min-height:80px}
+    .project-header{display:grid;grid-template-columns:3rem 1fr;background:var(--g);padding:.8rem 1.2rem;gap:.8rem;align-items:center}
     .project-num{font-family:var(--ser);font-size:2.5rem;font-weight:300;
       color:rgba(255,255,255,.25);line-height:1}
     .project-title{font-family:var(--ser);font-size:1.15rem;font-weight:400;
@@ -80,7 +80,7 @@
     .status-dot.done{background:rgba(255,255,255,.35);animation:none}
     .status-text{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;
       text-transform:uppercase;color:rgba(255,255,255,.55)}
-    .project-body{display:grid;grid-template-columns:1fr 1fr;flex:1}
+    .project-body{display:grid;grid-template-columns:1fr 1fr}
     .project-desc{padding:1rem 1rem 1rem 1.2rem;font-size:.82rem;line-height:1.75;color:var(--mid);border-right:1px solid var(--ln)}
     .project-meta{}
     .meta-row{margin-bottom:.3rem}
@@ -90,7 +90,7 @@
     .meta-val a{color:var(--g);border-bottom:1px solid var(--gx);transition:border-color .2s}
     .meta-val a:hover{border-bottom-color:var(--g)}
     /* Techniques + Collaborations: full-width band */
-    .project-extra{padding:.5rem 1.2rem;background:var(--bg2);border-top:1px solid var(--ln);flex-shrink:0;min-height:52px}
+    .project-extra{padding:.5rem 1.2rem;background:var(--bg2);border-top:1px solid var(--ln)}
     .extra-lbl{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
       text-transform:uppercase;color:var(--g);margin-bottom:.2rem}
     .extra-val{font-size:.72rem;color:var(--mid);line-height:1.4}
@@ -172,8 +172,8 @@
     .extra-lbl{font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.1rem}
     .extra-val{font-size:.72rem;color:var(--mid);line-height:1.4}
     /* 2-column project grid */
-    .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3rem;align-items:stretch}
-    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s;height:100%}
+    .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3rem}
+    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;transition:box-shadow .2s}
     .project:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
@@ -194,11 +194,11 @@
       .rs-col{padding:1rem}
 
       /* PROJECTS */
-      .project-header{display:grid;grid-template-columns:3rem 1fr;background:var(--g);padding:.8rem 1.2rem;gap:.8rem;align-items:center;min-height:80px}
+      .project-header{display:grid;grid-template-columns:3rem 1fr;background:var(--g);padding:.8rem 1.2rem;gap:.8rem;align-items:center}
       .project-num{font-size:1.8rem}
       .project-title{font-size:1rem}
-      .project-body{display:grid;grid-template-columns:1fr 1fr;flex:1}
-      .project-extra{padding:.5rem 1.2rem;background:var(--bg2);border-top:1px solid var(--ln);flex-shrink:0;min-height:52px}
+      .project-body{display:grid;grid-template-columns:1fr 1fr}
+      .project-extra{padding:.5rem 1.2rem;background:var(--bg2);border-top:1px solid var(--ln)}
       .project-desc{padding:1rem 1rem 1rem 1.2rem;font-size:.82rem;line-height:1.75;color:var(--mid);border-right:1px solid var(--ln)}
 
       /* MAP */
@@ -1077,6 +1077,49 @@ function drawPins(){
 const st=document.createElement('style');
 st.textContent='@keyframes mapPulse{0%{r:6;opacity:0.45}100%{r:22;opacity:0}}';
 document.head.appendChild(st);
+})();
+</script>
+
+<script>
+// Equalize project card section heights within each row
+(function equalizeProjects(){
+  function eq(){
+    var grid = document.querySelector('.projects-grid');
+    if(!grid) return;
+    var projects = Array.from(grid.querySelectorAll('.project'));
+    // Process pairs
+    for(var i=0; i<projects.length; i+=2){
+      var a = projects[i], b = projects[i+1];
+      if(!b) break;
+      // Reset
+      [a,b].forEach(function(p){
+        var h=p.querySelector('.project-header');
+        var e=p.querySelector('.project-extra');
+        if(h) h.style.height='';
+        if(e) e.style.height='';
+      });
+      // Equalize headers
+      var ah=a.querySelector('.project-header');
+      var bh=b.querySelector('.project-header');
+      if(ah&&bh){
+        var maxH=Math.max(ah.offsetHeight, bh.offsetHeight);
+        ah.style.height=maxH+'px';
+        bh.style.height=maxH+'px';
+      }
+      // Equalize extras (techniques)
+      var ae=a.querySelector('.project-extra');
+      var be=b.querySelector('.project-extra');
+      if(ae&&be){
+        var maxE=Math.max(ae.offsetHeight, be.offsetHeight);
+        ae.style.height=maxE+'px';
+        be.style.height=maxE+'px';
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', eq);
+  } else { eq(); }
+  window.addEventListener('resize', eq);
 })();
 </script>
 </body>
