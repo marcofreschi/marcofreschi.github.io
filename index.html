@@ -312,6 +312,7 @@
       .portfolio-grid{grid-template-columns:1fr}
     }
   </style>
+  <script src="images.js"></script>
 </head>
 <body>
 
@@ -550,14 +551,9 @@
       </div>
 
       <!-- CONTACT -->
-      <h3 class="bio-sub">Contact</h3>
-      <p style="font-size:.85rem;color:var(--mid)">mfreschi [at] berkeley [dot] edu</p>
-      <div class="contact-links">
-        <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://orcid.org/0000-0002-8342-1219" target="_blank" rel="noopener">ORCID</a>
-        <a href="CV_Freschi.pdf" target="_blank" rel="noopener">CV PDF</a>
-      </div>
+      <h3 class="bio-sub">Contacts</h3>
+      <p style="font-size:.85rem;color:var(--mid);margin-bottom:.5rem">mfreschi [at] berkeley [dot] edu</p>
+      <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g);border-bottom:1px solid var(--gx);transition:border-color .2s">LinkedIn</a>
     </section>
   </div>
 </main>
@@ -593,8 +589,8 @@
     <h2 class="portfolio-head">Portfolio</h2>
     <div class="portfolio-grid">
 
-      <div class="portfolio-card">
-        <div class="portfolio-card-media">
+      <div class="portfolio-card" data-portfolio="seed-carrier">
+        <div class="portfolio-card-media portfolio-img-slot">
           <!-- Replace with: <img src="img/eseed.jpg" alt="E-Seed"> -->
           <!-- Or video: <video src="video/eseed.mp4" autoplay muted loop playsinline></video> -->
           <div class="portfolio-placeholder">
@@ -609,8 +605,8 @@
         </div>
       </div>
 
-      <div class="portfolio-card">
-        <div class="portfolio-card-media">
+      <div class="portfolio-card" data-portfolio="field-test">
+        <div class="portfolio-card-media portfolio-img-slot">
           <!-- Replace with: <img src="img/eseed-field.jpg" alt="Field Test"> -->
           <div class="portfolio-placeholder">
             <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
@@ -624,8 +620,8 @@
         </div>
       </div>
 
-      <div class="portfolio-card">
-        <div class="portfolio-card-media">
+      <div class="portfolio-card" data-portfolio="mmc">
+        <div class="portfolio-card-media portfolio-img-slot">
           <!-- Replace with: <img src="img/mmc.jpg" alt="MMC"> -->
           <div class="portfolio-placeholder">
             <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
@@ -672,6 +668,27 @@ function toggleAbs(el){
   const o=a.classList.toggle('open');
   el.textContent=o?'− Abstract':'+ Abstract';
 }
+</script>
+
+<script>
+// Load portfolio images from images.js
+(function(){
+  if(typeof PORTFOLIO_IMAGES === 'undefined') return;
+  document.querySelectorAll('.portfolio-card[data-portfolio]').forEach(function(card){
+    var key = card.getAttribute('data-portfolio');
+    var src = PORTFOLIO_IMAGES[key];
+    var slot = card.querySelector('.portfolio-img-slot');
+    if(!slot || !src) return;
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = key;
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
+    // Remove placeholder content
+    var ph = slot.querySelector('.portfolio-placeholder');
+    if(ph) ph.remove();
+    slot.appendChild(img);
+  });
+})();
 </script>
 </body>
 </html>
