@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <link rel="icon" type="image/png" href="favicon.png"/>
-  <link rel="shortcut icon" href="favicon.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Marco Freschi — Postdoctoral Researcher, UC Berkeley</title>
   <meta name="description" content="Marco Freschi is a Postdoctoral Researcher at the Morphing Matter Lab, UC Berkeley. Research in bioinspired materials, life-cycle engineering, and materials design for ecological restoration."/>
-  <meta name="keywords" content="Marco Freschi, materials engineering, bioinspired design, UC Berkeley, Morphing Matter Lab, life cycle assessment, metal matrix composites, postdoctoral researcher"/>
+  <meta name="keywords" content="Marco Freschi, materials engineering, bioinspired design, UC Berkeley, Morphing Matter Lab, life cycle assessment, metal matrix composites"/>
   <meta name="author" content="Marco Freschi"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://marcofreschi.github.io/"/>
@@ -16,86 +14,109 @@
   <meta property="og:url" content="https://marcofreschi.github.io/"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Marco Freschi — UC Berkeley"/>
-  <meta name="twitter:description" content="Postdoctoral Researcher at Morphing Matter Lab. Engineering materials that perform, endure, and sustain."/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="shortcut icon" href="favicon.png"/>
+  <script src="images.js"></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Marco Freschi",
-   "jobTitle":"Postdoctoral Researcher","worksFor":{"@type":"Organization","name":"University of California, Berkeley","url":"https://www.berkeley.edu"},
+   "jobTitle":"Postdoctoral Researcher","worksFor":{"@type":"Organization","name":"University of California, Berkeley"},
    "affiliation":{"@type":"Organization","name":"Morphing Matter Lab","url":"https://morphingmatter.org"},
-   "url":"https://marcofreschi.github.io","sameAs":["https://scholar.google.com/citations?user=YrTgAssAAAAJ","https://www.linkedin.com/in/marco-freschi/","https://orcid.org/0000-0002-8342-1219"]}
+   "url":"https://marcofreschi.github.io",
+   "sameAs":["https://scholar.google.com/citations?user=YrTgAssAAAAJ","https://www.linkedin.com/in/marco-freschi/","https://orcid.org/0000-0002-8342-1219"]}
   </script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --g:#155230;  --gd:#0f3d20;  --gl:#84ba96;  --gx:#c8e6d4;
-      --bg:#F7F6F2; --bg2:#EEECEA; --sur:#FFFFFF;
-      --ink:#0f0f0f; --mid:#4a4a4a; --dim:#888;
-      --ln:rgba(0,0,0,0.08);
+      --g:#155230; --gd:#0f3d20; --gl:#84ba96; --gx:rgba(132,186,150,0.25);
+      --bg:#F2EDE0; --bg2:#EAE4D0; --bg3:#E0D8C0; --sur:#F8F4E8;
+      --ink:#2d1e0a; --mid:#5c4d38; --dim:#8a7a60; --faint:#b8a87a;
+      --ln:rgba(90,60,20,0.12);
       --ser:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
       --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
       --mono:'Consolas','Menlo','Monaco',monospace;
-      --nh:54px;
+      --nh:50px;
     }
-    html{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    html{background:var(--bg);color:var(--ink);font-family:var(--ser);font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
     body{min-height:100vh}
-    h1,h2,h3,h4,h5{font-family:var(--ser);font-weight:400;line-height:1.2;letter-spacing:-.01em}
+    h1,h2,h3,h4{font-family:var(--ser);font-weight:300;line-height:1.2;letter-spacing:-.01em}
     a{color:inherit;text-decoration:none}
 
-    /* ── NAV ─────────────────────────────────────────────────────────── */
+    /* ── NAV ── */
     nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);
-      display:flex;align-items:center;justify-content:flex-end;
-      padding:0 2.5rem;background:rgba(247,246,242,0.97);
-      backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 2rem;background:rgba(242,237,224,0.97);
+      backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+    .nav-home{display:flex;align-items:center;justify-content:center;
+      width:30px;height:30px;color:var(--g);opacity:.65;transition:opacity .2s}
+    .nav-home:hover{opacity:1}
+    .nav-home svg{width:17px;height:17px;fill:currentColor}
     .nav-links{display:flex;align-items:center;gap:2rem}
-    .nav-links a{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;
+    .nav-links a{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
       text-transform:uppercase;color:var(--mid);transition:color .2s;position:relative}
     .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;
-      height:1px;background:var(--g);transform:scaleX(0);
-      transition:transform .25s;transform-origin:left}
+      height:1px;background:var(--g);transform:scaleX(0);transition:transform .25s;transform-origin:left}
     .nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{transform:scaleX(1)}
-    .nav-icon{display:flex;align-items:center;width:18px;height:18px;opacity:.4;transition:opacity .2s}
-    .nav-icon:hover{opacity:1}.nav-icon svg{width:16px;height:16px;fill:var(--ink)}.nav-home{display:flex;align-items:center;justify-content:center;width:34px;height:34px;color:var(--g);opacity:.7;transition:opacity .2s;flex-shrink:0}.nav-home:hover{opacity:1}.nav-home svg{width:19px;height:19px;fill:currentColor}
+    .nav-icon{display:flex;align-items:center;width:17px;height:17px;opacity:.4;transition:opacity .2s}
+    .nav-icon:hover{opacity:.8}.nav-icon svg{width:15px;height:15px;fill:var(--ink)}
 
-    /* ── HERO ────────────────────────────────────────────────────────── */
-    .hero{background:var(--g);padding-top:var(--nh);
-      min-height:calc(var(--nh) + 120px);position:relative;overflow:visible}
-    .hero-inner{max-width:1100px;margin:0 auto;padding:1.2rem 2.5rem 1.4rem;
-      display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem}
-    .hero-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;
-      text-transform:uppercase;color:var(--gl);margin-bottom:.4rem;
-      display:flex;align-items:center;gap:.6rem}
-    .hero-eyebrow::before{content:'';width:1.2rem;height:1px;background:var(--gl);flex-shrink:0}
-    .hero-name{font-size:clamp(3rem,5.5vw,5rem);font-weight:300;color:#fff;
-      line-height:.95;letter-spacing:-.02em;margin-bottom:.5rem}
+    /* ── HERO ── */
+    .hero{background:var(--g);padding-top:var(--nh);min-height:calc(var(--nh)+230px);
+      position:relative;overflow:hidden}
+    /* Ruled lines in hero */
+    .hero::before{content:'';position:absolute;inset:0;
+      background:repeating-linear-gradient(to bottom,transparent,transparent 31px,rgba(255,255,255,.04) 31px,rgba(255,255,255,.04) 32px);
+      pointer-events:none}
+    .hero-inner{max-width:1100px;margin:0 auto;padding:2rem 2rem 2.5rem;
+      position:relative;z-index:2}
+    .hero-eyebrow{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--gl);margin-bottom:.7rem;
+      display:flex;align-items:center;gap:.5rem}
+    .hero-eyebrow::before{content:'';width:22px;height:1px;background:var(--gl);flex-shrink:0}
+    .hero-name{font-size:clamp(3.2rem,6vw,5.2rem);font-weight:300;color:#fff;
+      line-height:.9;letter-spacing:-.03em;margin-bottom:.6rem}
     .hero-name em{font-style:italic;color:var(--gl)}
-    .hero-motto{font-family:var(--ser);font-size:1.05rem;font-style:normal;
-      color:#ffffff;line-height:1.4;margin-bottom:.8rem;white-space:nowrap}
-    .hero-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.9rem}
-    .chip{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
-      text-transform:uppercase;padding:.25rem .7rem;
-      border:1px solid rgba(255,255,255,.25);
-      color:rgba(255,255,255,.75);background:rgba(255,255,255,.08)}
-    .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-    .btn-cv{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
-      text-transform:uppercase;padding:.6rem 1.6rem;
-      color:var(--gl);border:1px solid var(--gl);
+    /* Wavy underline */
+    .hero-rule{display:block;margin-bottom:.9rem;overflow:visible}
+    .hero-motto{font-size:1rem;font-style:italic;color:rgba(255,255,255,.82);
+      line-height:1.55;margin-bottom:1.2rem;max-width:44ch}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:.38rem;margin-bottom:1.2rem}
+    .chip{font-family:var(--mono);font-size:.54rem;letter-spacing:.07em;
+      text-transform:uppercase;padding:.22rem .6rem;
+      border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
+    .btn-cv{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
+      text-transform:uppercase;padding:.5rem 1.4rem;
+      color:var(--gl);border:1px solid var(--gl);display:inline-block;
       transition:background .2s,color .2s}
     .btn-cv:hover{background:var(--gl);color:var(--g)}
 
-    /* Photo — absolute, straddles hero bottom */
-    .hero-photo{position:absolute;top:auto;bottom:-50px;right:calc(50% - 530px + 2.5rem);
-      width:240px;height:240px;z-index:20}
-    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;
-      border:5px solid var(--gl);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+    /* Logarithmic spiral — hero right */
+    .hero-spiral{position:absolute;right:-20px;top:-10px;width:320px;height:320px;
+      opacity:.1;pointer-events:none;z-index:1}
 
-    /* ── NEWS ────────────────────────────────────────────────────────── */
-    .news-bar{background:var(--bg2);border-bottom:1px solid var(--ln);
-      display:flex;align-items:center;
-      position:relative;z-index:1}
-    .news-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
+    /* Dragonfly decorations */
+    .hero-dragonfly{position:absolute;right:40px;top:30px;
+      width:65px;opacity:.2;pointer-events:none;z-index:1}
+
+    /* Photo */
+    .hero-photo{position:absolute;top:calc(var(--nh)+1rem);
+      right:calc(50% - 550px + 2rem);
+      width:240px;height:240px;z-index:20}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;
+      border-radius:50%;border:5px solid var(--gl);
+      box-shadow:0 16px 48px rgba(0,0,0,.35)}
+    .hero-label{position:absolute;bottom:.8rem;left:2rem;z-index:2;
+      font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;
+      text-transform:uppercase;color:rgba(255,255,255,.22)}
+
+    /* ── NEWS ── */
+    .news-bar{background:var(--bg2);border-top:1px solid var(--ln);
+      border-bottom:1px solid var(--ln);
+      display:flex;align-items:center;overflow:hidden;
+      margin-top:52px;position:relative;z-index:1}
+    .news-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;
       text-transform:uppercase;color:var(--g);padding:0 1.2rem;
-      white-space:nowrap;flex-shrink:0;height:34px;
-      display:flex;align-items:center;gap:.5rem;
+      white-space:nowrap;flex-shrink:0;height:32px;
+      display:flex;align-items:center;gap:.4rem;
       border-right:1px solid var(--ln)}
     .news-dot{width:5px;height:5px;border-radius:50%;
       background:var(--g);animation:pulse 2s infinite}
@@ -103,224 +124,198 @@
     .news-track{display:flex;animation:scroll-news 55s linear infinite;width:max-content}
     .news-track:hover{animation-play-state:paused}
     .news-list{display:flex;list-style:none;flex-shrink:0}
-    .news-list li{display:flex;align-items:center;padding:0 2rem;height:34px;
+    .news-list li{display:flex;align-items:center;padding:0 2rem;height:32px;
       border-right:1px solid var(--ln);white-space:nowrap}
-    .news-d{font-family:var(--mono);font-size:.57rem;color:var(--dim);margin-right:.5rem}
+    .news-d{font-family:var(--mono);font-size:.56rem;color:var(--dim);margin-right:.5rem}
     .news-sep{width:3px;height:3px;border-radius:50%;background:var(--g);
       margin-right:.5rem;flex-shrink:0}
-    .news-list a{font-family:var(--mono);font-size:.62rem;color:var(--mid);
-      transition:color .2s}
+    .news-list a{font-family:var(--mono);font-size:.6rem;color:var(--mid);transition:color .2s}
     .news-list a:hover{color:var(--g)}
-    .news-gray{flex-shrink:0;background:var(--bg2);height:34px;width:calc(50% - 530px + 2.5rem + 240px + 20px)}
+    .news-gray{flex-shrink:0;background:var(--bg2);height:32px;
+      width:calc(50% - 550px + 2rem + 240px + 20px)}
 
     @keyframes scroll-news{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-    /* ── MAIN GRID ───────────────────────────────────────────────────── */
-    .page-body{max-width:1100px;margin:0 auto;padding:0 2.5rem}
-    .two-col{display:grid;grid-template-columns:5fr 8fr;gap:0}
+    /* ── SECTION HEADS — wavy underline style ── */
+    .sec-head{font-family:var(--ser);font-size:1.5rem;font-weight:300;
+      color:var(--ink);margin-bottom:.3rem;font-style:italic}
+    .sec-rule{display:block;margin-bottom:1rem;overflow:visible}
 
-    /* ── PUBLICATIONS ────────────────────────────────────────────────── */
-    .pub-col{padding:2.5rem 2.5rem 2.5rem 0;border-right:1px solid var(--ln)}
-    .sec-head{font-family:var(--ser);font-size:1.6rem;font-weight:300;color:var(--ink);
-      padding-bottom:.6rem;border-bottom:2px solid var(--g);margin-bottom:1.5rem}
-    .pub-item{padding:1rem 0;border-bottom:1px solid var(--ln);position:relative;
-      transition:background .15s;padding-left:.8rem;
-      border-left:2px solid transparent}
-    .pub-item:hover{border-left-color:var(--g);background:rgba(21,82,48,.03)}
+    /* ── MAIN GRID ── */
+    .page-body{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .two-col{display:grid;grid-template-columns:5fr 8fr;
+      border-bottom:1px solid var(--ln);position:relative}
+    /* Faint ruled lines in content area */
+    .two-col::before{content:'';position:absolute;inset:0;
+      background:repeating-linear-gradient(to bottom,transparent,transparent 29px,rgba(90,60,20,.03) 29px,rgba(90,60,20,.03) 30px);
+      pointer-events:none}
+
+    /* ── PUB COL ── */
+    .pub-col{padding:2rem 2rem 2rem 0;border-right:1px solid var(--ln);position:relative;z-index:1}
+    .pub-item{padding:.8rem 0;border-bottom:1px solid var(--ln);
+      transition:background .15s}
+    .pub-item:hover{background:rgba(90,60,20,.03)}
     .pub-item:last-of-type{border-bottom:none}
-    .pub-num{position:absolute;top:.8rem;left:-1.8rem;font-family:var(--ser);
-      font-size:2.5rem;font-weight:400;color:var(--g);opacity:.08;line-height:1;
-      pointer-events:none;user-select:none}
-    .pub-year{font-family:var(--mono);font-size:.56rem;color:var(--g);
-      margin-bottom:.2rem;letter-spacing:.06em}
-    .pub-latest{display:inline-block;font-family:var(--mono);font-size:.48rem;
-      letter-spacing:.1em;text-transform:uppercase;background:var(--g);
-      color:#fff;padding:.1rem .4rem;border-radius:2px;margin-left:.4rem;
-      vertical-align:middle;position:relative;top:-.1rem}
-    .pub-title{font-family:var(--ser);font-size:.9rem;color:var(--ink);
-      line-height:1.4;margin-bottom:.2rem}
-    .pub-title a{border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
-    .pub-title a:hover{color:var(--g);border-bottom-color:var(--g)}
-    .pub-journal{font-family:var(--mono);font-size:.54rem;color:var(--dim)}
-    .pub-toggle{font-family:var(--mono);font-size:.52rem;letter-spacing:.06em;
-      text-transform:uppercase;color:var(--g);cursor:pointer;margin-top:.3rem;
+    .pub-year{font-family:var(--mono);font-size:.54rem;color:var(--g);margin-bottom:.15rem}
+    .pub-latest{font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;
+      text-transform:uppercase;background:var(--g);color:#fff;
+      padding:.1rem .4rem;margin-left:.4rem;vertical-align:middle;position:relative;top:-.1rem}
+    .pub-title{font-size:.85rem;color:var(--ink);line-height:1.4;margin-bottom:.18rem}
+    .pub-title a{transition:color .2s}
+    .pub-title a:hover{color:var(--g)}
+    .pub-journal{font-family:var(--mono);font-size:.53rem;color:var(--dim)}
+    .pub-toggle{font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--g);cursor:pointer;margin-top:.25rem;
       display:inline-block;border-bottom:1px solid transparent;transition:border-color .2s}
     .pub-toggle:hover{border-bottom-color:var(--g)}
-    .pub-abstract{display:none;font-size:.75rem;line-height:1.6;color:var(--mid);
-      margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--ln)}
+    .pub-abstract{display:none;font-size:.73rem;line-height:1.6;color:var(--mid);
+      margin-top:.4rem;padding-top:.4rem;border-top:1px solid var(--ln)}
     .pub-abstract.open{display:block}
-    .scholar-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;
-      font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
-      background:var(--g);color:#fff;padding:.65rem 1.4rem;transition:background .2s}
+    .scholar-btn{display:inline-flex;align-items:center;gap:.3rem;margin-top:1.2rem;
+      font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;
+      background:var(--g);color:#fff;padding:.55rem 1.2rem;transition:background .2s}
     .scholar-btn:hover{background:var(--gd)}
 
-    /* ── BIO ─────────────────────────────────────────────────────────── */
-    .bio-col{padding:2.5rem 0 2.5rem 2.5rem}
-    .bio-text p{font-size:.9rem;line-height:1.85;color:var(--ink)}
-    .bio-text p+p{margin-top:1rem}
-    .bio-text a{color:var(--g);border-bottom:1px solid var(--gx);transition:border-color .2s}
-    .bio-text a:hover{border-bottom-color:var(--g)}
-    .bio-sub{font-family:var(--ser);font-size:1.1rem;font-weight:400;color:var(--ink);
-      margin:2rem 0 .8rem;padding-bottom:.4rem;border-bottom:1px solid var(--g)}
-    .mt-inst{font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:.35rem}
-    .mt-item{font-size:.81rem;color:var(--mid);line-height:1.65;
-      padding-left:.9rem;border-left:2px solid var(--ln);margin-bottom:.3rem}
-    .mt-block{margin-bottom:1.1rem}
-    .bpa-box{margin-top:1.3rem;padding:1rem 1.2rem;
-      background:rgba(21,82,48,.05);border-left:3px solid var(--g)}
-    .bpa-box p{font-size:.83rem;line-height:1.7;color:var(--mid)}
-    .bpa-box strong{color:var(--g)}
-    .contact-links{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.7rem}
-    .contact-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;
-      text-transform:uppercase;color:var(--g);border-bottom:1px solid var(--gx);
-      transition:border-color .2s}
-    .contact-links a:hover{border-bottom-color:var(--g)}
+    /* ── BIO COL ── */
+    .bio-col{padding:2rem 0 2rem 2rem;position:relative;z-index:1}
+    .bio-text p{font-size:.88rem;line-height:1.85;color:var(--ink)}
+    .bio-text p+p{margin-top:.9rem}
+    .bio-text a{color:var(--g)}
+    .bio-text a:hover{text-decoration:underline;text-underline-offset:2px}
+    .bio-sub{font-family:var(--ser);font-size:1rem;font-weight:300;
+      font-style:italic;color:var(--ink);margin:1.8rem 0 .3rem}
+    .bio-sub-rule{display:block;margin-bottom:.7rem}
 
-    /* ── RESEARCH INTERESTS ──────────────────────────────────────────── */
-    .ri-section{background:var(--g);border-top:2px solid var(--gd)}
-    .ri-inner{max-width:1100px;margin:0 auto;padding:3rem 2.5rem}
-    .ri-head{font-family:var(--ser);font-size:1.6rem;font-weight:300;color:#fff;
-      padding-bottom:.6rem;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:1rem}
-    .ri-intro{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.8;
-      max-width:100%;margin-bottom:2rem}
-    .ri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-    .ri-card{padding:1.5rem;background:rgba(255,255,255,.06);
-      border-top:2px solid rgba(255,255,255,.15);
-      transition:background .2s}
-    .ri-card:hover{background:rgba(255,255,255,.1)}
-    .ri-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
-      text-transform:uppercase;font-weight:700;margin-bottom:.6rem;
-      padding:.2rem .5rem;display:inline-block;
-      background:rgba(132,186,150,.2);color:var(--gl)}
-    .ri-card h4{font-family:var(--ser);font-size:1rem;font-weight:400;
-      color:#fff;margin-bottom:.5rem}
-    .ri-card p{font-size:.81rem;color:rgba(255,255,255,.65);line-height:1.65}
-
-    /* ── FOOTER ──────────────────────────────────────────────────────── */
-    footer{background:var(--gd);padding:1.4rem 2.5rem;
-      display:flex;justify-content:space-between;align-items:center}
-    footer p{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;
-      text-transform:uppercase;color:rgba(255,255,255,.4)}
-    footer a{color:var(--gl);transition:opacity .2s}
-    footer a:hover{opacity:.7}
-    .footer-sep{color:var(--gl);margin:0 .4rem;opacity:.5}
-
-    /* ── MOBILE ──────────────────────────────────────────────────────── */
-    @media(max-width:900px){
-      :root{--nh:50px}
-      nav{padding:0 1.2rem}
-      .nav-links{gap:1.2rem}
-      .nav-links a{font-size:.6rem}
-
-      /* HERO — compact, photo small bottom-right, no huge gap */
-      .hero{min-height:0}
-      .hero-inner{grid-template-columns:1fr;gap:0;padding:1.4rem 1.2rem 1.4rem}
-      .hero-name{font-size:clamp(2.2rem,8vw,3.2rem);margin-bottom:.4rem}
-      .hero-motto{white-space:normal;font-size:.92rem;max-width:100%;margin-bottom:.8rem}
-      .hero-chips{margin-bottom:.8rem}
-      .hero-photo{width:120px;height:120px;bottom:-40px;right:1.2rem;top:auto}
-      .hero-photo img{border-width:3px}
-
-      /* NEWS — padding matches photo overflow */
-      .news-bar{padding-top:40px}
-      .news-gray{width:140px}
-
-      /* LAYOUT — bio first, then pubs */
-      .page-body{padding:0 1.2rem}
-      .two-col{grid-template-columns:1fr;border-bottom:none;display:flex;flex-direction:column}
-      .pub-col{order:2;padding:1.5rem 0;border-right:none;border-top:1px solid var(--ln);display:block;overflow:visible}
-      .bio-col{order:1;padding:1.5rem 0;border-bottom:none}
-      .pub-num{display:none}
-      .pub-item{padding-left:0;border-left:none}
-      .pub-item:hover{border-left:none;background:rgba(21,82,48,.03)}
-
-      /* Hide pubs 4+ on mobile, show more button */
-      .pub-item:nth-of-type(n+4){display:none}
-      .pub-item.pub-visible{display:block}
-      .pub-show-more{display:block}
-
-      /* Research interests */
-      .ri-grid{grid-template-columns:1fr}
-      .ri-inner{padding:2rem 1.2rem}
-
-      /* Mentoring cards */
-      .mentoring-block{flex-direction:column;gap:1rem}
-      .mentoring-cards{grid-template-columns:1fr 1fr}
-
-      footer{flex-direction:column;gap:.4rem;text-align:center;padding:1.2rem 1.5rem}
-      .pub-col .sec-head{display:block}
-      .pub-col .pub-item{display:block}
-      .pub-col .scholar-btn{display:inline-flex}
-    }
-    @media(max-width:480px){
-      .hero-chips{gap:.3rem}
-      .chip{font-size:.5rem;padding:.2rem .5rem}
-      .nav-links a[href*="Research"]{display:none}
-      .hero-photo{width:100px;height:100px;bottom:-35px;right:1rem}
-      .news-bar{padding-top:35px}
-      .news-gray{width:110px}
-    }
-
+    /* Mentoring */
     .mentoring-block{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1rem}
     .mentoring-total{flex-shrink:0;text-align:center}
     .mentoring-num{font-family:var(--ser);font-size:3.8rem;font-weight:300;color:var(--g);line-height:1}
-    .mentoring-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:2px;line-height:1.4}
+    .mentoring-label{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:2px;line-height:1.4}
     .mentoring-cards{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:.3rem}
-    .mentoring-card{background:rgba(21,82,48,.05);padding:.7rem .9rem;border-left:3px solid var(--g)}
-    .mentoring-card-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:3px}
+    .mentoring-card{background:rgba(21,82,48,.06);padding:.7rem .9rem;border-left:2px solid var(--g)}
+    .mentoring-card-tag{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:3px}
     .mentoring-card-n{font-family:var(--ser);font-size:1.4rem;font-weight:300;color:var(--g);line-height:1;margin-bottom:3px}
-    .mentoring-card-detail{font-family:var(--mono);font-size:.52rem;color:var(--dim);line-height:1.5}
+    .mentoring-card-detail{font-family:var(--mono);font-size:.5rem;color:var(--dim);line-height:1.5}
+
+    /* Service */
     .sl-list{display:flex;flex-direction:column}
-    .sl-row{display:grid;grid-template-columns:52px 1fr;gap:.8rem;padding:.5rem 0;border-bottom:.5px solid var(--ln);align-items:baseline}
-    .sl-year{font-family:var(--mono);font-size:.58rem;color:var(--dim);padding-top:1px}
+    .sl-row{display:grid;grid-template-columns:52px 1fr;gap:.8rem;
+      padding:.5rem 0;border-bottom:.5px solid var(--ln);align-items:baseline}
+    .sl-year{font-family:var(--mono);font-size:.56rem;color:var(--dim);padding-top:1px}
     .sl-year.green{color:var(--g);font-weight:700}
     .sl-body{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px}
-    .sl-title{font-size:.83rem;color:var(--ink)}
-    .sl-badge{font-family:var(--mono);font-size:.48rem;background:var(--g);color:#fff;padding:1px 5px;letter-spacing:.06em}
-    .sl-org{font-family:var(--mono);font-size:.52rem;color:var(--dim)}
-    .sl-more{margin-top:.5rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g);background:none;border:none;border-bottom:1px solid var(--gx);cursor:pointer;padding:0}
+    .sl-title{font-size:.82rem;color:var(--ink)}
+    .sl-badge{font-family:var(--mono);font-size:.46rem;background:var(--g);color:#fff;padding:1px 5px;letter-spacing:.06em}
+    .sl-org{font-family:var(--mono);font-size:.5rem;color:var(--dim)}
+    .sl-more{margin-top:.5rem;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--g);background:none;border:none;
+      border-bottom:1px solid var(--gx);cursor:pointer;padding:0}
     .sl-more:hover{border-bottom-color:var(--g)}
+    .bpa-box{margin-top:1.2rem;padding:.9rem 1.1rem;
+      background:rgba(21,82,48,.06);border-left:2px solid var(--g)}
+    .bpa-box p{font-size:.81rem;line-height:1.7;color:var(--mid)}
+    .bpa-box strong{color:var(--g)}
+    .contact-links{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem}
+    .contact-links a{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--g)}
+    .contact-links a:hover{text-decoration:underline;text-underline-offset:2px}
 
-    /* ── PORTFOLIO ───────────────────────────────────────────────── */
-    .portfolio-section{background:var(--bg);padding:3rem 0;border-top:1px solid var(--ln)}
-    .portfolio-inner{max-width:1100px;margin:0 auto;padding:0 2.5rem}
-    .portfolio-head{font-family:var(--ser);font-size:1.6rem;font-weight:300;color:var(--ink);
-      padding-bottom:.6rem;border-bottom:2px solid var(--g);margin-bottom:1.8rem}
-    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-    .portfolio-card{background:var(--sur);border:1px solid var(--ln);
-      overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:pointer}
-    .portfolio-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-2px)}
-    .portfolio-card-media{width:100%;aspect-ratio:16/9;background:var(--g);
-      display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+    /* ── RESEARCH INTERESTS ── */
+    .ri-section{background:var(--bg2);border-top:1px solid var(--ln)}
+    .ri-inner{max-width:1100px;margin:0 auto;padding:2.5rem 2rem}
+    .ri-intro{font-size:.87rem;color:var(--mid);line-height:1.8;max-width:100%;margin:1rem 0 1.8rem}
+    .ri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .ri-card{padding:1.3rem 1.4rem;background:var(--sur);border-left:2px solid var(--g);transition:background .2s}
+    .ri-card:hover{background:#fff}
+    .ri-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;
+      font-weight:700;margin-bottom:.5rem;padding:.18rem .45rem;display:inline-block;
+      background:rgba(21,82,48,.1);color:var(--g)}
+    .ri-card h4{font-family:var(--ser);font-size:.95rem;font-weight:400;font-style:italic;
+      color:var(--ink);margin-bottom:.4rem}
+    .ri-card p{font-size:.78rem;color:var(--mid);line-height:1.65}
+
+    /* ── PORTFOLIO ── */
+    .portfolio-section{background:var(--g);border-top:1px solid rgba(21,82,48,.3);
+      position:relative;overflow:hidden}
+    /* Spiral watermark */
+    .portfolio-spiral{position:absolute;right:10px;bottom:10px;
+      width:130px;opacity:.06;pointer-events:none}
+    /* Small dragonfly */
+    .portfolio-fly{position:absolute;left:16px;bottom:14px;
+      width:48px;opacity:.15;pointer-events:none;transform:rotate(22deg) scaleX(-1)}
+    .portfolio-inner{max-width:1100px;margin:0 auto;padding:2rem 2rem}
+    .portfolio-head-wrap{margin-bottom:1.2rem}
+    .portfolio-head{font-size:1.75rem;font-weight:300;color:#fff;font-style:italic}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+    .portfolio-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+      overflow:hidden;transition:background .2s}
+    .portfolio-card:hover{background:rgba(255,255,255,.1)}
+    .portfolio-card-media{width:100%;aspect-ratio:4/3;background:var(--gd);
+      display:flex;align-items:center;justify-content:center;overflow:hidden;
+      position:relative;border-bottom:1px solid rgba(255,255,255,.07)}
     .portfolio-card-media img{width:100%;height:100%;object-fit:cover;display:block}
-    .portfolio-card-media video{width:100%;height:100%;object-fit:cover;display:block}
     .portfolio-placeholder{display:flex;flex-direction:column;align-items:center;
-      justify-content:center;gap:.5rem;opacity:.35;width:100%;height:100%}
-    .portfolio-placeholder svg{width:32px;height:32px;fill:#fff}
-    .portfolio-placeholder span{font-family:var(--mono);font-size:.55rem;
-      letter-spacing:.1em;text-transform:uppercase;color:#fff}
-    .portfolio-card-body{padding:1rem 1.1rem}
-    .portfolio-card-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;
-      text-transform:uppercase;color:var(--g);margin-bottom:.3rem;display:block}
-    .portfolio-card h4{font-family:var(--ser);font-size:.95rem;font-weight:400;
-      color:var(--ink);margin-bottom:.3rem;line-height:1.3}
-    .portfolio-card p{font-size:.78rem;color:var(--mid);line-height:1.6}
+      justify-content:center;gap:.4rem;width:100%;height:100%}
+    .portfolio-placeholder svg{opacity:.25}
+    .portfolio-placeholder span{font-family:var(--mono);font-size:.44rem;
+      letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+    .portfolio-card-body{padding:.8rem .9rem}
+    .portfolio-card-tag{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--gl);margin-bottom:.25rem;display:block}
+    .portfolio-card h4{font-size:.88rem;font-weight:300;font-style:italic;color:#fff}
+
+    /* ── FOOTER ── */
+    footer{background:var(--gd);padding:1.2rem 2rem;
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid rgba(132,186,150,.15)}
+    footer p{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
+      text-transform:uppercase;color:rgba(255,255,255,.32)}
+    footer a{color:var(--gl);transition:opacity .2s}
+    footer a:hover{opacity:.7}
+    .footer-sep{color:var(--gl);margin:0 .3rem;opacity:.4}
+
+    /* ── MOBILE ── */
     @media(max-width:900px){
+      :root{--nh:48px}
+      nav{padding:0 1.2rem}
+      .nav-links{gap:1.2rem}
+      .nav-links a{font-size:.58rem}
+      .hero{min-height:0}
+      .hero-inner{padding:1.4rem 1.2rem 1.6rem}
+      .hero-name{font-size:clamp(2.4rem,9vw,3.5rem)}
+      .hero-motto{white-space:normal;font-size:.92rem;max-width:100%}
+      .hero-photo{width:110px;height:110px;bottom:-38px;top:auto;right:1.2rem}
+      .hero-spiral{display:none}
+      .hero-dragonfly{display:none}
+      .news-bar{margin-top:38px}
+      .news-gray{width:130px}
+      .page-body{padding:0 1.2rem}
+      .two-col{grid-template-columns:1fr;display:flex;flex-direction:column}
+      .pub-col{order:2;padding:1.5rem 0;border-right:none;border-top:1px solid var(--ln);display:block;overflow:visible}
+      .pub-col .sec-head,.pub-col .pub-item,.pub-col .scholar-btn{display:block}
+      .bio-col{order:1;padding:1.5rem 0}
+      .ri-grid{grid-template-columns:1fr}
+      .ri-inner{padding:2rem 1.2rem}
+      .portfolio-inner{padding:1.5rem 1.2rem}
       .portfolio-grid{grid-template-columns:1fr 1fr}
-      .portfolio-inner{padding:0 1.2rem}
-      .portfolio-section{padding:2rem 0}
+      .mentoring-block{flex-direction:column;gap:1rem}
+      footer{flex-direction:column;gap:.3rem;text-align:center;padding:1rem 1.2rem}
     }
     @media(max-width:480px){
       .portfolio-grid{grid-template-columns:1fr}
+      .hero-photo{width:90px;height:90px;bottom:-32px}
+      .news-bar{margin-top:32px}
+      .news-gray{width:100px}
     }
   </style>
-  <script src="images.js"></script>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-home" title="Home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></a>
+  <a href="index.html" class="nav-home" title="Home" aria-label="Home">
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  </a>
   <div style="flex:1"></div>
   <div class="nav-links">
     <a href="research.html">Research Statement</a>
@@ -332,77 +327,100 @@
 
 <!-- HERO -->
 <section class="hero" aria-label="Introduction">
+
+  <!-- Logarithmic spiral -->
+  <svg class="hero-spiral" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#c4e8d0" stroke-width="1.2" stroke-linecap="round">
+      <path d="M100,100 Q100,58 142,58 Q184,58 184,100 Q184,162 100,162 Q16,162 16,78 Q16,-4 122,-4 Q200,-4 200,100"/>
+      <path d="M100,100 Q100,70 128,70 Q156,70 156,100 Q156,142 100,142 Q44,142 44,88 Q44,34 112,34 Q168,34 168,100"/>
+      <path d="M100,100 Q100,80 118,80 Q136,80 136,100 Q136,128 100,128 Q64,128 64,94 Q64,60 106,60 Q140,60 140,100"/>
+      <path d="M100,100 Q100,88 110,88 Q120,88 120,100 Q120,116 100,116 Q80,116 80,98"/>
+      <circle cx="100" cy="100" r="2" fill="#84ba96" stroke="none"/>
+    </g>
+  </svg>
+
+  <!-- Dragonfly -->
+  <svg class="hero-dragonfly" viewBox="0 0 100 65" xmlns="http://www.w3.org/2000/svg">
+    <line x1="50" y1="18" x2="50" y2="58" stroke="#84ba96" stroke-width="2.5"/>
+    <ellipse cx="50" cy="30" rx="18" ry="5.5" fill="#b4c8a0" opacity=".8"/>
+    <ellipse cx="50" cy="40" rx="12" ry="3.5" fill="#a4b890"/>
+    <ellipse cx="25" cy="26" rx="23" ry="9" fill="none" stroke="#c4d8b0" stroke-width="1" transform="rotate(-8 25 26)"/>
+    <ellipse cx="75" cy="26" rx="23" ry="9" fill="none" stroke="#c4d8b0" stroke-width="1" transform="rotate(8 75 26)"/>
+    <ellipse cx="27" cy="38" rx="19" ry="7" fill="none" stroke="#c4d8b0" stroke-width=".8" transform="rotate(6 27 38)"/>
+    <ellipse cx="73" cy="38" rx="19" ry="7" fill="none" stroke="#c4d8b0" stroke-width=".8" transform="rotate(-6 73 38)"/>
+    <circle cx="50" cy="14" r="5" fill="#84ba96"/>
+    <circle cx="47" cy="11" r="2.5" fill="rgba(196,216,176,.6)"/>
+    <circle cx="53" cy="11" r="2.5" fill="rgba(196,216,176,.6)"/>
+  </svg>
+
   <div class="hero-inner">
-    <div>
-      <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
-      <h1 class="hero-name">Marco <em>Freschi</em></h1>
-      <p class="hero-motto">"Engineering materials that perform, endure, and sustain"</p>
-      <div class="hero-chips">
-        <span class="chip">Materials Engineering</span>
-        <span class="chip">Bioinspired Design</span>
-        <span class="chip">Life-cycle Approach</span>
-      </div>
-      <div class="hero-cta">
-        <a href="CV_Freschi.pdf" target="_blank" rel="noopener" class="btn-cv">Download CV</a>
-      </div>
+    <p class="hero-eyebrow">Postdoctoral Researcher · UC Berkeley</p>
+    <h1 class="hero-name">Marco<br><em>Freschi</em></h1>
+    <svg class="hero-rule" width="280" height="10">
+      <path d="M0,5 C20,3 45,7 80,5 C115,3 140,7 180,5 C215,3 250,7 280,5" stroke="#84ba96" stroke-width="1.2" fill="none" opacity=".55"/>
+    </svg>
+    <p class="hero-motto">"Engineering materials that perform, endure, and sustain"</p>
+    <div class="hero-chips">
+      <span class="chip">Materials Engineering</span>
+      <span class="chip">Bioinspired Design</span>
+      <span class="chip">Life-cycle Approach</span>
     </div>
-    <div></div><!-- spacer for grid -->
+    <a href="CV_Freschi.pdf" target="_blank" rel="noopener" class="btn-cv">Download CV</a>
   </div>
+
   <div class="hero-photo">
     <img src="Profile.jpg" alt="Marco Freschi, Postdoctoral Researcher at UC Berkeley" onerror="this.parentElement.style.display='none'"/>
   </div>
+
+  <span class="hero-label">Field Notes 2016 — 2026</span>
 </section>
 
-<!-- NEWS BAR -->
+<!-- NEWS -->
 <div class="news-bar" role="marquee" aria-label="Recent news">
   <div class="news-tag"><span class="news-dot"></span>News</div>
   <div class="news-scroll">
     <div class="news-track">
       <ul class="news-list">
         <li><span class="news-d">Aug 2026</span><span class="news-sep"></span><a href="https://www.linkedin.com/posts/bakar-labs-energy-materials_ucberkeley-activity-7490867029676052480-Rxhi" target="_blank" rel="noopener">Presented the e-seed project at the Bakar Labs for Energy &amp; Materials event with ARIA</a></li>
-        <li><span class="news-d">Aug 2026</span><span class="news-sep"></span><a href="https://www.linkedin.com/posts/bakar-labs-energy-materials_ucberkeley-activity-7490867029676052480-Rxhi" target="_blank" rel="noopener">Presented the e-seed project at the Bakar Labs for Energy &amp; Materials event with ARIA</a></li>
         <li><span class="news-d">Apr 2026</span><span class="news-sep"></span><a href="https://vspa.berkeley.edu/news/vspas-cecilia-fura-honored-2026-chancellor%E2%80%99s-outstanding-staff-award" target="_blank" rel="noopener">Cecilia Fura honored with the 2026 Chancellor's Outstanding Staff Award</a></li>
         <li><span class="news-d">Mar 2026</span><span class="news-sep"></span><a href="#">Field test in the Aral Sea in collaboration with Bulat Utemuratov Foundation (Kazakhstan)</a></li>
-        </ul>
+      </ul>
       <ul class="news-list" aria-hidden="true">
         <li><span class="news-d">Aug 2026</span><span class="news-sep"></span><a href="https://www.linkedin.com/posts/bakar-labs-energy-materials_ucberkeley-activity-7490867029676052480-Rxhi" target="_blank" rel="noopener">Presented the e-seed project at the Bakar Labs for Energy &amp; Materials event with ARIA</a></li>
-        <li><span class="news-d">Aug 2026</span><span class="news-sep"></span><a href="https://www.linkedin.com/posts/bakar-labs-energy-materials_ucberkeley-activity-7490867029676052480-Rxhi" target="_blank" rel="noopener">Presented the e-seed project at the Bakar Labs for Energy &amp; Materials event with ARIA</a></li>
         <li><span class="news-d">Apr 2026</span><span class="news-sep"></span><a href="https://vspa.berkeley.edu/news/vspas-cecilia-fura-honored-2026-chancellor%E2%80%99s-outstanding-staff-award" target="_blank" rel="noopener">Cecilia Fura honored with the 2026 Chancellor's Outstanding Staff Award</a></li>
         <li><span class="news-d">Mar 2026</span><span class="news-sep"></span><a href="#">Field test in the Aral Sea in collaboration with Bulat Utemuratov Foundation (Kazakhstan)</a></li>
-        </ul>
+      </ul>
     </div>
   </div>
   <div class="news-gray" aria-hidden="true"></div>
 </div>
 
 <!-- PUBLICATIONS + BIO -->
-<main class="page-body" style="padding-top:.2rem">
+<main class="page-body">
   <div class="two-col">
 
-    <!-- PUBLICATIONS -->
+    <!-- PUBLICATIONS + REACH OUT + CONTACTS -->
     <section class="pub-col" aria-label="Publications">
       <h2 class="sec-head">Publications</h2>
+      <svg class="sec-rule" width="160" height="8">
+        <path d="M0,4 C25,2 55,6 100,4 C130,3 148,5 160,4" stroke="#155230" stroke-width="1.3" fill="none"/>
+      </svg>
 
       <div class="pub-item">
-        <span class="pub-num">1</span>
         <p class="pub-year">2024 <span class="pub-latest">Latest</span></p>
         <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2949822823000837" target="_blank" rel="noopener">Analysis of ball milling time to produce self-lubricating Cu–WS₂ composite: best trade-off between tribological and electrical properties</a></p>
         <p class="pub-journal">Next Materials 2, 100083</p>
         <span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span>
-        <div class="pub-abstract">Cu–WS₂ composites produced via ball milling and powder metallurgy. Systematically investigates the effect of milling time on microstructure, hardness, electrical conductivity, and tribological performance, identifying the optimal processing window for aerospace sliding contact applications.</div>
+        <div class="pub-abstract">Cu–WS₂ composites produced via ball milling and powder metallurgy. Systematically investigates the effect of milling time on microstructure, hardness, electrical conductivity, and tribological performance.</div>
       </div>
-
       <div class="pub-item">
-        <span class="pub-num">2</span>
         <p class="pub-year">2023</p>
         <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/11/2/66" target="_blank" rel="noopener">Tuning the Parameters of Cu–WS₂ Composite Production via Powder Metallurgy</a></p>
         <p class="pub-journal">Lubricants 11 (2), 66</p>
         <span class="pub-toggle" onclick="toggleAbs(this)">+ Abstract</span>
-        <div class="pub-abstract">Systematic investigation of compaction pressure, sintering temperature, and WS₂ content on the tribological and mechanical properties of Cu–WS₂ composites.</div>
+        <div class="pub-abstract">Systematic investigation of compaction pressure, sintering temperature, and WS₂ content on tribological and mechanical properties.</div>
       </div>
-
       <div class="pub-item">
-        <span class="pub-num">3</span>
         <p class="pub-year">2022</p>
         <p class="pub-title"><a href="https://www.mdpi.com/2075-4442/10/6/129" target="_blank" rel="noopener">The Twelve Principles of Green Tribology — A Brief Anthology</a></p>
         <p class="pub-journal">Lubricants 10 (6), 129</p>
@@ -410,31 +428,29 @@
         <div class="pub-abstract">Comprehensive review applying the twelve principles of green tribology to current research and industrial case studies.</div>
       </div>
 
-      <button class="pub-show-more" style="display:none;margin:.8rem 0;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--g);color:var(--g);padding:.5rem 1.2rem;cursor:pointer;width:100%" onclick="
-        var items=document.querySelectorAll('.pub-col .pub-item');
-        items.forEach(function(el){el.style.display='block';});
-        this.style.display='none';
-        document.getElementById('scholar-btn-mob').style.display='inline-flex';
-      ">Show all publications ↓</button>
       <a href="https://scholar.google.com/citations?user=YrTgAssAAAAJ&hl=it" target="_blank" rel="noopener" class="scholar-btn">View all publications →</a>
+
       <!-- REACH OUT & MEDIA -->
       <h2 class="sec-head" style="margin-top:2rem">Reach out &amp; Media</h2>
-      <div class="pub-item" style="border-left:none;padding-left:0">
+      <svg class="sec-rule" width="120" height="8">
+        <path d="M0,4 C18,2 40,6 75,4 C96,3 110,5 120,4" stroke="#155230" stroke-width="1.3" fill="none"/>
+      </svg>
+      <div class="pub-item" style="padding-left:0;border-left:none">
         <p class="pub-year">2025</p>
         <p class="pub-title"><a href="https://edition.cnn.com/2025/12/16/world/video/self-burying-eseeds-future-reforestation-tech-for-good-spc-digvid" target="_blank" rel="noopener">CNN Tech for Good — Self-burying seed carriers for reforestation</a></p>
         <p class="pub-journal">CNN International</p>
       </div>
-      <div class="pub-item" style="border-left:none;padding-left:0">
+      <div class="pub-item" style="padding-left:0;border-left:none">
         <p class="pub-year">2024</p>
         <p class="pub-title"><a href="https://worldforestry.org/hope-through-innovation/" target="_blank" rel="noopener">Forest Hope Through Innovation</a></p>
         <p class="pub-journal">World Forestry Center, Portland</p>
       </div>
-      <div class="pub-item" style="border-left:none;padding-left:0">
+      <div class="pub-item" style="padding-left:0;border-left:none">
         <p class="pub-year">2023</p>
         <p class="pub-title"><a href="https://morphingmatter.org/news/vandadundee" target="_blank" rel="noopener">Museum Exhibition — Morphing Matter Lab</a></p>
         <p class="pub-journal">Victoria and Albert Museum, Dundee, Scotland</p>
       </div>
-      <div class="pub-item" style="border-left:none;padding-left:0;border-bottom:none">
+      <div class="pub-item" style="padding-left:0;border-left:none;border-bottom:none">
         <p class="pub-year">2020–22</p>
         <p class="pub-title"><a href="https://www.cmic.polimi.it/en/magazine/stories/phd-pills/" target="_blank" rel="noopener">PhD Pills — 21 video interviews on materials research</a></p>
         <p class="pub-journal">Politecnico di Milano</p>
@@ -442,25 +458,35 @@
 
       <!-- CONTACTS -->
       <h2 class="sec-head" style="margin-top:2rem">Contacts</h2>
+      <svg class="sec-rule" width="80" height="8">
+        <path d="M0,4 C12,2 30,6 50,4 C63,3 73,5 80,4" stroke="#155230" stroke-width="1.3" fill="none"/>
+      </svg>
       <p style="font-size:.84rem;color:var(--mid);margin-bottom:.5rem">mfreschi [at] berkeley [dot] edu</p>
-      <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g);border-bottom:1px solid var(--gx)">LinkedIn</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/marco-freschi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </section>
 
     <!-- BIO -->
     <section class="bio-col" aria-label="Biography">
       <h2 class="sec-head">Bio</h2>
+      <svg class="sec-rule" width="60" height="8">
+        <path d="M0,4 C10,2 25,6 40,4 C50,3 57,5 60,4" stroke="#155230" stroke-width="1.3" fill="none"/>
+      </svg>
       <div class="bio-text">
         <p>Marco Freschi is a postdoctoral fellow at the <a href="https://morphingmatter.org/" target="_blank" rel="noopener">Morphing Matter Lab</a>, Department of Mechanical Engineering, UC Berkeley, working under the direction of Professor Lining Yao. <strong>His research focuses on engineered bioinspired self-burying seeds: passive actuators that respond to environmental stimuli without electronics.</strong></p>
         <p>After graduating, Marco joined Accenture as a consultant before pursuing his PhD at Politecnico di Milano under the supervision of Professor <a href="https://www.cmic.polimi.it/persone/docenti-e-ricercatori/dotelli-giovanni/" target="_blank" rel="noopener">Giovanni Dotelli</a>, where he studied the tribological and mechanical behavior of metal matrix composites. He then moved to UC Berkeley thanks to a postdoctoral fellowship sponsored by Enel Foundation and managed by Professor <a href="https://physics.berkeley.edu/people/faculty/alessandra-lanzara" target="_blank" rel="noopener">Alessandra Lanzara</a>.</p>
-        <p>His flagship project is a <a href="https://morphingmatter.org/projects/seed" target="_blank" rel="noopener">self-burying seed carrier</a> for ecological restoration — a biodegradable wooden structure inspired by the Erodium seed mechanism that drills autonomously into soil using only moisture as its power source. Funded by NSF GCR and featured by <a href="https://edition.cnn.com/world/powered-by-rain-seed-carrier-reforest-remote-areas-scn-climate-spc-intl" target="_blank" rel="noopener">CNN</a> and <a href="https://edition.cnn.com/2025/12/16/world/video/self-burying-eseeds-future-reforestation-tech-for-good-spc-digvid" target="_blank" rel="noopener">CNN Tech for Good</a>, it represents a new class of passive, electronics-free systems designed for large-scale reforestation in remote and challenging environments.</p>
+        <p>His flagship project is a <a href="https://morphingmatter.org/projects/seed" target="_blank" rel="noopener">self-burying seed carrier</a> for ecological restoration — a biodegradable wooden structure inspired by the Erodium seed mechanism that drills autonomously into soil using only moisture as its power source. Funded by NSF GCR and featured by <a href="https://edition.cnn.com/world/powered-by-rain-seed-carrier-reforest-remote-areas-scn-climate-spc-intl" target="_blank" rel="noopener">CNN</a> and <a href="https://edition.cnn.com/2025/12/16/world/video/self-burying-eseeds-future-reforestation-tech-for-good-spc-digvid" target="_blank" rel="noopener">CNN Tech for Good</a>.</p>
+        <p>Marco has served as PhD Students Representative at Politecnico di Milano and currently as Social Co-chair of the <a href="https://bpa.berkeley.edu" target="_blank" rel="noopener">Berkeley Postdoctoral Association</a>.</p>
+        <p>Marco is actively pursuing faculty and research positions for the 2026–2027 academic year.</p>
       </div>
 
       <div class="bpa-box">
-        <p><strong><a href="https://bpa.berkeley.edu" target="_blank" rel="noopener" style="color:var(--g);border-bottom:1px solid var(--gx)">Berkeley Postdoctoral Association</a></strong> — As Social Co-chair, Marco manages events for the postdoc community and leads the <em>Queer Coffee Hour</em>: a monthly meetup dedicated to promoting community and culture within the postdoc and visiting scholar community.</p>
+        <p><strong><a href="https://bpa.berkeley.edu" target="_blank" rel="noopener" style="color:var(--g)">Berkeley Postdoctoral Association</a></strong> — As Social Co-chair, Marco manages events for the postdoc community and leads the <em>Queer Coffee Hour</em>: a monthly meetup dedicated to promoting community and culture within the postdoc and visiting scholar community.</p>
       </div>
 
-      <!-- MENTORING -->
       <h3 class="bio-sub">Mentoring</h3>
+      <svg class="sec-rule" width="80" height="7"><path d="M0,3.5 C12,1.5 30,5.5 55,3.5 C65,2.5 74,4.5 80,3.5" stroke="#155230" stroke-width="1.2" fill="none"/></svg>
       <div class="mentoring-block">
         <div class="mentoring-total">
           <div class="mentoring-num">43</div>
@@ -480,47 +506,29 @@
         </div>
       </div>
 
-      <!-- SERVICE & LEADERSHIP -->
       <h3 class="bio-sub">Service &amp; Leadership</h3>
+      <svg class="sec-rule" width="140" height="7"><path d="M0,3.5 C20,1.5 50,5.5 95,3.5 C118,2.5 132,4.5 140,3.5" stroke="#155230" stroke-width="1.2" fill="none"/></svg>
       <div class="sl-list">
-
         <div class="sl-row">
           <div class="sl-year green">2026</div>
-          <div class="sl-body">
-            <span class="sl-title">Chancellor's Outstanding Staff Award</span>
-            <span class="sl-badge">nominee → recipient</span>
-            <span class="sl-org">UC Berkeley</span>
-          </div>
+          <div class="sl-body"><span class="sl-title">Chancellor's Outstanding Staff Award</span><span class="sl-badge">nominee → recipient</span><span class="sl-org">UC Berkeley</span></div>
         </div>
         <div class="sl-row">
           <div class="sl-year">2026–</div>
-          <div class="sl-body">
-            <span class="sl-title">Community &amp; Culture Committee Chair · BPA</span>
-            <span class="sl-org">UC Berkeley</span>
-          </div>
+          <div class="sl-body"><span class="sl-title">Community &amp; Culture Committee Chair · BPA</span><span class="sl-org">UC Berkeley</span></div>
         </div>
         <div class="sl-row">
           <div class="sl-year">2024–</div>
-          <div class="sl-body">
-            <span class="sl-title">Social Committee Co-chair · BPA</span>
-            <span class="sl-org">UC Berkeley</span>
-          </div>
+          <div class="sl-body"><span class="sl-title">Social Committee Co-chair · BPA</span><span class="sl-org">UC Berkeley</span></div>
         </div>
         <div class="sl-row">
           <div class="sl-year">2023–</div>
-          <div class="sl-body">
-            <span class="sl-title">Topical Advisor Panel · <em>Lubricants</em>, MDPI</span>
-          </div>
+          <div class="sl-body"><span class="sl-title">Topical Advisor Panel · <em>Lubricants</em>, MDPI</span></div>
         </div>
         <div class="sl-row" style="border-bottom:none">
           <div class="sl-year">2019–</div>
-          <div class="sl-body">
-            <span class="sl-title">Peer Reviewer</span>
-            <span class="sl-org">11 journals</span>
-          </div>
+          <div class="sl-body"><span class="sl-title">Peer Reviewer</span><span class="sl-org">11 journals</span></div>
         </div>
-
-        <!-- Hidden rows -->
         <div id="sl-extra" style="display:none">
           <div class="sl-row">
             <div class="sl-year">2023</div>
@@ -528,25 +536,15 @@
           </div>
           <div class="sl-row">
             <div class="sl-year">2021–22</div>
-            <div class="sl-body">
-              <span class="sl-title">Research Fellows Representative</span>
-              <span class="sl-org">Politecnico di Milano</span>
-            </div>
+            <div class="sl-body"><span class="sl-title">Research Fellows Representative</span><span class="sl-org">Politecnico di Milano</span></div>
           </div>
           <div class="sl-row" style="border-bottom:none">
             <div class="sl-year">2018–21</div>
-            <div class="sl-body">
-              <span class="sl-title">PhD School Representative</span>
-              <span class="sl-org">Politecnico di Milano</span>
-            </div>
+            <div class="sl-body"><span class="sl-title">PhD School Representative</span><span class="sl-org">Politecnico di Milano</span></div>
           </div>
         </div>
-
         <button class="sl-more" onclick="var e=document.getElementById('sl-extra');var b=this;if(e.style.display==='none'){e.style.display='block';b.textContent='Show less ↑';}else{e.style.display='none';b.textContent='Show more ↓';}">Show more ↓</button>
       </div>
-
-      <!-- CONTACT -->
-
     </section>
   </div>
 </main>
@@ -554,133 +552,122 @@
 <!-- RESEARCH INTERESTS -->
 <section class="ri-section" aria-label="Research Interests">
   <div class="ri-inner">
-    <h2 class="ri-head"><a href="research.html" style="color:inherit;border-bottom:1px solid rgba(255,255,255,.2);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.6)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)'">Research Interests</a></h2>
+    <h2 class="sec-head"><a href="research.html" style="color:inherit">Research Interests</a></h2>
+    <svg class="sec-rule" width="160" height="8">
+      <path d="M0,4 C25,2 55,6 100,4 C130,3 148,5 160,4" stroke="#155230" stroke-width="1.3" fill="none"/>
+    </svg>
     <p class="ri-intro">My research sits at the intersection of materials science, engineering design, and sustainability. I study how materials behave and fail, engineer systems inspired by nature, and evaluate the full environmental and social life cycle of what I build, with the goal of creating solutions that perform rigorously and last responsibly.</p>
     <div class="ri-grid">
-      <div class="ri-card">
-        <span class="ri-tag">Materials Science</span>
-        <h4>Rigorous &amp; Functional</h4>
-        <p>Data-driven investigation of functional materials across a broad application spectrum — from tribological metal matrix composites to biodegradable morphing systems.</p>
-      </div>
-      <div class="ri-card">
-        <span class="ri-tag">Design Engineering</span>
-        <h4>Applied &amp; Bioinspired</h4>
-        <p>Application-driven research anchored to real requirements. Nature provides the blueprint — millions of years of optimization translated into engineered solutions at scale.</p>
-      </div>
-      <div class="ri-card">
-        <span class="ri-tag">Sustainability</span>
-        <h4>Economic · Environmental · Social</h4>
-        <p>Sustainability as a design constraint from day one — life-cycle thinking integrated across every project from raw material extraction to end-of-life.</p>
-      </div>
+      <div class="ri-card"><span class="ri-tag">Materials Science</span><h4>Rigorous &amp; Functional</h4><p>Data-driven investigation of functional materials across a broad application spectrum — from tribological metal matrix composites to biodegradable morphing systems.</p></div>
+      <div class="ri-card"><span class="ri-tag">Design Engineering</span><h4>Applied &amp; Bioinspired</h4><p>Application-driven research anchored to real requirements. Nature has already solved many of the world's most complex challenges — drawing inspiration from these solutions and translating them into scalable, engineered systems.</p></div>
+      <div class="ri-card"><span class="ri-tag">Sustainability</span><h4>Economic · Environmental · Social</h4><p>Sustainability as a design constraint from day one — life-cycle thinking integrated across every project from raw material extraction to end-of-life.</p></div>
     </div>
   </div>
 </section>
 
 <!-- PORTFOLIO -->
 <section class="portfolio-section" aria-label="Portfolio">
-  <div class="portfolio-inner">
-    <h2 class="portfolio-head"><a href="portfolio.html" style="color:inherit;border-bottom:2px solid var(--g);transition:border-color .2s">Portfolio</a></h2>
-    <div class="portfolio-grid">
 
+  <!-- Spiral watermark -->
+  <svg class="portfolio-spiral" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#c4e8d0" stroke-width="1.5">
+      <path d="M100,100 Q100,58 142,58 Q184,58 184,100 Q184,162 100,162 Q16,162 16,78 Q16,-4 122,-4 Q200,-4 200,100"/>
+      <path d="M100,100 Q100,80 118,80 Q136,80 136,100 Q136,128 100,128 Q64,128 64,94 Q64,60 106,60"/>
+    </g>
+  </svg>
+
+  <!-- Small dragonfly -->
+  <svg class="portfolio-fly" viewBox="0 0 100 65" xmlns="http://www.w3.org/2000/svg">
+    <line x1="50" y1="18" x2="50" y2="58" stroke="#84ba96" stroke-width="2.5"/>
+    <ellipse cx="50" cy="30" rx="18" ry="5.5" fill="#b4c8a0"/>
+    <ellipse cx="25" cy="26" rx="23" ry="9" fill="none" stroke="#c4d8b0" stroke-width="1" transform="rotate(-8 25 26)"/>
+    <ellipse cx="75" cy="26" rx="23" ry="9" fill="none" stroke="#c4d8b0" stroke-width="1" transform="rotate(8 75 26)"/>
+    <ellipse cx="27" cy="38" rx="19" ry="7" fill="none" stroke="#c4d8b0" stroke-width=".8"/>
+    <ellipse cx="73" cy="38" rx="19" ry="7" fill="none" stroke="#c4d8b0" stroke-width=".8"/>
+    <circle cx="50" cy="14" r="5" fill="#84ba96"/>
+  </svg>
+
+  <div class="portfolio-inner">
+    <div class="portfolio-head-wrap">
+      <h2 class="portfolio-head"><a href="portfolio.html" style="color:inherit">Selected Work</a></h2>
+      <svg class="sec-rule" width="160" height="8">
+        <path d="M0,4 C25,2 60,6 110,4 C138,3 152,5 160,4" stroke="#84ba96" stroke-width="1.3" fill="none"/>
+      </svg>
+    </div>
+    <div class="portfolio-grid">
       <div class="portfolio-card" data-portfolio="seed-carrier">
         <div class="portfolio-card-media portfolio-img-slot">
-          <!-- Replace with: <img src="img/eseed.jpg" alt="E-Seed"> -->
-          <!-- Or video: <video src="video/eseed.mp4" autoplay muted loop playsinline></video> -->
           <div class="portfolio-placeholder">
-            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-            <span>Add image or video</span>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>img / .gif</span>
           </div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-card-tag">Bioinspired Design · Ecological Restoration</span>
           <h4>Self-Burying Seed Carrier</h4>
-          <p>A biodegradable wooden structure inspired by the Erodium seed that drills autonomously into soil using moisture as its power source.</p>
         </div>
       </div>
-
       <div class="portfolio-card" data-portfolio="field-test">
         <div class="portfolio-card-media portfolio-img-slot">
-          <!-- Replace with: <img src="img/eseed-field.jpg" alt="Field Test"> -->
           <div class="portfolio-placeholder">
-            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-            <span>Add image or video</span>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>img / .gif</span>
           </div>
         </div>
         <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Field Testing · Aral Sea</span>
-          <h4>Kazakhstan Field Test</h4>
-          <p>Large-scale deployment of seed carriers in the Aral Sea region in collaboration with the Bulat Utemuratov Foundation.</p>
+          <span class="portfolio-card-tag">Field Testing · Kazakhstan</span>
+          <h4>Aral Sea Deployment</h4>
         </div>
       </div>
-
       <div class="portfolio-card" data-portfolio="mmc">
         <div class="portfolio-card-media portfolio-img-slot">
-          <!-- Replace with: <img src="img/mmc.jpg" alt="MMC"> -->
           <div class="portfolio-placeholder">
-            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-            <span>Add image or video</span>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>placeholder</span>
           </div>
         </div>
         <div class="portfolio-card-body">
-          <span class="portfolio-card-tag">Materials Science · Tribology</span>
+          <span class="portfolio-card-tag">Materials Science · Aerospace</span>
           <h4>Metal Matrix Composites</h4>
-          <p>Cu–WS₂ self-lubricating composites for aerospace sliding contacts — microstructure, wear, and electrical characterization.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
 <footer>
   <p>Marco Freschi <span class="footer-sep">·</span> UC Berkeley <span class="footer-sep">·</span> <a href="https://morphingmatter.org/" target="_blank" rel="noopener">Morphing Matter Lab</a></p>
   <p>© 2026</p>
 </footer>
 
 <script>
-// Mobile: show only first 3 publications
+function toggleAbs(el){const a=el.nextElementSibling;const o=a.classList.toggle('open');el.textContent=o?'− Abstract':'+ Abstract';}
 (function(){
-  function initMobilePubs(){
-    if(window.innerWidth > 900) return;
-    var items = document.querySelectorAll('.pub-col .pub-item');
-    var btn = document.querySelector('.pub-show-more');
-    if(!btn) return;
-    var hidden = 0;
-    items.forEach(function(el, i){
-      if(i >= 3){ el.style.display='none'; hidden++; }
-    });
-    if(hidden > 0) btn.style.display='block';
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', initMobilePubs);
-  } else {
-    initMobilePubs();
-  }
-})();
-function toggleAbs(el){
-  const a=el.nextElementSibling;
-  const o=a.classList.toggle('open');
-  el.textContent=o?'− Abstract':'+ Abstract';
-}
-</script>
-
-<script>
-// Load portfolio images from images.js
-(function(){
-  if(typeof PORTFOLIO_IMAGES === 'undefined') return;
+  if(typeof PORTFOLIO_IMAGES==='undefined') return;
   document.querySelectorAll('.portfolio-card[data-portfolio]').forEach(function(card){
-    var key = card.getAttribute('data-portfolio');
-    var src = PORTFOLIO_IMAGES[key];
-    var slot = card.querySelector('.portfolio-img-slot');
-    if(!slot || !src) return;
-    var img = document.createElement('img');
-    img.src = src;
-    img.alt = key;
-    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
-    // Remove placeholder content
-    var ph = slot.querySelector('.portfolio-placeholder');
+    var key=card.getAttribute('data-portfolio');
+    var src=PORTFOLIO_IMAGES[key];
+    var slot=card.querySelector('.portfolio-img-slot');
+    if(!slot||!src) return;
+    var img=document.createElement('img');
+    img.src=src;img.alt=key;img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
+    var ph=slot.querySelector('.portfolio-placeholder');
     if(ph) ph.remove();
     slot.appendChild(img);
   });
+})();
+// Mobile: show only 3 pubs
+(function(){
+  function init(){
+    if(window.innerWidth>900) return;
+    var items=document.querySelectorAll('.pub-col .pub-item');
+    var shown=0;
+    items.forEach(function(el){
+      if(shown>=3){el.style.display='none';}
+      else{shown++;}
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 })();
 </script>
 </body>
