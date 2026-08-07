@@ -229,7 +229,7 @@
       /* LAYOUT — bio first, then pubs */
       .page-body{padding:0 1.2rem}
       .two-col{grid-template-columns:1fr;border-bottom:none;display:flex;flex-direction:column}
-      .pub-col{order:2;padding:1.5rem 0;border-right:none;border-top:1px solid var(--ln)}
+      .pub-col{order:2;padding:1.5rem 0;border-right:none;border-top:1px solid var(--ln);display:block;overflow:visible}
       .bio-col{order:1;padding:1.5rem 0;border-bottom:none}
       .pub-num{display:none}
       .pub-item{padding-left:0;border-left:none}
@@ -249,6 +249,9 @@
       .mentoring-cards{grid-template-columns:1fr 1fr}
 
       footer{flex-direction:column;gap:.4rem;text-align:center;padding:1.2rem 1.5rem}
+      .pub-col .sec-head{display:block}
+      .pub-col .pub-item{display:block}
+      .pub-col .scholar-btn{display:inline-flex}
     }
     @media(max-width:480px){
       .hero-chips{gap:.3rem}
@@ -427,13 +430,18 @@
         <p class="pub-journal">CNN International</p>
       </div>
       <div class="pub-item" style="border-left:none;padding-left:0">
+        <p class="pub-year">2024</p>
+        <p class="pub-title"><a href="https://worldforestry.org/hope-through-innovation/" target="_blank" rel="noopener">Forest Hope Through Innovation</a></p>
+        <p class="pub-journal">World Forestry Center, Portland</p>
+      </div>
+      <div class="pub-item" style="border-left:none;padding-left:0">
         <p class="pub-year">2023</p>
-        <p class="pub-title">Victoria and Albert Museum — <a href="https://morphingmatter.org" target="_blank" rel="noopener">Morphing Matter Lab exhibition</a></p>
-        <p class="pub-journal">V&amp;A Museum, London</p>
+        <p class="pub-title"><a href="https://morphingmatter.org/news/vandadundee" target="_blank" rel="noopener">Museum Exhibition — Morphing Matter Lab</a></p>
+        <p class="pub-journal">Victoria and Albert Museum, London</p>
       </div>
       <div class="pub-item" style="border-left:none;padding-left:0;border-bottom:none">
         <p class="pub-year">2020–22</p>
-        <p class="pub-title"><a href="https://www.youtube.com/playlist?list=PLresearch" target="_blank" rel="noopener">PhD Pills — 21 video interviews on materials research</a></p>
+        <p class="pub-title"><a href="https://www.cmic.polimi.it/en/magazine/stories/phd-pills/" target="_blank" rel="noopener">PhD Pills — 21 video interviews on materials research</a></p>
         <p class="pub-journal">Politecnico di Milano</p>
       </div>
 
