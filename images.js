@@ -35,7 +35,7 @@ const PROJECT_IMAGES = {
 
 // Portfolio images (homepage) — same logic
 const PORTFOLIO_IMAGES = {
-  "seed-carrier": img/portfolio-seed.png,   // Self-Burying Seed Carrier card
-  "field-test":   img/portfolio-field.png,   // Kazakhstan Field Test card
-  "mmc":          imh/portfolio-mmc.png,   // Metal Matrix Composites card
+  "seed-carrier": "img/portfolio-seed.png",   // Self-Burying Seed Carrier card
+  "field-test":   "img/portfolio-field.png",   // Kazakhstan Field Test card
+  "mmc":          "img/portfolio-mmc.png",   // Metal Matrix Composites card
 };
