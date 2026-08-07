@@ -352,28 +352,45 @@ const LOCATIONS = [
   }
 ];
 
-const PIN_OV = {
-  milan:    {px:510,py:105,lx:522,ly:96, anchor:'start'},
-  chambery: {px:490,py:110,lx:478,ly:101,anchor:'end'},
-  oulu:     {px:548,py:30, lx:548,ly:14, anchor:'middle'},
-  berkeley: {px:154,py:131,lx:142,ly:122,anchor:'end'},
-  philly:   {px:287,py:126,lx:296,ly:117,anchor:'start'},
-  harrison: {px:262,py:137,lx:252,ly:148,anchor:'end'},
-  ithaca:   {px:268,py:110,lx:258,ly:101,anchor:'end'},
-  syracuse: {px:280,py:115,lx:290,ly:106,anchor:'start'},
-  almaty:   {px:685,py:112,lx:685,ly:103,anchor:'middle'},
-};
-
-const VW=960,VH=480,NS='http://www.w3.org/2000/svg';
 const LABEL_H=16, CHAR_W=5.4, LABEL_PAD=16, LABEL_LPAD=8;
-const BASE_R=80, STEP_R=20, MAX_ITER=60;
+const BASE_R=80, NS='http://www.w3.org/2000/svg';
+const VW=960, VH=500;
 
-function mercXY(lat,lng){
-  const x=(lng+180)/360*VW;
-  const lr=lat*Math.PI/180;
-  const y=VH/2-(VW*Math.log(Math.tan(Math.PI/4+lr/2)))/(2*Math.PI);
-  return {x,y};
+function rectsOverlap(a,b){
+  return !(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y);
 }
+
+function computeLabelPositions(cx,cy,people){
+  const n=people.length;
+  const results=[], placed=[];
+  const startAngle=-Math.PI/2-Math.PI*0.1;
+  for(let i=0;i<n;i++){
+    const lw=people[i].name.length*CHAR_W+LABEL_PAD+LABEL_LPAD;
+    let done=false;
+    outer:
+    for(let r=BASE_R;r<=BASE_R+20*(n+2);r+=8){
+      for(let da=-Math.PI;da<=Math.PI;da+=Math.PI/18){
+        const angle=startAngle+(2*Math.PI/n)*i+da;
+        const nx=Math.max(lw/2+4,Math.min(VW-lw/2-4, cx+r*Math.cos(angle)));
+        const ny=Math.max(LABEL_H,Math.min(VH-LABEL_H, cy+r*Math.sin(angle)));
+        const rect={x:nx-LABEL_LPAD,y:ny-LABEL_H/2,w:lw,h:LABEL_H};
+        let ok=true;
+        for(const p of placed){if(rectsOverlap(rect,p)){ok=false;break;}}
+        if(ok){placed.push(rect);results.push({nx,ny});done=true;break outer;}
+      }
+    }
+    if(!done){
+      const angle=startAngle+(2*Math.PI/n)*i;
+      const r=BASE_R+20*(n+1);
+      const nx=Math.max(40,Math.min(VW-40,cx+r*Math.cos(angle)));
+      const ny=Math.max(LABEL_H,Math.min(VH-LABEL_H,cy+r*Math.sin(angle)));
+      placed.push({x:nx-LABEL_LPAD,y:ny-LABEL_H/2,w:people[i].name.length*CHAR_W+LABEL_PAD+LABEL_LPAD,h:LABEL_H});
+      results.push({nx,ny});
+    }
+  }
+  return results;
+}
+
 function el(tag,attrs,parent){
   const e=document.createElementNS(NS,tag);
   for(const[k,v]of Object.entries(attrs)) e.setAttribute(k,v);
@@ -381,147 +398,106 @@ function el(tag,attrs,parent){
   return e;
 }
 
-// Axis-aligned bounding box overlap check
-function rectsOverlap(a,b){
-  return !(a.x+a.w<=b.x || b.x+b.w<=a.x || a.y+a.h<=b.y || b.y+b.h<=a.y);
-}
-
-// Place labels around center (cx,cy) avoiding overlaps
-function computeLabelPositions(cx,cy,people){
-  const n=people.length;
-  const results=[];
-  const placed=[];
-
-  // Start angle: distribute evenly, biased upward
-  const startAngle=-Math.PI/2 - Math.PI*0.1;
-
-  for(let i=0;i<n;i++){
-    const tw=people[i].name.length*CHAR_W+LABEL_PAD;
-    const lw=tw+LABEL_LPAD;
-    const lh=LABEL_H;
-    let placed_ok=false;
-    let bestX=cx,bestY=cy,bestR=BASE_R;
-
-    // Try increasing radii
-    outer:
-    for(let r=BASE_R;r<=BASE_R+STEP_R*(n+2);r+=8){
-      // Try angles offset from even distribution
-      for(let da=-Math.PI;da<=Math.PI;da+=Math.PI/18){
-        const angle=startAngle+(2*Math.PI/n)*i+da;
-        const nx=cx+r*Math.cos(angle);
-        const ny=cy+r*Math.sin(angle);
-        // Clamp to map bounds
-        const cx2=Math.max(lw/2+4,Math.min(VW-lw/2-4,nx));
-        const cy2=Math.max(lh/2+4,Math.min(VH-lh/2-4,ny));
-        // Label rect: centered on node point
-        const rect={x:cx2-LABEL_LPAD,y:cy2-lh/2,w:lw,h:lh};
-        // Check overlap with already placed labels
-        let ok=true;
-        for(const p of placed){
-          if(rectsOverlap(rect,p)){ok=false;break;}
-        }
-        if(ok){
-          bestX=cx2;bestY=cy2;bestR=r;placed_ok=true;
-          placed.push(rect);
-          results.push({nx:bestX,ny:bestY,r,angle:angle});
-          break outer;
-        }
-      }
-    }
-    if(!placed_ok){
-      // Fallback: place anyway
-      const angle=startAngle+(2*Math.PI/n)*i;
-      const r=BASE_R+STEP_R*(n);
-      const nx=Math.max(40,Math.min(VW-40,cx+r*Math.cos(angle)));
-      const ny=Math.max(lh,Math.min(VH-lh,cy+r*Math.sin(angle)));
-      placed.push({x:nx-LABEL_LPAD,y:ny-lh/2,w:people[i].name.length*CHAR_W+LABEL_PAD+LABEL_LPAD,h:lh});
-      results.push({nx,ny,r,angle});
-    }
-  }
-  return results;
-}
-
 const wrap=document.getElementById('mapWrap');
-// Fix viewBox: remove top crop (start at y:0 not y:8), fix bottom crop
-const svg=el('svg',{viewBox:'0 0 960 440',xmlns:NS,style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
-el('rect',{x:0,y:0,width:VW,height:VH,fill:'#e0edd4'},svg);
+const svg=el('svg',{viewBox:`0 0 ${VW} ${VH}`,xmlns:NS,
+  style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
+
+// Background rect matching map color
+el('rect',{x:0,y:0,width:VW,height:VH,fill:'#d4e8c8'},svg);
+
 const mapG=el('g',{},svg);
 const rayLayer=el('g',{},svg);
 const pinLayer=el('g',{},svg);
-// Label layer — always on top
 const labelLayer=el('g',{},svg);
 
 const allPins={}, allRays={};
 let activeId=null;
+let project=null; // will be set after d3 loads
 
 function closeAll(){
   Object.keys(allRays).forEach(id=>{
-    allRays[id].style.display='none';
+    allRays[id].hide();
     allPins[id].dot.setAttribute('fill','#155230');
     allPins[id].lbl.style.opacity='1';
   });
   activeId=null;
 }
-
 svg.addEventListener('click',e=>{
-  if(!e.target.closest('[data-pin]') && !e.target.closest('[data-ray]')) closeAll();
+  if(!e.target.closest('[data-pin]')&&!e.target.closest('[data-ray]')) closeAll();
 });
 
-const topoScript=document.createElement('script');
-topoScript.src='https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js';
-topoScript.onload=()=>{
+// Load D3 + d3-geo-projection for Equal Earth
+function loadScript(src, cb){
+  const s=document.createElement('script');
+  s.src=src; s.onload=cb; document.head.appendChild(s);
+}
+
+loadScript('https://cdn.jsdelivr.net/npm/d3-array@3/dist/d3-array.min.js', ()=>{
+loadScript('https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js', ()=>{
+loadScript('https://cdn.jsdelivr.net/npm/d3-geo-projection@4/dist/d3-geo-projection.min.js', ()=>{
+loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js', ()=>{
+
+  // Setup Equal Earth projection
+  const proj = d3.geoEqualEarth()
+    .scale(153)
+    .translate([VW/2, VH/2])
+    .precision(0.1);
+
+  project = ([lng,lat]) => {
+    const p = proj([lng,lat]);
+    return p ? {x:p[0], y:p[1]} : null;
+  };
+
+  // Draw graticule
+  const graticule = d3.geoGraticule()();
+  const path = d3.geoPath(proj);
+  const gratD = path(graticule);
+  if(gratD) el('path',{d:gratD,fill:'none',stroke:'rgba(255,255,255,0.2)','stroke-width':'0.3'},mapG);
+
+  // Draw sphere outline
+  const sphereD = path({type:'Sphere'});
+  if(sphereD) el('path',{d:sphereD,fill:'#c8dff8',stroke:'rgba(21,82,48,0.2)','stroke-width':'0.5'},mapG);
+
+  // Load world topo
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
     .then(r=>r.json())
     .then(topo=>{
       topojson.feature(topo,topo.objects.countries).features.forEach(f=>{
-        const d=geoPath(f);
+        const d=path(f);
         if(d) el('path',{d,fill:'#a8c88a',stroke:'#fff','stroke-width':'0.4'},mapG);
       });
+      // Draw country borders
+      const borders=path(topojson.mesh(topo,topo.objects.countries,(a,b)=>a!==b));
+      if(borders) el('path',{d:borders,fill:'none',stroke:'#fff','stroke-width':'0.3'},mapG);
       drawPins();
     }).catch(()=>drawPins());
-};
-document.head.appendChild(topoScript);
-
-function geoPath(feature){
-  function proj([lng,lat]){const p=mercXY(lat,lng);return p.x.toFixed(1)+','+p.y.toFixed(1)}
-  function ring(c){return'M'+c.map(proj).join('L')+'Z'}
-  function poly(r){return r.map(ring).join(' ')}
-  try{
-    const g=feature.geometry;
-    if(!g) return null;
-    if(g.type==='Polygon') return poly(g.coordinates);
-    if(g.type==='MultiPolygon') return g.coordinates.map(poly).join(' ');
-  }catch(e){return null;}
-}
+})})})});
 
 function drawPins(){
   LOCATIONS.forEach(loc=>{
-    const raw=mercXY(loc.lat,loc.lng);
-    const ov=PIN_OV[loc.id]||{};
-    const cx=ov.px||Math.max(10,Math.min(VW-10,raw.x));
-    const cy=ov.py||Math.max(16,Math.min(VH-16,raw.y));
-    const lx=ov.lx||cx, ly=ov.ly||(cy-11), anchor=ov.anchor||'middle';
+    const raw = project([loc.lng, loc.lat]);
+    if(!raw) return;
+    const cx=Math.max(10,Math.min(VW-10,raw.x));
+    const cy=Math.max(16,Math.min(VH-16,raw.y));
 
-    // Compute label positions with collision avoidance
+    // Label position for city name
+    const lx=cx+8, ly=cy-9;
+
     const positions=computeLabelPositions(cx,cy,loc.people);
 
-    // Ray group — lines in rayLayer, labels in labelLayer
     const rayG=el('g',{'data-ray':'1'},rayLayer);
     const lblG=el('g',{'data-ray':'1'},labelLayer);
-    rayG.style.display='none';
-    lblG.style.display='none';
-    allRays[loc.id]={rayG,lblG, show(){rayG.style.display='';lblG.style.display='';},
-                                 hide(){rayG.style.display='none';lblG.style.display='none';}};
+    rayG.style.display='none'; lblG.style.display='none';
+    allRays[loc.id]={
+      show(){rayG.style.display='';lblG.style.display='';},
+      hide(){rayG.style.display='none';lblG.style.display='none';}
+    };
 
     loc.people.forEach((p,i)=>{
       const {nx,ny}=positions[i];
-      const tw=p.name.length*CHAR_W+LABEL_PAD;
-      const lw=tw+LABEL_LPAD;
-
-      // Dashed line in rayLayer
-      el('line',{x1:cx,y1:cy,x2:nx,y2:ny,stroke:'#5a6e45','stroke-width':'0.9','stroke-dasharray':'4 3'},rayG);
-
-      // Label in labelLayer (always above everything)
+      const lw=p.name.length*CHAR_W+LABEL_PAD+LABEL_LPAD;
+      el('line',{x1:cx,y1:cy,x2:nx,y2:ny,
+        stroke:'#5a6e45','stroke-width':'0.9','stroke-dasharray':'4 3'},rayG);
       const nodeG=el('g',{'data-ray':'1'},lblG);
       el('rect',{x:nx-LABEL_LPAD,y:ny-LABEL_H/2,width:lw,height:LABEL_H,rx:'3',
         fill:'rgba(248,247,244,0.97)',stroke:'rgba(21,82,48,0.3)','stroke-width':'0.8'},nodeG);
@@ -533,24 +509,20 @@ function drawPins(){
       nodeG.addEventListener('click',e=>{e.stopPropagation();window.open(p.url,'_blank','noopener');});
     });
 
-    // Pin group
     const pinG=el('g',{'data-pin':'1'},pinLayer);
     pinG.style.cursor='pointer';
-
-    [0,1].forEach(i=>{
+    [0,1].forEach(()=>{
       el('circle',{cx,cy,r:6,fill:'none',stroke:'#3a4a2e','stroke-width':'1',opacity:'0.35'},pinG);
     });
     const dot=el('circle',{cx,cy,r:5.5,fill:'#155230',stroke:'#F2EDE0','stroke-width':'1.5'},pinG);
-    const lbl=el('text',{x:lx,y:ly,'text-anchor':anchor,
+    const lbl=el('text',{x:lx,y:ly,'text-anchor':'start',
       style:'font-family:Consolas,monospace;font-size:9px;font-weight:700;fill:#1a1a1a;pointer-events:none'},pinG);
     lbl.textContent=loc.label;
-
     allPins[loc.id]={dot,lbl};
 
     pinG.addEventListener('click',e=>{
       e.stopPropagation();
       const isOpen=activeId===loc.id;
-      // Close all
       Object.keys(allRays).forEach(id=>{
         allRays[id].hide();
         allPins[id].dot.setAttribute('fill','#155230');
