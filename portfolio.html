@@ -224,6 +224,24 @@
       .rs-block{padding:1.2rem 1rem}
     }
   
+
+    /* ── TABS ────────────────────────────────────────────────────── */
+    .port-tabs{display:flex;align-items:stretch;border-bottom:2px solid var(--g);margin-bottom:2rem}
+    .port-tab{font-family:var(--ser);font-size:1.5rem;font-weight:300;
+      background:transparent;border:none;border-bottom:2px solid transparent;
+      margin-bottom:-2px;padding:.6rem 2rem .6rem 0;cursor:pointer;
+      display:flex;align-items:center;gap:.7rem;color:var(--dim);
+      transition:color .2s}
+    .port-tab:first-child{padding-left:0}
+    .port-tab+.port-tab{padding-left:1.5rem}
+    .port-tab.active{background:var(--g);color:#fff;border-bottom-color:var(--g);padding-left:1.2rem;padding-right:1.5rem}
+    .port-tab.active:first-child{padding-left:0}
+    .port-tab-count{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;
+      text-transform:uppercase;padding:.15rem .45rem;border-radius:2px}
+    .port-tab.active .port-tab-count{background:rgba(255,255,255,.2);color:#fff}
+    .port-tab:not(.active) .port-tab-count{background:rgba(0,0,0,.06);color:var(--dim)}
+    .port-panel{display:none}
+    .port-panel.active{display:block}
     /* Portfolio-specific */
     .port-anchor{scroll-margin-top:calc(var(--nh) + 1rem)}
     .port-section-head{font-family:var(--ser);font-size:2rem;font-weight:300;
@@ -255,9 +273,19 @@
 
 <div class="content">
 
-  <!-- PROJECTS -->
+  <!-- TABS -->
+  <div class="port-tabs">
+    <button class="port-tab active" id="tab-projects" onclick="switchPortTab('projects')">
+      Research Projects <span class="port-tab-count">14</span>
+    </button>
+    <button class="port-tab" id="tab-publications" onclick="switchPortTab('publications')">
+      Publications <span class="port-tab-count">10</span>
+    </button>
+  </div>
+
+  <!-- PROJECTS PANEL -->
+  <div class="port-panel active" id="panel-projects">
   <section id="projects" class="port-anchor">
-    <h2 class="port-section-head">Research Projects <span>14 projects · 2016–present</span></h2>
     <div class="projects-grid">
 
   <div class="project" data-project="01">
@@ -750,9 +778,12 @@
 </div>
   </section>
 
-  <!-- PUBLICATIONS -->
+  </section>
+  </div><!-- end panel-projects -->
+
+  <!-- PUBLICATIONS PANEL -->
+  <div class="port-panel" id="panel-publications">
   <section id="publications" class="port-anchor">
-    <h2 class="port-section-head" style="margin-top:3rem">Publications <span>10 peer-reviewed · 2016–2024</span></h2>
     <div>
 
   
@@ -787,6 +818,9 @@
 
     </div>
   </section>
+
+  </section>
+  </div><!-- end panel-publications -->
 
 </div>
 
@@ -1064,6 +1098,25 @@ function toggleAbs(el){const a=el.nextElementSibling;const o=a.classList.toggle(
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',eq);}else{eq();}
   window.addEventListener('resize',eq);
 })();
+</script>
+
+<script>
+function switchPortTab(tab) {
+  // Update tab buttons
+  document.querySelectorAll('.port-tab').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  document.getElementById('tab-' + tab).classList.add('active');
+  // Update panels
+  document.querySelectorAll('.port-panel').forEach(function(panel) {
+    panel.classList.remove('active');
+  });
+  document.getElementById('panel-' + tab).classList.add('active');
+  // Re-run equalizer if switching to projects
+  if(tab === 'projects' && typeof equalizeProjects === 'function') {
+    setTimeout(equalizeProjects, 50);
+  }
+}
 </script>
 </body>
 </html>
