@@ -14,16 +14,16 @@
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --g:#155230; --gd:#0f3d20; --gl:#84ba96; --gx:rgba(132,186,150,0.25);
-      --bg:#F2EDE0; --bg2:#EAE4D0; --bg3:#E0D8C0; --sur:#F8F4E8;
-      --ink:#2d1e0a; --mid:#5c4d38; --dim:#8a7a60; --faint:#b8a87a;
-      --ln:rgba(90,60,20,0.12);
+      --g:#155230; --gd:#0f3d20; --gl:#84ba96; --gx:#c8e6d4;
+      --bg:#F7F6F2; --bg2:#EEECEA; --sur:#FFFFFF;
+      --ink:#0f0f0f; --mid:#4a4a4a; --dim:#888;
+      --ln:rgba(0,0,0,0.08);
       --ser:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
       --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
       --mono:'Consolas','Menlo','Monaco',monospace;
-      --nh:50px;
+      --nh:54px;
     }
-    html{background:var(--bg);color:var(--ink);font-family:var(--ser);font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    html{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
     body{min-height:100vh}
     h1,h2,h3,h4{font-family:var(--ser);font-weight:400;line-height:1.2;letter-spacing:-.01em}
     a{color:inherit;text-decoration:none}
@@ -69,7 +69,7 @@
     .rs-col p{font-size:.85rem;color:rgba(255,255,255,.78);line-height:1.7}
 
     /* PROJECTS */
-    .project{border:1px solid var(--ln);background:#F8F4E8;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;transition:box-shadow .2s}
+    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;transition:box-shadow .2s}
     .project:hover{box-shadow:0 4px 24px rgba(0,0,0,.07)}
     .project-header{display:grid;grid-template-columns:3rem 1fr;background:var(--g);padding:.8rem 1.2rem;gap:.8rem;align-items:center}
     .project-num{font-family:var(--ser);font-size:2.5rem;font-weight:300;
@@ -135,8 +135,10 @@
       color:var(--dim);text-transform:uppercase;text-align:center;margin-top:.8rem}
 
     /* FOOTER */
-    footer{background:var(--gd);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(132,186,150,.15)}
-    footer p{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+    footer{background:var(--gd);padding:1.4rem 2.5rem;
+      display:flex;justify-content:space-between;align-items:center}
+    footer p{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;
+      text-transform:uppercase;color:rgba(255,255,255,.4)}
     footer a{color:var(--gl);transition:opacity .2s}
     footer a:hover{opacity:.7}
     .footer-sep{color:var(--gl);margin:0 .4rem;opacity:.5}
@@ -173,7 +175,7 @@
     .extra-val{font-size:.72rem;color:var(--mid);line-height:1.4}
     /* 2-column project grid */
     .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3rem}
-    .project{border:1px solid var(--ln);background:#F8F4E8;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;transition:box-shadow .2s}
+    .project{border:1px solid var(--ln);background:var(--sur);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;transition:box-shadow .2s}
     .project:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
@@ -252,9 +254,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-home" title="Home" aria-label="Home">
-    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-  </a>
+  <a href="index.html" class="nav-home" title="Home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></a>
   <div style="flex:1"></div>
   <div class="nav-links">
     <a href="research.html">Research Statement</a>
@@ -1018,7 +1018,7 @@ function drawPins(){
       const rc=el('circle',{cx,cy,r:6,fill:'none',stroke:'#3a4a2e','stroke-width':'1',opacity:'0.35'},pinG);
       rc.style.animation=`mapPulse 2.4s ${i*0.9}s ease-out infinite`;
     });
-    const dot=el('circle',{cx,cy,r:5.5,fill:'#155230',stroke:'#F2EDE0','stroke-width':'1.5'},pinG);
+    const dot=el('circle',{cx,cy,r:5.5,fill:'#155230',stroke:'#F7F6F2','stroke-width':'1.5'},pinG);
     const lbl=el('text',{x:lx,y:ly,'text-anchor':anchor,
       style:'font-family:Consolas,monospace;font-size:9px;font-weight:700;fill:#1a1a1a;pointer-events:none'},pinG);
     lbl.textContent=loc.label;
