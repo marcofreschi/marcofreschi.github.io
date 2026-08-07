@@ -320,14 +320,14 @@
       z-index:1000;align-items:center;justify-content:center;padding:2rem;
       backdrop-filter:blur(4px)}
     .lb-overlay.open{display:flex}
-    .lb-box{background:var(--bg);max-width:780px;width:100%;max-height:90vh;
-      overflow-y:auto;position:relative}
-    .lb-close{position:absolute;top:1rem;right:1rem;background:none;border:none;
-      font-size:1.5rem;cursor:pointer;color:var(--mid);z-index:2;line-height:1;
-      width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+    .lb-box{background:var(--bg);max-width:900px;width:100%;max-height:90vh;
+      overflow-y:auto;position:relative;display:grid;grid-template-columns:320px 1fr}
+    .lb-close{position:absolute;top:.7rem;right:.7rem;background:rgba(242,237,224,.9);border:none;
+      font-size:1.1rem;cursor:pointer;color:var(--ink);z-index:10;line-height:1;
+      width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%}
     .lb-close:hover{color:var(--ink)}
-    .lb-img{width:100%;max-height:340px;object-fit:cover;display:block}
-    .lb-body{padding:1.5rem 2rem 2rem}
+    .lb-img{width:100%;height:100%;object-fit:cover;display:block;min-height:400px}
+    .lb-body{padding:1.5rem 2rem 2rem;overflow-y:auto;max-height:90vh}
     .lb-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
       text-transform:uppercase;color:var(--g);margin-bottom:.5rem;display:block}
     .lb-title{font-family:var(--ser);font-size:1.5rem;font-weight:300;
@@ -339,7 +339,7 @@
     .lb-meta-lbl{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;
       text-transform:uppercase;color:var(--g);margin-bottom:.2rem}
     .lb-meta-val{font-size:.8rem;color:var(--ink);line-height:1.4}
-    @media(max-width:600px){.lb-meta{grid-template-columns:1fr}.lb-body{padding:1rem 1.2rem 1.5rem}}
+    @media(max-width:700px){.lb-box{grid-template-columns:1fr}.lb-img{min-height:220px;max-height:260px}.lb-meta{grid-template-columns:1fr}.lb-body{padding:1rem 1.2rem 1.5rem}}
   </style>
   <script src="images.js"></script>
 </head>
@@ -727,7 +727,7 @@ const LB_DATA = {
     img: 'img/portfolio-seed',
     tag: 'Bioinspired Design · Autonomous Actuator',
     title: 'Self-Burying Seed Carrier',
-    desc: 'A biodegradable wooden structure inspired by the Erodium seed mechanism that drills autonomously into soil using only moisture as its power source — no electronics, no batteries. Designed for large-scale ecological restoration and reforestation in remote and challenging environments. Funded by NSF GCR and featured by CNN and CNN Tech for Good.',
+    desc: 'A biodegradable wooden structure inspired by the Erodium seed mechanism that drills autonomously into soil using only moisture as its power source, with no electronics and no batteries. Designed for large-scale ecological restoration and reforestation in remote and challenging environments. Funded by NSF GCR and featured by CNN Tech for Good.',
     meta: [
       {label:'Funding', val:'NSF GCR · Bulat Utemuratov Foundation'},
       {label:'Lab', val:'Morphing Matter Lab, UC Berkeley'},
@@ -739,7 +739,7 @@ const LB_DATA = {
     img: 'img/portfolio-field',
     tag: 'Ecological Restoration · Field Test',
     title: 'Kazakhstan Field Test',
-    desc: 'Large-scale deployment of self-burying seed carriers in the Aral Sea region — one of the most degraded dryland ecosystems on Earth. Conducted in collaboration with the Bulat Utemuratov Foundation, this field campaign tested real-world performance of the seed carrier across varying soil conditions, vegetation cover, and deployment scenarios.',
+    desc: 'Large-scale deployment of self-burying seed carriers in the Aral Sea region, one of the most degraded dryland ecosystems on Earth. Conducted in collaboration with the Bulat Utemuratov Foundation, this field campaign tested real-world performance of the seed carrier across varying soil conditions, vegetation cover, and deployment scenarios.',
     meta: [
       {label:'Location', val:'Aral Sea region, Kazakhstan'},
       {label:'Partner', val:'Bulat Utemuratov Foundation'},
@@ -750,7 +750,7 @@ const LB_DATA = {
     img: 'img/portfolio-mmc',
     tag: 'Materials Engineering · Tribology',
     title: 'Metal Matrix Composites',
-    desc: 'PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of copper–tungsten disulfide (Cu–WS₂) self-lubricating composites for aerospace sliding electrical contacts. Work spanned powder metallurgy processing, solid-state characterization, multiscale tribological testing, and life cycle assessment — establishing a rigorous materials science foundation.',
+    desc: 'PhD research at Politecnico di Milano investigating the tribological and mechanical behavior of copper–tungsten disulfide (Cu–WS₂) self-lubricating composites for aerospace sliding electrical contacts. The work spanned powder metallurgy processing, solid-state characterization, and multiscale tribological testing, establishing a rigorous materials science foundation.',
     meta: [
       {label:'Funding', val:'Logic SpA PhD Fellowship'},
       {label:'Lab', val:'Materials for Energy and Environment, Politecnico di Milano'},
