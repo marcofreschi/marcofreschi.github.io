@@ -127,8 +127,8 @@
     .scholar-btn:hover{background:var(--gd)}
 
     /* COLLAB MAP */
-    .map-section{padding:2rem 0 1.5rem;border-top:1px solid var(--ln)}
-    .map-wrap{width:100%;border:1px solid var(--ln);overflow:hidden;background:#e0edd4}
+    .map-section{margin:2rem 0}
+    .map-wrap{width:100%;overflow:visible;margin:.5rem 0 1rem}
     .map-hint{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;
       color:var(--dim);text-transform:uppercase;text-align:center;margin-top:.8rem}
 
@@ -202,7 +202,7 @@
       .project-desc{padding:1rem 1rem 1rem 1.2rem;font-size:.82rem;line-height:1.75;color:var(--mid);border-right:1px solid var(--ln)}
 
       /* MAP */
-      .map-section{padding:1.2rem 0}
+      .map-section{margin:2rem 0}
 
       /* PUBLICATIONS */
       .pub-num{display:none}
@@ -354,7 +354,7 @@ const LOCATIONS = [
 
 const LABEL_H=16, CHAR_W=5.4, LABEL_PAD=16, LABEL_LPAD=8;
 const BASE_R=80, NS='http://www.w3.org/2000/svg';
-const VW=960, VH=500;
+const VW=960, VH=520;
 
 function rectsOverlap(a,b){
   return !(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y);
@@ -403,7 +403,7 @@ const svg=el('svg',{viewBox:`0 0 ${VW} ${VH}`,xmlns:NS,
   style:'width:100%;height:auto;display:block;overflow:visible'},wrap);
 
 // Background rect matching map color
-el('rect',{x:0,y:0,width:VW,height:VH,fill:'#d4e8c8'},svg);
+// no background rect — let page bg show through
 
 const mapG=el('g',{},svg);
 const rayLayer=el('g',{},svg);
@@ -439,8 +439,8 @@ loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.
 
   // Setup Equal Earth projection
   const proj = d3.geoEqualEarth()
-    .scale(153)
-    .translate([VW/2, VH/2])
+    .scale(170)
+    .translate([VW/2, VH/2+10])
     .precision(0.1);
 
   project = ([lng,lat]) => {
@@ -452,11 +452,11 @@ loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.
   const graticule = d3.geoGraticule()();
   const path = d3.geoPath(proj);
   const gratD = path(graticule);
-  if(gratD) el('path',{d:gratD,fill:'none',stroke:'rgba(255,255,255,0.2)','stroke-width':'0.3'},mapG);
+  if(gratD) el('path',{d:gratD,fill:'none',stroke:'rgba(21,82,48,0.08)','stroke-width':'0.3'},mapG);
 
   // Draw sphere outline
   const sphereD = path({type:'Sphere'});
-  if(sphereD) el('path',{d:sphereD,fill:'#c8dff8',stroke:'rgba(21,82,48,0.2)','stroke-width':'0.5'},mapG);
+  if(sphereD) el('path',{d:sphereD,fill:'#e0edd4',stroke:'rgba(21,82,48,0.15)','stroke-width':'0.8'},mapG);
 
   // Load world topo
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
@@ -464,7 +464,7 @@ loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.
     .then(topo=>{
       topojson.feature(topo,topo.objects.countries).features.forEach(f=>{
         const d=path(f);
-        if(d) el('path',{d,fill:'#a8c88a',stroke:'#fff','stroke-width':'0.4'},mapG);
+        if(d) el('path',{d,fill:'#a8c88a',stroke:'#f0f4ec','stroke-width':'0.4'},mapG);
       });
       // Draw country borders
       const borders=path(topojson.mesh(topo,topo.objects.countries,(a,b)=>a!==b));
@@ -481,7 +481,21 @@ function drawPins(){
     const cy=Math.max(16,Math.min(VH-16,raw.y));
 
     // Label position for city name
-    const lx=cx+8, ly=cy-9;
+    // Smart city label offset based on quadrant to avoid overlap
+    // Per-location city label offset to avoid overlaps
+    const cityOffsets={
+      milan:    {dx:8, dy:-9, anchor:'start'},
+      oulu:     {dx:0, dy:-11, anchor:'middle'},
+      chambery: {dx:-8, dy:-9, anchor:'end'},
+      berkeley: {dx:-8, dy:-9, anchor:'end'},
+      philly:   {dx:8, dy:9, anchor:'start'},
+      harrison: {dx:8, dy:9, anchor:'start'},
+      ithaca:   {dx:-8, dy:-9, anchor:'end'},
+      syracuse: {dx:8, dy:-9, anchor:'start'},
+      almaty:   {dx:8, dy:-9, anchor:'start'},
+    };
+    const co=cityOffsets[loc.id]||{dx:8,dy:-9,anchor:'start'};
+    const lx=cx+co.dx, ly=cy+co.dy, cityAnchor=co.anchor;
 
     const positions=computeLabelPositions(cx,cy,loc.people);
 
@@ -515,7 +529,7 @@ function drawPins(){
       el('circle',{cx,cy,r:6,fill:'none',stroke:'#3a4a2e','stroke-width':'1',opacity:'0.35'},pinG);
     });
     const dot=el('circle',{cx,cy,r:5.5,fill:'#155230',stroke:'#F2EDE0','stroke-width':'1.5'},pinG);
-    const lbl=el('text',{x:lx,y:ly,'text-anchor':'start',
+    const lbl=el('text',{x:lx,y:ly,'text-anchor':cityAnchor,
       style:'font-family:Consolas,monospace;font-size:9px;font-weight:700;fill:#1a1a1a;pointer-events:none'},pinG);
     lbl.textContent=loc.label;
     allPins[loc.id]={dot,lbl};
