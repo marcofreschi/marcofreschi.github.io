@@ -458,9 +458,9 @@ function drawPins(){
 
       const nodeG=el('g',{'data-ray':'1'},rayG);
       el('line',{x1:cx,y1:cy,x2:nx,y2:ny,stroke:'#5a6e45','stroke-width':'0.9','stroke-dasharray':'4 3'},nodeG);
-      el('rect',{x:nx-tw/2,y:ny-10,width:tw,height:16,rx:'3',fill:'rgba(248,247,244,0.97)',stroke:'rgba(74,111,165,0.3)','stroke-width':'0.8'},nodeG);
+      el('rect',{x:nx-6,y:ny-10,width:tw+8,height:16,rx:'3',fill:'rgba(248,247,244,0.97)',stroke:'rgba(21,82,48,0.3)','stroke-width':'0.8'},nodeG);
       el('circle',{cx:nx,cy:ny,r:4,fill:'#84ba96',stroke:'#0f3d20','stroke-width':'0.8'},nodeG);
-      const t=el('text',{x:nx,y:ny+4.5,'text-anchor':'middle',
+      const t=el('text',{x:nx+8,y:ny+4.5,'text-anchor':'start',
         style:'font-family:Consolas,monospace;font-size:8.5px;font-weight:600;fill:#1a1a1a'},nodeG);
       t.textContent=p.name;
       nodeG.style.cursor='pointer';
